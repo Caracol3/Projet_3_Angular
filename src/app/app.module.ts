@@ -3,10 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChatComponent } from './chat/chat.component';
+import { TrainInfoComponent } from './train-info/train-info.component';
+import { ProfilComponent } from './profil/profil.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChatComponent,
+    TrainInfoComponent,
+    ProfilComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
