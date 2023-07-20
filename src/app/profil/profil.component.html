@@ -1,1 +1,69 @@
-<p>profil works!</p>
+<div class="container">
+  <div class="signup">
+    <div class="logo">
+      <img src="/assets/logo.png" alt="logo train companion">
+
+    </div>
+    <h2 class="form-title">Se connecter</h2>
+
+    <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="form-champs">
+      <div>
+        <input
+        class="input-no-border input-id"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          [(ngModel)]="profil.email"
+          #email="ngModel"
+          required
+          email
+        />
+      </div>
+      <!-- ci-dessous création de la div qui va gérer les erreurs de validation
+  affichage d'un message si le mail n'est pas rempli -->
+      <!-- <div *ngIf="email.errors">
+        <span *ngIf="email.errors?.['required']">L'email est requis</span> -->
+      <!-- <span *ngIf="email.errors?.['email']"
+          >L'adresse email doit être valide</span -->
+
+      <!-- </div> -->
+
+      <div>
+        <input
+          class="input-key"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Mot de passe"
+          [(ngModel)]="profil.password"
+          #password="ngModel"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!])[A-Za-z\d@$!]{7,}$"
+        />
+      </div>
+      <!-- ci-dessous création de la div qui va gérer les erreurs de validation
+  affichage d'un message si le mot de passe à moins de 5 caractères et pas de caractères speciaux -->
+      <div *ngIf="password.errors">
+        <!-- <span *ngIf="password.errors?.['required']"
+          >Le mot de passe est requis</span -->
+
+        <span *ngIf="password.errors?.['minlength']"
+          >Le mot de passe doit contenir au moins 5 caractères</span
+        >
+
+        <span *ngIf="password.errors?.['required pattern']"
+          >This is not a valid password</span
+        >
+      </div>
+
+      <div>
+        <button type="submit">Connexion</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="inscription">
+    <a type="submit"><strong>Créer</strong> un compte</a>
+  </div>
+</div>
