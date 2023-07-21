@@ -4,22 +4,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   color: rgb(85, 85, 85);
 }
 
 .signup{
+  margin-top: 10%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content:flex-start;
   width: 80%;
 }
 
 
 
 .logo img {
-  width: 130px;
+  width: 150px;
   height: 110px;
   margin-bottom: 20px;
 }
@@ -46,7 +48,7 @@ input {
   height: 30px;
   line-height: 30px;
   padding: 8px 15px ;
-  width: 100%;
+  width: 80%;
 }
 
 .input-id{
@@ -56,8 +58,9 @@ input {
   background-size: 15px 15px;
   padding-left: 40px;
   margin-bottom: 0px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 15px 15px 0 0;
   background-color: white;
+  border-bottom: 1px solid #ccc;
 }
 
 .input-key{
@@ -68,39 +71,67 @@ input {
   padding-left: 40px;
   border-radius: 0 0 10px 10px;
   background-color: white;
-
-
 }
 
-.inscription {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 80px;
-  border-radius: 45% 45% 0 0;
-  background-color: rgb(55, 90, 107);
-  display: flex;
-  justify-content: center;
-}
-.inscription a {
-  color: white;
+.forgotten-password{
   text-decoration: none;
-  font-size: 1.5em;
-  position: absolute;
-  bottom: 45%;
-
 }
-
-.inscription::before {
-  content: '';
-  display: block;
+ .inscription {
+  width: 100%;
+  height: 10%;
+  background-color: #365B6D;
+  color: #fff;
+  padding: 20px;
+  border-top-left-radius: 50% 60px;
+  border-top-right-radius: 50% 60px;
+  text-align: center;
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 10%;
-  background-color: rgb(55, 90, 107);
 }
+
+h3 {
+  margin-top: 5px;
+  color: #fff;
+  font-size: 1.6em;
+  text-align: center;
+  font-weight: 500;
+}
+
+span {
+  color: rgb(255, 255, 255);
+  font-weight: 800;
+}
+
+
+// .inscription {
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   height: 80px;
+//   border-radius: 45% 45% 0 0;
+//   background-color: rgb(55, 90, 107);
+//   display: flex;
+//   justify-content: center;
+// }
+// .inscription a {
+//   color: white;
+//   text-decoration: none;
+//   font-size: 1.5em;
+//   position: absolute;
+//   bottom: 45%;
+
+// }
+
+// .inscription::before {
+//   content: '';
+//   display: block;
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 10%;
+//   background-color: rgb(55, 90, 107);
+// }
 
 
