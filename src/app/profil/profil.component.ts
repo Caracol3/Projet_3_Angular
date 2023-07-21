@@ -4,11 +4,10 @@ import { Profil } from '../models/login';
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.scss']
+  styleUrls: ['./profil.component.scss'],
 })
 export class ProfilComponent {
-
-  profil: Profil = new Profil("","");
+  profil: Profil = new Profil('', '');
   isLoginFormVisible: boolean;
 
   constructor() {
@@ -16,16 +15,16 @@ export class ProfilComponent {
   }
 
   onSubmit() {
-    console.log("formulaire envoyé");
+    console.log('formulaire envoyé');
     console.log(this.profil.email);
     console.log(this.profil.password);
   }
 
   logIn() {
-console.log("login");
-}
+    console.log('login');
+  }
 
-signUp() {
-console.log("sign up");
-}
+  signUp() {
+    console.log('sign up');
+  }
 }
