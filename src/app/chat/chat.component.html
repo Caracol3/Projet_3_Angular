@@ -1,1 +1,61 @@
-<p>chat works!</p>
+<div>
+
+    <h1>Rechercher votre train</h1>
+
+</div>
+
+<div class="recherche">
+
+
+    <div class="searchGareDeparture">
+
+        <div><h3>Gare de départ</h3></div>
+    
+       
+        <div class="searchInput">
+            <input [(ngModel)]="searchGareDeparture" (keyup)="searchGare()">
+            <button (click)="returnToSearchDepart()">X</button>
+            
+            <div  *ngFor="let gareOfDeparture of resultOfTrainSearch.slice(0,5);let i = index">
+                <div class="gareResult">
+                   
+                    <p (click)="selectGareDepart(i)" class="trainName"> <b>Nom de la gare : </b> {{gareOfDeparture.gare_alias_libelle_noncontraint}}</p>
+                    
+                </div>
+            </div>
+    
+    
+        </div>
+    
+    
+    
+    </div>
+
+<div class="searchGareArrivals">
+
+    <div><h3>Gare d'arrivé</h3></div>
+
+    
+    <div class="searchInput">
+        <input [(ngModel)]="arrivalStationName" (keyup)="searchGareA()">
+        <button (click)="returnToSearchArrival()">X</button>
+        
+        <div *ngFor="let gareOfArrival of resultOfTrainSearchArival.slice(0,5);let y = index">
+            <div class="gareResult">
+                <p (click)="selectGareArival(y)" class="trainName"> {{gareOfArrival.gare_alias_libelle_noncontraint}}</p>
+                
+            </div>
+        </div>
+ 
+
+    </div>
+
+
+
+</div>
+
+</div>
+
+
+
+

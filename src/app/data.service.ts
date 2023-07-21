@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Fields } from './chat/region-model';
+import { normalizeText } from 'normalize-text';
 
 
 @Injectable({
@@ -9,6 +10,10 @@ export class DataService {
 
   constructor() { }
 
+
+  
+
+// Récupération des gares de la SNCF et code uic
 
   public async getRegions(): Promise<any> {
     const reponse = await fetch("https://ressources.data.sncf.com/api/records/1.0/search/?dataset=referentiel-gares-voyageurs&q=&rows=3500");
@@ -29,3 +34,5 @@ export class DataService {
 
 
 }
+
+
