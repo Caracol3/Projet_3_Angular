@@ -5,10 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { TrainInfoComponent } from './train-info/train-info.component';
-import { ProfilComponent } from './profil/profil.component';
+import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { SigninComponent } from './signin/signin.component';
 FormsModule
 
 @NgModule({
@@ -16,9 +17,10 @@ FormsModule
     AppComponent,
     ChatComponent,
     TrainInfoComponent,
-    ProfilComponent,
+    LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

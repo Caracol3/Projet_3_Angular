@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { Profil } from '../models/login';
 
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.scss'],
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss']
 })
-export class ProfilComponent {
-  profil: Profil = new Profil('', '');
+export class SigninComponent {
+  profil: Profil = new Profil('', '', '');
   isLoginFormVisible: boolean;
 
   constructor() {
@@ -28,3 +28,5 @@ export class ProfilComponent {
     console.log('sign up');
   }
 }
+
+

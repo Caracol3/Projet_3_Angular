@@ -9,7 +9,7 @@
 }
 
 .signup {
-  margin-top: 25%;
+  margin-top: 7%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -40,6 +40,7 @@
 .form-title {
   font-size: 1.5em;
   margin-bottom: 20px;
+  color: grey;
 }
 
 input {
@@ -103,33 +104,3 @@ span {
   font-weight: 800;
 }
 
-// .inscription {
-//   position: absolute;
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-//   height: 80px;
-//   border-radius: 45% 45% 0 0;
-//   background-color: rgb(55, 90, 107);
-//   display: flex;
-//   justify-content: center;
-// }
-// .inscription a {
-//   color: white;
-//   text-decoration: none;
-//   font-size: 1.5em;
-//   position: absolute;
-//   bottom: 45%;
-
-// }
-
-// .inscription::before {
-//   content: '';
-//   display: block;
-//   position: absolute;
-//   bottom: 0;
-//   left: 0;
-//   width: 100vw;
-//   height: 10%;
-//   background-color: rgb(55, 90, 107);
-// }
