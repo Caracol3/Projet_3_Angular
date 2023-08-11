@@ -40,7 +40,7 @@
 .form-title {
   font-size: 1.5em;
   margin-bottom: 20px;
-  color: grey;
+  color: #808080;
 }
 
 input {
@@ -101,27 +101,3 @@ input {
   color: grey;
 }
 
-.inscription {
-  width: 100%;
-  height: 11%;
-  background-color: #365b6d;
-  color: #fff;
-  border-top-left-radius: 50% 60px;
-  border-top-right-radius: 50% 60px;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-}
-
-h3 {
-  margin-top: 15px;
-  color: #fff;
-  font-size: 1.6em;
-  text-align: center;
-  font-weight: 500;
-}
-
-span {
-  color: rgb(255, 255, 255);
-  font-weight: 800;
-}
