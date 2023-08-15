@@ -3,16 +3,43 @@
     <div class="logo">
       <img src="/assets/logo.png" alt="logo train companion" />
     </div>
+
     <h3 class="form-title">Création du compte</h3>
 
     <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="form-champs">
       <div>
         <input
-          class="input-no-border input-username"
+          class="input-top"
           type="text"
           id="username"
           name="username"
-          placeholder="Nom d'utilisateur"
+          placeholder="Pseudo"
+          [(ngModel)]="signin.pseudo"
+          #email="ngModel"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          class="input-no-border"
+          type="text"
+          id="firstname"
+          name="firstname"
+          placeholder="Prénom"
+          [(ngModel)]="signin.firstname"
+          #email="ngModel"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          class="input-no-border"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Nom"
           [(ngModel)]="signin.name"
           #email="ngModel"
           required
@@ -21,11 +48,24 @@
 
       <div>
         <input
-          class="input-no-border input-id"
+          class="input-no-border input-no-border"
+          type="date"
+          id="birthday"
+          name="birthday"
+          placeholder="birthday"
+          [(ngModel)]="signin.birthday"
+          #email="ngModel"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          class="input-no-border input-no-border"
           type="email"
           id="email"
           name="email"
-          placeholder="email"
+          placeholder="Email"
           [(ngModel)]="signin.email"
           #email="ngModel"
           required
@@ -34,7 +74,7 @@
       </div>
       <!-- ci-dessous création de la div qui va gérer les erreurs de validation
   affichage d'un message si le mail n'est pas rempli -->
-      <!-- <div *ngIf="email.errors">
+      <!--<div *ngIf="email.errors">
         <span *ngIf="email.errors?.['required']">L'email est requis</span> -->
       <!-- <span *ngIf="email.errors?.['email']"
           >L'adresse email doit être valide</span -->
@@ -57,13 +97,12 @@
 
       <div>
         <input
-          class="input-key-confirm"
+          class="input-bottom"
           type="password"
-          id="password"
-          name="password"
+          id="confirmPassword"
+          name="confirmPassword"
           placeholder="Confirmer mot de passe"
-          [(ngModel)]="signin.password"
-          #password="ngModel"
+          [(ngModel)]="confirmPassword"
           required
           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!])[A-Za-z\d@$!]{7,}$"
         />
@@ -88,6 +127,4 @@
       </div>
     </form>
   </div>
-
-
 </div>

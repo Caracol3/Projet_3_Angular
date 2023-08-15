@@ -1,4 +1,9 @@
-.container {
+h2,h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  margin: 10px;
+
+}.container {
   position: relative;
   height: 100%;
   display: flex;
