@@ -1,3 +1,10 @@
+h2,h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  margin: 10px;
+
+}
+
 .container {
   position: relative;
   height: 100%;
@@ -51,7 +58,12 @@ input {
   width: 80%;
 }
 
-.input-username {
+//pour aligner les placeholders
+// input::placeholder {
+// text-align: center;
+// }
+
+.input-top {
   background-image: url(/assets/profil.png);
   background-position: 10px center;
   background-repeat: no-repeat;
@@ -63,7 +75,15 @@ input {
   border-bottom: 1px solid #ccc;
 }
 
-.input-id {
+#firstname, #name {
+  background-image: url(/assets/profil.png);
+}
+
+#birthday {
+  background-image: url(/assets/horloge.png);
+}
+
+.input-no-border {
   background-image: url(/assets/courrier.png);
   background-position: 10px center;
   background-repeat: no-repeat;
@@ -72,6 +92,7 @@ input {
   margin-bottom: 0px;
   background-color: white;
   border-bottom: 1px solid #ccc;
+
 }
 
 .input-key {
@@ -83,9 +104,10 @@ input {
   background-color: white;
   border-bottom: 1px solid #ccc;
 
+
 }
 
-.input-key-confirm {
+.input-bottom {
   background-image: url(/assets/cle.png);
   background-position: 10px center;
   background-repeat: no-repeat;

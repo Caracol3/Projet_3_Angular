@@ -1,1 +1,8 @@
-<p>account works!</p>
+<div>
+  <label>Couleur du pseudo : </label>
+  <select>
+    <option *ngFor="let color of colorOptions" [style.background]="color">
+      {{ color }}
+    </option>
+  </select>
+</div>

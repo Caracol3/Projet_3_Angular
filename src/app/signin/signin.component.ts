@@ -7,7 +7,8 @@ import { Signin } from '../models/signin';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent {
-  signin: Signin = new Signin('', '', '');
+  signin: Signin = new Signin('', '', '', new Date(), '', '');
+  confirmPassword: string = '';
   isLoginFormVisible: boolean;
 
   constructor() {
@@ -15,11 +16,19 @@ export class SigninComponent {
   }
 
 onSubmit() {
+  if (this.signin.password !== this.confirmPassword) {
+    alert('Les mots de passe ne correspondent pas');
+    return;
+  }
+
   fetch ('http://localhost:8080/create_user', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
+      pseudo: this.signin.pseudo,
+      firstname: this.signin.firstname,
       name: this.signin.name,
+      birthday: this.signin.birthday,
       email: this.signin.email,
       password: this.signin.password,
 
@@ -29,11 +38,7 @@ onSubmit() {
 .then(response => response.json())
 .then(user => console.log("Salut" ,user))
 }
-  // onSubmit() {
-  //   console.log('formulaire envoyé');
-  //   console.log(this.profil.email);
-  //   console.log(this.profil.password);
-  // }
+
 
   logIn() {
     console.log('login');

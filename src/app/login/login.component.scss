@@ -37,10 +37,23 @@
   margin-left: 0px;
 }
 
+.button-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+  }
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
 .form-title {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-  color: grey;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 input {
@@ -51,7 +64,7 @@ input {
   width: 80%;
 }
 
-.input-id {
+.input-email {
   background-image: url(/assets/profil.png);
   background-position: 10px center;
   background-repeat: no-repeat;
@@ -75,7 +88,10 @@ input {
 }
 
 .forgotten-password {
+  font-family: "Roboto", sans-serif;
   text-decoration: none;
+  font-size: small;
+  font-weight: 100;
   color: grey;
 }
 
@@ -91,16 +107,7 @@ input {
   bottom: 0;
 }
 
-h3 {
-  margin-top: 15px;
-  color: #fff;
-  font-size: 1.6em;
-  text-align: center;
-  font-weight: 500;
-}
-
 span {
   color: rgb(255, 255, 255);
   font-weight: 800;
 }
-
