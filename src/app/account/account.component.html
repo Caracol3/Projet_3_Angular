@@ -1,8 +1,16 @@
-<div>
-  <label>Couleur du pseudo : </label>
-  <select>
-    <option *ngFor="let color of colorOptions" [style.background]="color">
-      {{ color }}
-    </option>
-  </select>
+<div class="container">
+  <div class="logo">
+    <img src="/assets/logo.png" alt="logo train companion" />
+  </div>
+
+  <div class="color">
+    <label>Couleur du pseudo : </label>
+    <select>
+      <option *ngFor="let color of colorOptions" [style.background]="color">
+        {{ color }}
+      </option>
+    </select>
+  </div>
+
+  <div class="avatar"></div>
 </div>
