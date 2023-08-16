@@ -36,7 +36,7 @@ onSubmit() {
 
   })
 .then(response => response.json())
-.then(user => console.log("Salut" ,user))
+.then(user => console.log("Utilisateur crée : " ,user))
 }
 
 
