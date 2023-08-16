@@ -1,0 +1,6 @@
+<form (ngSubmit)="sendEmail()">
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" [(ngModel)]="userMessage" required></textarea>
+  <button type="submit">Envoyer</button>
+</form>
+
