@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { AccountComponent } from './account/account.component';
-import { ContactComponent } from './contact/contact.component';
+
 FormsModule
 
 @NgModule({
@@ -24,7 +24,7 @@ FormsModule
     FooterComponent,
     SigninComponent,
     AccountComponent,
-    ContactComponent
+
   ],
   imports: [
     BrowserModule,
