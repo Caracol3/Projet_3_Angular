@@ -19,12 +19,10 @@ export class AccountComponent {
 
   }
 
-  editPseudo() {
 
-  }
 
   getUser() {
-  fetch('http://localhost:8080/user/3')
+  fetch('http://localhost:8080/user/1')
     .then(response => response.json())
     .then(data => {this.user = data;
       console.log("voici l'utilisateur :", data);
