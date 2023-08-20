@@ -17,8 +17,8 @@ export class SigninComponent {
 
 onSubmit() {
   if (this.signin.password !== this.confirmPassword) {
-    alert('Les mots de passe ne correspondent pas');
-    return;
+    return alert('Les mots de passe ne correspondent pas');
+    ;
   }
 
   fetch ('http://localhost:8080/create_user', {
@@ -37,6 +37,7 @@ onSubmit() {
   })
 .then(response => response.json())
 .then(user => console.log("Utilisateur crée : " ,user))
+alert('Utilisateur crée');
 }
 
 

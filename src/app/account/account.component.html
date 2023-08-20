@@ -6,20 +6,21 @@
   </div>
 
   <div class="color">
-    <label>Couleur du pseudo : </label>
-    <select>
-      <option *ngFor="let color of colorOptions" [style.background]="color">
-        {{ color }}
+    <label>Couleur du pseudo dans le chat: </label>
+    <select class="color-select" [(ngModel)]="selectedColor">
+      <option *ngFor="let color of colorOptions" [style.background]="color" [value]="color">
+
       </option>
     </select>
   </div>
 
-  <div class="switch">
-    Disponible MP : <input type="checkbox" [(ngModel)]="user.is_available" />
-    <span class="slider"></span>
-  </div>
-
   <div class="avatar">Votre avatar :</div>
+
+  <div class="toggle-switch">
+    <span>Disponible MP: </span>
+    <input type="checkbox" id="toggle" class="toggle-input" />
+    <label for="toggle" class="toggle-label"></label>
+  </div>
 
   <div>
     <button>Valider</button>

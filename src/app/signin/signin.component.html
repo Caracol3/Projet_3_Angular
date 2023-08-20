@@ -1,6 +1,6 @@
 <div class="container">
   <div class="signup">
-    
+
 
     <h3 class="form-title">Création du compte</h3>
 
@@ -13,7 +13,7 @@
           name="username"
           placeholder="Pseudo"
           [(ngModel)]="signin.pseudo"
-          #email="ngModel"
+          #pseudo="ngModel"
           required
         />
       </div>
@@ -26,7 +26,7 @@
           name="firstname"
           placeholder="Prénom"
           [(ngModel)]="signin.firstname"
-          #email="ngModel"
+          #firstname="ngModel"
           required
         />
       </div>
@@ -39,7 +39,7 @@
           name="name"
           placeholder="Nom"
           [(ngModel)]="signin.name"
-          #email="ngModel"
+          #name="ngModel"
           required
         />
       </div>
@@ -52,7 +52,7 @@
           name="birthday"
           placeholder="birthday"
           [(ngModel)]="signin.birthday"
-          #email="ngModel"
+          #birthday="ngModel"
           required
         />
       </div>
@@ -70,11 +70,14 @@
           email
         />
       </div>
+      <div *ngIf="email.invalid && email.touched" class="error-message">
+        Le champ est invalide.
+      </div>
       <!-- ci-dessous création de la div qui va gérer les erreurs de validation
   affichage d'un message si le mail n'est pas rempli -->
       <!--<div *ngIf="email.errors">
-        <span *ngIf="email.errors?.['required']">L'email est requis</span> -->
-      <!-- <span *ngIf="email.errors?.['email']"
+        <span *ngIf="email.errors?.['required']">L'email est requis</span>
+      <span *ngIf="email.errors?.['email']"
           >L'adresse email doit être valide</span -->
 
       <!-- </div> -->
