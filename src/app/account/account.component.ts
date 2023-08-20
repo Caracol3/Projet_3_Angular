@@ -11,7 +11,8 @@ export class AccountComponent {
   colorOptions: string[] = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown', 'black', 'white'];
   selectedColor: string = 'red';
   pseudo: string = 'Pseudo';
-  user: User = new User('','','','',new Date(),'','');
+  is_available: boolean = true;
+  user: User = new User('','','','',new Date(),'','',true);
 
   constructor() { }
 

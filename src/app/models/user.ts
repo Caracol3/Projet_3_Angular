@@ -8,6 +8,7 @@ export class User {
     public birthday : Date,
     public password : string,
     public avatar : string,
+    public is_available : boolean,
 
   ){}
 
