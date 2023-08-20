@@ -1,8 +1,9 @@
 <div class="container">
-  <h2>À propos de moi</h2>
-
+  <div><h2>À propos de moi</h2></div>
   <div class="pseudo">
-    <span> {{user.pseudo}} </span>
+    <button (click)="getUser()">Pseudo</button>
+    <span> {{ user.pseudo }} </span>
+  </div>
 
   <div class="color">
     <label>Couleur du pseudo : </label>
@@ -13,7 +14,14 @@
     </select>
   </div>
 
-  <button (click)="getUser()">Récupérer le compte</button>
+  <div class="switch">
+    Disponible MP : <input type="checkbox" [(ngModel)]="user.is_available" />
+    <span class="slider"></span>
+  </div>
 
-  <div class="avatar">Votre avatar : </div>
+  <div class="avatar">Votre avatar :</div>
+
+  <div>
+    <button>Valider</button>
+  </div>
 </div>

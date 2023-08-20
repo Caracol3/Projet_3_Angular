@@ -1,0 +1,12 @@
+// Les deux sélécteurs ci-dessous sont pour permettre de conserver la disposition du header et du footer en haut et en bas de la page. Le reste du code est pour le style de la page.
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+app-header,
+app-footer {
+  flex-shrink: 0;
+}
+
