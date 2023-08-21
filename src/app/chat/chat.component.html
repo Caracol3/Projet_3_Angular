@@ -13,13 +13,13 @@
     
        
         <div class="searchInput">
-            <input [(ngModel)]="searchGareDeparture" (keyup)="searchGare()">
+            <input value="Garre de depart" [(ngModel)]="searchGareDeparture" (keyup)="searchGare()">
             <button (click)="returnToSearchDepart()">X</button>
             
-            <div  *ngFor="let gareOfDeparture of resultOfTrainSearch.slice(0,5);let i = index">
+            <div  *ngFor="let gareOfDeparture of resultOfTrainSearch;let i = index">
                 <div class="gareResult">
                    
-                    <p (click)="selectGareDepart(i)" class="trainName"> <b>Nom de la gare : </b> {{gareOfDeparture.gare_alias_libelle_noncontraint}}</p>
+                    <p (click)="selectGareDepart(i)" class="trainName">  {{gareOfDeparture.gare_alias_libelle_noncontraint}}</p>
                     
                 </div>
             </div>
@@ -40,7 +40,7 @@
         <input [(ngModel)]="arrivalStationName" (keyup)="searchGareA()">
         <button (click)="returnToSearchArrival()">X</button>
         
-        <div *ngFor="let gareOfArrival of resultOfTrainSearchArival.slice(0,5);let y = index">
+        <div *ngFor="let gareOfArrival of resultOfTrainSearchArival ;let y = index">
             <div class="gareResult">
                 <p (click)="selectGareArival(y)" class="trainName"> {{gareOfArrival.gare_alias_libelle_noncontraint}}</p>
                 
@@ -54,8 +54,10 @@
 
 </div>
 
+
+
+<div class="boutonSearch" *ngIf="selectArrival && selectDepart">
+
+<button (click)="getDataFromApi()">Rechercher</button>
+
 </div>
-
-
-
-
