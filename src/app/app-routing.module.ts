@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ChatComponent } from './chat/chat.component';
 import { AccountComponent } from './account/account.component';
 import { TrainInfoComponent } from './train-info/train-info.component';
+import { SearchTrainComponent } from './search-train/search-train.component';
 
 
 const routes: Routes = [
@@ -16,8 +17,9 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent},
   { path: 'account', component: AccountComponent},
   { path: 'train-info', component: TrainInfoComponent},
+  { path: 'search-train', component: SearchTrainComponent},
 
-  
+
 
 ];
 

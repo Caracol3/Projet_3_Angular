@@ -6,7 +6,6 @@ h3 {
   color: #808080;
 
 }
-
 .container {
   position: relative;
   height: 70%;
@@ -20,6 +19,9 @@ h3 {
   text-align: center;
   margin: auto;
 }
+.form{
+  margin-top: 20% ;
+}
 button {
   width: 60%;
   height: 35px;
@@ -28,44 +30,42 @@ button {
   background-color: rgb(55, 90, 107);
   color: white;
   font-size: 1.1em;
-  margin: 15px;
+  margin-top: 25%;
   font-weight: 300;
 }
-input {
+
+.gare{
   border: none;
-  height: 30px;
+  height: 50px;
   line-height: 30px;
   padding: 8px 15px;
-  width: 80%;
-
-  border-bottom: 1px solid #ccc;
+  width: 90%;
   color: rgb(131, 130, 130);
-
+  border-radius: 15px;
+  margin: 10px;
+  box-shadow: 0 2px 0 1px #a2a2a2;
 }
 
-.input-top{
-  margin-bottom: 0px;
-  border-radius: 15px 15px 0 0;
-  background-color: white;
-  border-bottom: 1px solid #ccc;
-
-  color: rgb(131, 130, 130);
-}
-.input-bottom {
-  border-radius: 0 0 10px 10px;
-  background-color: white;
-  margin-bottom: 15px;
-  color: rgb(131, 130, 130);
+.horaire{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 15px;
 
 }
-textarea{
-  border: none;
-  height: 250px;
-  resize : none;
-  padding: 8px 15px;
-  width: 80%;
-
-
-
-
+.date {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  width: 150px;
+  font-size: 1.01em;
+  color: rgb(131, 130, 130);
+  box-shadow: 0.5px 2px 0 1px #979696;
+}
+.heure{
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 1.01em;
+  box-shadow: 0 2px 0 1px #dadada;
 }
