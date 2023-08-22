@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { AccountComponent } from './account/account.component';
 import { ContactComponent } from './contact/contact.component';
-import { HttpClientModule } from '@angular/common/http'; // <-- Import HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
+import { SearchTrainComponent } from './search-train/search-train.component'; // <-- Import HttpClientModule
 
 FormsModule
 
@@ -27,6 +28,7 @@ FormsModule
     SigninComponent,
     AccountComponent,
     ContactComponent,
+    SearchTrainComponent,
 
   ],
   imports: [
