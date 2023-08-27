@@ -1,5 +1,4 @@
 .container {
-  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -39,6 +38,7 @@
 
 .button-text {
     font-weight: 300;
+    
   }
 
 h2 {
@@ -92,18 +92,81 @@ input {
 }
 
 .inscription {
-  width: 100%;
-  height: 11%;
+  width: 70%;
+  height: 100%;
   background-color: #365b6d;
   color: #fff;
-  border-top-left-radius: 50% 60px;
-  border-top-right-radius: 50% 60px;
+ border-radius: 10px 10px 5px;
   text-align: center;
-  position: absolute;
-  bottom: 0;
+  
+
+  
 }
 
 span {
   color: rgb(255, 255, 255);
   font-weight: 800;
+}
+
+
+
+// footer 
+
+.footer {
+  width: 100%;
+  height: 10%;
+  background-color: #365B6D;
+  color: #fff;
+  border-top-left-radius: 50% 30px;
+  border-top-right-radius: 50% 30px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+
+}
+
+.footer img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  margin-left: 5px;
+
+
+
+}
+
+.reseaux{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+  margin-top: 30px;
+   padding: 0;
+
+}
+
+  .mentions {
+    display: flex; /* Utilise la mise en page flexbox */
+    justify-content: space-between; /* Aligne les éléments sur les côtés opposés */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    list-style-type: none;
+    padding: 0;
+    font-size: 0.6em;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+
+}
+
+a
+{
+  text-decoration: none;
+  color: #fff;
+
 }

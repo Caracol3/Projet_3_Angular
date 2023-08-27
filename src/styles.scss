@@ -1,19 +1,35 @@
 * {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  -moz-box-sizing: border-box; box-sizing: border-box;
+  
+
 
 }
 
-html,body {
+
+
+
+html{
   width: 100%;
   height: 100%;
   background:url(/assets/background_tgv2.jpg);
   background-size:cover;
   background-repeat:no-repeat;
-
-
+ 
 }
 
 
+
+
+@media screen and (min-width: 748px){
+
+  html,body{
+    background:url(/assets/MicrosoftTeams-image.png);
+    background-size:50%;
+    background-repeat:no-repeat;
+
+}
+}
 
 
