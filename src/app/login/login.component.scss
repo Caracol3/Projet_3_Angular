@@ -38,7 +38,7 @@
 
 .button-text {
     font-weight: 300;
-    
+
   }
 
 h2 {
@@ -98,9 +98,9 @@ input {
   color: #fff;
  border-radius: 10px 10px 5px;
   text-align: center;
-  
 
-  
+
+
 }
 
 span {
@@ -110,7 +110,7 @@ span {
 
 
 
-// footer 
+// footer
 
 .footer {
   width: 100%;
@@ -168,5 +168,21 @@ a
 {
   text-decoration: none;
   color: #fff;
+}
 
+@media screen and (min-width: 748px){
+  .container {
+    margin-left: 50%;
+}
+
+h2 {
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.form-title {
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: 15px;
+margin-left: 0;}
 }

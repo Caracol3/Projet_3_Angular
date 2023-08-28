@@ -10,3 +10,12 @@
   height: 110px;
   margin-bottom: 20px;
 }
+
+@media screen and (min-width: 748px){
+  .container {
+    width: 50%;
+    position: absolute;
+    right: 0;
+
+}
+}
