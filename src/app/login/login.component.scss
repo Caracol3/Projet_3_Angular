@@ -41,7 +41,7 @@
 
   }
 
-h2 {
+h1 {
   font-weight: 300;
   margin-top: 10px;
 }
@@ -98,70 +98,11 @@ input {
   color: #fff;
  border-radius: 10px 10px 5px;
   text-align: center;
-
-
-
 }
 
 span {
   color: rgb(255, 255, 255);
   font-weight: 800;
-}
-
-
-
-// footer
-
-.footer {
-  width: 100%;
-  height: 10%;
-  background-color: #365B6D;
-  color: #fff;
-  border-top-left-radius: 50% 30px;
-  border-top-right-radius: 50% 30px;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0;
-
-}
-
-.footer img {
-  width: 25px;
-  height: 25px;
-  margin-right: 5px;
-  margin-left: 5px;
-
-
-
-}
-
-.reseaux{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  list-style-type: none;
-  margin-top: 30px;
-   padding: 0;
-
-}
-
-  .mentions {
-    display: flex; /* Utilise la mise en page flexbox */
-    justify-content: space-between; /* Aligne les éléments sur les côtés opposés */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    list-style-type: none;
-    padding: 0;
-    font-size: 0.6em;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-
 }
 
 a
@@ -170,19 +111,79 @@ a
   color: #fff;
 }
 
-@media screen and (min-width: 748px){
-  .container {
-    margin-left: 50%;
+.desktop {
+  background: linear-gradient(#375B6D, #0C0C1B, #375B6D);
+   width: 100%;
+  height: 100vh;
+  display: none;
 }
 
-h2 {
+@media screen and (min-width: 748px){
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.desktop {
+  display:block;
+  color: white;
+  text-align: center;
+h3{
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+  margin-left: 5%;
+  font-weight: 700;
+}
+img{
+  width:100%;
+  mix-blend-mode: lighten;
+}
+}
+
+h1 {
   font-weight: 700;
   margin-top: 10px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+}
+.title h3{
+  text-align:initial;
+}
+
+.signup{
+width: 100%;
+}
+
+input {
+  width: 100%;
 }
 
 .form-title {
   font-weight: 500;
   margin-top: 30px;
   margin-bottom: 15px;
-margin-left: 0;}
+}
+
+.forgotten-password{
+  text-align: right;
+  margin-left: 90px;
+}
+
+.input-email,
+.input-key {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.button-text {
+  width: 80%;
+
+}
 }
