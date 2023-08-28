@@ -41,7 +41,7 @@
 
   }
 
-h2 {
+h1 {
   font-weight: 300;
   margin-top: 10px;
 }
@@ -111,25 +111,68 @@ a
   color: #fff;
 }
 
-@media screen and (min-width: 748px){
-  .container {
-    margin-left: 50%;
+.desktop {
+  background: linear-gradient(#375B6D, #0C0C1B, #375B6D);
+   width: 100%;
+  height: 100vh;
+  display: none;
 }
 
-h2 {
+@media screen and (min-width: 748px){
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.desktop {
+  display:block;
+  color: white;
+  text-align: center;
+h3{
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+  margin-left: 5%;
+  font-weight: 700;
+}
+img{
+  width:100%;
+  mix-blend-mode: lighten;
+}
+}
+
+h1 {
   font-weight: 700;
   margin-top: 10px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+}
+.title h3{
+  text-align:initial;
+}
+
+.signup{
+width: 100%;
+}
+
+input {
+  width: 100%;
 }
 
 .form-title {
   font-weight: 500;
   margin-top: 30px;
   margin-bottom: 15px;
-text-align: end;
 }
 
-.form-champs{
-  width: 60%;
+.forgotten-password{
+  text-align: right;
+  margin-left: 90px;
 }
 
 .input-email,
@@ -139,4 +182,8 @@ text-align: end;
   margin-bottom: 15px;
 }
 
+.button-text {
+  width: 80%;
+
+}
 }
