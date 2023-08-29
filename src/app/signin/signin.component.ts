@@ -56,7 +56,16 @@ export class SigninComponent {
   
   .then(response => response.json())
   
-  .then(user => console.log("Utilisateur crée : " ,user));
+  .then(user => {
+  
+
+    
+    if (user && user.data.token){
+            localStorage.setItem('token', user.data.token);
+    }
+    
+  
+  });
   
   // alert('Utilisateur crée');
   
