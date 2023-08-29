@@ -101,14 +101,19 @@ input {
 }
 
 span {
-  color: rgb(255, 255, 255);
+  // color: rgb(255, 255, 255);
   font-weight: 800;
 }
 
 a
 {
   text-decoration: none;
-  color: #fff;
+  color: #375B6D;
+  font-weight: 400;
+}
+
+.link-create {
+  display: none;
 }
 
 .desktop {
@@ -197,7 +202,17 @@ input {
   height: 60px;
 }
 
-button text {
+#button-create{
+  display: none;
+}
+
+.link-create {
+  display: contents;
+  font-size: medium;
   font-weight: 300;
+}
+
+.button-text {
+  font-weight: 600;
 }
 }
