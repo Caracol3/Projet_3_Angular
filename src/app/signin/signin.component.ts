@@ -55,13 +55,15 @@ export class SigninComponent {
     })
   
   .then(response => response.json())
+  .then(user => {
   
-  .then(user => console.log("Utilisateur crée : " ,user));
-  
-  // alert('Utilisateur crée');
-  
-  }
+
     
+    if (user && user.data.token){
+            localStorage.setItem('token', user.data.token);
+    }
+
+  
     logIn() {
   
       console.log('login');
