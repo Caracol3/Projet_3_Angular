@@ -57,11 +57,6 @@ input {
   width: 80%;
 }
 
-//pour aligner les placeholders
-// input::placeholder {
-// text-align: center;
-// }
-
 .input-top {
   background-image: url(/assets/profil.png);
   background-position: 10px center;
@@ -74,7 +69,8 @@ input {
   border-bottom: 1px solid #ccc;
 }
 
-#firstname, #name {
+#firstname,
+#name {
   background-image: url(/assets/profil.png);
 }
 
@@ -119,47 +115,114 @@ input {
 
 .desktop {
   background: linear-gradient(#375B6D, #0C0C1B, #375B6D);
-   width: 100%;
+  width: 100%;
   height: 100vh;
   display: none;
 }
 
 
-@media all and (min-width: 748px){
+@media all and (min-width: 748px) {
   .container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
+  }
 
-.form-title {
-  font-weight: 500;
-  margin-top: 30px;
-  margin-bottom: 15px;
-  margin-left: 0;
+  .form-title {
+    font-weight: 500;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    margin-left: 0;
+    color: #4F4F4F;
+    text-align: center;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 
-}
-.signup{
-width: 100%;
-}
+  }
 
-.desktop {
-  display:block;
+  .signup {
+    width: 100%;
+    margin-top: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+  }
+
+  .desktop {
+    display: block;
+    color: white;
+    text-align: center;
+
+    h3 {
+      font-size: 3em;
+      display: flex;
+      justify-content: center;
+      margin-top: 15%;
+      margin-left: 5%;
+      font-weight: 700;
+    }
+
+    img {
+      width: 100%;
+      mix-blend-mode: lighten;
+
+    }
+  }
+
+
+  .input-no-border {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 40px;
+    color:#9a9494;
+  }
+
+  .input-top {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 40px;
+    color:#9a9494;
+  }
+
+  .input-bottom {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 40px;
+    color:#9a9494;
+
+  }
+
+  .input-key {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 40px;
+    color:#9a9494;
+
+  }
+
+  .form-champs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    gap: 20px;
+
+
+ }
+ .signup button {
+  width: 70%;
+  height: 60px;
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(55, 90, 107);
   color: white;
-  text-align: center;
-h3{
-  font-size: 3em;
-  display: flex;
-  justify-content: center;
-  margin-top: 15%;
-  margin-left: 5%;
-  font-weight: 700;
+  font-size: 1.1em;
+  margin: 10px;
+  margin-left: 0;
 }
-img{
-  width:100%;
-  mix-blend-mode: lighten;
-
-}
-}
-
 }

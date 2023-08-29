@@ -37,6 +37,7 @@
   margin-left: 5px;
 
 
+
 }
 
 .reseaux {
@@ -73,7 +74,6 @@ a {
     margin-left: 50%;
     width: 50%;
     color: #030303;
-    font-size: medium;
     background: rgba(0, 0, 0, 0);
   }
   a {
@@ -88,16 +88,19 @@ a {
 }
 .reseaux {
 margin-top: 2%;
-}
+
 }
 .cgu{
   margin-bottom: 18px;
   margin-right: 10px;
-  font-size: medium;
+  font-size:small;
+  font-weight: 350;
 }
 .copyright{
   margin-bottom: 18px;
   margin-left: 10px;
-  font-size: medium;
+  font-size: small;
+  font-weight: 350;
 }
 
+}
