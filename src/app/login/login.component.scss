@@ -146,6 +146,7 @@ img{
 h1 {
   font-weight: 700;
   margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 .title {
@@ -153,15 +154,22 @@ h1 {
   flex-direction: column;
 }
 .title h3{
+  font-size: x-large;
   text-align:initial;
+  margin-right: 160px;
 }
 
 .signup{
 width: 100%;
 }
 
+form-champs{
+  width: 50%;
+}
+
 input {
   width: 100%;
+  height: 40px;
 }
 
 .form-title {
@@ -172,7 +180,9 @@ input {
 
 .forgotten-password{
   text-align: right;
-  margin-left: 90px;
+  margin-left: 180px;
+  color: #365b6d;
+  font-weight: 300;
 }
 
 .input-email,
@@ -182,8 +192,12 @@ input {
   margin-bottom: 15px;
 }
 
-.button-text {
-  width: 80%;
+.signup button {
+  width: 90%;
+  height: 60px;
+}
 
+button text {
+  font-weight: 300;
 }
 }
