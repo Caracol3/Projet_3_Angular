@@ -15,9 +15,36 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log('formulaire envoyé');
-    console.log(this.profil.email);
-    console.log(this.profil.password);
+  
+    fetch ('http://localhost:8080/login', {
+  
+      method: 'POST',
+  
+      headers: {'Content-Type': 'application/json'},
+  
+      body: JSON.stringify({
+ 
+
+        password: this.profil.password,
+
+        email: this.profil.email,
+
+  
+      })
+    })
+  
+  .then(response => response.json())
+  
+  .then(user => {
+  
+
+    console.log('user:', user);
+    if (user && user.data.token){
+            localStorage.setItem('token', user.data.token);
+    }
+    
+  
+  });
   }
 
   logIn() {
