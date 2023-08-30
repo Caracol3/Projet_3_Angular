@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Signin } from '../models/signin';
+import { tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signin',
@@ -10,47 +12,83 @@ export class SigninComponent {
   signin: Signin = new Signin('', '', '', new Date(), '', '');
   confirmPassword: string = '';
   isLoginFormVisible: boolean;
+ 
 
-  constructor() {
+
+  constructor(private http: HttpClient) {
     this.isLoginFormVisible = false;
+   }
+
+
+   onSubmit() {
+
+    if (this.signin.password !== this.confirmPassword) {
+  
+      return alert('Les mots de passe ne correspondent pas');
+  
+      ;
+  
+    }
+   
+  
+    fetch ('http://localhost:8080/register', {
+  
+      method: 'POST',
+  
+      headers: {'Content-Type': 'application/json'},
+  
+      body: JSON.stringify({
+
+        name: this.signin.name,
+
+        password: this.signin.password,
+
+        email: this.signin.email,
+
+        birthday: this.signin.birthday,
+
+        firstname: this.signin.firstname,
+  
+        username: this.signin.pseudo,
+  
+      })
+    })
+  
+  .then(response => response.json())
+  .then(user => {
+  
+
+    
+    if (user && user.data.token){
+            localStorage.setItem('token', user.data.token);
+    }
+
+  
+    logIn() {
+  
+      console.log('login');
+  
+    }
+  
+   
+  
+    signUp() {
+  
+      console.log('sign up');
+  
+    }
+  
+   
+  
+   
+
+
+
+  
   }
 
-onSubmit() {
-  if (this.signin.password !== this.confirmPassword) {
-    return alert('Les mots de passe ne correspondent pas');
-    ;
-  }
-
-  fetch ('http://localhost:8080/create_user', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      pseudo: this.signin.pseudo,
-      firstname: this.signin.firstname,
-      name: this.signin.name,
-      birthday: this.signin.birthday,
-      email: this.signin.email,
-      password: this.signin.password,
-
-    }),
-
-  })
-.then(response => response.json())
-.then(user => console.log("Utilisateur crée : " ,user))
-alert('Utilisateur crée');
-}
 
 
-  logIn() {
-    console.log('login');
-  }
-
-  signUp() {
-    console.log('sign up');
-  }
-
-
-}
 
 
 
