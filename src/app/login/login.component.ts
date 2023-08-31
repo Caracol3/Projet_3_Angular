@@ -18,12 +18,6 @@ export class LoginComponent {
   }
 
 
-  // onSubmit() {
-  //   console.log('formulaire envoyé');
-  //   console.log(this.profil.email);
-  //   console.log(this.profil.password);
-  // }
-
 
   onSubmit() {
   
@@ -49,9 +43,10 @@ export class LoginComponent {
   .then(user => {
   
 
-    console.log('user:', user);
+    
     if (user && user.data.token){
             localStorage.setItem('token', user.data.token);
+            console.log('user:', user);
     }
     
   

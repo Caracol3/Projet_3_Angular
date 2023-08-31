@@ -22,7 +22,7 @@ export class ContactComponent {
       this.contactEmailService.sendEmail(emailData).subscribe(
         response => {
           console.log('Email envoyé avec succès!', response);
-          alert('Email envoyé avec succès!');
+          // alert('Email envoyé avec succès!');
         },
         error => {
           console.error("Erreur d'envoi du message:", error);
