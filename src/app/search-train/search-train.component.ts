@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Search } from '../models/search';
+import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
+import { Fields } from '../models/region-model';
+import { normalizeText } from 'normalize-text';
 
 
 @Component({
@@ -7,9 +11,9 @@ import { Search } from '../models/search';
   templateUrl: './search-train.component.html',
   styleUrls: ['./search-train.component.scss']
 })
-export class SearchTrainComponent {
+export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
-
+  
 
 onSubmit() {
   this.search.depart = this.search.depart;
@@ -18,4 +22,78 @@ onSubmit() {
 
 
 }
+
+constructor(private dataService : DataService , private http : HttpClient ) { }
+
+  regions :{
+    gare_alias_libelle_noncontraint: string;
+    fields : Fields
+  }[] = [];
+
+  // appel de la fonction getRegions() au chargement de la page
+  ngOnInit(): void {
+    this.getRegions();
+  }
+
+  // Récupération des gares de la SNCF et code uic dans variables regions
+  async getRegions() {
+    this.regions = await this.dataService.getRegions();
+  }
+
+
+  // recherche de gare de départ par nom 
+
+ 
+
+  searchGareDepart() {
+
+   let resultOfTrainSearchDepart = [];
+   let departureStation = [];
+    if(this.search.depart !== '') {  
+     
+    this.search.depart = this.search.depart.toLowerCase();
+    for (let i = 0; i < this.regions.length-1; i++) {
+      if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart)) {
+        resultOfTrainSearchDepart.push(this.regions[i]);
+        console.log(resultOfTrainSearchDepart);
+       
+      
+        }
+    
+    }
+    }   else {
+       
+      departureStation = [];
+    }
+
+  }
+
+
+  searchGareArriver() {
+
+    let resultOfTrainSearchArriver = [];
+    let departureStation = [];
+     if(this.search.arrivee !== '') {  
+      
+      this.search.arrivee = this.search.arrivee.toLowerCase();
+     for (let i = 0; i < this.regions.length-1; i++) {
+       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)) {
+         resultOfTrainSearchArriver.push(this.regions[i]);
+         console.log(resultOfTrainSearchArriver);
+        
+       
+         }
+     
+     }
+     }   else {
+        
+       departureStation = [];
+     }
+ 
+   }
+
+
+
 }
+
+

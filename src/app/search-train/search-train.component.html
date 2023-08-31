@@ -6,8 +6,8 @@
 </div>
 <form class="form"  #myForm="ngForm" (ngSubmit)="onSubmit()">
   <div>
-       <input class="gare top" type="text" id="depart" name="depart"  placeholder="Gare de départ" [(ngModel)]="search.depart" required>
-       <input class="gare bottom" type="text" id="arrivee" name="arrivée"  placeholder="Gare d'arrivée" [(ngModel)]="search.arrivee" required>
+       <input class="gare top" type="text" id="depart" name="depart"  placeholder="Gare de départ" [(ngModel)]="search.depart" required (keyup)="searchGareDepart()">
+       <input class="gare bottom" type="text" id="arrivee" name="arrivée"  placeholder="Gare d'arrivée" [(ngModel)]="search.arrivee" required (keyup)="searchGareArriver()">
   <div class="horaire">
       <input class="date" type="date" id="date" name="date"  placeholder="date"  [(ngModel)]="search.date" required>
       <input class="heure" type="time" id="title" name="heure"  placeholder="Heure" [(ngModel)]="search.heureDepart" required>
