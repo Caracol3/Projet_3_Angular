@@ -11,6 +11,10 @@
   margin-bottom: 20px;
 }
 
+.nav-container {
+  display: none;
+}
+
 @media screen and (min-width: 748px) {
   .container {
     display: flex;
@@ -46,7 +50,7 @@
   }
   a {
     text-decoration: none;
-    margin-right: 50px;
+    margin-right: 30px;
   }
   img {
     width: 20px;
@@ -71,13 +75,13 @@
   }
 
   #nav-contact {
-    width: 65px;
+    width: 45px;
     background: url("/assets/Header/contact.png") no-repeat ;
+    background-position: 6px center;
     background-size: 16px 16px;
-    padding-left: 25px;
     background-color:#365b6d;
-    padding: 7px 10px;
+    padding: 5px 15px 7px 25px;
     color: white;
-    border-radius: 10px;
+    border-radius: 5px;
   }
 }
