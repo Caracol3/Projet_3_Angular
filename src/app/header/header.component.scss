@@ -11,12 +11,69 @@
   margin-bottom: 20px;
 }
 
-@media screen and (min-width: 748px){
+@media screen and (min-width: 748px) {
   .container {
-    width: 50%;
-    position: absolute;
-    right: 0;
-    margin-bottom: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0px;
+    padding-top: 0;
+    height: 80px;
+  }
 
-}
+  .logo img {
+    margin-top: 30px;
+    margin-left: 100px;
+    height: 70px;
+    width: auto;
+
+  }
+
+  .nav-container{
+    display: flex;
+  }
+
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 100px;
+    padding-left: 0;
+    text-decoration: none;
+    list-style-type: none;
+    font-weight: 500;
+    font-size: small;
+  } a {
+    text-decoration: none;
+    margin-right: 20px;
+
+  } img {
+    width: 20px;
+    margin-right: 5px;
+    margin-bottom: 35px;
+  }
+
+  #nav-home {
+    background: url("/assets/Header/home2.gif") no-repeat 100% 0;
+    background-size: 16px 16px;
+    padding-right: 25px;
+    color: #365b6d;
+  font-weight: 600;
+  margin-bottom: 20px;
+  }
+
+  #nav-account {
+    color: black;
+  }
+
+  #nav-contact {
+background-color: black;
+padding: 7px 10px;
+color: white;
+border-radius: 10px;
+
+  }
 }
