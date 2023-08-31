@@ -128,12 +128,13 @@ a
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
+    padding-bottom: 200px;
+  }
 
-.desktop {
-  display:block;
-  color: white;
-  text-align: center;
+  .desktop {
+    display:block;
+    color: white;
+    text-align: center;
 h3{
   font-size: 3em;
   display: flex;
