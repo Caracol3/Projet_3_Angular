@@ -14,6 +14,8 @@ import { AccountComponent } from './account/account.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchTrainComponent } from './search-train/search-train.component'; // <-- Import HttpClientModule
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './config/jwtInterceptor';
 
 FormsModule
 
@@ -35,9 +37,14 @@ FormsModule
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule 
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS,
+       useClass: JwtInterceptor,
+        multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
