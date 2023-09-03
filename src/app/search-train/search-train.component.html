@@ -6,15 +6,26 @@
 </div>
 <form class="form"  #myForm="ngForm" (ngSubmit)="onSubmit()">
   <div>
+    <div>
        <input class="gare top" type="text" id="depart" name="depart"  placeholder="Gare de départ" [(ngModel)]="search.depart" required (keyup)="searchGareDepart()">
+      
+        <div class="gareResult">
+           
+            <p *ngFor="let gareOfDeparture of resultOfTrainSearchDepart;let i = index" (click)="selectGareDepart(i)">  {{gareOfDeparture.gare_alias_libelle_noncontraint}}</p>
+          
+        </div>
+    
+      </div>
+      <div *ngIf="GareDepartSelect">
        <input class="gare bottom" type="text" id="arrivee" name="arrivée"  placeholder="Gare d'arrivée" [(ngModel)]="search.arrivee" required (keyup)="searchGareArriver()">
-  <div class="horaire">
+      </div>
+       <div class="horaire" *ngIf="GareArriverSelect">
       <input class="date" type="date" id="date" name="date"  placeholder="date"  [(ngModel)]="search.date" required>
       <input class="heure" type="time" id="title" name="heure"  placeholder="Heure" [(ngModel)]="search.heureDepart" required>
   </div>
   </div>
 
-  <div>
+  <div *ngIf="AllInfo">
     <button  class="button-text" type="submit">Rechercher</button>
   </div>
   </form>

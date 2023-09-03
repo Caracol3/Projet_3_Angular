@@ -13,6 +13,14 @@ import { normalizeText } from 'normalize-text';
 })
 export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
+  GareDepartSelect : boolean = false;
+  GareArriverSelect : boolean = false;
+  AllInfo : boolean = false;
+  resultOfTrainSearchDepart : any = [];
+  departureStation : any[] = [];
+  listOfDepartureStation : string[] = [];
+  arrivalStation : any[] = [];
+  resultOfTrainSearchArriver : any = [];
   
 
 onSubmit() {
@@ -47,15 +55,15 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
 
   searchGareDepart() {
 
-   let resultOfTrainSearchDepart = [];
-   let departureStation = [];
+   this.resultOfTrainSearchDepart = [];
+  
     if(this.search.depart !== '') {  
      
     this.search.depart = this.search.depart.toLowerCase();
     for (let i = 0; i < this.regions.length-1; i++) {
       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart)) {
-        resultOfTrainSearchDepart.push(this.regions[i]);
-        console.log(resultOfTrainSearchDepart);
+        this.resultOfTrainSearchDepart.push(this.regions[i]);
+        
        
       
         }
@@ -63,7 +71,7 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
     }
     }   else {
        
-      departureStation = [];
+      this.departureStation = [];
     }
 
   }
@@ -71,15 +79,13 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
 
   searchGareArriver() {
 
-    let resultOfTrainSearchArriver = [];
-    let departureStation = [];
+    
      if(this.search.arrivee !== '') {  
       
       this.search.arrivee = this.search.arrivee.toLowerCase();
      for (let i = 0; i < this.regions.length-1; i++) {
        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)) {
-         resultOfTrainSearchArriver.push(this.regions[i]);
-         console.log(resultOfTrainSearchArriver);
+         this.resultOfTrainSearchArriver.push(this.regions[i]);
         
        
          }
@@ -87,12 +93,20 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
      }
      }   else {
         
-       departureStation = [];
+       this.arrivalStation = [];
      }
  
    }
 
 
+
+   // selection de la gare au click
+
+   selectGareDepart(index : number){
+    console.log(this.resultOfTrainSearchDepart[index].gare_alias_libelle_noncontraint);
+
+    
+   }
 
 }
 
