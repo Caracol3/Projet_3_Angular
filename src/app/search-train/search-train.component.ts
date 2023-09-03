@@ -13,8 +13,9 @@ import { normalizeText } from 'normalize-text';
 })
 export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
-  GareDepartSelect : boolean = false;
+  GareDepartSelect : boolean = true;
   GareArriverSelect : boolean = false;
+  DateSelect : boolean = false;
   AllInfo : boolean = false;
   resultOfTrainSearchDepart : any = [];
   departureStation : any[] = [];
@@ -70,7 +71,8 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
     
     }
     }   else {
-       
+      this.GareDepartSelect = true;
+      this.GareArriverSelect = false;
       this.departureStation = [];
     }
 
@@ -103,7 +105,11 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
    // selection de la gare au click
 
    selectGareDepart(index : number){
-    console.log(this.resultOfTrainSearchDepart[index].gare_alias_libelle_noncontraint);
+    this.search.depart = this.resultOfTrainSearchDepart[index].gare_alias_libelle_noncontraint;
+    console.log(this.resultOfTrainSearchDepart[index])
+    this.GareDepartSelect = false;
+    this.GareArriverSelect = true;
+    this.resultOfTrainSearchDepart = [];
 
     
    }
