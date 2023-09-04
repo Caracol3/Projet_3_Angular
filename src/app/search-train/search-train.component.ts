@@ -16,18 +16,44 @@ export class SearchTrainComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private accountService: AccountServiceService
-    ) {}
+  ) {}
 
-    ngOnInit(): void { setTimeout(() => {
-      this.user = this.accountService.user;
-    console.log(this.user);
-    this.userName = this.user.firstName;
-            console.log("Code exécuté après un délai de 2 secondes."); }, 700);  }
-  // ngOnInit() {
-  //   this.user = this.accountService.user;
+  ngOnInit(): void {
+    this.user = this.accountService.getUserData(1);
+    console.log(
+      'console du OnInit de search-train.ts : ' +
+        this.accountService.getUserData(1)
+    );
+  }
+ syncUser(): Promise<any> {
+return new Promise((resolve, reject) => {
+  setTimeout(() => {
+    this.user = this.accountService.getUserData(1);
+    resolve("opération réussie");
+  }
+  , 1000);
+ });
+}
+
+  // async syncUser() {
+  //   try {
+  //     const result = await this.accountService.getUserData(1);
+  //     console.log(result);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+  //   ngOnInit(): void { setTimeout(() => {
+  //     this.user = this.accountService.user;
   //   console.log(this.user);
   //   this.userName = this.user.firstName;
-  // }}
+  //           console.log("Code exécuté après un délai de 2 secondes."); }, 700);  }
+  // // ngOnInit() {
+  // //   this.user = this.accountService.user;
+  // //   console.log(this.user);
+  // //   this.userName = this.user.firstName;
+  // // }}
 
   onSubmit() {
     this.search.depart = this.search.depart;
