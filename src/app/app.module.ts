@@ -17,8 +17,9 @@ import { SearchTrainComponent } from './search-train/search-train.component'; //
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './config/jwtInterceptor';
 import { AdminComponent } from './admin/admin.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environments';
 
-FormsModule
 
 @NgModule({
   declarations: [
@@ -39,13 +40,16 @@ FormsModule
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase)// initalisation de la configuration firebase( variable environment + proprieté (dossier environment.ts))
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,
        useClass: JwtInterceptor,
         multi: true
       }
+    
+
   ],
   bootstrap: [AppComponent]
 })
