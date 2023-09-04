@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchTrainComponent } from './search-train/search-train.component'; // <-- Import HttpClientModule
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './config/jwtInterceptor';
+import { AdminComponent } from './admin/admin.component';
 
 FormsModule
 
@@ -31,6 +32,7 @@ FormsModule
     AccountComponent,
     ContactComponent,
     SearchTrainComponent,
+    AdminComponent,
 
   ],
   imports: [

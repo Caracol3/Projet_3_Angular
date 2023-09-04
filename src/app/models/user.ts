@@ -9,6 +9,8 @@ export class User {
     public password : string,
     public avatar : string,
     public is_available : boolean,
+    public role :{id:number, type:string},
+
 
   ){}
 
