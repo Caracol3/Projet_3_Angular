@@ -13,7 +13,7 @@ import { normalizeText } from 'normalize-text';
 })
 export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
-  GareDepartSelect : boolean = true;
+  GareDepartSelect : boolean = false;
   GareArriverSelect : boolean = false;
   DateSelect : boolean = false;
   AllInfo : boolean = false;
@@ -59,7 +59,7 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
    this.resultOfTrainSearchDepart = [];
   
     if(this.search.depart !== '') {  
-     
+     this.GareDepartSelect = true;
     this.search.depart = this.search.depart.toLowerCase();
     for (let i = 0; i < this.regions.length-1; i++) {
       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart)) {
@@ -71,7 +71,7 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
     
     }
     }   else {
-      this.GareDepartSelect = true;
+      this.GareDepartSelect = false;
       this.GareArriverSelect = false;
       this.departureStation = [];
     }
