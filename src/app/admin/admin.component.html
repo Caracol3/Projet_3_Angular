@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="title">Liste des Utilisateurs</h1>
+  <div class="inscrits">
+    <p>Nombre d'inscrits : {{ users.length }}</p>
+  </div>
+  <div class="list">
+    <ul>
+      <li *ngFor="let user of users">
+        {{ user.name }} {{ user.firstname }} {{ user.email }}
+        <select
+          [(ngModel)]="user.role.type"
+          (change)="onRoleChange(user, user.role.type)"
+        >
+          <option [ngValue]="user.role.type">{{ user.role.type }}</option>
+          <option *ngIf="user.role.type === 'ADMIN'" value="USER">USER</option>
+          <option *ngIf="user.role.type === 'USER'" value="ADMIN">ADMIN</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+</div>

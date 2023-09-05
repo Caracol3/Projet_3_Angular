@@ -11,12 +11,78 @@
   margin-bottom: 20px;
 }
 
-@media screen and (min-width: 748px){
-  .container {
-    width: 50%;
-    position: absolute;
-    right: 0;
-    margin-bottom: 150px;
-
+.nav-container {
+  display: none;
 }
+
+@media screen and (min-width: 748px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0px;
+    padding-top: 0;
+    height: 80px;
+  }
+
+  .logo img {
+    margin-top: 30px;
+    margin-left: 100px;
+    height: 70px;
+    width: auto;
+  }
+
+  .nav-container {
+    display: flex;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 0px;
+    padding-left: 0;
+    text-decoration: none;
+    list-style-type: none;
+    font-weight: 500;
+    font-size: small;
+  }
+  a {
+    text-decoration: none;
+    margin-right: 30px;
+  }
+  img {
+    width: 20px;
+    margin-right: 5px;
+    margin-bottom: 35px;
+  }
+
+  #nav-home {
+    background: url("/assets/Header/home.png") no-repeat ;
+    background-size: 16px 16px;
+    padding-left: 25px;
+    color: #365b6d;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  #nav-account {
+    background: url("/assets/Header/account.png") no-repeat ;
+    background-size: 16px 16px;
+    padding-left: 25px;
+    color: #365b6d;
+  }
+
+  #nav-contact {
+    width: 45px;
+    background: url("/assets/Header/contact.png") no-repeat ;
+    background-position: 6px center;
+    background-size: 16px 16px;
+    background-color:#365b6d;
+    padding: 5px 15px 7px 25px;
+    color: white;
+    border-radius: 5px;
+  }
+  
 }
