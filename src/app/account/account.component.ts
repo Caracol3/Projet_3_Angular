@@ -12,7 +12,7 @@ export class AccountComponent {
   selectedColor: string = 'red';
   pseudo: string = 'Pseudo';
   is_available: boolean = true;
-  user: User = new User('','','','',new Date(),'','',true,{id:2,type:''});
+  user: User = new User(1,'','','','',new Date(),'','',true,{id:2,type:''});
 
   constructor() { }
 
