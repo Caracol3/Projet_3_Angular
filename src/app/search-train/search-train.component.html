@@ -18,10 +18,18 @@
       </div>
       <div *ngIf="GareArriverSelect">
        <input class="gare bottom" type="text" id="arrivee" name="arrivée"  placeholder="Gare d'arrivée" [(ngModel)]="search.arrivee" required (keyup)="searchGareArriver()">
+       <div class="gareResult" *ngIf="GareArriverSelectInfo">
+           
+      <p *ngFor="let gareOfArriver of resultOfTrainSearchArriver;let i = index" (click)="selectGareArriver(i)">  {{gareOfArriver.gare_alias_libelle_noncontraint}}</p>
+      
+    </div>
+      
+      
+      
       </div>
        <div class="horaire" *ngIf="DateSelect">
       <input class="date" type="date" id="date" name="date"  placeholder="date"  [(ngModel)]="search.date" required>
-      <input class="heure" type="time" id="title" name="heure"  placeholder="Heure" [(ngModel)]="search.heureDepart" required>
+      <input class="heure" type="time" id="title" name="heure"  placeholder="Heure" [(ngModel)]="search.heureDepart" required (keypress)="sectectHeure()" (click)="sectectHeure()">
   </div>
   </div>
 

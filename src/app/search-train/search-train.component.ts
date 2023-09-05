@@ -22,6 +22,9 @@ export class SearchTrainComponent implements OnInit {
   listOfDepartureStation : string[] = [];
   arrivalStation : any[] = [];
   resultOfTrainSearchArriver : any = [];
+  GareArriverSelectInfo : boolean = false;
+  uicCodeDepart : string = '';
+  uicCodeArriver : string = '';
   
 
 onSubmit() {
@@ -83,11 +86,13 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
 
     
      if(this.search.arrivee !== '') {  
+      this.GareArriverSelectInfo = true;
       
       this.search.arrivee = this.search.arrivee.toLowerCase();
      for (let i = 0; i < this.regions.length-1; i++) {
        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)) {
          this.resultOfTrainSearchArriver.push(this.regions[i]);
+         
         
        
          }
@@ -96,6 +101,7 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
      }   else {
         
        this.arrivalStation = [];
+       this.GareArriverSelectInfo = false;
      }
  
    }
@@ -105,15 +111,36 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
    // selection de la gare au click
 
    selectGareDepart(index : number){
+    this.uicCodeDepart = this.resultOfTrainSearchDepart[index].uic_code.slice(2);
     this.search.depart = this.resultOfTrainSearchDepart[index].gare_alias_libelle_noncontraint;
-    console.log(this.resultOfTrainSearchDepart[index])
     this.GareDepartSelect = false;
     this.GareArriverSelect = true;
     this.resultOfTrainSearchDepart = [];
+   
+   }
 
+
+   selectGareArriver(index : number){
+    this.uicCodeArriver = this.resultOfTrainSearchArriver[index].uic_code.slice(2);
+    this.search.arrivee = this.resultOfTrainSearchArriver[index].gare_alias_libelle_noncontraint;
+    this.resultOfTrainSearchArriver = [];
+    this.GareArriverSelectInfo = false;
+    this.DateSelect = true;
     
    }
 
+
+ // affichage du bouton de recherche
+
+
+ sectectHeure(){
+
+  if(this.search.date) {
+  this.AllInfo = true;
+ }
+
+
 }
 
+}
 
