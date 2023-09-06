@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" *ngFor="let user of user">
   <div><h2>À propos de moi</h2></div>
   <div class="pseudo">
-    <button (click)="getUser()">Pseudo</button>
-    <span> {{ user.pseudo }} </span>
+    <!-- <button (click)="getUser()">Pseudo</button> -->
+    <span> {{ user.avatar }} </span>
   </div>
 
   <div class="color">
@@ -14,7 +14,15 @@
     </select>
   </div>
 
-  <div class="avatar">Votre avatar :</div>
+  <div class="avatar">Votre avatar : >
+    <img [src]="user.avatar" alt="Avatar de l'utilisateur" />
+    <div class="avatar-selection">
+        <label>Choisissez un avatar :</label>
+        <select [(ngModel)]="user.avatar">
+            <option *ngFor="let avatar of avatarOptions" [value]="avatar">{{ avatar }}</option>
+        </select>
+    </div>
+  </div>
 
   <div class="toggle-switch">
     <span>Disponible MP: </span>
