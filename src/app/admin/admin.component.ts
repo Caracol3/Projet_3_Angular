@@ -16,7 +16,10 @@ export class AdminComponent implements OnInit {
   isMoreInfo = false;
   selectedUser: any;
 
+
   constructor(private httpClient: HttpClient) {}
+
+  // Au chargement du composant, on récupère la liste des utilisateurs
 
   ngOnInit(): void {
     this.httpClient.get<User[]>('http://localhost:8080/admin/users').subscribe((users) => {
@@ -25,8 +28,9 @@ export class AdminComponent implements OnInit {
         console.log(this.users[i].role.type + " " + this.users[i].name);
       }
     });
+
   }
-  
+
   //pour formater la date
 
    formatDate(dateISO: string): string {
@@ -68,6 +72,8 @@ export class AdminComponent implements OnInit {
     .subscribe(
       () => {
         console.log('Rôle mis à jour avec succès !');
+
+
       },
       (error) => {
         console.error('Erreur dans la mise à jour du rôle :', error);
