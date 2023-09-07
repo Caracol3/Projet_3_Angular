@@ -25,6 +25,7 @@ export class AccountComponent implements OnInit {
   pseudo: string = 'Pseudo';
   user_id: string | null = localStorage.getItem('userId');
   is_available: boolean = true;
+  isModalOpen: boolean = false;
   avatarOptions: string[] = [
     'avatar/AvatarF1.png',
     'avatar/AvatarF2.png',
@@ -70,9 +71,10 @@ export class AccountComponent implements OnInit {
     .subscribe(data => {
       this.user = data;
       console.log(this.user);
-      
+      console.log("avatar :" + this.user.avatar);
+
     });
-    
+
 
   }
 
