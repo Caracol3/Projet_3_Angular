@@ -38,14 +38,22 @@ export class SigninComponent {
 
       })
     })
-      .then(response => response.json())
-      .then(user => {
-        if (user && user.data.token) {
-          localStorage.setItem('token', user.data.token);
-        }
-        console.log(user);
-      }
-      )
+  
+  .then(response => response.json())
+  
+  .then(user => {
+  
+
+    
+    if (user && user.data.token){
+            localStorage.setItem('token', user.data.token);
+    }
+    
+  
+  });
+  
+  // alert('Utilisateur crée');
+  
   }
   logIn() {
 
