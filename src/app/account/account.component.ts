@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user';
+import { User_info } from '../models/user_info';
 import { HttpClient } from '@angular/common/http';
+import { AccountServiceService } from '../account-service.service';
 
 @Component({
   selector: 'app-account',
@@ -22,6 +23,7 @@ export class AccountComponent implements OnInit {
   ];
   selectedColor: string = 'red';
   pseudo: string = 'Pseudo';
+  user_id: string | null = localStorage.getItem('userId');
   is_available: boolean = true;
   avatarOptions: string[] = [
     'avatar/AvatarF1.png',
@@ -58,22 +60,23 @@ export class AccountComponent implements OnInit {
     'avatar/AvatarH17.png',
     'avatar/AvatarH18.png',
   ];
-  user: User[] = [];
+  user: any = {} ;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private accountService : AccountServiceService) {}
 
   ngOnInit(): void {
-    this.httpClient.get<User[]>('http://localhost:8080/account')
+    console.log(this.accountService.userId);
+    this.httpClient.get<any>(`http://localhost:8080/user/${this.user_id}`)
     .subscribe(data => {
       this.user = data;
       console.log(this.user);
-      for(let i=0; i<this.user.length; i++){
-        console.log(this.user[i].avatar + " " + this.user[i].pseudo);
-      }
+      
     });
     
 
   }
 
-  saveSelectedColor() {}
+  saveSelectedColor() {
+    console.log(this.user.firstname);
+  }
 }

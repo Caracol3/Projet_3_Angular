@@ -1,8 +1,8 @@
-<div class="container" *ngFor="let user of user">
+<div class="container">
   <div><h2>À propos de moi</h2></div>
   <div class="pseudo">
     <!-- <button (click)="getUser()">Pseudo</button> -->
-    <span> {{ user.avatar }} </span>
+    <span> {{ user.username}} </span>
   </div>
 
   <div class="color">
@@ -15,7 +15,7 @@
   </div>
 
   <div class="avatar">Votre avatar : >
-    <img [src]="user.avatar" alt="Avatar de l'utilisateur" />
+    <img [src]="user" alt="Avatar de l'utilisateur" />
     <div class="avatar-selection">
         <label>Choisissez un avatar :</label>
         <select [(ngModel)]="user.avatar">
@@ -25,12 +25,12 @@
   </div>
 
   <div class="toggle-switch">
-    <span>Disponible MP: </span>
+    <span>Disponible MP: </span> 
     <input type="checkbox" id="toggle" class="toggle-input" />
     <label for="toggle" class="toggle-label"></label>
   </div>
 
   <div>
-    <button>Valider</button>
+    <button (click)="saveSelectedColor()">Valider</button>
   </div>
 </div>
