@@ -20,10 +20,12 @@ export class SearchTrainComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private accountService: AccountServiceService
+    private accountService: AccountServiceService,
+    private dataService: DataService,
   ) {}
 
   ngOnInit(): void {
+    this.getRegions();
     this.user = this.accountService.getUserData(1);
     console.log(
       'console du OnInit de search-train.ts : ' +
@@ -72,7 +74,6 @@ return new Promise((resolve, reject) => {
 
 }
 
-constructor(private dataService : DataService , private http : HttpClient ) { }
 
   regions :{
     gare_alias_libelle_noncontraint: string;
@@ -80,9 +81,7 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
   }[] = [];
 
   // appel de la fonction getRegions() au chargement de la page
-  ngOnInit(): void {
-    this.getRegions();
-  }
+
 
   // Récupération des gares de la SNCF et code uic dans variables regions
   async getRegions() {
