@@ -1,19 +1,23 @@
 <div class="container">
   <div>
     <h2>À propos de moi {{ user.username }}</h2>
+    
   </div>
   <div class="user-infos">
     <div class="avatar-and-identity">
       <div class="avatar">
-        Votre avatar : >
         <img [src]="user.avatar" alt="Avatar de l'utilisateur" />
-        <div class="avatar-selection">
-          <label></label>
-          <select [(ngModel)]="user.avatar">
-            <option *ngFor="let avatar of avatarOptions" [value]="avatar">
-              {{ avatar }}
-            </option>
-          </select>
+        <button (click)="openAvatarModal()">Sélectionner un avatar</button>
+
+        <!-- La modale -->
+        <div *ngIf="isModalOpen" class="avatar-modal">
+          <h3>Sélectionnez un avatar :</h3>
+          <div class="avatar-options">
+            <div *ngFor="let avatar of avatarOptions" class="avatar-option">
+              <img [src]="avatar" alt="Avatar" (click)="selectAvatar(avatar)" />
+            </div>
+          </div>
+          <button (click)="closeAvatarModal()">Fermer</button>
         </div>
       </div>
       <div class="identity">

@@ -11,32 +11,38 @@ div {
 }
 
 h2 {
-    font-weight: 300;
-    top: 0;
+  font-weight: 300;
+  top: 0;
 }
 
-.avatar-and-identity{
+.avatar-and-identity {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.avatar img {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 20px;
+.avatar {
+  display: flex;
+  flex-direction: column;
+  align-self:self-start;
+  margin-right: 35%;
+  img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+  }
 }
 
-.identity{
+.identity {
   display: flex;
   flex-direction: column;
 }
 
-select{
-padding: 8px;
-font-size: 14px;
-border: 1px solid #ccc;
-border-radius: 10px;
+select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 .color-select {
@@ -64,7 +70,7 @@ border-radius: 10px;
 }
 
 .toggle-switch span {
-margin-right: 20px;
+  margin-right: 20px;
 }
 
 .toggle-switch input {
@@ -86,7 +92,7 @@ margin-right: 20px;
 }
 
 .toggle-switch .toggle-label::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 4px;
   left: 4px;
