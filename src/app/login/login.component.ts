@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profil } from '../models/login';
+import { tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { AccountServiceService } from '../account-service.service';
+
 
 @Component({
   selector: 'app-login',
@@ -22,6 +25,7 @@ export class LoginComponent implements OnInit{
     }
   }
 
+
   onSubmit() {
 
     fetch ('http://localhost:8080/login', {
@@ -35,6 +39,7 @@ export class LoginComponent implements OnInit{
 
   .then(response => response.json())
   .then(user => {
+
     console.log('user:', user);
     if (user && user.data.token){
             localStorage.setItem('token', user.data.token);

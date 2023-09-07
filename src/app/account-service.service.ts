@@ -22,11 +22,11 @@ export class AccountServiceService {
     try {
       // Utilisez "await" pour attendre une opération asynchrone, par exemple une requête HTTP
       const resultat = await this.http.get('http://localhost:8080/user/' + id);
-      console.log(resultat);
+      console.log("log de la const resultat dans account service : "+ resultat);
       // this.user = resultat;
 
     } catch (erreur) {
-      console.error(erreur);
+      console.error("log de l'erreur dans account-service" + erreur);
     }
   }
 

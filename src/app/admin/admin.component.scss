@@ -1,20 +1,47 @@
-.container{
+.container {}
 
-}
-.list{
-  border: 1px solid #808080;
-  border-radius: 10px;
-  width: 80%;
+.list {
+  width: 88%;
   margin: auto;
+  margin-top: 10px;
   background-color: white;
 }
-li{
+
+ul {
+  background-color: whitesmoke;
+  padding: 0;
+  margin: 0;
+}
+
+li {
   list-style-type: none;
+  display: flex;
+}
+
+.user {
+  border: 1px solid #808080;
+  border-radius: 10px;
   font-size: 1.2em;
   color: #808080;
   text-align: center;
   border-bottom: 1px solid #808080;
-  padding-bottom: 10px;
+  padding: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 5px;
+  background-color: white;
+  width: 90%;
+}
+
+.name {
+  width: 50%;
+  height: 35px;
+  margin: auto;
+  padding: auto;
+  margin-top: 10px;
+  font-size: 0.9em;
+
 }
 
 
@@ -26,10 +53,93 @@ li{
   color: #808080;
 
 }
-.inscrits{
+
+.inscrits {
   margin-top: 20px;
   margin-bottom: 20px;
-  font-size: 1.5em;
+  font-size: 1.4em;
   color: #808080;
   text-align: center;
 }
+
+
+.moreInfo {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  right: 10%;
+  width: auto;
+  height: 40%;
+  background-color: whitesmoke;
+  z-index: 2;
+  border-radius: 10px;
+  border: 1px solid #808080;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  text-align: center;
+
+  img {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+  }
+
+  .text {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 1.1em;
+  }
+
+  .text-name {
+    font-size: 1.2em;
+    font-weight: 700;
+
+  }
+
+
+}
+
+.button-text {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.select-style {
+  padding: 5px;
+  margin-right: 15px;
+  margin-top: 10%;
+  border: 1px solid #ccc;
+  width: 80px;
+  border-radius: 3px;
+  background-color: #fff;
+  background: #fff;
+  color: #808080;
+}
+
+
+.button-plus {
+  margin: auto;
+  width: 40px;
+  height: 45px;
+  border-radius: 15%;
+  border: 1px solid #808080;
+  background-color: white;
+  color: #808080;
+  margin-left: 15px;
+  font-size: 2em;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #808080;
+    color: white;
+    border: 1px solid #808080;
+  }
+}
+
+@media all and (min-width: 748px) {}

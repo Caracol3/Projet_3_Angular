@@ -1,3 +1,4 @@
 {
-  "githubPullRequests.ignoredPullRequestBranches": ["Dev"]
+  "githubPullRequests.ignoredPullRequestBranches": ["Dev"],
+  "cSpell.words": ["Choisissez", "Liste", "Utilisateurs"]
 }

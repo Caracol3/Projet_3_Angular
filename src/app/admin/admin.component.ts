@@ -7,24 +7,52 @@ import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.scss'],
+
+
 })
 export class AdminComponent implements OnInit {
   users: User[] = [];
+  isMoreInfo = false;
+  selectedUser: any;
+
 
   constructor(private httpClient: HttpClient) {}
 
-  ngOnInit(): void {
-    this.httpClient.get<User[]>('http://localhost:8080/admin/users')
-      .subscribe(users => {
-        this.users = users;
-        for(let i=0; i<this.users.length; i++){
-          console.log(this.users[i].role.type + " " + this.users[i].name);
-        }
+  // Au chargement du composant, on récupère la liste des utilisateurs
 
-      });
+  ngOnInit(): void {
+    this.httpClient.get<User[]>('http://localhost:8080/admin/users').subscribe((users) => {
+      this.users = users;
+      for (let i = 0; i < this.users.length; i++) {
+        console.log(this.users[i].role.type + " " + this.users[i].name);
+      }
+    });
 
   }
+
+  //pour formater la date
+
+   formatDate(dateISO: string): string {
+    const birthdayDate = new Date(dateISO);
+    const jour = birthdayDate.getDate().toString().padStart(2, '0');
+    const mois = (birthdayDate.getMonth() + 1).toString().padStart(2, '0');
+    const annee = birthdayDate.getFullYear();
+    return jour + '/' + mois + '/' + annee;
+  }
+
+  moreInfo(user: any) {
+    this.isMoreInfo = true;
+    user.birthday = this.formatDate(user.birthday);
+    this.selectedUser = user;
+    console.log("Plus d'info sur " + this.selectedUser.avatar);
+  }
+  closeInfo(){
+    this.isMoreInfo = false;
+
+
+  }
+
   onRoleChange(user: User, newRole: string) {
     const newRoleId = newRole === 'ADMIN' ? 1 : 2; // Convertit le rôle en ID (Admin -> 1, User -> 2)
 
@@ -44,6 +72,8 @@ export class AdminComponent implements OnInit {
     .subscribe(
       () => {
         console.log('Rôle mis à jour avec succès !');
+
+
       },
       (error) => {
         console.error('Erreur dans la mise à jour du rôle :', error);
