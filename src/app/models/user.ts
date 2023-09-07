@@ -1,6 +1,7 @@
 export class User {
 
   constructor(
+    public id : number,
     public name : string,
     public firstname : string,
     public pseudo : string,
@@ -9,6 +10,8 @@ export class User {
     public password : string,
     public avatar : string,
     public is_available : boolean,
+    public role :{id:number, type:string},
+
 
   ){}
 

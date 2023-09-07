@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h3 class="form-title">Votre trajet</h3>
+    <h3 class="form-title">Votre trajet {{user.firstname}}</h3>
   <div class="message">
 <p>Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin de passer le temps  ?</p>
 </div>
@@ -35,6 +35,9 @@
 
   <div *ngIf="AllInfo">
     <button  class="button-text" type="submit">Rechercher</button>
+  </div>
+  <div>
+    <button  class="button-text" id="logout" type="submit" (click)="logout()" routerLink="/login">Logout</button>
   </div>
   </form>
 

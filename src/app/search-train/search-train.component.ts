@@ -4,15 +4,18 @@ import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
 import { Fields } from '../models/region-model';
 import { normalizeText } from 'normalize-text';
+import { AuthService } from '../service/AuthService';
+import { AccountServiceService } from '../account-service.service';
 
 
 @Component({
   selector: 'app-search-train',
   templateUrl: './search-train.component.html',
-  styleUrls: ['./search-train.component.scss']
+  styleUrls: ['./search-train.component.scss'],
 })
 export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
+
   GareDepartSelect : boolean = false;
   GareArriverSelect : boolean = false;
   DateSelect : boolean = false;
@@ -27,10 +30,11 @@ export class SearchTrainComponent implements OnInit {
   uicCodeArriver : string = '';
   
 
-onSubmit() {
+  onSubmit() {
   this.search.depart = this.search.depart;
 
   console.log(this.search.depart +' '+ this.search.arrivee +' '+ this.search.date +' '+ this.search.heureDepart);
+  console.log(this.uicCodeDepart +' '+ this.uicCodeArriver);
 
 
 }
@@ -142,5 +146,8 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
 
 }
 
+  logout() {
+    this.authService.logout();
+  }
 }
 

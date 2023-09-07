@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="title">Liste des Utilisateurs</h1>
+  <div class="inscrits">
+    <p>Nombre d'inscrits : {{ users.length }}</p>
+  </div>
+  <div class="list">
+    <ul>
+      <li *ngFor="let user of users">
+        <div class="name">{{ user.name }} {{ user.firstname }} </div>
+
+        <div>
+          <select class="select-style"
+            [(ngModel)]="user.role.type"
+            (change)="onRoleChange(user, user.role.type)"
+          >
+            <option [ngValue]="user.role.type">{{ user.role.type }}</option>
+            <option *ngIf="user.role.type === 'ADMIN'" value="USER">
+              USER
+            </option>
+            <option *ngIf="user.role.type === 'USER'" value="ADMIN">
+              ADMIN
+            </option>
+          </select>
+        </div>
+        <div>
+          <button class="button-plus" (click)="moreInfo(user)">+</button>
+        </div>
+      </li>
+    </ul>
+    <div *ngIf="isMoreInfo" class="moreInfo">
+
+      <img [src]="selectedUser.avatar" alt="avatar" />
+      <div class="text"><span class="text-name">Pseudo:</span>  {{selectedUser.username}}</div>
+      <div class="text"><span class="text-name">Nom:</span>  {{selectedUser.name}}</div>
+      <div class="text"><span class="text-name">Prénom:</span>  {{selectedUser.firstname}}</div>
+      <div class="text"><span class="text-name">Email:</span>  {{selectedUser.email}}</div>
+      <div class="text"><span class="text-name">Anniversaire:</span>  {{selectedUser.birthday}}</div>
+
+      <button (click)="closeInfo()" class="close-button">X</button>
+    </div>
+  </div>
+</div>
