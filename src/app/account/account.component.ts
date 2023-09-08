@@ -10,16 +10,13 @@ import { AccountServiceService } from '../account-service.service';
 })
 export class AccountComponent implements OnInit {
   colorOptions: string[] = [
-    'red',
-    'blue',
-    'green',
-    'yellow',
-    'orange',
-    'purple',
-    'pink',
-    'brown',
-    'black',
-    'white',
+    '#FFA500',
+    '#FF6B81',
+    '#FF5733',
+    '#9B59B6',
+    '#3498DB',
+    '#2ECC71',
+    '#6D6D6D',
   ];
   selectedColor: string = 'red';
   pseudo: string = 'Pseudo';
@@ -28,7 +25,7 @@ export class AccountComponent implements OnInit {
   isModalOpen: boolean = false;
   avatarOptions: string[] = [
     '/assets/avatar/AvatarF1.png',
-    '/assets//assets/avatar/AvatarF2.png',
+    '/assets/avatar/AvatarF2.png',
     '/assets/avatar/AvatarF3.png',
     '/assets/avatar/AvatarF4.png',
     '/assets/avatar/AvatarF5.png',
@@ -50,7 +47,7 @@ export class AccountComponent implements OnInit {
     '/assets/avatar/AvatarH6.png',
     '/assets/avatar/AvatarH7.png',
     '/assets/avatar/AvatarH8.png',
-    '/assets/avatar/Avatar9.png',
+    '/assets/avatar/AvatarH9.png',
     '/assets/avatar/AvatarH10.png',
     '/assets/avatar/AvatarH11.png',
     '/assets/avatar/AvatarH12.png',
@@ -61,9 +58,12 @@ export class AccountComponent implements OnInit {
     '/assets/avatar/AvatarH17.png',
     '/assets/avatar/AvatarH18.png',
   ];
-  user: any = {} ;
+  user: any = {};
 
-  constructor(private httpClient: HttpClient, private accountService : AccountServiceService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private accountService: AccountServiceService
+  ) {}
 
   openAvatarModal() {
     this.isModalOpen = true;
@@ -75,24 +75,33 @@ export class AccountComponent implements OnInit {
   }
 
   closeAvatarModal() {
-    this.isModalOpen = false; // Fermer la modale sans sélection
+    this.isModalOpen = false; // Ferme la modale sans sélection
   }
 
+  //pour formater la date
+
+  formatDate(dateISO: string): string {
+    const birthdayDate = new Date(dateISO);
+    const jour = birthdayDate.getDate().toString().padStart(2, '0');
+    const mois = (birthdayDate.getMonth() + 1).toString().padStart(2, '0');
+    const annee = birthdayDate.getFullYear();
+    return jour + '/' + mois + '/' + annee;
+  }
 
   ngOnInit(): void {
     console.log(this.accountService.userId);
-    this.httpClient.get<any>(`http://localhost:8080/user/${this.user_id}`)
-    .subscribe(data => {
-      this.user = data;
-      console.log(this.user);
-      console.log("avatar :" + this.user.avatar);
-
-    });
-
-
+    this.httpClient
+      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .subscribe((data) => {
+        this.user = data;
+        this.user.birthday = this.formatDate(this.user.birthday);
+        console.log(this.user);
+        console.log('avatar :' + this.user.avatar);
+      });
   }
 
-  saveSelectedColor() {
-    console.log(this.user.firstname);
+  saveSelectedColor(color: string) {
+    console.log(this.user.color);
+    this.user.color = color;
   }
 }
