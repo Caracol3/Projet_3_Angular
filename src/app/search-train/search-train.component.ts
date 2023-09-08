@@ -15,6 +15,41 @@ import { AccountServiceService } from '../account-service.service';
 })
 export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
+  user: any;
+  userName: string = '';
+
+  constructor(
+    private authService: AuthService,
+    private accountService: AccountServiceService,
+    private dataService: DataService,
+  ) {}
+
+  ngOnInit(): void {
+    this.getRegions();
+    this.user = this.accountService.getUserData(1);
+    console.log(
+      'console du OnInit de search-train.ts : ' +
+        this.accountService.getUserData(1)
+    );
+  }
+ syncUser(): Promise<any> {
+return new Promise((resolve, reject) => {
+  setTimeout(() => {
+    this.user = this.accountService.getUserData(1);
+    resolve("opération réussie");
+  }
+  , 1000);
+ });
+}
+
+  // async syncUser() {
+  //   try {
+  //     const result = await this.accountService.getUserData(1);
+  //     console.log(result);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   GareDepartSelect : boolean = false;
   GareArriverSelect : boolean = false;
@@ -39,7 +74,6 @@ export class SearchTrainComponent implements OnInit {
 
 }
 
-constructor(private dataService : DataService , private http : HttpClient ) { }
 
   regions :{
     gare_alias_libelle_noncontraint: string;
@@ -47,9 +81,7 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
   }[] = [];
 
   // appel de la fonction getRegions() au chargement de la page
-  ngOnInit(): void {
-    this.getRegions();
-  }
+
 
   // Récupération des gares de la SNCF et code uic dans variables regions
   async getRegions() {
