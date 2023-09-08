@@ -28,7 +28,7 @@ export class SearchTrainComponent implements OnInit {
   GareArriverSelectInfo : boolean = false;
   uicCodeDepart : string = '';
   uicCodeArriver : string = '';
-  
+
 
   onSubmit() {
   this.search.depart = this.search.depart;
@@ -39,7 +39,8 @@ export class SearchTrainComponent implements OnInit {
 
 }
 
-constructor(private dataService : DataService , private http : HttpClient ) { }
+constructor(private dataService : DataService , private http : HttpClient,private authService :AuthService ) { }
+
 
   regions :{
     gare_alias_libelle_noncontraint: string;
@@ -57,25 +58,25 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
   }
 
 
-  // recherche de gare de départ par nom 
+  // recherche de gare de départ par nom
 
- 
+
 
   searchGareDepart() {
 
    this.resultOfTrainSearchDepart = [];
-  
-    if(this.search.depart !== '') {  
+
+    if(this.search.depart !== '') {
      this.GareDepartSelect = true;
     this.search.depart = this.search.depart.toLowerCase();
     for (let i = 0; i < this.regions.length-1; i++) {
       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart)) {
         this.resultOfTrainSearchDepart.push(this.regions[i]);
-        
-       
-      
+
+
+
         }
-    
+
     }
     }   else {
       this.GareDepartSelect = false;
@@ -88,26 +89,26 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
 
   searchGareArriver() {
 
-    
-     if(this.search.arrivee !== '') {  
+
+     if(this.search.arrivee !== '') {
       this.GareArriverSelectInfo = true;
-      
+
       this.search.arrivee = this.search.arrivee.toLowerCase();
      for (let i = 0; i < this.regions.length-1; i++) {
        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)) {
          this.resultOfTrainSearchArriver.push(this.regions[i]);
-         
-        
-       
+
+
+
          }
-     
+
      }
      }   else {
-        
+
        this.arrivalStation = [];
        this.GareArriverSelectInfo = false;
      }
- 
+
    }
 
 
@@ -120,7 +121,7 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
     this.GareDepartSelect = false;
     this.GareArriverSelect = true;
     this.resultOfTrainSearchDepart = [];
-   
+
    }
 
 
@@ -130,7 +131,7 @@ constructor(private dataService : DataService , private http : HttpClient ) { }
     this.resultOfTrainSearchArriver = [];
     this.GareArriverSelectInfo = false;
     this.DateSelect = true;
-    
+
    }
 
 
