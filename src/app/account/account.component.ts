@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User_info } from '../models/user_info';
 import { HttpClient } from '@angular/common/http';
 import { AccountServiceService } from '../account-service.service';
+import { AuthService } from '../service/AuthService';
 
 @Component({
   selector: 'app-account',
@@ -62,7 +63,8 @@ export class AccountComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private accountService: AccountServiceService
+    private accountService: AccountServiceService,
+    private authService: AuthService
   ) {}
 
   openAvatarModal() {
@@ -103,5 +105,8 @@ export class AccountComponent implements OnInit {
   saveSelectedColor(color: string) {
     console.log(this.user.color);
     this.user.color = color;
+  }
+  logout() {
+    this.authService.logout();
   }
 }
