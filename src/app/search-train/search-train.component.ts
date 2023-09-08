@@ -63,7 +63,7 @@ return new Promise((resolve, reject) => {
   GareArriverSelectInfo : boolean = false;
   uicCodeDepart : string = '';
   uicCodeArriver : string = '';
-  
+
 
   onSubmit() {
   this.search.depart = this.search.depart;
@@ -73,7 +73,6 @@ return new Promise((resolve, reject) => {
 
 
 }
-
 
   regions :{
     gare_alias_libelle_noncontraint: string;
@@ -89,25 +88,25 @@ return new Promise((resolve, reject) => {
   }
 
 
-  // recherche de gare de départ par nom 
+  // recherche de gare de départ par nom
 
- 
+
 
   searchGareDepart() {
 
    this.resultOfTrainSearchDepart = [];
-  
-    if(this.search.depart !== '') {  
+
+    if(this.search.depart !== '') {
      this.GareDepartSelect = true;
     this.search.depart = this.search.depart.toLowerCase();
     for (let i = 0; i < this.regions.length-1; i++) {
       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart)) {
         this.resultOfTrainSearchDepart.push(this.regions[i]);
-        
-       
-      
+
+
+
         }
-    
+
     }
     }   else {
       this.GareDepartSelect = false;
@@ -120,26 +119,26 @@ return new Promise((resolve, reject) => {
 
   searchGareArriver() {
 
-    
-     if(this.search.arrivee !== '') {  
+
+     if(this.search.arrivee !== '') {
       this.GareArriverSelectInfo = true;
-      
+
       this.search.arrivee = this.search.arrivee.toLowerCase();
      for (let i = 0; i < this.regions.length-1; i++) {
        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)) {
          this.resultOfTrainSearchArriver.push(this.regions[i]);
-         
-        
-       
+
+
+
          }
-     
+
      }
      }   else {
-        
+
        this.arrivalStation = [];
        this.GareArriverSelectInfo = false;
      }
- 
+
    }
 
 
@@ -152,7 +151,7 @@ return new Promise((resolve, reject) => {
     this.GareDepartSelect = false;
     this.GareArriverSelect = true;
     this.resultOfTrainSearchDepart = [];
-   
+
    }
 
 
@@ -162,7 +161,7 @@ return new Promise((resolve, reject) => {
     this.resultOfTrainSearchArriver = [];
     this.GareArriverSelectInfo = false;
     this.DateSelect = true;
-    
+
    }
 
 

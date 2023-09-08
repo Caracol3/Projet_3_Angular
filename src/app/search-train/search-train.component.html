@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h3 class="form-title">Votre trajet {{user.firstname}}</h3>
+    <h3 class="form-title">Votre trajet</h3>
   <div class="message">
 <p>Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin de passer le temps  ?</p>
 </div>
@@ -8,24 +8,24 @@
   <div>
     <div>
        <input class="gare top" type="text" id="depart" name="depart"  placeholder="Gare de départ" [(ngModel)]="search.depart" required (keyup)="searchGareDepart()">
-      
+
         <div class="gareResult" *ngIf="GareDepartSelect">
-           
+
             <p *ngFor="let gareOfDeparture of resultOfTrainSearchDepart;let i = index" (click)="selectGareDepart(i)">  {{gareOfDeparture.gare_alias_libelle_noncontraint}}</p>
-          
+
         </div>
-    
+
       </div>
       <div *ngIf="GareArriverSelect">
        <input class="gare bottom" type="text" id="arrivee" name="arrivée"  placeholder="Gare d'arrivée" [(ngModel)]="search.arrivee" required (keyup)="searchGareArriver()">
        <div class="gareResult" *ngIf="GareArriverSelectInfo">
-           
+
       <p *ngFor="let gareOfArriver of resultOfTrainSearchArriver;let i = index" (click)="selectGareArriver(i)">  {{gareOfArriver.gare_alias_libelle_noncontraint}}</p>
-      
+
     </div>
-      
-      
-      
+
+
+
       </div>
        <div class="horaire" *ngIf="DateSelect">
       <input class="date" type="date" id="date" name="date"  placeholder="date"  [(ngModel)]="search.date" required>
