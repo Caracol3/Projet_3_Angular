@@ -15,6 +15,7 @@ getToken():string | null{
 }
 
 logout(){
+  localStorage.removeItem('userId');//suppression de l'id dans le local storage lors de la déconnexion
   localStorage.removeItem(this.tokenKey); //suppression du token dans le local storage lors de la déconnexion
 }
 }

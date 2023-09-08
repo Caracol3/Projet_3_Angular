@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user';
+import { User_info } from '../models/user_info';
 import { HttpClient } from '@angular/common/http';
+import { AccountServiceService } from '../account-service.service';
 
 @Component({
   selector: 'app-account',
@@ -9,71 +10,98 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AccountComponent implements OnInit {
   colorOptions: string[] = [
-    'red',
-    'blue',
-    'green',
-    'yellow',
-    'orange',
-    'purple',
-    'pink',
-    'brown',
-    'black',
-    'white',
+    '#FFA500',
+    '#FF6B81',
+    '#FF5733',
+    '#9B59B6',
+    '#3498DB',
+    '#2ECC71',
+    '#6D6D6D',
   ];
   selectedColor: string = 'red';
   pseudo: string = 'Pseudo';
+  user_id: string | null = localStorage.getItem('userId');
   is_available: boolean = true;
+  isModalOpen: boolean = false;
   avatarOptions: string[] = [
-    'avatar/AvatarF1.png',
-    'avatar/AvatarF2.png',
-    'avatar/AvatarF3.png',
-    'avatar/AvatarF4.png',
-    'avatar/AvatarF5.png',
-    'avatar/AvatarF6.png',
-    'avatar/AvatarF7.png',
-    'avatar/AvatarF8.png',
-    'avatar/AvatarF9.png',
-    'avatar/AvatarF10.png',
-    'avatar/AvatarF11.png',
-    'avatar/AvatarF12.png',
-    'avatar/AvatarF13.png',
-    'avatar/AvatarF14.png',
-    'avatar/AvatarF15.png',
-    'avatar/AvatarH1.png',
-    'avatar/AvatarH2.png',
-    'avatar/AvatarH3.png',
-    'avatar/AvatarH4.png',
-    'avatar/AvatarH5.png',
-    'avatar/AvatarH6.png',
-    'avatar/AvatarH7.png',
-    'avatar/AvatarH8.png',
-    'avatar/Avatar9.png',
-    'avatar/AvatarH10.png',
-    'avatar/AvatarH11.png',
-    'avatar/AvatarH12.png',
-    'avatar/AvatarH13.png',
-    'avatar/AvatarH14.png',
-    'avatar/AvatarH15.png',
-    'avatar/AvatarH16.png',
-    'avatar/AvatarH17.png',
-    'avatar/AvatarH18.png',
+    '/assets/avatar/AvatarF1.png',
+    '/assets/avatar/AvatarF2.png',
+    '/assets/avatar/AvatarF3.png',
+    '/assets/avatar/AvatarF4.png',
+    '/assets/avatar/AvatarF5.png',
+    '/assets/avatar/AvatarF6.png',
+    '/assets/avatar/AvatarF7.png',
+    '/assets/avatar/AvatarF8.png',
+    '/assets/avatar/AvatarF9.png',
+    '/assets/avatar/AvatarF10.png',
+    '/assets/avatar/AvatarF11.png',
+    '/assets/avatar/AvatarF12.png',
+    '/assets/avatar/AvatarF13.png',
+    '/assets/avatar/AvatarF14.png',
+    '/assets/avatar/AvatarF15.png',
+    '/assets/avatar/AvatarH1.png',
+    '/assets/avatar/AvatarH2.png',
+    '/assets/avatar/AvatarH3.png',
+    '/assets/avatar/AvatarH4.png',
+    '/assets/avatar/AvatarH5.png',
+    '/assets/avatar/AvatarH6.png',
+    '/assets/avatar/AvatarH7.png',
+    '/assets/avatar/AvatarH8.png',
+    '/assets/avatar/AvatarH9.png',
+    '/assets/avatar/AvatarH10.png',
+    '/assets/avatar/AvatarH11.png',
+    '/assets/avatar/AvatarH12.png',
+    '/assets/avatar/AvatarH13.png',
+    '/assets/avatar/AvatarH14.png',
+    '/assets/avatar/AvatarH15.png',
+    '/assets/avatar/AvatarH16.png',
+    '/assets/avatar/AvatarH17.png',
+    '/assets/avatar/AvatarH18.png',
   ];
-  user: User[] = [];
+  user: any = {};
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private accountService: AccountServiceService
+  ) {}
 
-  ngOnInit(): void {
-    this.httpClient.get<User[]>('http://localhost:8080/account')
-    .subscribe(data => {
-      this.user = data;
-      console.log(this.user);
-      for(let i=0; i<this.user.length; i++){
-        console.log(this.user[i].avatar + " " + this.user[i].pseudo);
-      }
-    });
-    
-
+  openAvatarModal() {
+    this.isModalOpen = true;
   }
 
-  saveSelectedColor() {}
+  selectAvatar(avatar: string) {
+    this.user.avatar = avatar; // Met à jour l'avatar de l'utilisateur
+    this.isModalOpen = false; // Ferme la modale
+  }
+
+  closeAvatarModal() {
+    this.isModalOpen = false; // Ferme la modale sans sélection
+  }
+
+  //pour formater la date
+
+  formatDate(dateISO: string): string {
+    const birthdayDate = new Date(dateISO);
+    const jour = birthdayDate.getDate().toString().padStart(2, '0');
+    const mois = (birthdayDate.getMonth() + 1).toString().padStart(2, '0');
+    const annee = birthdayDate.getFullYear();
+    return jour + '/' + mois + '/' + annee;
+  }
+
+  ngOnInit(): void {
+    console.log(this.accountService.userId);
+    this.httpClient
+      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .subscribe((data) => {
+        this.user = data;
+        this.user.birthday = this.formatDate(this.user.birthday);
+        console.log(this.user);
+        console.log('avatar :' + this.user.avatar);
+      });
+  }
+
+  saveSelectedColor(color: string) {
+    console.log(this.user.color);
+    this.user.color = color;
+  }
 }
