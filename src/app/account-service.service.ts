@@ -6,16 +6,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AccountServiceService {
 
-  // user: any;
+  
+
 
   constructor(private http: HttpClient) { }
 
-  //  getUserData(id: number) {
-  //   this.http.get('http://localhost:8080/user/' + id).subscribe((response) => {
-  //     console.log(response);
-  //     this.user = response;
-  //   })
-  // }
+userId: number = 0;
 
 
   async getUserData(id: number) {
@@ -23,7 +19,7 @@ export class AccountServiceService {
       // Utilisez "await" pour attendre une opération asynchrone, par exemple une requête HTTP
       const resultat = await this.http.get('http://localhost:8080/user/' + id);
       console.log("log de la const resultat dans account service : "+ resultat);
-      // this.user = resultat;
+      this.userId = id;
 
     } catch (erreur) {
       console.error("log de l'erreur dans account-service" + erreur);

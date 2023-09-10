@@ -40,9 +40,11 @@ export class LoginComponent implements OnInit{
   .then(response => response.json())
   .then(user => {
 
-    console.log('user:', user);
+    
     if (user && user.data.token){
+          
             localStorage.setItem('token', user.data.token);
+            localStorage.setItem('userId', user.data.id);
             this.router.navigate(['/search-train']);
             this.accountService.getUserData(user.data.user.id);
     }
