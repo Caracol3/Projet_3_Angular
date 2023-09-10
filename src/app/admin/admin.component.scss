@@ -93,7 +93,6 @@ li {
   }
 
   .text {
-margin-top:25px ;
     margin-left: 10px;
     padding: 5px;
     font-size: 1.1em;
@@ -150,10 +149,10 @@ margin-top:25px ;
   position: relative;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 10px;
   padding: 10px;
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-top: 10px;
+
 }
 
 .text-name::before {
@@ -259,7 +258,6 @@ margin-top:25px ;
   .moreInfo {
     align-items: flex-start;
     position: absolute;
-    gap: 25px;
     width: 29%;
     height: 40%;
     background-color: whitesmoke;
@@ -282,11 +280,11 @@ margin-top:25px ;
     position: relative;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 10px;
     padding: 10px;
     font-weight: 400;
     margin-top: 10px;
-    margin-bottom: 10px;
+
+
 
   }
 
