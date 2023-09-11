@@ -63,18 +63,25 @@ return new Promise((resolve, reject) => {
   GareArriverSelectInfo : boolean = false;
   uicCodeDepart : string = '';
   uicCodeArriver : string = '';
+  searchPage : boolean = true;
+  listeTrain : boolean = false;
 
 
   onSubmit() {
   this.search.depart = this.search.depart;
+  this.searchPage = false;
+  this.listeTrain = true;
 
   console.log(this.search.depart +' '+ this.search.arrivee +' '+ this.search.date +' '+ this.search.heureDepart);
   console.log(this.uicCodeDepart +' '+ this.uicCodeArriver);
+  this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver);
+
 
 
 }
 
   regions :{
+    [x: string]: any;
     gare_alias_libelle_noncontraint: string;
     fields : Fields
   }[] = [];
@@ -100,8 +107,10 @@ return new Promise((resolve, reject) => {
      this.GareDepartSelect = true;
     this.search.depart = this.search.depart.toLowerCase();
     for (let i = 0; i < this.regions.length-1; i++) {
-      if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart)) {
+      if ( normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart) && this.regions[i]['segmentdrg_libelle'] === "a") {
         this.resultOfTrainSearchDepart.push(this.regions[i]);
+       
+        
 
 
 
@@ -120,6 +129,7 @@ return new Promise((resolve, reject) => {
   searchGareArriver() {
 
 
+    this.resultOfTrainSearchArriver = [];
      if(this.search.arrivee !== '') {
       this.GareArriverSelectInfo = true;
 
