@@ -6,13 +6,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AccountServiceService {
 
-  
-
-
   constructor(private http: HttpClient) { }
 
 userId: number = 0;
-
 
   async getUserData(id: number) {
     try {
@@ -26,4 +22,7 @@ userId: number = 0;
     }
   }
 
+  // updateUserAvatar(id: number, avatar: string) {
+  //   return this.http.put(`http://localhost:8080/user/${id}`, { avatar });
+  // }
 }
