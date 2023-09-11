@@ -27,10 +27,7 @@ export class SearchTrainComponent implements OnInit {
   ngOnInit(): void {
     this.getRegions();
     this.user = this.accountService.getUserData(1);
-    console.log(
-      'console du OnInit de search-train.ts : ' +
-        this.accountService.getUserData(1)
-    );
+   
   }
  syncUser(): Promise<any> {
 return new Promise((resolve, reject) => {
@@ -41,15 +38,6 @@ return new Promise((resolve, reject) => {
   , 1000);
  });
 }
-
-  // async syncUser() {
-  //   try {
-  //     const result = await this.accountService.getUserData(1);
-  //     console.log(result);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
 
   GareDepartSelect : boolean = false;
   GareArriverSelect : boolean = false;
@@ -65,17 +53,19 @@ return new Promise((resolve, reject) => {
   uicCodeArriver : string = '';
   searchPage : boolean = true;
   listeTrain : boolean = false;
+  listeOfTrain : any;
 
+
+  // recuperation des données de l'api
+
+  
 
   onSubmit() {
+  this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver);
   this.search.depart = this.search.depart;
   this.searchPage = false;
   this.listeTrain = true;
-
-  console.log(this.search.depart +' '+ this.search.arrivee +' '+ this.search.date +' '+ this.search.heureDepart);
-  console.log(this.uicCodeDepart +' '+ this.uicCodeArriver);
-  this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver);
-
+  
 
 
 }
