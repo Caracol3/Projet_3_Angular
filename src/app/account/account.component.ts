@@ -24,40 +24,41 @@ export class AccountComponent implements OnInit {
   user_id: string | null = localStorage.getItem('userId');
   is_available: boolean = true;
   isModalOpen: boolean = false;
+  routeAvatar: string = 'assets/avatar/';
   avatarOptions: string[] = [
-    '/assets/avatar/AvatarF1.png',
-    '/assets/avatar/AvatarF2.png',
-    '/assets/avatar/AvatarF3.png',
-    '/assets/avatar/AvatarF4.png',
-    '/assets/avatar/AvatarF5.png',
-    '/assets/avatar/AvatarF6.png',
-    '/assets/avatar/AvatarF7.png',
-    '/assets/avatar/AvatarF8.png',
-    '/assets/avatar/AvatarF9.png',
-    '/assets/avatar/AvatarF10.png',
-    '/assets/avatar/AvatarF11.png',
-    '/assets/avatar/AvatarF12.png',
-    '/assets/avatar/AvatarF13.png',
-    '/assets/avatar/AvatarF14.png',
-    '/assets/avatar/AvatarF15.png',
-    '/assets/avatar/AvatarH1.png',
-    '/assets/avatar/AvatarH2.png',
-    '/assets/avatar/AvatarH3.png',
-    '/assets/avatar/AvatarH4.png',
-    '/assets/avatar/AvatarH5.png',
-    '/assets/avatar/AvatarH6.png',
-    '/assets/avatar/AvatarH7.png',
-    '/assets/avatar/AvatarH8.png',
-    '/assets/avatar/AvatarH9.png',
-    '/assets/avatar/AvatarH10.png',
-    '/assets/avatar/AvatarH11.png',
-    '/assets/avatar/AvatarH12.png',
-    '/assets/avatar/AvatarH13.png',
-    '/assets/avatar/AvatarH14.png',
-    '/assets/avatar/AvatarH15.png',
-    '/assets/avatar/AvatarH16.png',
-    '/assets/avatar/AvatarH17.png',
-    '/assets/avatar/AvatarH18.png',
+    'AvatarF1.png',
+    'AvatarF2.png',
+    'AvatarF3.png',
+    'AvatarF4.png',
+    'AvatarF5.png',
+    'AvatarF6.png',
+    'AvatarF7.png',
+    'AvatarF8.png',
+    'AvatarF9.png',
+    'AvatarF10.png',
+    'AvatarF11.png',
+    'AvatarF12.png',
+    'AvatarF13.png',
+    'AvatarF14.png',
+    'AvatarF15.png',
+    'AvatarH1.png',
+    'AvatarH2.png',
+    'AvatarH3.png',
+    'AvatarH4.png',
+    'AvatarH5.png',
+    'AvatarH6.png',
+    'AvatarH7.png',
+    'AvatarH8.png',
+    'AvatarH9.png',
+    'AvatarH10.png',
+    'AvatarH11.png',
+    'AvatarH12.png',
+    'AvatarH13.png',
+    'AvatarH14.png',
+    'AvatarH15.png',
+    'AvatarH16.png',
+    'AvatarH17.png',
+    'AvatarH18.png',
   ];
   user: any = {};
 
@@ -72,15 +73,41 @@ export class AccountComponent implements OnInit {
   }
 
   putAvatar(avatar: string) {
-    const body = {}
+    return this.httpClient.put<any>(
+      `http://localhost:8080/users/${this.user_id}/account/avatar${avatar}`,
+      null
+    );
 
-    this.httpClient.put<any>(`http://localhost:8080/users/${this.user_id}/account/avatar/${avatar}`, body), {}
+    // const body = {
+    //   avatar: avatar,
+    // };
+
+    // this.httpClient
+    //   .put<any>(
+    //     `http://localhost:8080/users/${this.user_id}/account/avatar/`,
+    //     body
+    //   )
+    //   .subscribe(
+    //     (response) => {
+    //       console.log('Avatar mis à jour avec succès :', response);
+    //       // Mettez à jour l'avatar dans votre composant Angular si nécessaire
+    //       this.user.avatar = avatar;
+    //     },
+    //     (error) => {
+    //       console.error("Erreur lors de la mise à jour de l'avatar :", error);
+    //     }
+    //   );
   }
 
   selectAvatar(avatar: string) {
     console.log(avatar);
     this.putAvatar(avatar);
-    this.isModalOpen = false; // Ferme la modale
+    console.log(this.putAvatar(avatar));
+    this.isModalOpen = false;
+
+    this.user.avatar = this.routeAvatar + avatar;
+    console.log(this.user.avatar);
+    //  Ferme la modale
 
     //   this.accountService.updateUserAvatar(this.user.id, avatar).subscribe(
     //     (response) => {
