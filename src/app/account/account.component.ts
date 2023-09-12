@@ -25,6 +25,8 @@ export class AccountComponent implements OnInit {
   is_available: boolean = true;
   isModalOpen: boolean = false;
   routeAvatar: string = 'assets/avatar/';
+  user: any = {};
+  avatar : string = 'AvatarF1.png';
   avatarOptions: string[] = [
     'AvatarF1.png',
     'AvatarF2.png',
@@ -60,7 +62,7 @@ export class AccountComponent implements OnInit {
     'AvatarH17.png',
     'AvatarH18.png',
   ];
-  user: any = {};
+  
 
   constructor(
     private httpClient: HttpClient,
@@ -74,7 +76,7 @@ export class AccountComponent implements OnInit {
 
   putAvatar(avatar: string) {
     return this.httpClient.put<any>(
-      `http://localhost:8080/users/${this.user_id}/account/avatar${avatar}`,
+      `http://localhost:8080/users/${this.user_id}/account/avatar/${avatar}`,
       null
     );
 
@@ -102,11 +104,9 @@ export class AccountComponent implements OnInit {
   selectAvatar(avatar: string) {
     console.log(avatar);
     this.putAvatar(avatar);
-    console.log(this.putAvatar(avatar));
     this.isModalOpen = false;
-
-    this.user.avatar = this.routeAvatar + avatar;
-    console.log(this.user.avatar);
+    this.avatar = avatar;
+    console.log(this.avatar);
     //  Ferme la modale
 
     //   this.accountService.updateUserAvatar(this.user.id, avatar).subscribe(
@@ -140,8 +140,7 @@ export class AccountComponent implements OnInit {
       .subscribe((data) => {
         this.user = data;
         this.user.birthday = this.formatDate(this.user.birthday);
-        console.log(this.user);
-        console.log('avatar :' + this.user.avatar);
+       
       });
   }
 

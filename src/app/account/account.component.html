@@ -5,7 +5,7 @@
   <div class="user-infos">
     <div class="avatar-and-identity">
       <div class="avatar">
-        <img [src]="user.avatar" alt="Avatar de l'utilisateur" />
+        <img src="assets/Avatar/{{avatar}}" alt="Avatar de l'utilisateur" />
         <button (click)="openAvatarModal()">Modifier</button>
 
         <!-- La modale -->
@@ -13,7 +13,7 @@
           <h3>Sélectionnez un avatar :</h3>
           <div class="avatar-options">
             <div *ngFor="let avatar of avatarOptions">
-              <img [src]="avatar" alt="Avatar" (click)="selectAvatar(avatar)" />
+              <img [src]="'assets/Avatar/'+avatar" alt="Avatar" (click)="selectAvatar(avatar)" />
             </div>
           </div>
         </div>
