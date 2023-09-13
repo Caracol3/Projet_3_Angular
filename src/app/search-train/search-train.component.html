@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container">
   <h3 class="form-title">Votre trajet</h3>
   <div class="message">
     <p>
@@ -95,52 +95,51 @@
     </div>
   </form>
 </div>
-<div class="container-desktop" >
-  <div class="search-barre">
-
+<div class="container-desktop">
   <div class="form-title-desktop">
     <h1 class="title">Recherchez votre voyage. Trouvez des compagnons.</h1>
+    <form class="form-desktop" #myForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="search-barre">
+        <div class="gare-top-desktop">
+          <div class="input-container">
+            <input
+              type="text"
+              id="depart"
+              name="depart"
+              placeholder="Gare de départ"
+              [(ngModel)]="search.depart"
+              required
+              (keyup)="searchGareDepart()"
+            />
+            <label for="depart" class="input-label-dep">Départ :</label>
+          </div>
 
-<form class="form-desktop" #myForm="ngForm" (ngSubmit)="onSubmit()">
-    <div class="search-barre">
-      <div class="gare-top-desktop">
+          <div class="gareResult-desktop">
+            <p
+              *ngFor="
+                let gareOfDeparture of resultOfTrainSearchDepart;
+                let i = index
+              "
+              (click)="selectGareDepart(i)"
+            >
+              {{ gareOfDeparture.gare_alias_libelle_noncontraint }}
+            </p>
+          </div>
+        </div>
         <div class="input-container">
           <input
+            class="gare-bottom-desktop"
             type="text"
-            id="depart"
-            name="depart"
-            [(ngModel)]="search.depart"
+            id="arrivee"
+            name="arrivée"
+            placeholder="Gare d'arrivée"
+            [(ngModel)]="search.arrivee"
             required
-            (keyup)="searchGareDepart()"
+            (keyup)="searchGareArriver()"
           />
-          <label for="depart" class="input-label">Départ :</label>
+          <label for="arrivee" class="input-label-arr">Arrivée :</label>
         </div>
-
-
-        <div class="gareResult-desktop" >
-          <p
-            *ngFor="
-              let gareOfDeparture of resultOfTrainSearchDepart;
-              let i = index
-            "
-            (click)="selectGareDepart(i)"
-          >
-            {{ gareOfDeparture.gare_alias_libelle_noncontraint }}
-          </p>
-        </div>
-      </div>
-      <div >
-        <input
-          class="gare-bottom-desktop"
-          type="text"
-          id="arrivee"
-          name="arrivée"
-          placeholder="Gare d'arrivée"
-          [(ngModel)]="search.arrivee"
-          required
-          (keyup)="searchGareArriver()"
-        />
-        <div class="gareResult-desktop" >
+        <div class="gareResult-desktop">
           <p
             *ngFor="
               let gareOfArriver of resultOfTrainSearchArriver;
@@ -151,8 +150,6 @@
             {{ gareOfArriver.gare_alias_libelle_noncontraint }}
           </p>
         </div>
-      </div>
-      <div class="horaire-desktop">
         <input
           class="date-desktop"
           type="date"
@@ -174,20 +171,15 @@
           (click)="sectectHeure()"
         />
       </div>
-
-
-    <div>
-      <button class="button-text-desktop" type="submit">Rechercher</button>
-    </div>
+      <div>
+        <button class="button-text-desktop" type="submit">Rechercher</button>
+      </div>
+    </form>
   </div>
-  </form>
 </div>
- </div>
 
-    <div>
-
-
-
+<div>
+  <!--
     <div class="message-desktop">
     <p>
       Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin
@@ -204,6 +196,5 @@
       >
         Logout
       </button>
-    </div>
-
+    </div> -->
 </div>
