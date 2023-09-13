@@ -41,13 +41,10 @@ export class DataService {
     const headers = new HttpHeaders({
       'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
     });
-    
-       
-  
       this.http.get(url, {headers}).subscribe((response : any) => {
-      console.log(url);
-      console.log(response.journeys.sections);
-      return response.journeys;
+        this.apiResponse = response;
+        console.log(url);
+      return this.apiResponse;
     });
   
   }

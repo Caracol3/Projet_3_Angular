@@ -54,6 +54,7 @@ return new Promise((resolve, reject) => {
   searchPage : boolean = true;
   listeTrain : boolean = false;
   listeOfTrain : any;
+  listeOfTrain2 : any;
 
 
   // recuperation des données de l'api
@@ -63,9 +64,16 @@ return new Promise((resolve, reject) => {
   onSubmit() {
   this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver);
   this.search.depart = this.search.depart;
+ 
+  setTimeout(() => {
+  this.listeOfTrain = this.dataService.apiResponse.journeys;
+  this.listeOfTrain2 = this.dataService.apiResponse;
+  console.log(this.listeOfTrain2);
   this.searchPage = false;
   this.listeTrain = true;
-  
+
+  }, 300);
+ 
 
 
 }

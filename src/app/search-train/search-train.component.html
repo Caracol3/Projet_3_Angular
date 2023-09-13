@@ -52,6 +52,24 @@
   <h1>Trouvez votre trajet</h1>
 
 
+  <div class="listeDesTains">
+
+    <div *ngFor="let train of listeOfTrain">
+      
+      <div class="affichagedestrain">
+        <div *ngFor="let depart of listeOfTrain2.journeys[0].sections[0].from | keyvalue"><p *ngIf="depart.key == 'name'">  train au départ de :  {{depart.value}} </p> </div>
+        <p> heure de départ : {{train.departure_date_time}}</p>
+        <div *ngFor="let depart of listeOfTrain2.journeys[0].sections[2].to | keyvalue"><p *ngIf="depart.key == 'name'">  train à destination de :  {{depart.value}} </p> </div>
+        <p> heure d'arrivée : {{train.arrival_date_time}}</p>
+        <p> Numéro de train : </p>
+
+    </div>
+  
+    
+    </div>
+
+  </div>
+
 
 
 
