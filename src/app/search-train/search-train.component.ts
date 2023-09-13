@@ -27,16 +27,7 @@ export class SearchTrainComponent implements OnInit {
   ) {}
 
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    if (event.target.innerWidth < 768) {
-      this.isMobile = true;
-      this.isDesktop = false;
-    } else {
-      this.isMobile = false;
-      this.isDesktop = true;}
-    }
-
+ 
   ngOnInit(): void {
     this.getRegions();
     this.user = this.accountService.getUserData(1);
