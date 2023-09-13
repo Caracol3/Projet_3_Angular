@@ -19,6 +19,7 @@ import { JwtInterceptor } from './config/jwtInterceptor';
 import { AdminComponent } from './admin/admin.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environments';
+import { ChatShowComponent } from './chat/show/chat.show/chat.show.component';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { environment } from 'src/environments/environments';
     ContactComponent,
     SearchTrainComponent,
     AdminComponent,
+    ChatShowComponent,
+  
 
   ],
   imports: [
@@ -48,7 +51,7 @@ import { environment } from 'src/environments/environments';
        useClass: JwtInterceptor,
         multi: true
       }
-    
+
 
   ],
   bootstrap: [AppComponent]

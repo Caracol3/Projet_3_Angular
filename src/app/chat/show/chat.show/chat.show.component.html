@@ -1,0 +1,18 @@
+<div>
+  <input type="text" [(ngModel)]="receverId" placeholder="rechercher un utilisateur">
+  <button (click)="loadUsers()">
+    rechercher
+  </button>
+</div>
+<ul>
+  <li *ngFor="let user of users">
+    <span (click)="newChat(user.id)">
+      {{user.username}}
+    </span>
+
+  </li>
+</ul>
+<div >  <!--Boucle sur les messages avec ngfor-->
+  <a [routerLink]="['/chat',conversation.id]" *ngFor="let conversation of conversations">conversation: {{conversation.data.participants[1]}}</a>
+</div>
+

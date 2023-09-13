@@ -9,6 +9,7 @@ import { TrainInfoComponent } from './train-info/train-info.component';
 import { SearchTrainComponent } from './search-train/search-train.component';
 import { IsUserGuard } from './core/auth.guard';
 import { AdminComponent } from './admin/admin.component';
+import { ChatShowComponent } from './chat/show/chat.show/chat.show.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   { path: 'signin', component: SigninComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'chat', component: ChatComponent},
+  { path: 'chats', component: ChatShowComponent,canActivate: [IsUserGuard]},
+  { path: 'chat/:id', component: ChatComponent,canActivate: [IsUserGuard]},
   { path: 'account', component: AccountComponent},
   { path: 'train-info', component: TrainInfoComponent},
   { path: 'search-train', component: SearchTrainComponent, canActivate: [IsUserGuard]},

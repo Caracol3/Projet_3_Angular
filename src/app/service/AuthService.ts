@@ -13,6 +13,13 @@ login(token:string){
 getToken():string | null{
   return localStorage.getItem(this.tokenKey); //récupération du token dans le local storage
 }
+getUserId():string | null{
+  return localStorage.getItem("userId"); //récupération du token dans le local storage
+}
+getRecever():string | null{
+  return localStorage.getItem("receverPseudo"); //récupération du pseudo du recever dans le local storage
+}
+
 
 logout(){
   localStorage.removeItem(this.tokenKey); //suppression du token dans le local storage lors de la déconnexion

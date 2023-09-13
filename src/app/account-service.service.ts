@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from './models/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +31,10 @@ export class AccountServiceService {
       console.error(erreur);
     }
   }
-
+   getUsers():Observable<User[]> {
+   return this.http.get<User[]>('http://localhost:8080/admin/users')
+  }
+   getUser(id:number):Observable<User> {
+   return this.http.get<User>(`http://localhost:8080/user/${id}`)
+  }
 }

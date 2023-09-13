@@ -2,18 +2,15 @@
 <div class="container">
   <div class="chat">
     <div *ngFor="let message of messages">  <!--Boucle sur les messages avec ngfor-->
-      <div [ngClass]="{'left': message.userId === 'User3', 'right': message.userId === 'User4'}">
-        {{message.userId}}: {{message.message}}
+      <div [ngClass]="{'left': message.userId !== userId, 'right': message.userId === userId}">
+        {{message.userId === userId ? senderPseudo : receverPseudo }}: {{message.message}}
       </div>
     </div>
   </div>
 
-  <div class="user-input">
-    <input type="text" [(ngModel)]="messageA" placeholder="Message from User A">
-    <button (click)="sendMessage('User3', messageA)">Send</button>
-  </div>
+
 <div class="user-input">
-    <input type="text" [(ngModel)]="messageB" placeholder="Message from User B">
-    <button (click)="sendMessage('User4', messageB)">Send</button>
+    <input type="text" [(ngModel)]="message" placeholder=" Veuillez tapez votre message">
+    <button (click)="sendMessage( message)">Send</button>
   </div>
 </div>
