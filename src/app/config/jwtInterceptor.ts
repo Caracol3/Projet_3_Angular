@@ -18,6 +18,10 @@ export class JwtInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const token = this.authService.getToken();
 
+    if (req.url.startsWith("https://api.sncf.com")){
+      return next.handle(req);
+    }
+
     if (token) { // si le token existe, on le passe dans le header de la requête
       const cloned = req.clone({
         setHeaders: {
