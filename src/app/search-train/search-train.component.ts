@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Search } from '../models/search';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
@@ -17,12 +17,25 @@ export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
   user: any;
   userName: string = '';
+  isMobile: boolean = false;
+  isDesktop: boolean = false;
 
   constructor(
     private authService: AuthService,
     private accountService: AccountServiceService,
     private dataService: DataService,
   ) {}
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if (event.target.innerWidth < 768) {
+      this.isMobile = true;
+      this.isDesktop = false;
+    } else {
+      this.isMobile = false;
+      this.isDesktop = true;}
+    }
 
   ngOnInit(): void {
     this.getRegions();
