@@ -1,45 +1,209 @@
-<div class="container">
-
-    <h3 class="form-title">Votre trajet</h3>
+<div class="container" >
+  <h3 class="form-title">Votre trajet</h3>
   <div class="message">
-<p>Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin de passer le temps  ?</p>
-</div>
-<form class="form"  #myForm="ngForm" (ngSubmit)="onSubmit()">
-  <div>
+    <p>
+      Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin
+      de passer le temps ?
+    </p>
+  </div>
+  <form class="form" #myForm="ngForm" (ngSubmit)="onSubmit()">
     <div>
-       <input class="gare top" type="text" id="depart" name="depart"  placeholder="Gare de départ" [(ngModel)]="search.depart" required (keyup)="searchGareDepart()">
+      <div>
+        <input
+          class="gare top"
+          type="text"
+          id="depart"
+          name="depart"
+          placeholder="Gare de départ"
+          [(ngModel)]="search.depart"
+          required
+          (keyup)="searchGareDepart()"
+        />
 
         <div class="gareResult" *ngIf="GareDepartSelect">
-
-            <p *ngFor="let gareOfDeparture of resultOfTrainSearchDepart;let i = index" (click)="selectGareDepart(i)">  {{gareOfDeparture.gare_alias_libelle_noncontraint}}</p>
-
+          <p
+            *ngFor="
+              let gareOfDeparture of resultOfTrainSearchDepart;
+              let i = index
+            "
+            (click)="selectGareDepart(i)"
+          >
+            {{ gareOfDeparture.gare_alias_libelle_noncontraint }}
+          </p>
         </div>
-
       </div>
       <div *ngIf="GareArriverSelect">
-       <input class="gare bottom" type="text" id="arrivee" name="arrivée"  placeholder="Gare d'arrivée" [(ngModel)]="search.arrivee" required (keyup)="searchGareArriver()">
-       <div class="gareResult" *ngIf="GareArriverSelectInfo">
-
-      <p *ngFor="let gareOfArriver of resultOfTrainSearchArriver;let i = index" (click)="selectGareArriver(i)">  {{gareOfArriver.gare_alias_libelle_noncontraint}}</p>
-
+        <input
+          class="gare bottom"
+          type="text"
+          id="arrivee"
+          name="arrivée"
+          placeholder="Gare d'arrivée"
+          [(ngModel)]="search.arrivee"
+          required
+          (keyup)="searchGareArriver()"
+        />
+        <div class="gareResult" *ngIf="GareArriverSelectInfo">
+          <p
+            *ngFor="
+              let gareOfArriver of resultOfTrainSearchArriver;
+              let i = index
+            "
+            (click)="selectGareArriver(i)"
+          >
+            {{ gareOfArriver.gare_alias_libelle_noncontraint }}
+          </p>
+        </div>
+      </div>
+      <div class="horaire" *ngIf="DateSelect">
+        <input
+          class="date"
+          type="date"
+          id="date"
+          name="date"
+          placeholder="date"
+          [(ngModel)]="search.date"
+          required
+        />
+        <input
+          class="heure"
+          type="time"
+          id="title"
+          name="heure"
+          placeholder="Heure"
+          [(ngModel)]="search.heureDepart"
+          required
+          (keypress)="sectectHeure()"
+          (click)="sectectHeure()"
+        />
+      </div>
     </div>
 
+    <div *ngIf="AllInfo">
+      <button class="button-text" type="submit">Rechercher</button>
+    </div>
+    <div>
+      <button
+        class="button-text"
+        id="logout"
+        type="submit"
+        (click)="logout()"
+        routerLink="/login"
+      >
+        Logout
+      </button>
+    </div>
+  </form>
+</div>
+<div class="container-desktop" >
+  <div class="search-barre">
+
+  <div class="form-title-desktop">
+    <h1 class="title">Recherchez votre voyage. Trouvez des compagnons.</h1>
+
+<form class="form-desktop" #myForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="search-barre">
+      <div class="gare-top-desktop">
+        <div class="input-container">
+          <input
+            type="text"
+            id="depart"
+            name="depart"
+            [(ngModel)]="search.depart"
+            required
+            (keyup)="searchGareDepart()"
+          />
+          <label for="depart" class="input-label">Départ :</label>
+        </div>
 
 
+        <div class="gareResult-desktop" >
+          <p
+            *ngFor="
+              let gareOfDeparture of resultOfTrainSearchDepart;
+              let i = index
+            "
+            (click)="selectGareDepart(i)"
+          >
+            {{ gareOfDeparture.gare_alias_libelle_noncontraint }}
+          </p>
+        </div>
       </div>
-       <div class="horaire" *ngIf="DateSelect">
-      <input class="date" type="date" id="date" name="date"  placeholder="date"  [(ngModel)]="search.date" required>
-      <input class="heure" type="time" id="title" name="heure"  placeholder="Heure" [(ngModel)]="search.heureDepart" required (keypress)="sectectHeure()" (click)="sectectHeure()">
-  </div>
-  </div>
+      <div >
+        <input
+          class="gare-bottom-desktop"
+          type="text"
+          id="arrivee"
+          name="arrivée"
+          placeholder="Gare d'arrivée"
+          [(ngModel)]="search.arrivee"
+          required
+          (keyup)="searchGareArriver()"
+        />
+        <div class="gareResult-desktop" >
+          <p
+            *ngFor="
+              let gareOfArriver of resultOfTrainSearchArriver;
+              let i = index
+            "
+            (click)="selectGareArriver(i)"
+          >
+            {{ gareOfArriver.gare_alias_libelle_noncontraint }}
+          </p>
+        </div>
+      </div>
+      <div class="horaire-desktop">
+        <input
+          class="date-desktop"
+          type="date"
+          id="date"
+          name="date"
+          placeholder="date"
+          [(ngModel)]="search.date"
+          required
+        />
+        <input
+          class="heure-desktop"
+          type="time"
+          id="title"
+          name="heure"
+          placeholder="Heure"
+          [(ngModel)]="search.heureDepart"
+          required
+          (keypress)="sectectHeure()"
+          (click)="sectectHeure()"
+        />
+      </div>
 
-  <div *ngIf="AllInfo">
-    <button  class="button-text" type="submit">Rechercher</button>
-  </div>
-  <div>
-    <button  class="button-text" id="logout" type="submit" (click)="logout()" routerLink="/login">Logout</button>
+
+    <div>
+      <button class="button-text-desktop" type="submit">Rechercher</button>
+    </div>
   </div>
   </form>
+</div>
+ </div>
 
+    <div>
+
+
+
+    <div class="message-desktop">
+    <p>
+      Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin
+      de passer le temps ?
+    </p>
+  </div>
+
+      <button
+        class="button-text-desktop"
+        id="logout"
+        type="submit"
+        (click)="logout()"
+        routerLink="/login"
+      >
+        Logout
+      </button>
+    </div>
 
 </div>
