@@ -13,7 +13,7 @@ import { take } from 'rxjs/operators';
 })
 export class AdminComponent implements OnInit {
   users: User[] = [];
-  isMoreInfo = false;
+  isMoreInfo :boolean = false;
   selectedUser: any;
 
 

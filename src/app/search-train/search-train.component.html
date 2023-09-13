@@ -100,9 +100,9 @@
     <h1 class="title">Recherchez votre voyage. Trouvez des compagnons.</h1>
     <form class="form-desktop" #myForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="search-barre">
-        <div class="gare-top-desktop">
+
           <div class="input-container">
-            <input
+            <input class="gare-dep-desktop"
               type="text"
               id="depart"
               name="depart"
@@ -112,7 +112,7 @@
               (keyup)="searchGareDepart()"
             />
             <label for="depart" class="input-label-dep">Départ :</label>
-          </div>
+
 
           <div class="gareResult-desktop">
             <p
@@ -125,10 +125,12 @@
               {{ gareOfDeparture.gare_alias_libelle_noncontraint }}
             </p>
           </div>
+
         </div>
+        <div class="separator-line"></div>
         <div class="input-container">
           <input
-            class="gare-bottom-desktop"
+            class="gare-arr-desktop"
             type="text"
             id="arrivee"
             name="arrivée"
@@ -170,10 +172,11 @@
           (keypress)="sectectHeure()"
           (click)="sectectHeure()"
         />
-      </div>
-      <div>
+        <div>
         <button class="button-text-desktop" type="submit">Rechercher</button>
       </div>
+      </div>
+
     </form>
   </div>
 </div>
