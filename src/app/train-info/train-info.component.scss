@@ -1,0 +1,59 @@
+.container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgb(85, 85, 85);
+}
+
+h3 {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo img {
+  width: 150px;
+  height: 110px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.info-container {
+  border-radius: 15px;
+  background-color: white;
+  max-width: 70%;
+  margin: auto;
+
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.info-train
+ {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+
+}
+
+.info-trainD {
+  text-align: center;
+  height: 250px;
+  max-width: 100%;
+  margin : 10px;
+}

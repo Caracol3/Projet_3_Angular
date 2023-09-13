@@ -1,14 +1,19 @@
 <div class="container">
+  <div class="desktop">
+    <h3>La plateforme pour trouver vos compagnons de voyage</h3>
+    <img src="assets/desktop_img.png" alt="assis dans un train">
+  </div>
   <div class="signup">
-    <div class="logo">
-      <img src="/assets/logo.png" alt="logo train companion" />
-    </div>
-    <h2 class="form-title">Se connecter</h2>
+<div class="title">
+    <h1>Bienvenue !</h1>
+
+    <h3 class="form-title">Se connecter</h3>
+  </div>
 
     <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="form-champs">
       <div>
         <input
-          class="input-no-border input-id"
+          class="input-email"
           type="email"
           id="email"
           name="email"
@@ -55,17 +60,30 @@
           >This is not a valid password</span
         >
       </div>
-      <a href="" class="forgotten-password">Mot de passe oublié</a>
+      <a href="" class="forgotten-password">Mot de passe oublié ?</a>
+
 
       <div>
-        <button type="submit">Connexion</button>
+
+        <button  class="button-text"  type="submit">Connexion</button>
+
       </div>
+      
+      <div>
+      
+        <button  class="button-text" id="button-create" routerLink="/signin">Créer un compte</button><br>
+        <span class="link-create">Tu es nouveau ?  <a routerLink="/signin" >Créer un compte</a></span>
+
+      </div>
+
+
     </form>
   </div>
 
-  <div class="inscription">
-    <a type="submit"
-      ><h3><span>Créer</span> un compte</h3></a
-    >
-  </div>
+
+  
+
+
 </div>
+<!-- routerLink="/search-train" -->
+<!--  -->

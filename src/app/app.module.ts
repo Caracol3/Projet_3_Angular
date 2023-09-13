@@ -5,10 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { TrainInfoComponent } from './train-info/train-info.component';
-import { ProfilComponent } from './profil/profil.component';
+import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { SigninComponent } from './signin/signin.component';
+import { AccountComponent } from './account/account.component';
+import { ContactComponent } from './contact/contact.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SearchTrainComponent } from './search-train/search-train.component'; // <-- Import HttpClientModule
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './config/jwtInterceptor';
+import { AdminComponent } from './admin/admin.component';
+
 FormsModule
 
 @NgModule({
@@ -16,16 +25,28 @@ FormsModule
     AppComponent,
     ChatComponent,
     TrainInfoComponent,
-    ProfilComponent,
+    LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SigninComponent,
+    AccountComponent,
+    ContactComponent,
+    SearchTrainComponent,
+    AdminComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS,
+       useClass: JwtInterceptor,
+        multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

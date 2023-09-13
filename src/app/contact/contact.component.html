@@ -1,0 +1,45 @@
+
+<div class="page">
+  <div class="form-title"><h3>Nous contacter</h3></div>
+<div class="container">
+  <div class="form">
+    <h2 class="besoin">Besoin d’aide ? Ecrivez-nous.</h2>
+    <form (ngSubmit)="onSubmit(form)" class="form-champs">
+
+      <input
+        class="input-top"git
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Objet"
+        [(ngModel)]="form.title"
+        required
+      />
+
+      <input
+        class="input-middle"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        [(ngModel)]="form.email"
+        required
+      />
+
+      <textarea
+        class="input-bottom"
+        id="message"
+        name="message"
+        placeholder="Ecrivez votre message"
+        [(ngModel)]="form.message"
+        required
+      ></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+  <div class="contact-img">
+    <img src="/assets/Contact/contactImage.jpg" alt="">
+  </div>
+</div>
+</div>

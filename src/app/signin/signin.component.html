@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="desktop">
+    <h3>La plateforme pour trouver vos compagnons de voyage</h3>
+    <img src="assets/desktop_img.png" alt="assis dans un train" />
+  </div>
+
+  <div class="signup">
+    <h3 class="form-title">Création du compte</h3>
+
+    <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="form-champs">
+      <div>
+        <input
+          class="input-top"
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Pseudo"
+          [(ngModel)]="signin.pseudo"
+          #pseudo="ngModel"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          class="input-no-border"
+          type="text"
+          id="firstname"
+          name="firstname"
+          placeholder="Prénom"
+          [(ngModel)]="signin.firstname"
+          #firstname="ngModel"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          class="input-no-border"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Nom"
+          [(ngModel)]="signin.name"
+          #name="ngModel"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          class="input-no-border"
+          type="date"
+          id="birthday"
+          name="birthday"
+          placeholder="birthday"
+          [(ngModel)]="signin.birthday"
+          #birthday="ngModel"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          class="input-no-border"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          [(ngModel)]="signin.email"
+          #email="ngModel"
+          required
+          email
+        />
+      </div>
+      <div *ngIf="email.invalid && email.touched" class="error-message">
+        Le champ est invalide.
+      </div>
+      <div>
+        <input
+          class="input-key"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Mot de passe"
+          [(ngModel)]="signin.password"
+          #password="ngModel"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!])[A-Za-z\d@$!]{7,}$"
+        />
+      </div>
+
+      <div>
+        <input
+          class="input-bottom"
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirmer Mdp"
+          [(ngModel)]="confirmPassword"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!])[A-Za-z\d@$!]{7,}$"
+        />
+      </div>
+      <!-- ci-dessous création de la div qui va gérer les erreurs de validation
+  affichage d'un message si le mot de passe à moins de 5 caractères et pas de caractères speciaux -->
+      <div *ngIf="password.errors">
+        <!-- <span *ngIf="password.errors?.['required']"
+          >Le mot de passe est requis</span -->
+
+        <span *ngIf="password.errors?.['minlength']"
+          >Le mot de passe doit contenir au moins 5 caractères</span
+        >
+
+        <span *ngIf="password.errors?.['required pattern']"
+          >This is not a valid password</span
+        >
+      </div>
+
+      <div>
+        <button class="button-text" type="submit">Créer un compte</button>
+      </div>
+    </form>
+  </div>
+</div>
