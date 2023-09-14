@@ -8,18 +8,15 @@ export class AccountServiceService {
 
   constructor(private http: HttpClient) { }
 
-userId: number = 0;
+userId = localStorage.getItem('userId');
+userInfos : any;
 
-  async getUserData(id: number) {
-    try {
-      // Utilisez "await" pour attendre une opération asynchrone, par exemple une requête HTTP
-      const resultat = await this.http.get('http://localhost:8080/user/' + id);
-      console.log("log de la const resultat dans account service : "+ resultat);
-      this.userId = id;
-
-    } catch (erreur) {
-      console.error("log de l'erreur dans account-service" + erreur);
-    }
+   getUserData(userId : any) {
+    this.http
+      .get<any>(`http://localhost:8080/user/${userId}`)
+      .subscribe((data: any) => {
+        this.userInfos = data;
+      });
   }
 
   // updateUserAvatar(id: number, avatar: string) {

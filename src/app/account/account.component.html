@@ -5,7 +5,7 @@
   <div class="user-infos">
     <div class="avatar-and-identity">
       <div class="avatar">
-        <img src="assets/Avatar/{{avatar}}" alt="Avatar de l'utilisateur" />
+        <img *ngIf="avatar !== ''" src="assets/Avatar/{{avatar}}" alt="Avatar de l'utilisateur" />
         <button (click)="openAvatarModal()">Modifier</button>
 
         <!-- La modale -->
@@ -38,7 +38,7 @@
       <button
         *ngFor="let color of colorOptions"
         (click)="saveSelectedColor(color)"
-        [style.background-color]="color"
+        [style.background-color]="'#'+color"
       ></button>
     </div>
   </div>
@@ -48,7 +48,7 @@
       <img src="/assets/info.png" class="info" alt="Icône d'information" title="En cochant cette case, vous acceptez qu'un autre utilisateur de l'application puisse vous contacter en message privé" />
     </span>
     <span>Disponible MP: </span>
-    <input type="checkbox" id="toggle" class="toggle-input" />
+    <input type="checkbox" id="toggle" class="toggle-input" [(ngModel)]="user.is_available" (click)="dispoMP()"/>
     <label for="toggle" class="toggle-label"></label>
   </div>
 
