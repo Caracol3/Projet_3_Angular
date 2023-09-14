@@ -32,7 +32,7 @@
     </ul>
     <div *ngIf="isMoreInfo" class="moreInfo" (click)="closeInfo()">
 
-      <img [src]="selectedUser.avatar" alt="avatar" />
+      <img [src]="'assets/Avatar/'+selectedUser.avatar" alt="avatar" />
       <div class="text"><span class="text-name" id="username">{{selectedUser.username}}</span>
       <span class="text-name" id="name">{{selectedUser.name}}</span>
       <span class="text-name" id="firstname">{{selectedUser.firstname}}</span>

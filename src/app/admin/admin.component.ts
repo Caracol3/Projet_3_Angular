@@ -24,10 +24,7 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient.get<User[]>('http://localhost:8080/admin/users').subscribe((users) => {
       this.users = users;
-      for (let i = 0; i < this.users.length; i++) {
-        console.log(this.users[i].role.type + " " + this.users[i].name);
-      }
-    });
+         });
 
   }
 
