@@ -243,7 +243,7 @@
             <label for="depart" class="input-label">Départ :</label>
 
 
-          <div class="gareResult-desktop">
+          <div class="gareResult-desktop" *ngIf="GareDepartSelect">
             <p
               *ngFor="
                 let gareOfDeparture of resultOfTrainSearchDepart;
@@ -268,7 +268,7 @@
           />
           <label for="arrivee" class="input-label">Arrivée :</label>
         </div>
-        <div class="gareResult-desktop">
+        <div class="gareResult-desktop" *ngIf="GareArriverSelectInfo">
           <p
             *ngFor="
               let gareOfArriver of resultOfTrainSearchArriver;
