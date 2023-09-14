@@ -17,9 +17,7 @@ class UserGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
     ): boolean {
-      console.log('UserGuard appelée : route protégée');
       const token = this.authService.getToken();
-      console.log('token : ' + token);
 
       if (!token) {
         this.router.navigate(['/login']);

@@ -11,6 +11,7 @@ export class AccountServiceService {
 userId = localStorage.getItem('userId');
 userInfos : any;
 
+
    getUserData(userId : any) {
     this.http
       .get<any>(`http://localhost:8080/user/${userId}`)

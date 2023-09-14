@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Search } from '../models/search';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
@@ -17,6 +17,8 @@ export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
   user: any;
   userName: string = '';
+  isMobile: boolean = false;
+  isDesktop: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -24,13 +26,12 @@ export class SearchTrainComponent implements OnInit {
     private dataService: DataService,
   ) {}
 
+
+ 
   ngOnInit(): void {
     this.getRegions();
     this.user = this.accountService.getUserData(1);
-    console.log(
-      'console du OnInit de search-train.ts : ' +
-        this.accountService.getUserData(1)
-    );
+   
   }
  syncUser(): Promise<any> {
 return new Promise((resolve, reject) => {
@@ -41,15 +42,6 @@ return new Promise((resolve, reject) => {
   , 1000);
  });
 }
-
-  // async syncUser() {
-  //   try {
-  //     const result = await this.accountService.getUserData(1);
-  //     console.log(result);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
 
   GareDepartSelect : boolean = false;
   GareArriverSelect : boolean = false;
@@ -63,19 +55,34 @@ return new Promise((resolve, reject) => {
   GareArriverSelectInfo : boolean = false;
   uicCodeDepart : string = '';
   uicCodeArriver : string = '';
+  searchPage : boolean = true;
+  listeTrain : boolean = false;
+  listeOfTrain : any;
+
+
+
+  // recuperation des données de l'api
+
   
 
   onSubmit() {
+  this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver);
   this.search.depart = this.search.depart;
+ 
+  setTimeout(() => {
+  this.listeOfTrain = this.dataService.apiResponse.journeys;
+  console.log(this.listeOfTrain);
+  this.searchPage = false;
+  this.listeTrain = true;
 
-  console.log(this.search.depart +' '+ this.search.arrivee +' '+ this.search.date +' '+ this.search.heureDepart);
-  console.log(this.uicCodeDepart +' '+ this.uicCodeArriver);
+  }, 300);
+ 
 
 
 }
 
-
   regions :{
+    [x: string]: any;
     gare_alias_libelle_noncontraint: string;
     fields : Fields
   }[] = [];
@@ -89,25 +96,27 @@ return new Promise((resolve, reject) => {
   }
 
 
-  // recherche de gare de départ par nom 
+  // recherche de gare de départ par nom
 
- 
+
 
   searchGareDepart() {
 
    this.resultOfTrainSearchDepart = [];
-  
-    if(this.search.depart !== '') {  
+
+    if(this.search.depart !== '') {
      this.GareDepartSelect = true;
     this.search.depart = this.search.depart.toLowerCase();
     for (let i = 0; i < this.regions.length-1; i++) {
-      if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart)) {
+      if ( normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart) && this.regions[i]['segmentdrg_libelle'] === "a") {
         this.resultOfTrainSearchDepart.push(this.regions[i]);
-        
        
-      
+        
+
+
+
         }
-    
+
     }
     }   else {
       this.GareDepartSelect = false;
@@ -120,26 +129,27 @@ return new Promise((resolve, reject) => {
 
   searchGareArriver() {
 
-    
-     if(this.search.arrivee !== '') {  
+
+    this.resultOfTrainSearchArriver = [];
+     if(this.search.arrivee !== '') {
       this.GareArriverSelectInfo = true;
-      
+
       this.search.arrivee = this.search.arrivee.toLowerCase();
      for (let i = 0; i < this.regions.length-1; i++) {
        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)) {
          this.resultOfTrainSearchArriver.push(this.regions[i]);
-         
-        
-       
+
+
+
          }
-     
+
      }
      }   else {
-        
+
        this.arrivalStation = [];
        this.GareArriverSelectInfo = false;
      }
- 
+
    }
 
 
@@ -152,7 +162,7 @@ return new Promise((resolve, reject) => {
     this.GareDepartSelect = false;
     this.GareArriverSelect = true;
     this.resultOfTrainSearchDepart = [];
-   
+
    }
 
 
@@ -162,7 +172,7 @@ return new Promise((resolve, reject) => {
     this.resultOfTrainSearchArriver = [];
     this.GareArriverSelectInfo = false;
     this.DateSelect = true;
-    
+
    }
 
 

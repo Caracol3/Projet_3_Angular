@@ -38,6 +38,11 @@ h3 {
   margin: 15px;
   margin-left: 0px;
 }
+.signup button:hover {
+    transform: scale(1.08);
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
 .button-text {
   font-weight: 300;
@@ -45,17 +50,21 @@ h3 {
 
 .form-title {
   font-size: 1.5em;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: #808080;
 }
 
 input {
-  border: none;
   height: 30px;
-  line-height: 30px;
+  margin-bottom: 10px;
   padding: 8px 15px;
   width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color:#9a9494;
+  box-shadow: 0 0 2px #5b93ad;
 }
+
 
 .input-top {
   background-image: url(/assets/profil.png);
@@ -63,10 +72,7 @@ input {
   background-repeat: no-repeat;
   background-size: 15px 15px;
   padding-left: 40px;
-  margin-bottom: 0px;
-  border-radius: 15px 15px 0 0;
-  background-color: white;
-  border-bottom: 1px solid #ccc;
+
 }
 
 #firstname,
@@ -84,9 +90,6 @@ input {
   background-repeat: no-repeat;
   background-size: 15px 15px;
   padding-left: 40px;
-  margin-bottom: 0px;
-  background-color: white;
-  border-bottom: 1px solid #ccc;
 
 }
 
@@ -96,8 +99,7 @@ input {
   background-repeat: no-repeat;
   background-size: 15px 15px;
   padding-left: 40px;
-  background-color: white;
-  border-bottom: 1px solid #ccc;
+
 
 
 }
@@ -108,9 +110,6 @@ input {
   background-repeat: no-repeat;
   background-size: 15px 15px;
   padding-left: 40px;
-  border-radius: 0 0 10px 10px;
-  background-color: white;
-  margin-bottom: 15px;
 }
 
 .desktop {
