@@ -231,7 +231,7 @@
       <div class="search-barre">
 
           <div class="input-container">
-            <input class="gare-dep-desktop"
+            <input class="gare-desktop"
               type="text"
               id="depart"
               name="depart"
@@ -256,30 +256,31 @@
           </div>
         </div>
         <div class="input-container">
-          <input
-            class="gare-arr-desktop"
+          <input class="gare-desktop"
             type="text"
             id="arrivee"
-            name="arrivée"
+            name="arrivee"
             placeholder="Gare d'arrivée"
             [(ngModel)]="search.arrivee"
             required
             (keyup)="searchGareArriver()"
           />
-          <label for="arrivee" class="input-label">Arrivée :</label>
-        </div>
+          <label for="depart" class="input-label">Arrivée :</label>
+
+
         <div class="gareResult-desktop" *ngIf="GareArriverSelectInfo">
           <p
-            *ngFor="
-              let gareOfArriver of resultOfTrainSearchArriver;
-              let i = index
-            "
+          *ngFor="
+          let gareOfArriver of resultOfTrainSearchArriver;
+          let i = index
+        "
             (click)="selectGareArriver(i)"
           >
             {{ gareOfArriver.gare_alias_libelle_noncontraint }}
           </p>
         </div>
-        <div class="input-container">
+      </div>
+            <div class="input-container">
         <input
           class="date-desktop"
           type="date"

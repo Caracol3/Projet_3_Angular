@@ -131,7 +131,7 @@ h3 {
     width: 100%;
     height: 45px;
     margin-top: 0;
-      }
+  }
 
   .form-desktop {
     display: flex;
@@ -143,40 +143,36 @@ h3 {
   }
 
 
-  .gare-dep-desktop {
-    overflow:   auto;
+  .gare-desktop {
+    overflow: auto;
     height: 100%;
-    border: none;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     border: none;
     border-right: 0.2px solid #b4afaf;
 
-     }
-  .gare-arr-desktop {
-    height: 100%;
-    border: none;
-    border-right: 0.2px solid #b4afaf;
-     }
+  }
 
 
   .input-container {
     position: relative;
 
-  #depart{
+
+    #depart {
       padding-left: 65px;
-         }
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
 
-  #arrivee{
+    #arrivee {
       padding-left: 68px;
-         }
+    }
 
-  #date{
+    #date {
       padding-left: 50px;
-         }
-  #time{
+    }
+
+    #time {
       padding-left: 55px;
-         }
+    }
 
   }
 
@@ -191,40 +187,61 @@ h3 {
 
   }
 
-  .gareResult-desktop{
-   width: 70%;
-   height: 100px;
-   overflow: auto;
-   background-color: white;
-   border-radius: 10px;
-   box-shadow: 0 2px 0 1px #a2a2a2;
-   border: none;
+  .gareResult-desktop {
+    position: absolute;
+    left: 5px;
+    top: 50px;
+    height: 100px;
+    width: 220px;
+    overflow: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 0 1px #a2a2a2;
+    border: none;
+    font-size: 1.1em;
 
+
+  }
+
+  .gareResult-desktop-arr {
+    position: absolute;
+    left: 350px;
+    top: 227px;
+    height: 100px;
+    width: 220px;
+    overflow: auto;
+    background-color: rgb(213, 44, 44);
+    border-radius: 10px;
+    box-shadow: 0 2px 0 1px #a2a2a2;
+    border: none;
+    font-size: 1.1em;
   }
 
 
 
-.button-text-desktop{
-border-radius: 0px 15px 15px 0px;
-background: var(--Contraste, #8699DA);
-height: 100%;
-color: white;
-width: 180px;
-border: none;
-}
-.date-desktop{
-  border: none;
-  border-right: 0.2px solid #b4afaf;
-  width:160px;
-  height: 100%;
-  text-align: center;
-}
-.heure-desktop{
-border: none;
-width: 110px;
-height: 100%;
-text-align: center;
+  .button-text-desktop {
+    border-radius: 0px 15px 15px 0px;
+    background: var(--Contraste, #8699DA);
+    height: 100%;
+    color: white;
+    width: 180px;
+    border: none;
+  }
 
-}
+  .date-desktop {
+    border: none;
+    border-right: 0.2px solid #b4afaf;
+    width: 160px;
+    height: 100%;
+    text-align: center;
+  }
+
+  .heure-desktop {
+    border: none;
+    width: 110px;
+    height: 100%;
+    text-align: center;
+
+  }
 
 }
