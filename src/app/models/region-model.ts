@@ -4,5 +4,6 @@ export class Fields {
         public commune_libellemin : string,
         public uic_code : string,
         public adresse_cp : string,
+        public segmentdrg_libelle : string,
     ){}
 }
