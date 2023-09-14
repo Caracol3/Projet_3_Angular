@@ -57,15 +57,14 @@
     <div *ngFor="let train of listeOfTrain">
       
       <div class="affichagedestrain">
-        <div *ngFor="let depart of listeOfTrain2.journeys[0].sections[0].from | keyvalue"><p *ngIf="depart.key == 'name'">  train au départ de :  {{depart.value}} </p> </div>
-        <p> heure de départ : {{train.departure_date_time}}</p>
-        <div *ngFor="let depart of listeOfTrain2.journeys[0].sections[2].to | keyvalue"><p *ngIf="depart.key == 'name'">  train à destination de :  {{depart.value}} </p> </div>
-        <p> heure d'arrivée : {{train.arrival_date_time}}</p>
-        <p> Numéro de train : </p>
-
+        <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
+        <p> A :<b> {{train.sections[0].departure_date_time}}</b> </p>
+        <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
+        <p>Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
+        <p> Numéro de train : <b>{{train.sections[1].display_informations.trip_short_name}}</b> </p>
+        
     </div>
   
-    
     </div>
 
   </div>
