@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
+  apiResponse: any;
 
   constructor( private http : HttpClient) { }
 
@@ -36,16 +37,14 @@ export class DataService {
 
   getDataFromApi(uicDepart : string , uicArriver : string) {
     
-    const url  = `https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area:SNCF:87271007&to=stop_area:SNCF:87756056`;
+    const url  = `https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area:SNCF:${uicDepart}&to=stop_area:SNCF:${uicArriver}`;
     const headers = new HttpHeaders({
       'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
     });
-    
-       
-  
-    return this.http.get(url, {headers}).subscribe((response : any) => {
-      console.log(url);
-      console.log(response);
+      this.http.get(url, {headers}).subscribe((response : any) => {
+        this.apiResponse = response;
+        console.log(url);
+      return this.apiResponse;
     });
   
   }

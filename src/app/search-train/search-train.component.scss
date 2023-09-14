@@ -1,3 +1,7 @@
+.container-desktop {
+  display: none;
+}
+
 h3 {
   font-weight: 300;
   margin: 10px;
@@ -6,6 +10,7 @@ h3 {
   color: #808080;
 
 }
+
 .container {
   position: relative;
   height: 70%;
@@ -19,10 +24,12 @@ h3 {
   text-align: center;
   margin: auto;
 }
-.form{
-  margin-top: 20% ;
+
+.form {
+  margin-top: 20%;
 }
-button {
+
+.button-text {
   width: 60%;
   height: 35px;
   border-radius: 15px;
@@ -34,7 +41,7 @@ button {
   font-weight: 300;
 }
 
-.gare{
+.gare {
   border: none;
   height: 50px;
   line-height: 30px;
@@ -46,13 +53,14 @@ button {
   box-shadow: 0 2px 0 1px #a2a2a2;
 }
 
-.horaire{
+.horaire {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-top: 15px;
 
 }
+
 .date {
   padding: 6px 12px;
   border-radius: 20px;
@@ -62,7 +70,8 @@ button {
   color: rgb(131, 130, 130);
   box-shadow: 0.5px 2px 0 1px #979696;
 }
-.heure{
+
+.heure {
   padding: 6px 12px;
   border-radius: 20px;
   border: 1px solid #ccc;
@@ -70,17 +79,134 @@ button {
   box-shadow: 0 2px 0 1px #dadada;
 }
 
-.gareResult{
+.gareResult {
   width: 90%;
   height: 100px;
   overflow: auto;
-  margin : auto;  
+  margin: auto;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 2px 0 1px #a2a2a2;
   border: none;
-  
+
 }
 
+@media all and (min-width: 748px) {
+
+  .container {
+    display: none;
+  }
+
+  .container-desktop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+  }
 
 
+  .form-title-desktop {
+    background-color: rgb(55, 90, 107);
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding-left: 10%;
+
+    h1 {
+      margin-top: 50px;
+      color: whitesmoke;
+      font-weight: 800;
+      font-size: 1.5em;
+    }
+  }
+
+  .search-barre {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 45px;
+    margin-top: 0;
+      }
+
+  .form-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+  }
+
+
+  .gare-dep-desktop {
+    height: 100%;
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    border-right: 0.2px solid #b4afaf;
+
+     }
+  .gare-arr-desktop {
+    height: 100%;
+    border: none;
+    border-right: 0.2px solid #b4afaf;
+     }
+
+
+  .input-container {
+    position: relative;
+
+    input{
+      padding-left: 65px;
+    }
+  }
+
+  .input-label-dep {
+    position: absolute;
+    left: 5px; // Ajustez la position en fonction de votre mise en page
+    top: 50%;
+    transform: translateY(-55%);
+    pointer-events: none; // Pour que l'étiquette ne soit pas cliquable
+    color: #333; // Couleur du texte "Départ"
+
+  }
+
+  .input-label-arr {
+    position: absolute;
+    left: 5px; // Ajustez la position en fonction de votre mise en page
+    top: 50%;
+    transform: translateY(-55%);
+    pointer-events: none; // Pour que l'étiquette ne soit pas cliquable
+    color: #333; // Couleur du texte "Départ"
+
+  }
+
+
+
+.button-text-desktop{
+border-radius: 0px 15px 15px 0px;
+background: var(--Contraste, #8699DA);
+height: 100%;
+color: white;
+width: 180px;
+border: none;
+}
+.date-desktop{
+  border: none;
+  border-right: 0.2px solid #b4afaf;
+  width:170px;
+  text-align: center;
+}
+.heure-desktop{
+border: none;
+width: 50px;
+text-align: center;
+}
+}
