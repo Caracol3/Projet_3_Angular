@@ -5,7 +5,7 @@
   <div class="user-infos">
     <div class="avatar-and-identity">
       <div class="avatar">
-        <img [src]="user.avatar" alt="Avatar de l'utilisateur" />
+        <img *ngIf="avatar !== ''" src="assets/Avatar/{{avatar}}" alt="Avatar de l'utilisateur" />
         <button (click)="openAvatarModal()">Modifier</button>
 
         <!-- La modale -->
@@ -13,10 +13,9 @@
           <h3>Sélectionnez un avatar :</h3>
           <div class="avatar-options">
             <div *ngFor="let avatar of avatarOptions">
-              <img [src]="avatar" alt="Avatar" (click)="selectAvatar(avatar)" />
+              <img [src]="'assets/Avatar/'+avatar" alt="Avatar" (click)="selectAvatar(avatar)" />
             </div>
           </div>
-          <button (click)="closeAvatarModal()">Fermer</button>
         </div>
       </div>
       <div class="identity">
@@ -39,18 +38,22 @@
       <button
         *ngFor="let color of colorOptions"
         (click)="saveSelectedColor(color)"
-        [style.background-color]="color"
+        [style.background-color]="'#'+color"
       ></button>
     </div>
   </div>
 
   <div class="toggle-switch">
     <span>
-      <img src="votre-icone-info.png" alt="Icône d'information" title="En cochant cette case, vous acceptez qu'un autre utilisateur de l'application puisse vous contacter en message privé" />
+      <img src="/assets/info.png" class="info" alt="Icône d'information" title="En cochant cette case, vous acceptez qu'un autre utilisateur de l'application puisse vous contacter en message privé" />
     </span>
     <span>Disponible MP: </span>
-    <input type="checkbox" id="toggle" class="toggle-input" />
+    <input type="checkbox" id="toggle" class="toggle-input" [(ngModel)]="user.is_available" (click)="dispoMP()"/>
     <label for="toggle" class="toggle-label"></label>
+  </div>
+
+  <div>
+    <button  class="button-text" id="logout" type="submit" (click)="logout()" routerLink="/login">Logout</button>
   </div>
 
   <!-- <div>
