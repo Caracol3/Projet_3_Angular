@@ -17,6 +17,9 @@ import { SearchTrainComponent } from './search-train/search-train.component'; //
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './config/jwtInterceptor';
 import { AdminComponent } from './admin/admin.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 FormsModule
 
@@ -39,7 +42,8 @@ FormsModule
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocketIoModule.forRoot(config),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,

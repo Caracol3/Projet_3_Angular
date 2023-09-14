@@ -1,1 +1,56 @@
-<p>chat works!</p>
+<!-- chat.component.html -->
+
+<p>Chat works!</p>
+
+<div id="username-page">
+  <div class="username-page-container">
+    <h1 class="title">Ecris ton pseudo pour entrer dans la ChatRoom</h1>
+    <form id="usernameForm" name="usernameForm" (ngSubmit)="onSubmitUsername()">
+      <div class="form-group">
+        <input
+          type="text"
+          id="name"
+          name="username"
+          placeholder="Username"
+          autocomplete="off"
+          class="formControl"
+          [(ngModel)]="username"
+        />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="accent username-submit">Entrer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="chat-page" class="">
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>ChatRoom</h2>
+    </div>
+    <div class="connecting">Connexion en cours...</div>
+    <ul id="messageArea">
+      <!-- Affichage des messages -->
+      <li *ngFor="let message of messages">{{ message }}</li>
+    </ul>
+
+    <form id="messageForm" name="messageForm" (ngSubmit)="onSubmitMessage()">
+      <div class="form-group">
+        <div class="input-group clearfix">
+          <input
+            type="text"
+            id="message"
+            name="message"
+            placeholder="Message"
+            autocomplete="off"
+            class="formControl"
+            [(ngModel)]="newMessage"
+          />
+        <!-- message que l'on va envoyer -->
+          <button type="submit" class="primary">Envoyer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
