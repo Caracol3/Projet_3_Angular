@@ -1,12 +1,10 @@
 <div class="container">
-<div class="desktop">
-  <h3>La plateforme pour trouver vos compagnons de voyage</h3>
-  <img src="assets/desktop_img.png" alt="assis dans un train">
-</div>
+  <div class="desktop">
+    <h3>La plateforme pour trouver vos compagnons de voyage</h3>
+    <img src="assets/desktop_img.png" alt="assis dans un train" />
+  </div>
 
   <div class="signup">
-
-
     <h3 class="form-title">Création du compte</h3>
 
     <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="form-champs">
@@ -51,7 +49,7 @@
 
       <div>
         <input
-          class="input-no-border input-no-border"
+          class="input-no-border"
           type="date"
           id="birthday"
           name="birthday"
@@ -64,7 +62,7 @@
 
       <div>
         <input
-          class="input-no-border input-no-border"
+          class="input-no-border"
           type="email"
           id="email"
           name="email"
@@ -78,15 +76,6 @@
       <div *ngIf="email.invalid && email.touched" class="error-message">
         Le champ est invalide.
       </div>
-      <!-- ci-dessous création de la div qui va gérer les erreurs de validation
-  affichage d'un message si le mail n'est pas rempli -->
-      <!--<div *ngIf="email.errors">
-        <span *ngIf="email.errors?.['required']">L'email est requis</span>
-      <span *ngIf="email.errors?.['email']"
-          >L'adresse email doit être valide</span -->
-
-      <!-- </div> -->
-
       <div>
         <input
           class="input-key"
@@ -107,7 +96,7 @@
           type="password"
           id="confirmPassword"
           name="confirmPassword"
-          placeholder="Confirmer mot de passe"
+          placeholder="Confirmer Mdp"
           [(ngModel)]="confirmPassword"
           required
           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!])[A-Za-z\d@$!]{7,}$"
@@ -129,10 +118,8 @@
       </div>
 
       <div>
-        <button  class="button-text" type="submit">Créer un compte</button>
+        <button class="button-text" type="submit">Créer un compte</button>
       </div>
     </form>
   </div>
 </div>
-
-

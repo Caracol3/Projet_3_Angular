@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Search } from '../models/search';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
@@ -17,6 +17,8 @@ export class SearchTrainComponent implements OnInit {
   search: Search = new Search('', '', new Date(), '');
   user: any;
   userName: string = '';
+  isMobile: boolean = false;
+  isDesktop: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -24,6 +26,8 @@ export class SearchTrainComponent implements OnInit {
     private dataService: DataService,
   ) {}
 
+
+ 
   ngOnInit(): void {
     this.getRegions();
     this.user = this.accountService.getUserData(1);

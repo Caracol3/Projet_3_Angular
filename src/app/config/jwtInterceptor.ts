@@ -25,6 +25,11 @@ export class JwtInterceptor implements HttpInterceptor {
     }
 
 
+  if (req.url.startsWith("https://api.sncf.com")){
+      return next.handle(req);
+    }
+
+    
     if (token) { // si le token existe, on le passe dans le header de la requête
       const cloned = req.clone({
         setHeaders: {
