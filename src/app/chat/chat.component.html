@@ -1,1 +1,8 @@
-<p>chat works!</p>
+
+    
+<div *ngFor="let msg of messages">
+   <p> {{ msg }} </p>
+   <p>msg envoyé par : <b> {{user.username}} </b></p>
+  </div>
+  <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
+  <button (click)="sendMessage()">Envoyer</button>
