@@ -1,21 +1,93 @@
-.container {
+.container{
+  display: none
+}
+
+.container-desktop {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding-top: 2%;
 }
 
-.logo img {
+
+.logo-desktop img {
   width: 150px;
   height: 110px;
   margin-bottom: 20px;
 }
 
-.nav-container {
+#burger-toggle{
   display: none;
 }
 
+.burger-icon {
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 2%;
+}
+
+.line {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  margin: 6px 0;
+}
+
+.nav-desktop {
+  list-style-type: none;
+  padding: 0;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #fff;
+  display: none;
+  flex-direction: column;
+}
+
+.nav-desktop li {
+  padding: 10px;
+}
+
+.nav-desktop li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#burger-toggle:checked + .burger-icon + .menu {
+  display: flex;
+}
+
+.nav-desktop.menu {
+  transform: scale(1); /* Échelle normale par défaut */
+  transform-origin: center; /* Centre la liste */
+  display: none;
+}
+
+.nav-desktop.menu {
+  transform: scale(1); /* Agrandi la liste lorsque isMenuOpen est vrai */
+  display: flex; /* Affiche le menu */
+  z-index: 2;
+  top: 1%;
+  left: 75%;
+  right: auto;
+  background-color:#365b6d;
+}
+
+.nav-link-desktop a {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+
 @media screen and (min-width: 748px) {
+
+  .container-desktop{
+    display:none;
+  }
+
   .container {
     display: flex;
     flex-direction: row;
@@ -24,6 +96,7 @@
     margin-bottom: 0px;
     padding-top: 0;
     height: 80px;
+    align-items: center;
   }
 
   .logo img {
@@ -84,5 +157,5 @@
     color: white;
     border-radius: 5px;
   }
-  
+
 }

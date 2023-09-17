@@ -8,14 +8,54 @@
         <a class="nav-link" id="nav-home" routerLink="/search-train">Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="nav-account" routerLink="/account">Mon compte</a>
+        <a class="nav-link" id="nav-account" routerLink="/account"
+          >Mon compte</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="nav-contact" routerLink="/contact">Nous contacter</a>
+        <a class="nav-link" id="nav-contact" routerLink="/contact"
+          >Nous contacter</a
+        >
       </li>
     </ul>
   </div>
 </div>
 
-
-<!-- <img src="/assets/Header/home.png" alt="accueil"> -->
+<div class="container-desktop">
+  <div class="logo-desktop">
+    <img
+      src="/assets/logo.png"
+      alt="logo train companion"
+      (click)="closeMenu()"
+    />
+  </div>
+  <div  class="burger-icon" (click)="toggleMenu()">
+    <input type="checkbox" id="burger-toggle" />
+    <label for="burger-toggle" >
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </label>
+      <ul class="nav-desktop menu" *ngIf="isMenuOpen">
+        <li class="nav-item-desktop">
+          <a
+            class="nav-link-desktop"
+            id="nav-home-desktop"
+            routerLink="/search-train"
+            (click)="closeMenu(); $event.stopPropagation()"
+            >Accueil</a
+          >
+        </li>
+        <li class="nav-item-desktop">
+          <a class="nav-link-desktop" id="nav-account" routerLink="/account" (click)="closeMenu(); $event.stopPropagation()"
+            >Mon compte</a
+          >
+        </li>
+        <li class="nav-item-desktop">
+          <a class="nav-link-desktop" id="nav-contact" routerLink="/contact" (click)="closeMenu(); $event.stopPropagation()"
+            >Nous contacter</a
+          >
+        </li>
+      </ul>
+  </div>
+</div>
