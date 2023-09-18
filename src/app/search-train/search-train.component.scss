@@ -200,8 +200,13 @@ h3 {
     border: none;
     font-size: 1.1em;
 
-
   }
+  .gareResult-selection-desktop:hover{
+    background-color: #8699DA;
+    color: white;
+  }
+
+
 
   .button-text-desktop {
     border-radius: 0px 15px 15px 0px;
@@ -227,5 +232,47 @@ h3 {
     text-align: center;
 
   }
+
+
+
+ .bottom-desktop{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+
+ }
+
+ .message-desktop{
+  width: 100%;
+  font-size: 28px;
+  font-weight: 700;
+  color:#365B6D ;
+  margin-top: 15px;
+  text-align: center;
+ }
+  .image-search{
+    width: 556px;
+    height: 321px;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 2%;
+  }
+.text-search-desktop{
+  display: flex;
+  width: 80%;
+  margin: auto;
+  text-align:flex-start;
+  font-size: 1.2em;
+  font-weight: 300;
+  color: #808080;
+  margin-top: 15px;
+
+}
+
+.text-desktop {
+  margin-top: 2%;
+  width: 50%;
+}
 
 }
