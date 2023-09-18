@@ -1,0 +1,29 @@
+.chat{
+
+background-color: white;
+width: 80%;
+margin: auto;
+height: 400px;
+overflow-y : auto;
+white-space: nowrap;
+
+
+}
+
+
+.sender{
+    display: block;
+    text-align: right;
+    background-color: green;
+    border: solid 1px black;
+}
+
+
+.receiver{
+    background-color: whitesmoke;
+    display: block;
+    background-color: blue;
+    text-align: left;
+}
+
+

@@ -1,8 +1,22 @@
 
-    
-<div *ngFor="let msg of messages">
-   <p> {{ msg }} </p>
-   <p>msg envoyé par : <b> {{user.username}} </b></p>
+<input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
+<button (click)="sendMessage()">Envoyer</button> 
+
+<div  class="chat">
+
+<div *ngFor="let msg of messages" class="contenairchat">
+   <div *ngIf="msg.message !== '' ">
+      <div class="sender" *ngIf="msg.user.username === user.username">
+      <p> {{ msg.message }} </p>
+      <p>msg envoyé par : <b> {{msg.user.username}} </b></p>
+   </div>
+   <div class="receiver" *ngIf="msg.user.username !== user.username">
+      <p> {{ msg.message }} </p>
+      <p>msg envoyé par : <b> {{msg.user.username}} </b></p>
+
+   </div>
+   </div>
+   
   </div>
-  <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
-  <button (click)="sendMessage()">Envoyer</button>
+  
+</div>
