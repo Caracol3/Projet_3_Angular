@@ -58,6 +58,8 @@ return new Promise((resolve, reject) => {
   searchPage : boolean = true;
   listeTrain : boolean = false;
   listeOfTrain : any;
+  showTextDesktop: boolean = true;
+
 
 
 
@@ -73,7 +75,9 @@ return new Promise((resolve, reject) => {
   this.listeOfTrain = this.dataService.apiResponse.journeys;
   console.log(this.listeOfTrain);
   this.searchPage = false;
+  this.showTextDesktop = false;
   this.listeTrain = true;
+
 
   }, 300);
 
@@ -187,6 +191,11 @@ return new Promise((resolve, reject) => {
 
 
 }
+
+getInfoTrain(index : number){
+console.log(this.listeOfTrain[index].sections[0].departure_date_time + "  " + this.listeOfTrain[index].sections[1].display_informations.trip_short_name);
+}
+
 
   logout() {
     this.authService.logout();
