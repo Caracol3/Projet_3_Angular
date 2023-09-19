@@ -301,7 +301,7 @@
 
 
 
-    <div class="message-desktop">
+    <div class="message-desktop" *ngIf="showTextDesktop">
     <p>
       Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin
       de passer le temps ?
@@ -319,21 +319,20 @@
 </div>
 <div class="containerTrainInfo" *ngIf="listeTrain">
 
-  <h1>Trouvez votre trajet</h1>
-  <div class="listeDesTains-desktop">
+  <h1>Choississez votre trajet</h1>
+  <div class="listeDesTrains-desktop">
     <div *ngFor="let train of listeOfTrain; let i = index">
-      <div class="affichagedestrains-desktop"(click)="getInfoTrain(i)">
-        <div class="trainCard">
-        <div>
+        <div class="trainCard"(click)="getInfoTrain(i)">
+        <div class="trainInfo">
           <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
-          <p> A :<b> {{train.sections[0].departure_date_time}}</b> </p>
+          <p> A :<b> {{formatDateAndTime(train.sections[0].departure_date_time)}}</b> </p>
           <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
           <p>Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
       </div>
-      <div>
+      <div class="train">
         <p> Numéro de train :<br> <b class="numeroTrain">{{train.sections[1].display_informations.trip_short_name}}</b> </p>
        </div>
-      </div>
+
     </div>
     </div>
  </div>
