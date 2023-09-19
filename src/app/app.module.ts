@@ -20,6 +20,7 @@ import { AdminComponent } from './admin/admin.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { MainChatComponent } from './main-chat/main-chat.component';
 import { PrivateChatComponent } from './private-chat/private-chat.component';
+import { ChatGlobalComponent } from './chat-global/chat-global.component';
 
 FormsModule
 
@@ -39,6 +40,7 @@ FormsModule
     SideBarComponent,
     MainChatComponent,
     PrivateChatComponent,
+    ChatGlobalComponent,
 
   ],
   imports: [

@@ -1,11 +1,11 @@
 
 .containerchat{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
- 
-}
-
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+   
+  }
+  
 .containersidebar{
     width: 30%;
     height: 400px;
@@ -21,57 +21,4 @@
     align-items: center;
 }
 
-
-
-.sendmessage{
-    width: 90%;
-    display: flex;   
-    justify-content: flex-end;
-    
-}
-
-.sendmessage input{
-    width: 80%;
-    
-}
-
-.chat{
-
-background-color: white;
-width: 90%;
-margin: auto;
-height: 400px;
-overflow-y : auto;
-white-space: nowrap;
-
-
-}
-
-.chat img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 10px;
-}
-
-
-.sender{
-    display: block;
-    text-align: right;
-    background-color: green;
-    border: solid 1px black;
-}
-
-
-.receiver{
-    background-color: whitesmoke;
-    display: block;
-    background-color: blue;
-    text-align: left;
-}
-
-
-#date{
-    text-align: center;
-}
 

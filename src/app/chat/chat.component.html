@@ -7,40 +7,12 @@
 
 
 <div class="containerchat">
-    
-<div class="chat">
-   <div *ngFor="let msg of messages; let i = index" class="contenairchat">
-     <div *ngIf="msg.message !== '' ">
-       <p *ngIf="i === 0 || msg.date !== messages[i - 1].date" id="date">{{ msg.date }}</p>
-       <div class="sender" *ngIf="msg.user_id.username === user.username">
-         <p>{{ msg.message }}</p>
-         <p>
-           <img src="assets/Avatar/{{msg.user_id.avatar}}" alt="">
-           msg envoyé par : <b>{{msg.user_id.username}} à {{msg.heure}}</b>
-         </p>
-       </div>
-       <div class="receiver" *ngIf="msg.user_id.username !== user.username">
-         <p>{{ msg.message }}</p>
-         <p>
-           <img src="assets/Avatar/{{msg.user_id.avatar}}" alt="">
-           msg envoyé par : <b>{{msg.user_id.username}}  à {{msg.heure}}</b>
-         </p>
-       </div>
-     </div>
-   </div>
-   
- </div>
- 
- <div class="sendmessage">
 
-
-  <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
-  <button (click)="sendMessage()">Envoyer</button> 
+<app-chat-global *ngIf="globalChat"></app-chat-global>
+<app-main-chat *ngIf="mainChat"></app-main-chat>
+<app-private-chat *ngIf="privateChat"></app-private-chat>
 
 </div>
- 
-</div>
-
 
 
 </div>
