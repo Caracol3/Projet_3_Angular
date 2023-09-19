@@ -1,8 +1,9 @@
-
-
+<div class="container">
+<app-side-bar class="sideBar"></app-side-bar>
 <div *ngFor="let msg of messages | keyvalue">
    <p> {{ msg.value }} </p>
    <p>msg envoyé par : <b> {{msg.value}} </b></p>
   </div>
   <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
   <button (click)="sendMessage()">Envoyer</button>
+</div>
