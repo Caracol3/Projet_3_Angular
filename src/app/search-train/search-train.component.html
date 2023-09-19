@@ -1,3 +1,5 @@
+<div class="mobilecontainer">
+
 <div class="container" *ngIf="searchPage">
 
     <h3 class="form-title">Votre trajet</h3>
@@ -99,10 +101,11 @@
 
 
 
+</div>
 
 
 
-<div class="containerTrainInfo" >
+<div class="containerTrainInfo" *ngIf="listeTrain" >
   <h1>Trouvez votre trajet</h1>
   <div class="listeDesTains">
     <div *ngFor="let train of listeOfTrain">
@@ -119,16 +122,9 @@
 </div>
 
 
+
+
 </div>
-
-
-
-
-
-
-
-
-
 
 
 
