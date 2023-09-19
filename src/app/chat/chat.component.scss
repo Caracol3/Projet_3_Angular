@@ -1,5 +1,47 @@
+
 .container{
   display: flex;
   flex-direction: row;
  
 }
+
+.chat{
+
+background-color: white;
+width: 80%;
+margin: auto;
+height: 400px;
+overflow-y : auto;
+white-space: nowrap;
+
+
+}
+
+.chat img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+
+.sender{
+    display: block;
+    text-align: right;
+    background-color: green;
+    border: solid 1px black;
+}
+
+
+.receiver{
+    background-color: whitesmoke;
+    display: block;
+    background-color: blue;
+    text-align: left;
+}
+
+
+#date{
+    text-align: center;
+}
+
