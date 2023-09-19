@@ -10,14 +10,26 @@ import { HttpClient } from '@angular/common/http';
 export class ChatComponent implements OnInit  {
 
   message: string = '';
+
   messages: any[] = [];
+
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
 
 
   constructor(private accountService : AccountServiceService, private http : HttpClient) { }
 
- 
+
+getMessages(){
+  this.http
+      .get<any>(`http://localhost:8080/all-messages`)
+      .subscribe((data) => {
+        this.messages = data;
+      });
+
+}
+
+
 
 
   
@@ -30,6 +42,7 @@ export class ChatComponent implements OnInit  {
       .get<any>(`http://localhost:8080/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
+
         
        
       });
@@ -62,6 +75,7 @@ export class ChatComponent implements OnInit  {
 
 
  sendMessage(): void {
+
    
      // Effacer le champ de saisie après l'envoi du message
 
@@ -99,6 +113,6 @@ export class ChatComponent implements OnInit  {
 
 
  }
-  
+
 
 
