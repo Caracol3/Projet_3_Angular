@@ -14,9 +14,13 @@ export class ChatComponent implements OnInit  {
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
 
+
   constructor(private accountService : AccountServiceService, private http : HttpClient) { }
 
  
+
+
+  
 
 
 
@@ -32,7 +36,7 @@ export class ChatComponent implements OnInit  {
 
       setInterval(() => {
         this.refreshMessages();
-      }, 500);  
+      }, 500000000000);  
 
 
 
@@ -42,8 +46,9 @@ export class ChatComponent implements OnInit  {
     refreshMessages(): void {
 
       this.http
-      .get<any>(`http://localhost:8080/all-messages`)
+      .get<any>(`http://localhost:8080/all-messages-global`)
       .subscribe((data) => {
+        console.log(data);
         this.messages = data;
        
       });
@@ -62,14 +67,14 @@ export class ChatComponent implements OnInit  {
 
     let infoMessage = {
       message: this.message,
-      roomName : "room1",
+      date : new Date().toLocaleDateString(),
       heure : new Date().toLocaleTimeString(),
     }
 
 
     this.http
     .post<any>(
-      `http://localhost:8080/send-message/${this.user_id}`,
+      `http://localhost:8080/send-message-global/${this.user_id}`,
       infoMessage,
     )
     .subscribe(
