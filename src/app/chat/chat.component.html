@@ -1,12 +1,13 @@
-
 <div class="container">
-<app-side-bar class="sideBar"></app-side-bar>
+
+          <div class="containersidebar">
+              <app-side-bar></app-side-bar>
+
+          </div>
 
 
-
-
-
-
+<div class="containerchat">
+    
 <div class="chat">
    <div *ngFor="let msg of messages; let i = index" class="contenairchat">
      <div *ngIf="msg.message !== '' ">
@@ -27,14 +28,19 @@
        </div>
      </div>
    </div>
+   
  </div>
  
-
  <div class="sendmessage">
 
 
-   <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
-   <button (click)="sendMessage()">Envoyer</button> 
+  <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
+  <button (click)="sendMessage()">Envoyer</button> 
 
- </div>
+</div>
+ 
+</div>
+
+
+
 </div>

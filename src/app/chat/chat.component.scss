@@ -1,14 +1,44 @@
 
-.container{
+.containerchat{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100%;
  
+}
+
+.containersidebar{
+    width: 30%;
+    height: 400px;
+    text-align: center;
+    background-color: white;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.sendmessage{
+    width: 90%;
+    display: flex;   
+    justify-content: flex-end;
+    
+}
+
+.sendmessage input{
+    width: 80%;
+    
 }
 
 .chat{
 
 background-color: white;
-width: 80%;
+width: 90%;
 margin: auto;
 height: 400px;
 overflow-y : auto;
