@@ -102,30 +102,19 @@
 
 
 
-<div class="containerTrainInfo" *ngIf="listeTrain">
-
+<div class="containerTrainInfo" >
   <h1>Trouvez votre trajet</h1>
-
-
   <div class="listeDesTains">
-
     <div *ngFor="let train of listeOfTrain">
-
       <div class="affichagedestrain">
         <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
         <p> A :<b> {{train.sections[0].departure_date_time}}</b> </p>
         <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
         <p>Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
         <p> Numéro de train : <b>{{train.sections[1].display_informations.trip_short_name}}</b> </p>
-
     </div>
-
     </div>
-
   </div>
-
-
-
 
 </div>
 
@@ -244,7 +233,7 @@
 
 
           <div class="gareResult-desktop" *ngIf="GareDepartSelect">
-            <p class="gareResult-selection-desktop"
+            <p
               *ngFor="
                 let gareOfDeparture of resultOfTrainSearchDepart;
                 let i = index
@@ -269,7 +258,7 @@
 
 
         <div class="gareResult-desktop" *ngIf="GareArriverSelectInfo">
-          <p class="gareResult-selection-desktop"
+          <p
           *ngFor="
           let gareOfArriver of resultOfTrainSearchArriver;
           let i = index
@@ -312,7 +301,7 @@
 
     </form>
   </div>
-</div>
+
 
 <div>
 

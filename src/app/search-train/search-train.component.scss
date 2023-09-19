@@ -90,6 +90,16 @@ h3 {
   border: none;
 
 }
+.gareResult-selection:active{
+background-color: #8699DA;
+}
+.affichagedestrain{
+    background-color: rgb(235, 22, 22);
+}
+
+.container-train-info{
+  display: block;
+}
 
 @media all and (min-width: 748px) {
 
@@ -252,8 +262,8 @@ h3 {
   text-align: center;
  }
   .image-search{
-    width: 556px;
-    height: 321px;
+    width: 536px;
+    height: 301px;
     margin: auto;
     border-radius: 10px;
     margin-top: 2%;
