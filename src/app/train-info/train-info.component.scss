@@ -7,11 +7,10 @@
   justify-content: flex-start;
   color: rgb(85, 85, 85);
 }
-
-h3 {
+.form-title{
+  text-align: center;
   margin-top: 20px;
   margin-bottom: 50px;
-  text-align: center;
 }
 
 .logo {
@@ -57,3 +56,100 @@ h3 {
   max-width: 100%;
   margin : 10px;
 }
+
+.info-train-img{
+  display: none;
+
+}
+
+@media all and (min-width: 748px) {
+
+  .form-title {
+    background-color: rgb(55, 90, 107);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin-bottom: 20px;
+
+    h3{
+    color: whitesmoke;
+    font-weight: 800;
+    font-size: 30px;
+    }
+    }
+
+
+
+.info-train-img{
+  display: flex;
+  width: 50%;
+  img{
+    width: 55%;
+    border-radius: 15%;
+    margin: auto;
+     }
+}
+.info-container{
+  background-color: whitesmoke;
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+}
+.info-content{
+  display: flex;
+   width:50%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.formTrain{
+  width: 80%;
+  background-color: whitesmoke;
+}
+
+.info-train{
+  display: flex;
+  border: none;
+  width: 100%;
+  text-align: start;
+  padding-bottom: 15px;
+  border-bottom: #ccc 1px solid;
+  color: #365B6D;
+}
+.info-trainD{
+  display: flex;
+  border: none;
+  width: 100%;
+  text-align: start;
+  padding-bottom: 15px;
+  color: #365B6D;
+}
+.info-train-titre{
+  width: 30%;
+  font-size: 1.3em;
+  font-weight: 400;
+}
+.info-reel{
+  width: 70%;
+ font-size: 1.2em;
+}
+.back{
+  text-align: start;
+  margin: auto;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  text-decoration: underline;
+  cursor: pointer;
+.p{
+  width: 50px;
+}
+}
+}
+
+
+
+
+
