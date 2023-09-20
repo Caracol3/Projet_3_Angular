@@ -97,63 +97,70 @@
         <h2>À propos de moi</h2>
       </div>
       <div class="container-desktop">
-        <div class="identity-and-color">
+        <div class="identity-and-avatar">
           <div class="identity-desktop">
-            <span class="text-desktop" id="firstname-desktop">{{user.firstname}}</span>
-            <span class="text-desktop" id="name-desktop">{{user.name}}</span>
-            <span class="text-desktop" id="username-desktop">{{user.username}}</span>
-            <span class="text-desktop" id="email-desktop">{{user.email}}</span>
-            <span class="text-desktop" id="birthday-desktop">{{user.birthday}}</span>
+            <span class="text-desktop" id="firstname-desktop">{{
+              user.firstname
+            }}</span>
+            <span class="text-desktop" id="name-desktop">{{ user.name }}</span>
+            <span class="text-desktop" id="username-desktop">{{
+              user.username
+            }}</span>
+            <span class="text-desktop" id="email-desktop">{{
+              user.email
+            }}</span>
+            <span class="text-desktop" id="birthday-desktop">{{
+              user.birthday
+            }}</span>
           </div>
-        <div class="color-and-mp">
-          <div class="color-desktop">
-            <label>Couleur du pseudo dans le chat </label>
-            <div class="color-buttons-desktop">
-              <button
-                *ngFor="let color of colorOptions"
-                (click)="saveSelectedColor(color)"
-                [style.background-color]="'#' + color"
-              ></button>
-            </div>
-          </div>
-          <div class="toggle-switch-desktop">
-            <span>
-              <img
-                src="/assets/info.png"
-                class="info-desktop"
-                alt="Icône d'information"
-                title="En cochant cette case, vous acceptez qu'un autre utilisateur de l'application puisse vous contacter en message privé"
-              />
-            </span>
-            <span>Disponible MP: </span>
-            <input
-              type="checkbox"
-              id="toggle"
-              class="toggle-input-desktop"
-              [(ngModel)]="user.is_available"
-              (click)="dispoMP()"
+          <div class="avatar-desktop-container">
+            <img
+              *ngIf="avatar !== ''"
+              src="assets/Avatar/{{ avatar }}"
+              alt="Avatar de l'utilisateur"
+              class="avatar-desktop-img"
             />
-            <label for="toggle" class="toggle-label-desktop"></label>
-          </div>
-        </div>
-        </div>
-
-        <div class="avatar-desktop-container">
-          <img
-            *ngIf="avatar !== ''"
-            src="assets/Avatar/{{ avatar }}"
-            alt="Avatar de l'utilisateur"
-            class="avatar-desktop-img"
-          />
-          <div class="avatar-list-container">
-            <div class="avatar-desktop" *ngFor="let avatar of avatarOptions">
-              <img
-                src="assets/Avatar/{{ avatar }}"
-                class="avatar-desktop-list"
-                (click)="selectAvatar(avatar)"
-              />
+            <div class="avatar-list-container">
+              <div class="avatar-desktop" *ngFor="let avatar of avatarOptions">
+                <img
+                  src="assets/Avatar/{{ avatar }}"
+                  class="avatar-desktop-list"
+                  (click)="selectAvatar(avatar)"
+                />
+              </div>
             </div>
           </div>
+        </div>
+        <div class="color-and-mp">
+            <div class="color-desktop">
+              <label>Couleur du pseudo dans le chat </label>
+              <div class="color-buttons-desktop">
+                <button
+                  *ngFor="let color of colorOptions"
+                  (click)="saveSelectedColor(color)"
+                  [style.background-color]="'#' + color"
+                ></button>
+              </div>
+            </div>
+            <div class="toggle-switch-desktop">
+              <span>
+                <img
+                  src="/assets/info.png"
+                  class="info-desktop"
+                  alt="Icône d'information"
+                  title="En cochant cette case, vous acceptez qu'un autre utilisateur de l'application puisse vous contacter en message privé"
+                />
+              </span>
+              <span>Disponible MP: </span>
+              <input
+                type="checkbox"
+                id="toggle"
+                class="toggle-input-desktop"
+                [(ngModel)]="user.is_available"
+                (click)="dispoMP()"
+              />
+              <label for="toggle" class="toggle-label-desktop"></label>
+            </div>
         </div>
 
         <div>
