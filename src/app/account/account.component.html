@@ -97,7 +97,7 @@
         <h2>À propos de moi</h2>
       </div>
       <div class="container-desktop">
-        <div class="identity-and-avatar">
+        <div class="all-infos-desktop">
           <div class="identity-desktop">
             <span class="text-desktop" id="firstname-desktop">{{
               user.firstname
@@ -113,25 +113,27 @@
               user.birthday
             }}</span>
           </div>
-          <div class="avatar-desktop-container">
-            <img
-              *ngIf="avatar !== ''"
-              src="assets/Avatar/{{ avatar }}"
-              alt="Avatar de l'utilisateur"
-              class="avatar-desktop-img"
-            />
-            <div class="avatar-list-container">
-              <div class="avatar-desktop" *ngFor="let avatar of avatarOptions">
-                <img
-                  src="assets/Avatar/{{ avatar }}"
-                  class="avatar-desktop-list"
-                  (click)="selectAvatar(avatar)"
-                />
+          <div class="avatar-color-mp">
+            <div class="avatar-desktop-container">
+              <img
+                *ngIf="avatar !== ''"
+                src="assets/Avatar/{{ avatar }}"
+                alt="Avatar de l'utilisateur"
+                class="avatar-desktop-img"
+              />
+              <div class="avatar-list-container">
+                <div
+                  class="avatar-desktop"
+                  *ngFor="let avatar of avatarOptions"
+                >
+                  <img
+                    src="assets/Avatar/{{ avatar }}"
+                    class="avatar-desktop-list"
+                    (click)="selectAvatar(avatar)"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="color-and-mp">
             <div class="color-desktop">
               <label>Couleur du pseudo dans le chat </label>
               <div class="color-buttons-desktop">
@@ -161,23 +163,24 @@
               />
               <label for="toggle" class="toggle-label-desktop"></label>
             </div>
-        </div>
 
-        <div>
-          <button
-            class="button-text-desktop"
-            id="logout"
-            type="submit"
-            (click)="logout()"
-            routerLink="/login"
-          >
-            Logout
-          </button>
+            <div>
+              <button
+                class="button-text-desktop"
+                id="logout"
+                type="submit"
+                (click)="logout()"
+                routerLink="/login"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="img-desktop">
-      <img src="/assets/account.png" alt="passager montant dans le train" />
+      <img src="/assets/account2.png" alt="passager montant dans le train" />
     </div>
   </div>
 </div>
