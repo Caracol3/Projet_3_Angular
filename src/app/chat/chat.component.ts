@@ -16,14 +16,21 @@ export class ChatComponent implements OnInit {
   mainChat : boolean = false;
   privateChat : boolean = false;
   infoMpChat : any = [];
+  sidebarOpen: boolean = false;
 
 
   ngOnInit(): void {
     // this.messageService.refreshMessages();
     // this.infoMpChat = this.messageService.messages;
   }
-      
-  
+
+  openSidebar() {
+    this.sidebarOpen = true;
+  }
+
+  closeSidebar() {
+    this.sidebarOpen = false;
+  }
 
 
  }

@@ -1,0 +1,19 @@
+.sidebar {
+  width: 30%;
+  height: 100%;
+  text-align: center;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: -30%;
+  transition: left 0.3s ease-in-out;
+}
+
+.open {
+  left: 0;
+}
+
+.return-img{
+  width:30px;
+  height: 30px;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import{ MessageService } from '../message.service';
 
 @Component({
@@ -8,7 +8,8 @@ import{ MessageService } from '../message.service';
 })
 export class SideBarComponent implements OnInit {
 
-
+@Input() sidebarOpen: boolean = false;
+@Output() closeSidebarEvent = new EventEmitter<void>();
 
   constructor( private messageService : MessageService) { }
 
@@ -23,11 +24,14 @@ export class SideBarComponent implements OnInit {
     setTimeout(() => {
       this.infoMpChat = this.messageService.messages;
       this.listUser = this.messageService.allUsers;
-    }, 500); 
+    }, 500);
 
   }
 
-
+// Émet l'événement pour demander la fermeture de la sidebar
+requestCloseSidebar() {
+  this.closeSidebarEvent.emit();
+}
 
 
 

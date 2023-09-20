@@ -32,7 +32,7 @@ getMessages(){
 
 
 
-  
+
 
 
 
@@ -43,13 +43,13 @@ getMessages(){
       .subscribe((data) => {
         this.user = data;
 
-        
-       
+
+
       });
 
       setInterval(() => {
         this.refreshMessages();
-      }, 500000000000);  
+      }, 500000000000);
 
 
 
@@ -62,20 +62,20 @@ getMessages(){
       .get<any>(`http://localhost:8080/all-messages-global`)
       .subscribe((data) => {
         this.messages = data;
-       
+
       });
 
     }
 
 
-     
+
 
 
 
 
  sendMessage(): void {
 
-   
+
      // Effacer le champ de saisie après l'envoi du message
 
     let infoMessage = {
@@ -92,22 +92,20 @@ getMessages(){
     )
     .subscribe(
       (response) => {
-        this.messages.push(response.data);     
-        
-     
+        this.messages.push(response.data);
+
+
       },
       (error) => {
         console.error("Erreur lors de la mise à jour de l'avatar :", error);
       }
     );
-
-
     this.message = '';
-    
-
-
-
-
   }
 
+  autoExpand(event: any): void {
+    const textarea = event.target;
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+}
 }

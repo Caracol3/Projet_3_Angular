@@ -1,11 +1,18 @@
 
+  .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
 .containerchat{
     display: flex;
     flex-direction: column;
     width: 100%;
-   
+
   }
-  
+
 .containersidebar{
     width: 30%;
     height: 400px;
@@ -13,12 +20,17 @@
     background-color: white;
 }
 
+.plus-link{
+  width:100px;
+  height: auto;
+  font-weight: 500;
+  color: #365b6d;
+  margin-bottom: 5px;
 
-.container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
 }
+
+
+
+
 
 
