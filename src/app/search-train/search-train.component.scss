@@ -1,3 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  height: 100%;
+}
+
 .container-desktop {
   display: none;
 }
@@ -102,6 +111,70 @@ h3 {
 .container-train-info {
   display: block;
 }
+.containerTrainInfo {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-height: 500px;
+  overflow: auto;
+    h1{
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #365B6D;
+     text-align: center;
+     position: sticky;
+     top: 0;
+  }
+
+}
+
+
+
+.listeDesTrains-desktop {
+  margin-top: 2%;
+  width: 100%;
+}
+.numeroTrain{
+font-size: 1.5em;
+text-align: center;
+
+}
+.trainCard{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 180px;
+  border-bottom: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  background-color: rgb(252, 252, 252);
+  width:80%;
+  margin: auto;
+  margin-top: 10px;
+  padding:15px;
+  b{
+    color: #365B6D;
+    font-weight: 400;
+    }
+}
+.trainCard:active,
+.trainCard:focus{
+  border: 1px solid #5e81f3;
+  transform: perspective(1000px) rotateY(10deg);
+  overflow: hidden;
+}
+
+.trainInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  font-size: 1em;
+}
+
+
 
 @media all and (min-width: 748px) {
 
@@ -123,14 +196,14 @@ h3 {
   .form-title-desktop {
     background-color: rgb(55, 90, 107);
     width: 100%;
-    height: 160px;
+    height: 130px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     padding-left: 10%;
 
     h1 {
-      margin-top: 45px;
+      margin-top: 30px;
       color: whitesmoke;
       font-weight: 800;
       font-size: 1.5em;
@@ -253,10 +326,8 @@ h3 {
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    margin-top: 2%;
   }
-
-  .message-desktop {
+      .message-desktop {
     width: 100%;
     font-size: 28px;
     font-weight: 700;
@@ -271,9 +342,10 @@ h3 {
   .image-search {
     width:70%;
     margin: auto;
+    margin-top: 15px;
     justify-content: center;
     border-radius: 10px;
- 
+
 
   }
 
@@ -303,7 +375,7 @@ h3 {
       font-size: 1.5em;
       font-weight: 700;
       color: #365B6D;
-       text-align: center;
+      text-align: center;
     }
 
   }
@@ -311,7 +383,6 @@ h3 {
 
 
   .listeDesTrains-desktop {
-    margin-top: 2%;
     width: 100%;
   }
 .numeroTrain{
@@ -331,9 +402,10 @@ h3 {
     transition: transform 0.2s ease;
     background-color: rgb(252, 252, 252);
     width:76%;
-    margin-top: 20px;
+    margin-top: 5px;
     margin-left: 15%;
-    padding:15px;
+    padding:5px;
+    overflow: auto;
     b{
       color: #365B6D;
       font-weight: 400;
