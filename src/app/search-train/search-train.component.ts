@@ -27,11 +27,11 @@ export class SearchTrainComponent implements OnInit {
   ) {}
 
 
- 
+
   ngOnInit(): void {
     this.getRegions();
     this.user = this.accountService.getUserData(1);
-   
+
   }
  syncUser(): Promise<any> {
 return new Promise((resolve, reject) => {
@@ -63,12 +63,12 @@ return new Promise((resolve, reject) => {
 
   // recuperation des données de l'api
 
-  
+
 
   onSubmit() {
   this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver);
   this.search.depart = this.search.depart;
- 
+
   setTimeout(() => {
   this.listeOfTrain = this.dataService.apiResponse.journeys;
   console.log(this.listeOfTrain);
@@ -76,7 +76,7 @@ return new Promise((resolve, reject) => {
   this.listeTrain = true;
 
   }, 300);
- 
+
 
 
 }
@@ -110,8 +110,8 @@ return new Promise((resolve, reject) => {
     for (let i = 0; i < this.regions.length-1; i++) {
       if ( normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart) && this.regions[i]['segmentdrg_libelle'] === "a") {
         this.resultOfTrainSearchDepart.push(this.regions[i]);
-       
-        
+
+
 
 
 
@@ -136,7 +136,7 @@ return new Promise((resolve, reject) => {
 
       this.search.arrivee = this.search.arrivee.toLowerCase();
      for (let i = 0; i < this.regions.length-1; i++) {
-       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)) {
+       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)&& this.regions[i]['segmentdrg_libelle'] === "a") {
          this.resultOfTrainSearchArriver.push(this.regions[i]);
 
 

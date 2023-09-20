@@ -22,14 +22,18 @@ export class AdminComponent implements OnInit {
   // Au chargement du composant, on récupère la liste des utilisateurs
 
   ngOnInit(): void {
+    this.refreshUsersList();
+
+  }
+
+
+  refreshUsersList() {
     this.httpClient.get<User[]>('http://localhost:8080/admin/users').subscribe((users) => {
       this.users = users;
       console.log(this.users);
      
     });
-
   }
-
   //pour formater la date
 
    formatDate(dateISO: string): string {
@@ -79,6 +83,28 @@ export class AdminComponent implements OnInit {
       }
     );
 }
+deleteUser(userId: number) {
+  const confirmDelete = window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+  if (confirmDelete) {
+    // L'utilisateur a confirmé la suppression, envoyez la requête DELETE
+    this.httpClient
+      .delete(`http://localhost:8080/admin/users/${userId}`)
+      .pipe(take(1))
+      .subscribe(
+        () => {
+          console.log('Utilisateur supprimé avec succès !');
+
+          // Rafraîchissez la liste des utilisateurs après la suppression.
+          this.refreshUsersList();
+        },
+        (error) => {
+          console.error('Erreur lors de la suppression de l\'utilisateur :', error);
+        }
+      );
+  } else {
+    // L'utilisateur a annulé la suppression
+    console.log('Suppression annulée.');
+  }
 }
 
-
+}

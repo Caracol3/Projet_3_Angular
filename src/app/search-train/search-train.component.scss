@@ -131,55 +131,51 @@ h3 {
     width: 100%;
     height: 45px;
     margin-top: 0;
-      }
+  }
 
   .form-desktop {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
     width: 100%;
     height: 50%;
     margin-top: 0;
   }
 
 
-  .gare-dep-desktop {
+  .gare-desktop {
+    overflow: auto;
     height: 100%;
-    border: none;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     border: none;
     border-right: 0.2px solid #b4afaf;
 
-     }
-  .gare-arr-desktop {
-    height: 100%;
-    border: none;
-    border-right: 0.2px solid #b4afaf;
-     }
+  }
 
 
   .input-container {
     position: relative;
 
-  #depart{
+
+    #depart {
       padding-left: 65px;
-         }
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
 
-  #arrivee{
+    #arrivee {
       padding-left: 68px;
-         }
+    }
 
-  #date{
+    #date {
       padding-left: 50px;
-         }
-  #time{
+    }
+
+    #time {
       padding-left: 55px;
-         }
+    }
 
   }
-  }
+
 
   .input-label {
     position: absolute;
@@ -191,30 +187,92 @@ h3 {
 
   }
 
+  .gareResult-desktop {
+    position: absolute;
+    left: 5px;
+    top: 50px;
+    height: 100px;
+    width: 220px;
+    overflow: auto;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 0 1px #a2a2a2;
+    border: none;
+    font-size: 1.1em;
+
+  }
+  .gareResult-selection-desktop:hover{
+    background-color: #8699DA;
+    color: white;
+  }
 
 
 
+  .button-text-desktop {
+    border-radius: 0px 15px 15px 0px;
+    background: var(--Contraste, #8699DA);
+    height: 100%;
+    color: white;
+    width: 180px;
+    border: none;
+  }
 
-.button-text-desktop{
-border-radius: 0px 15px 15px 0px;
-background: var(--Contraste, #8699DA);
-height: 100%;
-color: white;
-width: 180px;
-border: none;
-}
-.date-desktop{
-  border: none;
-  border-right: 0.2px solid #b4afaf;
-  width:160px;
-  height: 100%;
+  .date-desktop {
+    border: none;
+    border-right: 0.2px solid #b4afaf;
+    width: 160px;
+    height: 100%;
+    text-align: center;
+  }
+
+  .heure-desktop {
+    border: none;
+    width: 110px;
+    height: 100%;
+    text-align: center;
+
+  }
+
+
+
+ .bottom-desktop{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+
+ }
+
+ .message-desktop{
+  width: 100%;
+  font-size: 28px;
+  font-weight: 700;
+  color:#365B6D ;
+  margin-top: 15px;
   text-align: center;
-}
-.heure-desktop{
-border: none;
-width: 110px;
-height: 100%;
-text-align: center;
+ }
+  .image-search{
+    width: 556px;
+    height: 321px;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 2%;
+  }
+.text-search-desktop{
+  display: flex;
+  width: 80%;
+  margin: auto;
+  text-align:flex-start;
+  font-size: 1.2em;
+  font-weight: 300;
+  color: #808080;
+  margin-top: 15px;
 
 }
 
+.text-desktop {
+  margin-top: 2%;
+  width: 50%;
+}
+
+}

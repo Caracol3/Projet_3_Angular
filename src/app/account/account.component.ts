@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { User_info } from '../models/user_info';
 import { HttpClient } from '@angular/common/http';
 import { AccountServiceService } from '../account-service.service';
 import { AuthService } from '../service/AuthService';
+
 
 @Component({
   selector: 'app-account',
@@ -28,46 +29,45 @@ export class AccountComponent implements OnInit {
   user: any = {};
   avatar: string = "";
   avatarOptions: string[] = [
+    'arbre.png',
     'AvatarF1.png',
-    'AvatarF2.png',
-    'AvatarF3.png',
     'AvatarF4.png',
-    'AvatarF5.png',
     'AvatarF6.png',
-    'AvatarF7.png',
     'AvatarF8.png',
     'AvatarF9.png',
-    'AvatarF10.png',
     'AvatarF11.png',
-    'AvatarF12.png',
     'AvatarF13.png',
-    'AvatarF14.png',
     'AvatarF15.png',
     'AvatarH1.png',
-    'AvatarH2.png',
     'AvatarH3.png',
     'AvatarH4.png',
-    'AvatarH5.png',
-    'AvatarH6.png',
     'AvatarH7.png',
-    'AvatarH8.png',
-    'AvatarH9.png',
     'AvatarH10.png',
     'AvatarH11.png',
-    'AvatarH12.png',
     'AvatarH13.png',
     'AvatarH14.png',
-    'AvatarH15.png',
-    'AvatarH16.png',
-    'AvatarH17.png',
-    'AvatarH18.png',
+    'bff.png',
+    'chat-noir.png',
+    'chat.png',
+    'chevalier.png',
+    'chien1.png',
+    'chien2.png',
+    'dragon.png',
+    'lapin.png',
+    'licorne2.png',
+    'oiseau.png',
+    'princesse.png',
+    'roi.png',
+    'viking.png',
   ];
-  
+
+
+
 
   constructor(
     private httpClient: HttpClient,
     private accountService: AccountServiceService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
   openAvatarModal() {
@@ -121,13 +121,14 @@ export class AccountComponent implements OnInit {
         this.user = data;
         this.avatar = this.user.avatar;
         this.user.birthday = this.formatDate(this.user.birthday);
-       
+        console.log(this.user);
+
       });
   }
 
   saveSelectedColor(color: string) {
 
-   
+
     this.httpClient
        .put<any>(
          `http://localhost:8080/users/${this.user_id}/account/color/${color}`,
@@ -139,7 +140,7 @@ export class AccountComponent implements OnInit {
            this.user.color = color;
            // Mettez à jour l'avatar dans votre composant Angular si nécessaire
            this.accountService.getUserData(this.user_id);
-        
+
          },
          (error) => {
            console.error("Erreur lors de la mise à jour de l'avatar :", error);
@@ -148,7 +149,7 @@ export class AccountComponent implements OnInit {
   }
 
   dispoMP(){
-    
+
     this.httpClient
        .put<any>(
          `http://localhost:8080/users/${this.user_id}/account/dispo/${!this.user.is_available}`,
@@ -158,7 +159,7 @@ export class AccountComponent implements OnInit {
          (response) => {
            // Mettez à jour l'avatar dans votre composant Angular si nécessaire
            this.accountService.getUserData(this.user_id);
-           
+
          },
          (error) => {
            console.error("Erreur lors de la mise à jour de l'avatar :", error);
