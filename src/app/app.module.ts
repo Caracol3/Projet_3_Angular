@@ -17,6 +17,10 @@ import { SearchTrainComponent } from './search-train/search-train.component'; //
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './config/jwtInterceptor';
 import { AdminComponent } from './admin/admin.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { MainChatComponent } from './main-chat/main-chat.component';
+import { PrivateChatComponent } from './private-chat/private-chat.component';
+import { ChatGlobalComponent } from './chat-global/chat-global.component';
 
 FormsModule
 
@@ -33,6 +37,10 @@ FormsModule
     ContactComponent,
     SearchTrainComponent,
     AdminComponent,
+    SideBarComponent,
+    MainChatComponent,
+    PrivateChatComponent,
+    ChatGlobalComponent,
 
   ],
   imports: [

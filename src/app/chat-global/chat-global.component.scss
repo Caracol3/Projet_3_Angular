@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+        overflow: auto;
+        background-color:#f5f5f5;
+
+      }
+
+      .containerchat {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        overflow-y: auto;
+        height: 70vh;
+        margin-bottom: 15px;
+
+}
+
+
+#date {
+  text-align: center;
+  margin-top: 10px;
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.sender-and-receiver-parent{
+  display:flex;
+  flex-direction:column;
+  background-color:#f5f5f5;
+  margin-left: 10px ;
+  margin-right: 10px;
+}
+
+.sender,
+.receiver {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.sender {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.receiver {
+  align-self: flex-start;
+  background-color: #ffffff;
+  color: #333;
+  align-self: flex-start;
+}
+
+.sender p,
+.receiver p {
+  margin: 0;
+}
+
+.sender img,
+.receiver img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.sendmessage {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  position: sticky;
+}
+
+textarea{
+  width: 140%;
+  border: none;
+  padding: 10px;
+}
+
+
+.sendmessage img{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 15px;
+}

@@ -98,17 +98,6 @@ export class AccountComponent implements OnInit {
   selectAvatar(avatar: string) {
     this.putAvatar(avatar);
     this.isModalOpen = false;
-
-    //  Ferme la modale
-
-    //   this.accountService.updateUserAvatar(this.user.id, avatar).subscribe(
-    //     (response) => {
-    //       console.log('Avatar mis à jour avec succès :', response);
-    //     },
-    //     (error) => {
-    //       console.error('Erreur lors de la mise à jour de l\'avatar :', error);
-    //     }
-    //   );
   }
 
   closeAvatarModal() {

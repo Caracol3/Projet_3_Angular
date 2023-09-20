@@ -20,10 +20,6 @@ export class JwtInterceptor implements HttpInterceptor {
     const token = this.authService.getToken();
     
 
-    if (req.url.startsWith("https://api.sncf.com")){
-      return next.handle(req);
-    }
-
 
   if (req.url.startsWith("https://api.sncf.com")){
       return next.handle(req);

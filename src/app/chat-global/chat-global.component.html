@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="containerchat">
+    <div class="chat">
+      <div *ngFor="let msg of messages; let i = index" class="contenairchat">
+        <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
+          <p *ngIf="i === 0 || msg.date !== messages[i - 1].date" id="date">
+            {{ msg.date }}
+          </p>
+          <div class="sender" *ngIf="msg.user_id.username === user.username">
+            <p>
+              <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
+              <b>Moi à {{ msg.heure }}</b>
+            </p>
+            <p>{{ msg.message }}</p>
+          </div>
+          <div class="receiver" *ngIf="msg.user_id.username !== user.username">
+            <p>
+              <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
+              <b>{{ msg.user_id.username }} à {{ msg.heure }}</b>
+            </p>
+            <p>{{ msg.message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sendmessage">
+      <textarea
+        [(ngModel)]="message"
+        (keyup.enter)="sendMessage()"
+        placeholder="Saisissez votre message..."
+        rows="1"
+        (input)="autoExpand($event)"
+      ></textarea>
+      <img src="assets/send.png" (click)="sendMessage()"/>
+    </div>
+  </div>
+</div>

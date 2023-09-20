@@ -18,12 +18,12 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
-
-    "normalize-text": "^2.4.1",
-
     "angular-jwt": "^0.1.11",
-
+    "express": "^4.18.2",
+    "normalize-text": "^2.4.1",
     "rxjs": "~7.8.0",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
