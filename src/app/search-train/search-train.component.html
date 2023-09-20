@@ -1,3 +1,5 @@
+<div class="mobilecontainer">
+
 <div class="container" *ngIf="searchPage">
 
     <h3 class="form-title">Votre trajet</h3>
@@ -99,47 +101,34 @@
 
 
 
+</div>
 
 
 
 <div class="containerTrainInfo" *ngIf="listeTrain">
 
-  <h1>Trouvez votre trajet</h1>
-
-
-  <div class="listeDesTains">
-
-    <div *ngFor="let train of listeOfTrain">
-
-      <div class="affichagedestrain">
-        <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
-        <p> A :<b> {{train.sections[0].departure_date_time}}</b> </p>
-        <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
-        <p>Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
-        <p> Numéro de train : <b>{{train.sections[1].display_informations.trip_short_name}}</b> </p>
+  <h1>Choississez votre trajet</h1>
+  <div class="listeDesTrains-desktop">
+    <div *ngFor="let train of listeOfTrain; let i = index">
+        <div class="trainCard"(click)="getInfoTrain(i)">
+        <div class="trainInfo">
+          <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
+          <p> A :<b> {{formatDateAndTime(train.sections[0].departure_date_time)}}</b> </p>
+          <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
+          <p>Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
+          <p> Numéro de train : <b class="numeroTrain">{{train.sections[1].display_informations.trip_short_name}}</b> </p>
+        </div>
 
     </div>
-
     </div>
+ </div>
 
-  </div>
+ </div>
 
 
 
 
 </div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -312,11 +301,11 @@
 
     </form>
   </div>
-</div>
 
-<div>
 
-    <div class="message-desktop">
+
+
+    <div class="message-desktop" *ngIf="showTextDesktop">
     <p>
       Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin
       de passer le temps ?
@@ -324,36 +313,36 @@
   </div>
 
   <div class="bottom-desktop">
-  <img class="image-search" src="/assets/searchTrain/searchTrainImage.jpg" alt="train" />
-  <div class="text-desktop">
+ <div class="imgDesktop"><img class="image-search" src="/assets/searchTrain/searchTrainImage.jpg" alt="train" /></div>
+  <div class="text-desktop" *ngIf="showTextDesktop">
   <p class="text-search-desktop">Voyageurs d’un même train ?</p>
   <p class="text-search-desktop"> Connectez-vous avec les autres passagers grâce à nos salons de discussion ou discutez directement en privé.</p>
     <p class="text-search-desktop"> Échangez conseils, expériences & bons plans en temps réel. Tous les voyages grandes lignes sont référencés.</p>
     <p class="text-search-desktop"> Profitez pleinement de chaque trajet en compagnie de voyageurs passionnants.</p>
-    <p class="text-search-desktop">Rejoignez-nous pour une expérience de voyage unique et connectée ! 🚆✨</p>
-</div>
+    <p class="text-search-desktop">Rejoignez-nous pour une expérience de voyage unique et connectée !</p>
 </div>
 <div class="containerTrainInfo" *ngIf="listeTrain">
 
-  <h1>Trouvez votre trajet</h1>
-
-
-  <div class="listeDesTains-desktop">
-
-    <div *ngFor="let train of listeOfTrain">
-
-      <div class="affichagedestrains-desktop">
-        <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
-        <p> A :<b> {{train.sections[0].departure_date_time}}</b> </p>
-        <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
-        <p>Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
-        <p> Numéro de train : <b>{{train.sections[1].display_informations.trip_short_name}}</b> </p>
-
-    </div>
+  <h1>Choississez votre trajet</h1>
+  <div class="listeDesTrains-desktop">
+    <div *ngFor="let train of listeOfTrain; let i = index">
+        <div class="trainCard"(click)="getInfoTrain(i)">
+        <div class="trainInfo">
+          <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
+          <p> A :<b> {{formatDateAndTime(train.sections[0].departure_date_time)}}</b> </p>
+          <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
+          <p>Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
+      </div>
+      <div class="train">
+        <p> Numéro de train :<br> <b class="numeroTrain">{{train.sections[1].display_informations.trip_short_name}}</b> </p>
+       </div>
 
     </div>
+    </div>
+ </div>
+
+ </div>
 </div>
-
 
 
 

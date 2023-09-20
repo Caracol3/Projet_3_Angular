@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-train-info',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class TrainInfoComponent {
 
+
+  constructor(private location: Location) { }
+
+  returnSalon() {
+    this.location.back();
+  }
 }

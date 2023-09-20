@@ -24,7 +24,7 @@ export class SearchTrainComponent implements OnInit {
     private authService: AuthService,
     private accountService: AccountServiceService,
     private dataService: DataService,
-  ) {}
+  ) { }
 
 
 
@@ -33,31 +33,33 @@ export class SearchTrainComponent implements OnInit {
     this.user = this.accountService.getUserData(1);
 
   }
- syncUser(): Promise<any> {
-return new Promise((resolve, reject) => {
-  setTimeout(() => {
-    this.user = this.accountService.getUserData(1);
-    resolve("opération réussie");
+  syncUser(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.user = this.accountService.getUserData(1);
+        resolve("opération réussie");
+      }
+        , 1000);
+    });
   }
-  , 1000);
- });
-}
 
-  GareDepartSelect : boolean = false;
-  GareArriverSelect : boolean = false;
-  DateSelect : boolean = false;
-  AllInfo : boolean = false;
-  resultOfTrainSearchDepart : any = [];
-  departureStation : any[] = [];
-  listOfDepartureStation : string[] = [];
-  arrivalStation : any[] = [];
-  resultOfTrainSearchArriver : any = [];
-  GareArriverSelectInfo : boolean = false;
-  uicCodeDepart : string = '';
-  uicCodeArriver : string = '';
-  searchPage : boolean = true;
-  listeTrain : boolean = false;
-  listeOfTrain : any;
+  GareDepartSelect: boolean = false;
+  GareArriverSelect: boolean = false;
+  DateSelect: boolean = false;
+  AllInfo: boolean = false;
+  resultOfTrainSearchDepart: any = [];
+  departureStation: any[] = [];
+  listOfDepartureStation: string[] = [];
+  arrivalStation: any[] = [];
+  resultOfTrainSearchArriver: any = [];
+  GareArriverSelectInfo: boolean = false;
+  uicCodeDepart: string = '';
+  uicCodeArriver: string = '';
+  searchPage: boolean = true;
+  listeTrain: boolean = false;
+  listeOfTrain: any;
+  showTextDesktop: boolean = true;
+
 
 
 
@@ -66,25 +68,27 @@ return new Promise((resolve, reject) => {
 
 
   onSubmit() {
-  this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver);
-  this.search.depart = this.search.depart;
+    this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver);
+    this.search.depart = this.search.depart;
 
-  setTimeout(() => {
-  this.listeOfTrain = this.dataService.apiResponse.journeys;
-  console.log(this.listeOfTrain);
-  this.searchPage = false;
-  this.listeTrain = true;
-
-  }, 300);
-
+    setTimeout(() => {
+      this.listeOfTrain = this.dataService.apiResponse.journeys;
+      console.log(this.listeOfTrain);
+      this.searchPage = false;
+      this.showTextDesktop = false;
+      this.listeTrain = true;
 
 
-}
+    }, 300);
 
-  regions :{
+
+
+  }
+
+  regions: {
     [x: string]: any;
     gare_alias_libelle_noncontraint: string;
-    fields : Fields
+    fields: Fields
   }[] = [];
 
   // appel de la fonction getRegions() au chargement de la page
@@ -102,14 +106,14 @@ return new Promise((resolve, reject) => {
 
   searchGareDepart() {
 
-   this.resultOfTrainSearchDepart = [];
+    this.resultOfTrainSearchDepart = [];
 
-    if(this.search.depart !== '') {
-     this.GareDepartSelect = true;
-    this.search.depart = this.search.depart.toLowerCase();
-    for (let i = 0; i < this.regions.length-1; i++) {
-      if ( normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart) && this.regions[i]['segmentdrg_libelle'] === "a") {
-        this.resultOfTrainSearchDepart.push(this.regions[i]);
+    if (this.search.depart !== '') {
+      this.GareDepartSelect = true;
+      this.search.depart = this.search.depart.toLowerCase();
+      for (let i = 0; i < this.regions.length - 1; i++) {
+        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart) && this.regions[i]['segmentdrg_libelle'] === "a") {
+          this.resultOfTrainSearchDepart.push(this.regions[i]);
 
 
 
@@ -117,8 +121,8 @@ return new Promise((resolve, reject) => {
 
         }
 
-    }
-    }   else {
+      }
+    } else {
       this.GareDepartSelect = false;
       this.GareArriverSelect = false;
       this.departureStation = [];
@@ -131,65 +135,80 @@ return new Promise((resolve, reject) => {
 
 
     this.resultOfTrainSearchArriver = [];
-     if(this.search.arrivee !== '') {
+    if (this.search.arrivee !== '') {
       this.GareArriverSelectInfo = true;
 
       this.search.arrivee = this.search.arrivee.toLowerCase();
-     for (let i = 0; i < this.regions.length-1; i++) {
-       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)&& this.regions[i]['segmentdrg_libelle'] === "a") {
-         this.resultOfTrainSearchArriver.push(this.regions[i]);
+      for (let i = 0; i < this.regions.length - 1; i++) {
+        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee) && this.regions[i]['segmentdrg_libelle'] === "a") {
+          this.resultOfTrainSearchArriver.push(this.regions[i]);
 
 
 
-         }
+        }
 
-     }
-     }   else {
+      }
+    } else {
 
-       this.arrivalStation = [];
-       this.GareArriverSelectInfo = false;
-     }
+      this.arrivalStation = [];
+      this.GareArriverSelectInfo = false;
+    }
 
-   }
+  }
 
 
 
-   // selection de la gare au click
+  // selection de la gare au click
 
-   selectGareDepart(index : number){
+  selectGareDepart(index: number) {
     this.uicCodeDepart = this.resultOfTrainSearchDepart[index].uic_code.slice(2);
     this.search.depart = this.resultOfTrainSearchDepart[index].gare_alias_libelle_noncontraint;
     this.GareDepartSelect = false;
     this.GareArriverSelect = true;
     this.resultOfTrainSearchDepart = [];
 
-   }
+  }
 
 
-   selectGareArriver(index : number){
+  selectGareArriver(index: number) {
     this.uicCodeArriver = this.resultOfTrainSearchArriver[index].uic_code.slice(2);
     this.search.arrivee = this.resultOfTrainSearchArriver[index].gare_alias_libelle_noncontraint;
     this.resultOfTrainSearchArriver = [];
     this.GareArriverSelectInfo = false;
     this.DateSelect = true;
 
-   }
+  }
 
 
- // affichage du bouton de recherche
+  // affichage du bouton de recherche
 
 
- sectectHeure(){
+  sectectHeure() {
 
-  if(this.search.date) {
-  this.AllInfo = true;
- }
+    if (this.search.date) {
+      this.AllInfo = true;
+    }
 
 
-}
+  }
+
+  getInfoTrain(index: number) {
+    console.log(this.formatDateAndTime(this.listeOfTrain[index].sections[0].departure_date_time) + "  " + this.listeOfTrain[index].sections[1].display_informations.trip_short_name);
+  }
+
 
   logout() {
     this.authService.logout();
+  }
+
+  formatDateAndTime(dateTimeStr: string): string {
+    const year = dateTimeStr.slice(0, 4);
+    const month = dateTimeStr.slice(4, 6);
+    const day = dateTimeStr.slice(6, 8);
+    const hour = dateTimeStr.slice(9, 11);
+    const minute = dateTimeStr.slice(11, 13);
+
+    return `${day}/${month}/${year} ${hour}:${minute}`;
   }
 }
 

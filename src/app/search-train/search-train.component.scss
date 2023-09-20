@@ -1,3 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  height: 100%;
+}
+
 .container-desktop {
   display: none;
 }
@@ -91,9 +100,85 @@ h3 {
 
 }
 
+.gareResult-selection:active {
+  background-color: #8699DA;
+}
+
+.affichagedestrain {
+  background-color: rgb(235, 22, 22);
+}
+
+.container-train-info {
+  display: block;
+}
+.containerTrainInfo {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-height: 500px;
+  overflow: auto;
+    h1{
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #365B6D;
+     text-align: center;
+     position: sticky;
+     top: 0;
+  }
+
+}
+
+
+
+.listeDesTrains-desktop {
+  margin-top: 2%;
+  width: 100%;
+}
+.numeroTrain{
+font-size: 1.5em;
+text-align: center;
+
+}
+.trainCard{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 180px;
+  border-bottom: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  background-color: rgb(252, 252, 252);
+  width:80%;
+  margin: auto;
+  margin-top: 10px;
+  padding:15px;
+  b{
+    color: #365B6D;
+    font-weight: 400;
+    }
+}
+.trainCard:active,
+.trainCard:focus{
+  border: 1px solid #5e81f3;
+  transform: perspective(1000px) rotateY(10deg);
+  overflow: hidden;
+}
+
+.trainInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  font-size: 1em;
+}
+
+
+
 @media all and (min-width: 748px) {
 
-  .container {
+  .mobilecontainer {
     display: none;
   }
 
@@ -111,14 +196,14 @@ h3 {
   .form-title-desktop {
     background-color: rgb(55, 90, 107);
     width: 100%;
-    height: 200px;
+    height: 130px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     padding-left: 10%;
 
     h1 {
-      margin-top: 60px;
+      margin-top: 30px;
       color: whitesmoke;
       font-weight: 800;
       font-size: 1.5em;
@@ -201,7 +286,8 @@ h3 {
     font-size: 1.1em;
 
   }
-  .gareResult-selection-desktop:hover{
+
+  .gareResult-selection-desktop:hover {
     background-color: #8699DA;
     color: white;
   }
@@ -235,44 +321,111 @@ h3 {
 
 
 
- .bottom-desktop{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-
- }
-
- .message-desktop{
-  width: 100%;
-  font-size: 28px;
-  font-weight: 700;
-  color:#365B6D ;
-  margin-top: 15px;
-  text-align: center;
- }
-  .image-search{
-    width: 556px;
-    height: 321px;
-    margin: auto;
-    border-radius: 10px;
-    margin-top: 2%;
+  .bottom-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
   }
-.text-search-desktop{
+      .message-desktop {
+    width: 100%;
+    font-size: 28px;
+    font-weight: 700;
+    color: #365B6D;
+    margin-top: 15px;
+    text-align: center;
+  }
+.imgDesktop{
   display: flex;
-  width: 80%;
-  margin: auto;
-  text-align:flex-start;
-  font-size: 1.2em;
-  font-weight: 300;
-  color: #808080;
-  margin-top: 15px;
+  width:50%;
+}
+  .image-search {
+    width:70%;
+    margin: auto;
+    margin-top: 15px;
+    justify-content: center;
+    border-radius: 10px;
+
+
+  }
+
+
+  .text-search-desktop {
+    display: flex;
+    width: 70%;
+    margin: auto;
+    text-align: flex-start;
+    font-size: 1.4em;
+    font-weight: 400;
+    color: #808080;
+    margin-top: 15px;
+
+  }
+
+  .text-desktop {
+    margin-top: 2%;
+    width: 53%;
+  }
+
+  .containerTrainInfo {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+      h1{
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #365B6D;
+      text-align: center;
+    }
+
+  }
+
+
+
+  .listeDesTrains-desktop {
+    width: 100%;
+  }
+.numeroTrain{
+  font-size: 2em;
+  text-align: center;
 
 }
-
-.text-desktop {
-  margin-top: 2%;
-  width: 50%;
-}
-
+  .trainCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    background-color: rgb(252, 252, 252);
+    width:76%;
+    margin-top: 5px;
+    margin-left: 15%;
+    padding:5px;
+    overflow: auto;
+    b{
+      color: #365B6D;
+      font-weight: 400;
+    }
+  }
+  .trainCard:hover{
+    border: 1px solid #5e81f3;
+    transform: perspective(1000px) rotateY(10deg);
+  }
+  .train{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+  }
+  .trainInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+  }
 }
