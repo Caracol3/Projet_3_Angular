@@ -5,15 +5,25 @@
   <div class="user-infos">
     <div class="avatar-and-identity">
       <div class="avatar">
-        <img *ngIf="avatar !== ''" src="assets/Avatar/{{avatar}}" alt="Avatar de l'utilisateur" />
-        <button (click)="openAvatarModal()">Modifier</button>
+        <img
+          *ngIf="avatar !== ''"
+          src="assets/Avatar/{{ avatar }}"
+          alt="Avatar de l'utilisateur"
+        />
+        <button class="avatar-button" (click)="openAvatarModal()">
+          Modifier
+        </button>
 
         <!-- La modale -->
         <div *ngIf="isModalOpen" class="avatar-modal">
           <h3>Sélectionnez un avatar :</h3>
           <div class="avatar-options">
             <div *ngFor="let avatar of avatarOptions">
-              <img [src]="'assets/Avatar/'+avatar" alt="Avatar" (click)="selectAvatar(avatar)" />
+              <img
+                [src]="'assets/Avatar/' + avatar"
+                alt="Avatar"
+                (click)="selectAvatar(avatar)"
+              />
             </div>
           </div>
         </div>
@@ -38,25 +48,139 @@
       <button
         *ngFor="let color of colorOptions"
         (click)="saveSelectedColor(color)"
-        [style.background-color]="'#'+color"
+        [style.background-color]="'#' + color"
       ></button>
     </div>
   </div>
 
   <div class="toggle-switch">
     <span>
-      <img src="/assets/info.png" class="info" alt="Icône d'information" title="En cochant cette case, vous acceptez qu'un autre utilisateur de l'application puisse vous contacter en message privé" />
+      <img
+        src="/assets/info.png"
+        class="info"
+        alt="Icône d'information"
+        title="En cochant cette case, vous acceptez qu'un autre utilisateur de l'application puisse vous contacter en message privé"
+      />
     </span>
     <span>Disponible MP: </span>
-    <input type="checkbox" id="toggle" class="toggle-input" [(ngModel)]="user.is_available" (click)="dispoMP()"/>
+    <input
+      type="checkbox"
+      id="toggle"
+      class="toggle-input"
+      [(ngModel)]="user.is_available"
+      (click)="dispoMP()"
+    />
     <label for="toggle" class="toggle-label"></label>
   </div>
 
   <div>
-    <button  class="button-text" id="logout" type="submit" (click)="logout()" routerLink="/login">Logout</button>
+    <button
+      class="button-text"
+      id="logout"
+      type="submit"
+      (click)="logout()"
+      routerLink="/login"
+    >
+      Logout
+    </button>
+  </div>
+</div>
+
+<div class="max-container-desktop">
+  <div class="title-desktop">
+    <h3>Informations personnelles</h3>
   </div>
 
-  <!-- <div>
-    <button (click)="saveSelectedColor(color)">Valider</button>
-  </div> -->
+  <div class="account-and-img-desktop">
+    <div class="h2andaccount">
+      <div>
+        <h2>À propos de moi</h2>
+      </div>
+      <div class="container-desktop">
+        <div class="all-infos-desktop">
+          <div class="identity-desktop">
+            <span class="text-desktop" id="firstname-desktop">{{
+              user.firstname
+            }}</span>
+            <span class="text-desktop" id="name-desktop">{{ user.name }}</span>
+            <span class="text-desktop" id="username-desktop">{{
+              user.username
+            }}</span>
+            <span class="text-desktop" id="email-desktop">{{
+              user.email
+            }}</span>
+            <span class="text-desktop" id="birthday-desktop">{{
+              user.birthday
+            }}</span>
+          </div>
+          <div class="avatar-color-mp">
+            <div class="avatar-desktop-container">
+              <img
+                *ngIf="avatar !== ''"
+                src="assets/Avatar/{{ avatar }}"
+                alt="Avatar de l'utilisateur"
+                class="avatar-desktop-img"
+              />
+              <div class="avatar-list-container">
+                <div
+                  class="avatar-desktop"
+                  *ngFor="let avatar of avatarOptions"
+                >
+                  <img
+                    src="assets/Avatar/{{ avatar }}"
+                    class="avatar-desktop-list"
+                    (click)="selectAvatar(avatar)"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="color-desktop">
+              <label>Couleur du pseudo dans le chat </label>
+              <div class="color-buttons-desktop">
+                <button
+                  *ngFor="let color of colorOptions"
+                  (click)="saveSelectedColor(color)"
+                  [style.background-color]="'#' + color"
+                ></button>
+              </div>
+            </div>
+            <div class="toggle-switch-desktop">
+              <span>
+                <img
+                  src="/assets/info.png"
+                  class="info-desktop"
+                  alt="Icône d'information"
+                  title="En cochant cette case, vous acceptez qu'un autre utilisateur de l'application puisse vous contacter en message privé"
+                />
+              </span>
+              <span>Disponible MP: </span>
+              <input
+                type="checkbox"
+                id="toggle"
+                class="toggle-input-desktop"
+                [(ngModel)]="user.is_available"
+                (click)="dispoMP()"
+              />
+              <label for="toggle" class="toggle-label-desktop"></label>
+            </div>
+
+            <div>
+              <button
+                class="button-text-desktop"
+                id="logout"
+                type="submit"
+                (click)="logout()"
+                routerLink="/login"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="img-desktop">
+      <img src="/assets/account2.png" alt="passager montant dans le train" />
+    </div>
+  </div>
 </div>
