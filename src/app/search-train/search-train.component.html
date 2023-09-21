@@ -25,7 +25,7 @@
         />
 
         <div class="gareResult" *ngIf="GareDepartSelect">
-          <p
+          <p class="gareResult-selection"
             *ngFor="
               let gareOfDeparture of resultOfTrainSearchDepart;
               let i = index
@@ -86,18 +86,8 @@
     <div *ngIf="AllInfo">
       <button class="button-text" type="submit">Rechercher</button>
     </div>
-    <div>
-      <button
-        class="button-text"
-        id="logout"
-        type="submit"
-        (click)="logout()"
-        routerLink="/login"
-      >
-        Logout
-      </button>
-    </div>
-  </form>
+
+    </form>
 
 
 
