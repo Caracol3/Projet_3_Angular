@@ -55,3 +55,21 @@
   cursor: pointer;
   z-index: 1; /* Place l'icône de retour au-dessus du contenu de la sidebar */
 }
+
+@media screen and (min-width: 748px) {
+  .sidebar {
+    position: relative;
+    height: 570px;
+    background-color: white;
+    left: 0px;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .return-img {
+    display: none;
+  }
+}
+
