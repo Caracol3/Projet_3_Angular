@@ -258,6 +258,8 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 450px;
+
   }
 
   .h2andaccount {
@@ -271,7 +273,7 @@ img {
   h2 {
     font-weight: 300;
     top: 0;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   h3 {
@@ -282,7 +284,9 @@ img {
   .all-infos-desktop {
     display: flex;
     flex-direction: row;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: 70%;
   }
 
   .avatar-color-mp {
@@ -292,18 +296,23 @@ img {
   .avatar-desktop-container {
     display: flex;
     flex-direction: row;
-    width: auto;
-    height: 140px;
-    margin-bottom: 40px;
+    width: 90%;
+    height: 105px;
+    margin-bottom: 20px;
+    margin-top: 15px;
     padding: 20px;
     background-color: #f5f2f2;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
     img {
-      width: 110px;
-      height: 110px;
-      margin-right: 20px;
+      width: 80px;
+      height: 80px;
     }
+  }
+
+  .avatar-desktop-img{
+    padding-bottom: 15px;
+
   }
 
   .avatar-desktop {
@@ -316,41 +325,36 @@ img {
     img {
       margin-right: 5px;
       margin-bottom: 5px;
-      width: 40px;
-      height: 40px;
+      width: 28px;
+      height: 28px;
     }
   }
 
   .avatar-list-container {
     display: flex;
     flex-wrap: wrap;
-    max-height: 90px;
+    max-height: 150px;
     overflow: auto;
-    margin-top: 10px;
     margin-left: 25px;
-  }
-
-  .avatar-desktop-img {
-    height: 150px;
-    width: auto;
   }
 
   .identity-desktop {
     // border: 2px solid #32e938;
     display: flex;
     flex-direction: column;
-    width: 36%;
+    width: 35%;
     margin-right: 10%;
-    margin-left: 4%;
+    margin-left: 5%;
+    margin-top: 20px;
   }
 
   .text-desktop {
     position: relative;
-    border-radius: 5px;
-    margin-bottom: 40px;
-    margin-left: 10%;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-left: 0;
     padding: 10px;
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: 300;
     border-bottom: 1px solid steelblue;
     width: auto;
@@ -362,10 +366,10 @@ img {
     content: "text";
     position: absolute;
     top: -30px;
-    left: -10px;
+    left: 0px;
     padding: 5px;
     border-radius: 5px;
-    font-size: medium;
+    font-size: small;
     font-weight: 500;
   }
 
@@ -393,16 +397,16 @@ img {
   .color-desktop {
     margin-top: 20px;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
     font-weight: 400;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     text-align: center;
     width: 280px;
-    height: 90px;
+    height: 70px;
     box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
 
     label {
-      font-size: medium;
+      font-size: small;
       font-weight: 500;
     }
   }
@@ -420,11 +424,12 @@ img {
   }
 
   .color-buttons-desktop button {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: none;
     cursor: pointer;
     border-radius: 50%;
+    margin-left: 7px;
   }
 
   //Interrupteur "dispo MP"//
@@ -435,8 +440,9 @@ img {
     margin-bottom: 20px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
+    height: 8%;
     span {
-      font-size: medium;
+      font-size: small;
       font-weight: 500;
     }
   }
@@ -457,8 +463,8 @@ img {
 
   .toggle-switch-desktop .toggle-label-desktop {
     position: relative;
-    width: 60px;
-    height: 34px;
+    width: 40px;
+    height: 24px;
     background-color: #ccc;
     border-radius: 17px;
     cursor: pointer;
@@ -474,15 +480,15 @@ img {
     position: absolute;
     top: 4px;
     left: 4px;
-    width: 26px;
-    height: 26px;
+    width: 16px;
+    height: 16px;
     background-color: #fff;
     border-radius: 50%;
     transition: transform 0.3s;
   }
 
   .toggle-switch-desktop input:checked + .toggle-label-desktop::before {
-    transform: translateX(26px);
+    transform: translateX(16px);
     margin-bottom: 30px;
   }
 
@@ -493,14 +499,14 @@ img {
   }
 
   .button-text-desktop {
-    height: 35px;
+    height: 30px;
     width: 30%;
     border-radius: 15px;
     border: none;
     background-color: rgb(55, 90, 107);
     color: white;
-    font-size: 1.1em;
-    margin-top: 40px;
+    font-size: 1em;
+    margin-top: 20px;
     font-weight: 400;
   }
 
@@ -510,7 +516,7 @@ img {
     margin-right: 3%;
     img {
       width: auto;
-      height: 75%;
+      height: 100%;
       border-radius: 5px;
     }
   }
