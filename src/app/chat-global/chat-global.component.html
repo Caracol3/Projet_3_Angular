@@ -10,7 +10,9 @@
           <div class="sender" *ngIf="msg.user_id.username === user.username">
             <p>
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
+
               <b>Moi à {{ msg.heure }}</b>
+
             </p>
             <p>{{ msg.message }}</p>
           </div>
