@@ -3,22 +3,21 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-        overflow: auto;
-        background-color:#f5f5f5;
-
-      }
-
-      .containerchat {
-        width: 100%;
-        max-width: 100%;
-        border-radius: 10px;
-        background-color: #f5f5f5;
-        overflow-y: auto;
-        height: 70vh;
-        margin-bottom: 15px;
-
+  overflow: hidden;
+  background-color: #f5f5f5;
+  // background-image: url("/assets/background-chat.png");
 }
 
+.containerchat {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+  height: 70vh;
+  margin-bottom: 15px;
+  max-height: 70vh;
+}
 
 #date {
   text-align: center;
@@ -27,11 +26,13 @@
   font-size: 0.8rem;
 }
 
-.sender-and-receiver-parent{
-  display:flex;
-  flex-direction:column;
-  background-color:#f5f5f5;
-  margin-left: 10px ;
+
+
+.sender-and-receiver-parent {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  margin-left: 10px;
   margin-right: 10px;
 }
 
@@ -48,7 +49,7 @@
 
 .sender {
   align-self: flex-end;
-  background-color: #007bff;
+  background-color: #007bffcb;
   color: #fff;
   align-self: flex-end;
 }
@@ -63,7 +64,12 @@
 .sender p,
 .receiver p {
   margin: 0;
+  font-weight: 400;
 }
+
+.sender b {
+    font-weight: 700;
+line-height: 0.6;}
 
 .sender img,
 .receiver img {
@@ -80,18 +86,22 @@
   max-width: 800px;
   margin-top: 20px;
   position: sticky;
+  bottom: 0;
+  background-color: #f5f5f5;
+  padding-bottom: 5px;
 }
 
-textarea{
-  width: 140%;
+textarea {
+  height: 50px;
+  width: 90%;
   border: none;
   padding: 10px;
+  resize: none;
+  border-radius: 50px;
 }
 
-
-.sendmessage img{
+.sendmessage img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  margin-left: 15px;
 }

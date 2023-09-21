@@ -1,19 +1,21 @@
 <div class="sidebar" [ngClass]="{'open': sidebarOpen}">
-  <img src="assets/retour.png" class="return-img" (click)="requestCloseSidebar()"/>
-  <h2>Salon global</h2>
-  <p>Salon du train n° ......</p>
+  <div class="header">
+    <img src="assets/retour1.png" class="return-img" (click)="requestCloseSidebar()" />
+    <h2>Salon global</h2>
+    <p>Salon du train n° ......</p>
+  </div>
 
-  <div>
+  <div class="private-chats">
     <h3>Liste des salons privés</h3>
     <div *ngFor="let chatMp of infoMpChat">
-      <p *ngIf="chatMp.user.id == userId">Salon privé avec {{listUser[chatMp.userReceiver -1].username}} </p>
+      <p *ngIf="chatMp.user.id == userId">Salon privé avec {{listUser[chatMp.userReceiver -1].username}}</p>
     </div>
   </div>
 
-  <div>
-    <h3>Liste des utilisateurs : </h3>
+  <div class="user-list">
+    <h3>Liste des utilisateurs :</h3>
     <div *ngFor="let user of listUser">
-      <p> {{user.username}}  </p>
+      <p>{{user.username}}</p>
     </div>
   </div>
 </div>
