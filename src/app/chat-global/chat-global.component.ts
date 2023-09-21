@@ -22,7 +22,7 @@ export class ChatGlobalComponent implements OnInit {
 
 getMessages(){
   this.http
-      .get<any>(`http://localhost:8080/all-messages`)
+      .get<any>(`http://192.168.1.51:8080/all-messages-global`)
       .subscribe((data) => {
         this.messages = data;
       });
@@ -39,7 +39,7 @@ getMessages(){
   ngOnInit(): void {
     this.refreshMessages();
     this.http
-      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .get<any>(`http://192.168.1.51:8080/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
 
@@ -49,7 +49,7 @@ getMessages(){
 
       setInterval(() => {
         this.refreshMessages();
-      }, 500000000000);  
+      }, 500);  
 
 
 
@@ -59,7 +59,7 @@ getMessages(){
     refreshMessages(): void {
 
       this.http
-      .get<any>(`http://localhost:8080/all-messages-global`)
+      .get<any>(`http://192.168.1.51:8080/all-messages-global`)
       .subscribe((data) => {
         this.messages = data;
        
@@ -87,7 +87,7 @@ getMessages(){
 
     this.http
     .post<any>(
-      `http://localhost:8080/send-message-global/${this.user_id}`,
+      `http://192.168.1.51:8080/send-message-global/${this.user_id}`,
       infoMessage,
     )
     .subscribe(

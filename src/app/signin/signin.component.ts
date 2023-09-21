@@ -25,7 +25,7 @@ export class SigninComponent {
       return alert('Les mots de passe ne correspondent pas');
     }
 
-    fetch('http://localhost:8080/register', {
+    fetch('http://192.168.1.51:8080/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

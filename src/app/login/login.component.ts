@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit{
 
   onSubmit() {
 
-    fetch ('http://localhost:8080/login', {
+    fetch ('http://192.168.1.51:8080/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

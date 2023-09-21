@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   // Au chargement du composant, on récupère la liste des utilisateurs
 
   ngOnInit(): void {
-    this.httpClient.get<User[]>('http://localhost:8080/admin/users').subscribe((users) => {
+    this.httpClient.get<User[]>('http://192.168.1.51/admin/users').subscribe((users) => {
       this.users = users;
       console.log(this.users);
      
@@ -66,7 +66,7 @@ export class AdminComponent implements OnInit {
 
     // Ici on effectue la requête HTTP PUT
     this.httpClient
-    .put(`http://localhost:8080/admin/users/${user.id}/role`, requestBody)
+    .put(`http://192.168.1.51/admin/users/${user.id}/role`, requestBody)
     .pipe(take(1))
     .subscribe(
       () => {
