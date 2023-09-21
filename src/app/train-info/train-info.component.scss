@@ -9,8 +9,9 @@
 }
 .form-title{
   text-align: center;
-  margin-top: 20px;
+
   margin-bottom: 50px;
+  color: #365B6D;
 }
 
 .logo {
@@ -61,8 +62,27 @@
   display: none;
 
 }
+.back{
+  display: none;
+}
+.backMobile{
+  display: block;
+ position: absolute;
+ left:50px;
+ top: 2px;
+   img{
+    width: 20px;
+    margin: auto;
+    cursor: pointer;
+  }
+
+
+}
+
 
 @media all and (min-width: 748px) {
+
+
 
   .form-title {
     background-color: rgb(55, 90, 107);
@@ -137,6 +157,7 @@
  font-size: 1.2em;
 }
 .back{
+  display: block;
   text-align: start;
   margin: auto;
   margin-left: 2%;
@@ -147,9 +168,12 @@
   width: 50px;
 }
 }
+
+.backMobile{
+  display: none;
 }
 
 
 
-
+}
 
