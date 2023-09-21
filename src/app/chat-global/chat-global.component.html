@@ -6,6 +6,7 @@
           <p *ngIf="i === 0 || msg.date !== messages[i - 1].date" id="date">
             {{ msg.date }}
           </p>
+
           <div class="sender" *ngIf="msg.user_id.username === user.username">
             <p>
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
