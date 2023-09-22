@@ -8,23 +8,32 @@ import { DataService } from '../data.service';
   styleUrls: ['./train-info.component.scss']
 })
 export class TrainInfoComponent implements OnInit {
-  retard : any ;
-  infoTrain : any;
 
   private previousScrollX = 0;
 
-  constructor(private location: Location, private  dataservice :DataService) { }
+  constructor(private location: Location, private  dataService :DataService) { }
+  retard : any ;
+  infoTrain : any;
 
 
-  ngOnInit(): void {
+
+  ngOnInit() {
+    let urlTrain : any = localStorage.getItem("urlTrain");
+    let urlRetard : any = localStorage.getItem("urlRetard");
+    this.dataService.getDataFromDelay(urlRetard);
+    this.dataService.getDataFromTrain(urlTrain);
     setTimeout(() => {
-      this.infoTrain = this.dataservice.apiResponse.journeys;
-      this.retard = this.dataservice.retard.disruptions;
-      console.log(this.retard )
-      console.log(this.infoTrain)
-    }, 1500);
+      this.infoTrain = this.dataService.infoTrain;
+      this.retard = this.dataService.retard
+      
+      console.log(this.retard);
+      console.log(this.infoTrain);
+    }, 1000);
 
   }
+
+
+
 
   @HostListener('window.scroll', ['$event'])
   onScroll(event: Event) {

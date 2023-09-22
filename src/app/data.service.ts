@@ -8,6 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DataService {
   apiResponse: any;
   retard: any;
+  urlApi : string = "";
+  infoTrain : any;
 
   constructor( private http : HttpClient) { }
 
@@ -38,10 +40,7 @@ export class DataService {
 
   getDataFromApi(uicDepart : string , uicArriver : string , dateHeureFormat : string) {
 
-    // https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A${uicDepart}&to=stop_area%3ASNCF%3A${uicArriver}&datetime=20230921T000000&datetime_represents=departure
 
-
-    // `https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area:SNCF:${uicDepart}&to=stop_area:SNCF:${uicArriver}`
     const url  = `https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A${uicDepart}&to=stop_area%3ASNCF%3A${uicArriver}&datetime=${dateHeureFormat}&datetime_represents=departure`;
                   ``
     const headers = new HttpHeaders({
@@ -54,23 +53,46 @@ export class DataService {
     });
     return this.apiResponse;
   }
-  getDataFromDelay(uicDepart : string , uicArriver : string , dateHeureFormat : string) {
+  getDataFromDelay(urlRetard : string) {
 
-    // https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A${uicDepart}&to=stop_area%3ASNCF%3A${uicArriver}&datetime=20230921T000000&datetime_represents=departure
-    // `https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area:SNCF:${uicDepart}&to=stop_area:SNCF:${uicArriver}`
-    const url  = `https://api.sncf.com/v1/coverage/sncf/disruptions?from=stop_area%3ASNCF%3A${uicDepart}&to=stop_area%3ASNCF%3A${uicArriver}&datetime=${dateHeureFormat}&datetime_represents=departure`;
+    const url  = urlRetard;
 
     const headers = new HttpHeaders({
       'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
     });
       this.http.get(url, {headers}).subscribe((response : any) => {
         this.retard = response;
-        console.log(this.retard);
+        
 
     });
   return this.retard
   }
 
+
+  getUrl(uicDepart : string , uicArriver : string , dateHeureFormat : string){
+    localStorage.removeItem("urlRetard");
+    localStorage.removeItem('urlTrain')
+    const urlTrain = `https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A${uicDepart}&to=stop_area%3ASNCF%3A${uicArriver}&datetime=${dateHeureFormat}&datetime_represents=departure`;
+    const urlRetard  = `https://api.sncf.com/v1/coverage/sncf/disruptions?from=stop_area%3ASNCF%3A${uicDepart}&to=stop_area%3ASNCF%3A${uicArriver}&datetime=${dateHeureFormat}&datetime_represents=departure`;
+    localStorage.setItem("urlRetard",urlRetard)
+    localStorage.setItem("urlTrain", urlTrain)
+  }
+
+  getDataFromTrain(urlTrain : string) {
+
+    const url  = urlTrain;
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
+    });
+      this.http.get(url, {headers}).subscribe((response : any) => {
+        this.infoTrain = response;
+        
+
+    });
+  return this.infoTrain
+  }
+ 
 
 
 }

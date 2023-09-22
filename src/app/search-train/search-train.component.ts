@@ -60,6 +60,7 @@ export class SearchTrainComponent implements OnInit {
   listeOfTrain: any;
   showTextDesktop: boolean = true;
   dateHeureFormat: string = '';
+  infoRetard: any;
 
 
 
@@ -82,13 +83,16 @@ export class SearchTrainComponent implements OnInit {
 
    this.dateHeureFormat = dateFormatee + "T" + this.search.heureDepart.replace(":", "") + "00";
    this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
-  this.dataService.getDataFromDelay(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
+  this.dataService.getUrl(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
    this.listeOfTrain = this.dataService.apiResponse.journeys;
+   this.infoRetard = this.dataService.retard;
 
 
 
   setTimeout(() => {
       this.listeOfTrain = this.dataService.apiResponse.journeys;
+      this.infoRetard = this.dataService.retard;
+      console.log(this.dataService.urlApi);
       console.log(this.listeOfTrain);
       this.searchPage = false;
       this.showTextDesktop = false;
