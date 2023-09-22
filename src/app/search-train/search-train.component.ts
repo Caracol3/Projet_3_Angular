@@ -82,6 +82,7 @@ export class SearchTrainComponent implements OnInit {
 
    this.dateHeureFormat = dateFormatee + "T" + this.search.heureDepart.replace(":", "") + "00";
    this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
+  this.dataService.getDataFromDelay(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
    this.listeOfTrain = this.dataService.apiResponse.journeys;
 
 
