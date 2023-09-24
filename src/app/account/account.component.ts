@@ -77,7 +77,7 @@ export class AccountComponent implements OnInit {
   putAvatar(avatar: string) {
    this.httpClient
       .put<any>(
-        `http://192.168.1.51:8080/users/${this.user_id}/account/avatar/${avatar}`,
+        `http://localhost:8080/users/${this.user_id}/account/avatar/${avatar}`,
         null
       )
       .subscribe(
@@ -116,7 +116,7 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient
-      .get<any>(`http://192.168.1.51:8080/user/${this.user_id}`)
+      .get<any>(`http://localhost:8080/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
         this.avatar = this.user.avatar;
@@ -130,7 +130,7 @@ export class AccountComponent implements OnInit {
    
     this.httpClient
        .put<any>(
-         `http://192.168.1.51:8080/users/${this.user_id}/account/color/${color}`,
+         `http://localhost:8080/users/${this.user_id}/account/color/${color}`,
          null
        )
        .subscribe(
@@ -151,7 +151,7 @@ export class AccountComponent implements OnInit {
     
     this.httpClient
        .put<any>(
-         `http://192.168.1.51:8080/users/${this.user_id}/account/dispo/${!this.user.is_available}`,
+         `http://localhost:8080/users/${this.user_id}/account/dispo/${!this.user.is_available}`,
          null
        )
        .subscribe(

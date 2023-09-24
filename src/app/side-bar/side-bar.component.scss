@@ -1,0 +1,24 @@
+/* Style de la pastille verte */
+.pastille-verte {
+    width: 20px; /* Largeur de la pastille */
+    height: 20px; /* Hauteur de la pastille */
+    background-color: green; /* Couleur de fond verte */
+    border-radius: 50%; /* Border-radius pour créer une forme de cercle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Couleur du texte blanc */
+    font-weight: bold; /* Texte en gras */
+}
+
+.pastille-rouge {
+    width: 20px; /* Largeur de la pastille */
+    height: 20px; /* Hauteur de la pastille */
+    background-color: red; /* Couleur de fond verte */
+    border-radius: 50%; /* Border-radius pour créer une forme de cercle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Couleur du texte blanc */
+    font-weight: bold; /* Texte en gras */
+}

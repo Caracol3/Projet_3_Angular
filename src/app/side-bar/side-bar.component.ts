@@ -27,6 +27,7 @@ export class SideBarComponent implements OnInit {
       this.infoMpChat = this.messageService.messagesMp;
       this.infoMainChat = this.messageService.messagesMain;
       this.listUser = this.messageService.allUsers;
+  
     }, 500); 
 
   }
@@ -49,6 +50,11 @@ export class SideBarComponent implements OnInit {
       }
     }
     return false;
+  }
+
+
+  selectUserFalse(){
+    window.alert("User non disponible en MP")
   }
 
 

@@ -19,7 +19,7 @@ export class MessageService {
   refreshMessagesMp() {
 
      this.http
-    .get<any>(`http://192.168.1.51:8080/all-messages-mp`)
+    .get<any>(`http://localhost:8080/all-messages-mp`)
     .subscribe((data) => {
       this.messagesMp = data;
         });
@@ -30,7 +30,7 @@ export class MessageService {
   refreshMessagesMain() {
 
     this.http
-   .get<any>(`http://192.168.1.51:8080/all-messages-main`)
+   .get<any>(`http://localhost:8080/all-messages-main`)
    .subscribe((data) => {
      this.messagesMain = data;
        });
@@ -59,7 +59,7 @@ export class MessageService {
   refreshMessagesGlobal() {
 
     this.http
-   .get<any>(`http://192.168.1.51:8080/all-messages-global`)
+   .get<any>(`http://localhost:8080/all-messages-global`)
    .subscribe((data) => {
      this.messagesGlobal = data;
        });
@@ -68,7 +68,7 @@ export class MessageService {
  }
 
   findUser() {
-    this.http.get<any>(`http://192.168.1.51:8080/admin/users`)
+    this.http.get<any>(`http://localhost:8080/admin/users`)
     .subscribe((data) => {
       this.allUsers = data;
         });

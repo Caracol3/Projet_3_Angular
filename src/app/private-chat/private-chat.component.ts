@@ -33,7 +33,7 @@ export class PrivateChatComponent implements OnInit {
   ngOnInit(): void {
     this.refreshMessages();
     this.http
-      .get<any>(`http://192.168.1.51:8080/user/${this.user_id}`)
+      .get<any>(`http://localhost:8080/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
 
@@ -81,7 +81,7 @@ export class PrivateChatComponent implements OnInit {
 
     this.http
     .post<any>(
-      `http://192.168.1.51:8080/send-message-mp/${this.user_id}`,
+      `http://localhost:8080/send-message-mp/${this.user_id}`,
       infoMessage,
     )
     .subscribe(

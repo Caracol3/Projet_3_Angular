@@ -14,7 +14,7 @@ userInfos : any;
 
    getUserData(userId : any) {
     this.http
-      .get<any>(`http://192.168.1.51:8080/user/${userId}`)
+      .get<any>(`http://localhost:8080/user/${userId}`)
       .subscribe((data: any) => {
         this.userInfos = data;
       });

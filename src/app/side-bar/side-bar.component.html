@@ -26,8 +26,12 @@
 
 
 <div *ngFor="let user of listUser; let i = index">
-  <p (click)="selectUser(i)"> {{user.username}}  </p>
-
+  <div class="containerUser">
+  <p (click)="selectUser(i)" *ngIf="user.is_available == true"> {{user.username}}  </p>
+  <p *ngIf="user.is_connected == true" class="pastille-verte">V</p>
+  <p (click)="selectUserFalse()" *ngIf="user.is_available == false"> {{user.username}}  </p>
+  <p *ngIf="user.is_connected == false" class="pastille-rouge">X</p>
+</div>
 
 </div>
 
