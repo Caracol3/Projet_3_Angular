@@ -29,6 +29,7 @@
     align-items: center;
     color: white; /* Couleur du texte blanc */
     font-weight: bold; /* Texte en gras */
+
 }.sidebar {
   width: 300px;
   height: 100vh;
@@ -62,9 +63,40 @@
   margin: 0;
 }
 
-.private-chats, .user-list {
+.train-room{
   padding: 20px;
 }
+.train-room h3, .user-list h3 {
+  font-weight: 500;
+  color: #333;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user-list{
+  border: 1px solid #a09f9f;
+  margin: 0;
+  padding: 0;
+}
+
+.containerUser{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  width: 100%;
+  border-bottom: 1px solid #a09f9f;
+  background-color: #ffffff;
+}
+
+.dispo{
+  margin-left: 2%;
+}
+.nonDispo{
+  margin-left: 2%;
+}
+
 
 .private-chats h3, .user-list h3 {
   font-weight: 500;
