@@ -27,7 +27,7 @@ export class SideBarComponent implements OnInit {
     setTimeout(() => {
       this.infoMpChat = this.messageService.messagesMp;
       this.infoMainChat = this.messageService.messagesMain;
-      this.listUser = this.messageService.allUsers;
+      this.listUser = this.messageService.allUsers
 
     }, 500);
   }
