@@ -60,6 +60,7 @@ export class SearchTrainComponent implements OnInit {
   listeOfTrain: any;
   showTextDesktop: boolean = true;
   dateHeureFormat: string = '';
+  infoRetard: any;
 
 
 
@@ -83,11 +84,14 @@ export class SearchTrainComponent implements OnInit {
    this.dateHeureFormat = dateFormatee + "T" + this.search.heureDepart.replace(":", "") + "00";
    this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
    this.listeOfTrain = this.dataService.apiResponse.journeys;
+   this.infoRetard = this.dataService.retard;
 
 
 
   setTimeout(() => {
       this.listeOfTrain = this.dataService.apiResponse.journeys;
+      this.infoRetard = this.dataService.retard;
+      console.log(this.dataService.urlApi);
       console.log(this.listeOfTrain);
       this.searchPage = false;
       this.showTextDesktop = false;
@@ -208,7 +212,8 @@ export class SearchTrainComponent implements OnInit {
   }
 
   getInfoTrain(index: number) {
-    console.log(this.formatDateAndTime(this.listeOfTrain[index].sections[0].departure_date_time) + "  " + this.listeOfTrain[index].sections[1].display_informations.trip_short_name);
+    this.dataService.getUrl(this.listeOfTrain[index].sections[1].links[0].id)
+
   }
 
 
