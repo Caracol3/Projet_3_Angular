@@ -8,7 +8,7 @@
           </p>
 
           <div class="sender" *ngIf="msg.user_id.username === user.username">
-            <p>
+            <p class="avatar-and-time">
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
 
               <b>Moi à {{ msg.heure }}</b>
@@ -18,7 +18,7 @@
             <p>{{ msg.message }}</p>
           </div>
           <div class="receiver" *ngIf="msg.user_id.username !== user.username">
-            <p>
+            <p class="avatar-and-time">
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
               <b>{{ msg.user_id.username }} à {{ msg.heure }}</b>
             </p>
