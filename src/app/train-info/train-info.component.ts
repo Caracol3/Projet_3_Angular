@@ -25,8 +25,8 @@ export class TrainInfoComponent implements OnInit {
     setTimeout(() => {
       this.infoTrain = this.dataService.infoTrain;
       this.retard = this.dataService.retard
-      
-      console.log(this.retard);
+
+      // console.log(this.retard);
       console.log(this.infoTrain);
     }, 1000);
 
@@ -35,17 +35,7 @@ export class TrainInfoComponent implements OnInit {
 
 
 
-  @HostListener('window.scroll', ['$event'])
-  onScroll(event: Event) {
-    const currentScrollX = window.scrollX;
 
-
-    if (currentScrollX > this.previousScrollX) {
-      this.returnSalon();
-    }
-
-    this.previousScrollX = currentScrollX;
-  }
 
   returnSalon() {
     this.location.back();
