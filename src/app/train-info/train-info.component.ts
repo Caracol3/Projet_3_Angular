@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { DataService } from '../data.service';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-train-info',
@@ -9,31 +11,33 @@ import { DataService } from '../data.service';
 })
 export class TrainInfoComponent implements OnInit {
 
-  private previousScrollX = 0;
 
-  constructor(private location: Location, private  dataService :DataService) { }
+  constructor(private location: Location, private  dataService :DataService, private http : HttpClient ) { }
   retard : any ;
-  infoTrain : any;
+  journey: any = localStorage.getItem("urlRetard");
+
 
 
 
   ngOnInit() {
-    let urlTrain : any = localStorage.getItem("urlTrain");
-    let urlRetard : any = localStorage.getItem("urlRetard");
-    this.dataService.getDataFromDelay(urlRetard);
-    this.dataService.getDataFromTrain(urlTrain);
-    setTimeout(() => {
-      this.infoTrain = this.dataService.infoTrain;
-      this.retard = this.dataService.retard
-
-      // console.log(this.retard);
-      console.log(this.infoTrain);
-    }, 1000);
-
+   this.getDataFromDelay()
   }
 
 
+  getDataFromDelay() {
+    const url  = `https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${this.journey}`;
+    const headers = new HttpHeaders({
+      'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
+    });
+      this.http.get(url, {headers}).subscribe((response : any) => {
+        this.retard = response;
+        console.log(url)
+        console.log(this.journey)
 
+
+    });
+  return this.retard
+  }
 
 
 

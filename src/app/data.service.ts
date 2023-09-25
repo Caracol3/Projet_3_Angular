@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Fields } from './models/region-model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +11,7 @@ export class DataService {
   retard: any;
   urlApi : string = "";
   infoTrain : any;
+  journey : any = "";
 
   constructor( private http : HttpClient) { }
 
@@ -53,46 +55,46 @@ export class DataService {
     });
     return this.apiResponse;
   }
-  getDataFromDelay(urlRetard : string) {
+  // getDataFromDelay() {
 
-    const url  = urlRetard;
+  //   const url  = `https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${this.journey}`;
 
-    const headers = new HttpHeaders({
-      'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
-    });
-      this.http.get(url, {headers}).subscribe((response : any) => {
-        this.retard = response;
-        
+  //   const headers = new HttpHeaders({
+  //     'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
+  //   });
+  //     this.http.get(url, {headers}).subscribe((response : any) => {
+  //       this.retard = response;
+  //       console.log(url)
+  //       console.log(this.journey)
 
-    });
-  return this.retard
+
+  //   });
+  // return this.retard
+  // }
+
+
+  getUrl(urlRetard : any){
+
+    localStorage.removeItem('urlRetard')
+    localStorage.setItem("urlRetard", urlRetard)
+    this.journey = localStorage.getItem("urlRetard");
   }
 
+  // getDataFromTrain(urlTrain : string) {
 
-  getUrl(uicDepart : string , uicArriver : string , dateHeureFormat : string){
-    localStorage.removeItem("urlRetard");
-    localStorage.removeItem('urlTrain')
-    const urlTrain = `https://api.sncf.com/v1/coverage/sncf/journeys?from=stop_area%3ASNCF%3A${uicDepart}&to=stop_area%3ASNCF%3A${uicArriver}&datetime=${dateHeureFormat}&datetime_represents=departure`;
-    const urlRetard  = `https://api.sncf.com/v1/coverage/sncf/disruptions?from=stop_area%3ASNCF%3A${uicDepart}&to=stop_area%3ASNCF%3A${uicArriver}&datetime=${dateHeureFormat}&datetime_represents=departure`;
-    localStorage.setItem("urlRetard",urlRetard)
-    localStorage.setItem("urlTrain", urlTrain)
-  }
+  //   const url  = urlTrain;
 
-  getDataFromTrain(urlTrain : string) {
+  //   const headers = new HttpHeaders({
+  //     'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
+  //   });
+  //     this.http.get(url, {headers}).subscribe((response : any) => {
+  //       this.infoTrain = response;
 
-    const url  = urlTrain;
 
-    const headers = new HttpHeaders({
-      'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
-    });
-      this.http.get(url, {headers}).subscribe((response : any) => {
-        this.infoTrain = response;
-        
+  //   });
+  // return this.infoTrain
+  // }
 
-    });
-  return this.infoTrain
-  }
- 
 
 
 }

@@ -83,7 +83,6 @@ export class SearchTrainComponent implements OnInit {
 
    this.dateHeureFormat = dateFormatee + "T" + this.search.heureDepart.replace(":", "") + "00";
    this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
-   this.dataService.getUrl(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
    this.listeOfTrain = this.dataService.apiResponse.journeys;
    this.infoRetard = this.dataService.retard;
 
@@ -213,7 +212,8 @@ export class SearchTrainComponent implements OnInit {
   }
 
   getInfoTrain(index: number) {
-    console.log(this.formatDateAndTime(this.listeOfTrain[index].sections[0].departure_date_time) + "  " + this.listeOfTrain[index].sections[1].display_informations.trip_short_name);
+    this.dataService.getUrl(this.listeOfTrain[index].sections[1].links[0].id)
+
   }
 
 
