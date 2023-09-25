@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './chat-global.component.html',
   styleUrls: ['./chat-global.component.scss'],
 })
-export class ChatGlobalComponent implements OnInit {
+export class ChatGlobalComponent implements OnInit, AfterViewInit {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
 
   message: string = '';
@@ -21,6 +21,9 @@ export class ChatGlobalComponent implements OnInit {
     private accountService: AccountServiceService,
     private http: HttpClient
   ) {}
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   getMessages() {
     this.http
@@ -80,13 +83,13 @@ export class ChatGlobalComponent implements OnInit {
     this.message = '';
   }
 
- 
+
   scrollToBottom(): void {
     try {
-      // Obtenez la hauteur totale de l'élément déroulant
+      // Ppour obtenir la hauteur totale de l'élément déroulant
       const scrollHeight = this.chatContainer.nativeElement.scrollHeight;
 
-      // Définissez scrollTop sur la hauteur totale pour faire défiler vers le bas
+      // Pour définir  scrollTop sur la hauteur totale pour faire défiler vers le bas
       this.chatContainer.nativeElement.scrollTop = scrollHeight;
     } catch (err) {
       console.error(err);
