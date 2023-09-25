@@ -1,16 +1,3 @@
-/* Style de la pastille verte */
-.pastille-verte {
-    width: 20px; /* Largeur de la pastille */
-    height: 20px; /* Hauteur de la pastille */
-    background-color: green; /* Couleur de fond verte */
-    border-radius: 50%; /* Border-radius pour créer une forme de cercle */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white; /* Couleur du texte blanc */
-    font-weight: bold; /* Texte en gras */
-}
-
 .dispo{
     color : green;
 }
@@ -19,18 +6,17 @@
     color : red;
 }
 
-.pastille-rouge {
-    width: 20px; /* Largeur de la pastille */
-    height: 20px; /* Hauteur de la pastille */
-    background-color: red; /* Couleur de fond verte */
-    border-radius: 50%; /* Border-radius pour créer une forme de cercle */
+.pastille-verte, .pastille-rouge {
+    width: 25px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white; /* Couleur du texte blanc */
-    font-weight: bold; /* Texte en gras */
+    margin-right: 10px;
+    margin-left: 10px;
+}
 
-}.sidebar {
+.sidebar {
   width: 300px;
   height: 100vh;
   background-color: white;
@@ -68,13 +54,14 @@
 }
 .train-room h3, .user-list h3 {
   font-weight: 500;
-  color: #333;
+  color: #365b6d;
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .user-list{
-  border: 1px solid #a09f9f;
+  // border: 1px solid #a09f9f;
   margin: 0;
   padding: 0;
 }
@@ -86,13 +73,23 @@
   padding-bottom: 15px;
   padding-top: 15px;
   width: 100%;
-  border-bottom: 1px solid #a09f9f;
+  // border-bottom: 0.5px solid #a09f9f;
+  // border-top: 0.5px solid #a09f9f;
   background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(211, 210, 210, 0.5);
+  transition: transform 0.6s;
+}
+
+.containerUser:hover, .containerUser:active {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transform: scale(1.10);
 }
 
 .dispo{
   margin-left: 2%;
 }
+
 .nonDispo{
   margin-left: 2%;
 }
@@ -100,8 +97,10 @@
 
 .private-chats h3, .user-list h3 {
   font-weight: 500;
-  color: #333;
+  color: #365b6d;
   margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .private-chats p, .user-list p {
@@ -134,5 +133,27 @@
   .return-img {
     display: none;
   }
+
+  .train-room h3, .user-list h3 {
+    font-weight: 500;
+    font-size: large;
 }
+
+.dispo, .nonDispo{
+  font-size: x-medium;
+  font-weight: 400;
+}
+
+.pastille-verte, .pastille-rouge {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+}
+
 
