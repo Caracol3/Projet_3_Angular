@@ -14,6 +14,7 @@
               <b>Moi à {{ msg.heure }}</b>
 
             </p>
+
             <p>{{ msg.message }}</p>
           </div>
           <div class="receiver" *ngIf="msg.user_id.username !== user.username">
@@ -34,6 +35,7 @@
         placeholder="Saisissez votre message..."
         rows="1"
         (input)="autoExpand($event)"
+        class="chat-textarea"
       ></textarea>
       <img src="assets/send.png" (click)="sendMessage()"/>
     </div>
