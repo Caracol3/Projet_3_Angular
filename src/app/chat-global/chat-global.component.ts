@@ -25,9 +25,10 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     throw new Error('Method not implemented.');
   }
 
-  getMessages() {
-    this.http
-      .get<any>(`http://localhost:8080/all-messages`)
+
+getMessages(){
+  this.http
+      .get<any>(`http://localhost:8080/all-messages-global`)
       .subscribe((data) => {
         this.messages = data;
       });
@@ -41,9 +42,12 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
         this.user = data;
       });
 
-    setInterval(() => {
-      this.refreshMessages();
-    }, 500000000000);
+      setInterval(() => {
+        this.refreshMessages();
+      }, 500);
+
+
+
   }
 
   refreshMessages(): void {

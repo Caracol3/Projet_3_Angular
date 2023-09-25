@@ -1,21 +1,38 @@
-<div class="sidebar" [ngClass]="{'open': sidebarOpen}">
-  <div class="header">
-    <img src="assets/retour1.png" class="return-img" (click)="requestCloseSidebar()" />
-    <h2>Salon global</h2>
-    <p>Salon du train n° ......</p>
-  </div>
+<h2>Salon global</h2>
 
-  <div class="private-chats">
-    <h3>Liste des salons privés</h3>
-    <div *ngFor="let chatMp of infoMpChat">
-      <p *ngIf="chatMp.user.id == userId">Salon privé avec {{listUser[chatMp.userReceiver -1].username}}</p>
-    </div>
-  </div>
 
-  <div class="user-list">
-    <h3>Liste des utilisateurs :</h3>
-    <div *ngFor="let user of listUser">
-      <p>{{user.username}}</p>
-    </div>
+
+<div>
+  <h3>Liste des salons du train</h3>
+  <ng-container *ngFor="let chatMain of infoMainChat; let i = index">
+    <ng-container *ngIf="chatMain.user.id == userId && !isDuplicateMain(chatMain.roomName, i)">
+      <p>Salon du train n° {{chatMain.roomName}}</p>
+    </ng-container>
+  </ng-container>
+</div>
+
+<!-- <div>
+  <h3>Liste des salons privés</h3>
+  <div *ngFor="let chatMp of infoMpChat; let i = index">
+    <ng-container *ngIf="chatMp.userReceiver == userId && !isDuplicateMp(chatMp, i)">
+      <p>Salon privé avec {{chatMp.user.username}}</p>
+    </ng-container>
   </div>
+</div> -->
+
+
+<div>
+    <h3>Liste des utilisateurs : </h3>
+
+
+<div *ngFor="let user of listUser; let i = index">
+  <div class="containerUser">
+  <p (click)="selectUser(i)" *ngIf="user.is_available == true" class="dispo"> {{user.username}}  </p>
+  <p *ngIf="user.is_connected == true" class="pastille-verte">V</p>
+  <p (click)="selectUserFalse()" *ngIf="user.is_available == false" class="nonDispo"> {{user.username}}  </p>
+  <p *ngIf="user.is_connected == false" class="pastille-rouge">X</p>
+</div>
+
+</div>
+
 </div>

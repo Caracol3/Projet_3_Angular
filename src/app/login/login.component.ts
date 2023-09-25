@@ -14,8 +14,9 @@ import { AccountServiceService } from '../account-service.service';
 export class LoginComponent implements OnInit{
   profil: Profil = new Profil('', '', '');
   isLoginFormVisible: boolean;
+ 
 
-  constructor(private router: Router, private accountService: AccountServiceService) {
+  constructor(private router: Router,private http : HttpClient, private accountService: AccountServiceService) {
     this.isLoginFormVisible = false;
   }
 
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit{
             localStorage.setItem('userId', user.data.id);
             this.router.navigate(['/search-train']);
             this.accountService.getUserData(user.data.user.id);
+            this.connectUser(user.data.user.id);
     }
 
 
@@ -63,4 +65,23 @@ export class LoginComponent implements OnInit{
   signUp() {
     console.log('sign up');
   }
+
+  connectUser(id : any) {
+    this.http
+    .put<any>(
+      `http://localhost:8080/users/${id}/account/online/true`,
+      null
+    ).subscribe(
+      (response) => {
+        // Mettez à jour l'avatar dans votre composant Angular si nécessaire
+        
+      },
+      (error) => {
+        console.error("Erreur lors de la mise à jour de l'user:", error);
+      }
+    );
+  }
+
+
+
 }
