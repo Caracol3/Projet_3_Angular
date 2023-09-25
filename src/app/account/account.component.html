@@ -49,6 +49,7 @@
         *ngFor="let color of colorOptions"
         (click)="saveSelectedColor(color)"
         [style.background-color]="'#' + color"
+        [class.selected]="color === selectedColor"
       ></button>
     </div>
   </div>
@@ -141,6 +142,7 @@
                   *ngFor="let color of colorOptions"
                   (click)="saveSelectedColor(color)"
                   [style.background-color]="'#' + color"
+                  [class.selected]="color === selectedColor"
                 ></button>
               </div>
             </div>

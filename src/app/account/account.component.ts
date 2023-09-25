@@ -121,13 +121,14 @@ export class AccountComponent implements OnInit {
         this.user = data;
         this.avatar = this.user.avatar;
         this.user.birthday = this.formatDate(this.user.birthday);
+        this.selectedColor = this.user.color ;
         console.log(this.user);
 
       });
   }
 
   saveSelectedColor(color: string) {
-
+    this.selectedColor = color;
 
     this.httpClient
        .put<any>(
