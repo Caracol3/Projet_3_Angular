@@ -1,1 +1,39 @@
-<p>main-chat works!</p>
+<div class="container">
+
+    <div class="containerchat">
+    
+    <div class="chat">
+    <div *ngFor="let msg of messages" class="contenairchat">
+    <div *ngIf="msg.message !== '' ">
+     <div class="sender" *ngIf="msg.user.username === user.username">
+       <p>{{ msg.message }}</p>
+       <p>
+         <img src="assets/Avatar/{{msg.user.avatar}}" alt="">
+         msg envoyé par : <b>{{msg.user.username}} à {{msg.heure}}</b>
+       </p>
+     </div>
+     <div class="receiver" *ngIf="msg.user.username !== user.username">
+       <p>{{ msg.message }}</p>
+       <p>
+         <img src="assets/Avatar/{{msg.user.avatar}}" alt="">
+         msg envoyé par : <b>{{msg.user.username}}  à {{msg.heure}}</b>
+       </p>
+     </div>
+    </div>
+    </div>
+    
+    </div>
+    
+    <div class="sendmessage">
+    
+    
+    <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
+    <button (click)="sendMessage()">Envoyer</button> 
+    
+    </div>
+    
+    </div>
+    
+    
+    
+    </div>

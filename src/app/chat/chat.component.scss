@@ -33,11 +33,14 @@
 }
 
 @media screen and (min-width: 748px) {
+
+  .containersidebar{
+    display:none;
+  }
   .containersidebar-desktop {
     display: flex;
     flex-direction: column;
     width: 20%;
-
   }
 
   .container {
