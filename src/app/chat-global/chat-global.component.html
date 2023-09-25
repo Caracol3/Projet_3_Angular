@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="containerchat">
+  <div class="containerchat" style="overflow-y: auto; " #chatContainer>
     <div class="chat">
       <div *ngFor="let msg of messages; let i = index" class="contenairchat">
         <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
@@ -34,8 +34,7 @@
         (keyup.enter)="sendMessage()"
         placeholder="Saisissez votre message..."
         rows="1"
-        (input)="autoExpand($event)"
-        class="chat-textarea"
+        class="chat-textearea"
       ></textarea>
       <img src="assets/send.png" (click)="sendMessage()"/>
     </div>
