@@ -120,7 +120,13 @@ input {
   border-top-right-radius: 40%;
   border-bottom-right-radius: 40%;
 }
+.back{
+  display: block;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.8em;
 
+}
 
 @media all and (min-width: 748px) {
   .container {
@@ -235,5 +241,8 @@ input {
   transform: scale(1.08);
   cursor: pointer;
   transition: 0.3s;
+}
+.back{
+  display: none;
 }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Signin } from '../models/signin';
 import { tap } from 'rxjs';
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -15,7 +16,7 @@ export class SigninComponent {
 
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private location: Location) { 
     this.isLoginFormVisible = false;
   }
 
@@ -38,22 +39,26 @@ export class SigninComponent {
 
       })
     })
-  
-  .then(response => response.json())
-  
-  .then(user => {
-  
 
-    
+  .then(response => response.json())
+
+  .then(user => {
+
+
+
     if (user && user.data.token){
             localStorage.setItem('token', user.data.token);
     }
-    
-  
+
+
   });
-  
+
   // alert('Utilisateur crée');
-  
+
+  }
+
+  returnSalon() {
+    this.location.back();
   }
   logIn() {
 
