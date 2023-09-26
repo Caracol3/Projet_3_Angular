@@ -43,18 +43,22 @@ export class PrivateChatComponent implements OnInit {
 
       setInterval(() => {
         this.refreshMessages();
-      }, 500);  
+      }, 250);  
 
 
 
   }
 
 
+
+
     refreshMessages(): void {
+
+      
 
      this.messages = this.messageService.messagesMpByUser
       this.privateConv = this.messageService.privateConv;
-    
+      this.messageService.refreshMessagesMpByUser(this.privateConv.id, this.user_id, this.privateConv);
        
       }
 

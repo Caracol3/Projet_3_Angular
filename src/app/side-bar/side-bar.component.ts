@@ -63,7 +63,10 @@ export class SideBarComponent implements OnInit {
       user : this.listUser[index].username,
       id : this.listUser[index].id
     }
-    this.messageService.refreshMessagesMpByUser(userMp.id, this.userId, userMp);
+
+      this.messageService.refreshMessagesMpByUser(userMp.id, this.userId, userMp);
+    
+    
   }
 
 
