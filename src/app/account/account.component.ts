@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { AccountServiceService } from '../account-service.service';
 import { AuthService } from '../service/AuthService';
 
-
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -27,7 +26,7 @@ export class AccountComponent implements OnInit {
   isModalOpen: boolean = false;
   routeAvatar: string = 'assets/avatar/';
   user: any = {};
-  avatar: string = "";
+  avatar: string = '';
   avatarOptions: string[] = [
     'arbre.png',
     'AvatarF1.png',
@@ -60,14 +59,12 @@ export class AccountComponent implements OnInit {
     'roi.png',
     'viking.png',
   ];
-
-
-
+  newUsername: string = '';
 
   constructor(
     private httpClient: HttpClient,
     private accountService: AccountServiceService,
-    private authService: AuthService,
+    private authService: AuthService
   ) {}
 
   openAvatarModal() {
@@ -75,7 +72,7 @@ export class AccountComponent implements OnInit {
   }
 
   putAvatar(avatar: string) {
-   this.httpClient
+    this.httpClient
       .put<any>(
         `http://localhost:8080/users/${this.user_id}/account/avatar/${avatar}`,
         null
@@ -93,7 +90,6 @@ export class AccountComponent implements OnInit {
         }
       );
   }
-
 
   selectAvatar(avatar: string) {
     this.putAvatar(avatar);
@@ -122,51 +118,68 @@ export class AccountComponent implements OnInit {
         this.avatar = this.user.avatar;
         this.user.birthday = this.formatDate(this.user.birthday);
         console.log(this.user);
-
       });
   }
 
   saveSelectedColor(color: string) {
-
-
     this.httpClient
-       .put<any>(
-         `http://localhost:8080/users/${this.user_id}/account/color/${color}`,
-         null
-       )
-       .subscribe(
-         (response) => {
-           // Mettez à jour l'avatar dans votre composant Angular si nécessaire
-           this.user.color = color;
-           // Mettez à jour l'avatar dans votre composant Angular si nécessaire
-           this.accountService.getUserData(this.user_id);
-
-         },
-         (error) => {
-           console.error("Erreur lors de la mise à jour de l'avatar :", error);
-         }
-       );
+      .put<any>(
+        `http://localhost:8080/users/${this.user_id}/account/color/${color}`,
+        null
+      )
+      .subscribe(
+        (response) => {
+          // Mettez à jour l'avatar dans votre composant Angular si nécessaire
+          this.user.color = color;
+          // Mettez à jour l'avatar dans votre composant Angular si nécessaire
+          this.accountService.getUserData(this.user_id);
+        },
+        (error) => {
+          console.error("Erreur lors de la mise à jour de l'avatar :", error);
+        }
+      );
   }
 
-  dispoMP(){
-
+  updateUsername(username: string) {
+    console.log("this.newUsername: " + this.newUsername);
     this.httpClient
-       .put<any>(
-         `http://localhost:8080/users/${this.user_id}/account/dispo/${!this.user.is_available}`,
-         null
-       )
-       .subscribe(
-         (response) => {
-           // Mettez à jour l'avatar dans votre composant Angular si nécessaire
-           this.accountService.getUserData(this.user_id);
+      .put<any>(
+        `http://localhost:8080/users/${this.user_id}/account/username/${this.newUsername}`,
+        null
+      )
+      .subscribe(
+        (response) => {
+          this.user.username = this.newUsername;
+          this.accountService.getUserData(this.user_id);
 
-         },
-         (error) => {
-           console.error("Erreur lors de la mise à jour de l'avatar :", error);
-         }
-       );
+        },
+        (error) => {
+          console.error("Erreur lors de la mise à jour du pseudo :", error);
+          console.log("username" + this.user.username),
+          console.log("id : " + this.user_id)
+        }
+
+      );
+
   }
 
+  dispoMP() {
+    this.httpClient
+      .put<any>(
+        `http://localhost:8080/users/${this.user_id}/account/dispo/${!this.user
+          .is_available}`,
+        null
+      )
+      .subscribe(
+        (response) => {
+          // Mettez à jour l'avatar dans votre composant Angular si nécessaire
+          this.accountService.getUserData(this.user_id);
+        },
+        (error) => {
+          console.error("Erreur lors de la mise à jour de l'avatar :", error);
+        }
+      );
+  }
 
   logout() {
     this.authService.logout();

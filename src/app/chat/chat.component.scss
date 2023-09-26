@@ -23,14 +23,27 @@
   background-color: white;
 }
 
+// .plus-img{
+//   width: 30px;
+//   height: 30px;
+//   align-self: flex-start;
+//   margin-left:10px;
+//   margin-bottom: 5px;
+//   cursor: pointer;
+// }
+
 .plus-link {
   width: 100px;
   height: auto;
   font-weight: 500;
   color: #365b6d;
   margin-bottom: 5px;
+margin-left:10px;
+align-self: flex-start;
+
   cursor: pointer;
 }
+
 
 @media screen and (min-width: 748px) {
 
@@ -57,6 +70,10 @@
   }
 
   .plus-link {
+    display: none;
+  }
+
+  .plus-img{
     display: none;
   }
 }

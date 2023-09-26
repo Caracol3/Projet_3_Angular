@@ -100,4 +100,10 @@ getMessages(){
     }
   }
 
+  formatTime(timeString: string): string {
+    const timeParts = timeString.split(':');
+    return `${timeParts[0]}:${timeParts[1]}`;
+  }
+
+
 }

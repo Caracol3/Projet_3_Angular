@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="containerchat" style="overflow-y: auto; " #chatContainer>
+  <div class="containerchat"  #chatContainer>
     <div class="chat">
       <div *ngFor="let msg of messages; let i = index" class="contenairchat">
         <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
@@ -11,18 +11,20 @@
             <p class="avatar-and-time">
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
 
-              <b>Moi à {{ msg.heure }}</b>
+              <b>Moi</b>
 
             </p>
 
             <p>{{ msg.message }}</p>
+            <span class="time">{{ formatTime(msg.heure) }}</span>
           </div>
           <div class="receiver" *ngIf="msg.user_id.username !== user.username">
             <p class="avatar-and-time">
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
-              <b>{{ msg.user_id.username }} à {{ msg.heure }}</b>
+              <b>{{ msg.user_id.username }}</b>
             </p>
             <p>{{ msg.message }}</p>
+            <span class="time">{{ formatTime(msg.heure) }}</span>
           </div>
         </div>
       </div>

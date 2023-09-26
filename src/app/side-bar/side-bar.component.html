@@ -31,7 +31,10 @@
 </div> -->
 
   <div class="user-list">
-    <h3>Mes compagnons </h3>
+    <div class="title">
+    <h3 id="compagnons">Mes compagnons </h3>
+    <h3 id="mp">MP </h3>
+  </div>
 
     <div *ngFor="let user of listUser; let i = index">
   <div class="containerUser">
@@ -39,7 +42,7 @@
      <img src="assets/chat/not-available2.png" *ngIf="user.is_connected == false" class="pastille-rouge">
     <p *ngIf="user.is_available == false" class="nonDispo">{{ user.username }}</p>
     <p *ngIf="user.is_available == true" class="dispo">{{ user.username }}</p>
-    
+
   </div>
 </div>
 
