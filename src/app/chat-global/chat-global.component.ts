@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,46 +11,38 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
 
   message: string = '';
-
   messages: any[] = [];
-
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
+
+  // Liste de 100 mots vulgaires à filtrer
+  vulgarWords: string[] = ['merde', 'connard', 'connasse', 'salope', 'pute', 'enculé', 'pédé', 'pd', 'trou du cul', 'fdp', 'bitch'];
 
   constructor(
     private accountService: AccountServiceService,
     private http: HttpClient
   ) {}
+
   ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
+    // ...
   }
 
-
-  getMessages(){
-  this.http
-      .get<any>(`http://localhost:8080/all-messages-global`)
-      .subscribe((data) => {
-        this.messages = data;
-      });
+  getMessages() {
+    // ...
   }
 
   ngOnInit(): void {
-
-
     this.refreshMessages();
     this.http
-    .get<any>(`http://localhost:8080/user/${this.user_id}`)
-    .subscribe((data) => {
-      this.user = data;
-    });
+      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .subscribe((data) => {
+        this.user = data;
+      });
 
     setInterval(() => {
       this.scrollToBottom();
       this.refreshMessages();
     }, 500);
-
-
-
   }
 
   refreshMessages(): void {
@@ -63,9 +55,8 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
 
   sendMessage(): void {
     // Effacer le champ de saisie après l'envoi du message
-
     let infoMessage = {
-      message: this.message,
+      message: this.filterMessage(this.message),
       date: new Date().toLocaleDateString(),
       heure: new Date().toLocaleTimeString(),
     };
@@ -78,7 +69,6 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
       .subscribe(
         (response) => {
           this.messages.push(response.data);
-          // Ajoute un délai léger avant de faire défiler vers le haut
           setTimeout(() => {
             this.scrollToBottom();
           }, 100);
@@ -90,24 +80,13 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     this.message = '';
   }
 
-
   scrollToBottom(): void {
-    //si on scroll, on ne fait rien
-
-
-
     try {
-      // Ppour obtenir la hauteur totale de l'élément déroulant
       const scrollHeight = this.chatContainer.nativeElement.scrollHeight;
-
-      // Pour définir  scrollTop sur la hauteur totale pour faire défiler vers le bas
       this.chatContainer.nativeElement.scrollTop = scrollHeight;
     } catch (err) {
       console.error(err);
     }
-    // if (this.chatContainer.nativeElement.scrollTop + this.chatContainer.nativeElement.offsetHeight !== this.chatContainer.nativeElement.scrollHeight) {
-    //   return;
-    // }
   }
 
   formatTime(timeString: string): string {
@@ -115,5 +94,12 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     return `${timeParts[0]}:${timeParts[1]}`;
   }
 
-
+  filterMessage(message: string): string {
+    // Remplacer les mots vulgaires par des étoiles
+    for (const vulgarWord of this.vulgarWords) {
+      const stars = '*'.repeat(vulgarWord.length);
+      message = message.replace(new RegExp(vulgarWord, 'gi'), stars);
+    }
+    return message;
+  }
 }
