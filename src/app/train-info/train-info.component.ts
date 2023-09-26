@@ -31,8 +31,10 @@ export class TrainInfoComponent implements OnInit {
     });
       this.http.get(url, {headers}).subscribe((response : any) => {
         this.retard = response;
-        console.log(url)
-        console.log(this.journey)
+        console.log(url);
+        console.log(response);
+
+        
 
 
     });
