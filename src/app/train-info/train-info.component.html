@@ -2,73 +2,71 @@
   <div class="backMobile">
     <img src="/assets/Header/fleche.png" (click)="returnSalon()" alt="retour" />
   </div>
-  <div class="form-title"><h3>Votre train</h3></div>
+  <div class="form-title"><h3>Votre train : <b>{{retard.vehicle_journeys[0].stop_times[0].headsign}}</b> </h3></div>
 
   <div class="back"><p (click)="returnSalon()">Retour au salon</p></div>
-  <div class="info-container">
-    <div class="info-content">
+      
       <div class="formTrain">
+
         <div *ngFor="let retardTrain of retard.vehicle_journeys">
-          <div *ngFor="let retardStopTrain of retardTrain.stop_times">
-            <div class="info-train">
-              <div class="info-train-titre">Numéro de train:</div>
-              <div class="info-reel">
-                <b>{{ retardStopTrain.headsign }}</b>
-              </div>
-            </div>
-
-            <div class="info-train">
-              <div class="info-train-titre">
-                Heure d'arrivée en gare de :
-                <b>{{ retardStopTrain.stop_point.name }}</b>
-              </div>
-              <div class="info-reel">
+          <div class="infoGare" *ngFor="let retardStopTrain of retardTrain.stop_times">
+            
+                <div class="red">
+          
+              <p>Heure d'arrivée en gare de : <b>{{ retardStopTrain.stop_point.name }}</b> </p>
+                
+              <p>
                 <b>{{ retardStopTrain.arrival_time }}</b>
-              </div>
-            </div>
-
-            <div class="info-train">
-              <div class="info-train-titre">
-                <h3>Heure de départ de la gare de :</h3>
+              </p>
+              <h3>Heure de départ de la gare de :</h3>
                 <p>
                   <b>{{ retardStopTrain.stop_point.name }}</b>
                 </p>
-              </div>
-              <div class="info-reel">
-                <b>{{ retardStopTrain.departure_time }}</b>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="info-trainD" *ngFor="let retardTrain of retard.disruptions">
-          <div class="info-train-titre"><h3>Retard :</h3></div>
-          <div *ngFor="let messageTrain of retardTrain.messages">
-            <div class="info-reel">
-              <p>{{ messageTrain.text }}</p>
-            </div>
-            <div *ngFor="let retardInfo of retardTrain.impacted_objects">
-              <div *ngFor="let info of retardInfo.impacted_stops">
-                <p>
-                  heure d'arrivée réel :{{
-                    info.amended_arrival_time
-                  }}
-                </p>
-                <p>
-                  heure départ réel :{{
-                  info.amended_departure_time
-                  }}
-                </p>
-                <p>cause du retard :{{ info.cause }}</p>
+                <p> <b>{{ retardStopTrain.departure_time }}</b></p>
+
               </div>
-            </div>
-          </div>
-        </div>
+
+              <!-- <div class="blue">
+
+
+                <h3>Retard :</h3>
+
+                <div *ngFor="let retardTrain of retard.disruptions">
+                  <div *ngFor="let retardInfo of retardTrain.impacted_objects">
+                        <div *ngFor="let info of retardInfo.impacted_stops">
+                            <p>
+                                  heure d'arrivée réel :{{info.amended_arrival_time}}
+                                </p>
+                                      <p>
+                                      heure départ réel :{{info.amended_departure_time}}
+                                      </p>
+                                        <p>cause du retard :{{ info.cause }}</p>
+                            </div>
+                      </div>
+                </div>
+
+
+              </div> -->
+
+                
+
+
+              </div>
+         </div>
+         
+
+                    
+
       </div>
-    </div>
 
     <div class="info-train-img">
       <img src="assets/info-train/train-info.png" alt="" />
     </div>
-  </div>
-</div>
+
+
+
+
+
+
+    
