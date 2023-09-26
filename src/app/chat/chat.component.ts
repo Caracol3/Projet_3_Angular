@@ -32,6 +32,12 @@ export class ChatComponent implements OnInit {
     this.sidebarOpen = false;
   }
 
+  changeChat(chat : string){
+    console.log(chat);
+  }
+
+
+
 
  }
 

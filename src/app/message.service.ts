@@ -67,7 +67,15 @@ export class MessageService {
     this.http
    .get<any>(`http://localhost:8080/all-messages-global`)
    .subscribe((data) => {
-     this.messagesGlobal = data;
+    for (let i = 0 ; i < data.length ; i++) {
+      if(data[i].message.includes("enculer")){
+        data[i].message = data[i].message.replace("enculer", "******");
+       console.log(data[i].message);
+        
+      }
+      
+    }
+    this.messagesGlobal = data;
        });
 
    return this.messagesGlobal;

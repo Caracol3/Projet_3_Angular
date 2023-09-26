@@ -65,12 +65,16 @@ isDuplicateMp(chatMp: any, currentIndex: number): boolean {
 
 
   selectUser(index : number){
+    console.log(this.listUser[index].id);
+    console.log(this.userId);
+  
     let userMp = {
       user : this.listUser[index].username,
       id : this.listUser[index].id
     }
 
       this.messageService.refreshMessagesMpByUser(userMp.id, this.userId, userMp);
+     
     
     
   }

@@ -21,15 +21,6 @@
     </ng-container>
   </div>
 
-  <!-- <div>
-  <h3>Liste des salons privés</h3>
-  <div *ngFor="let chatMp of infoMpChat; let i = index">
-    <ng-container *ngIf="chatMp.userReceiver == userId && !isDuplicateMp(chatMp, i)">
-      <p>Salon privé avec {{chatMp.user.username}}</p>
-    </ng-container>
-  </div>
-</div> -->
-
   <div class="user-list">
     <div class="title">
     <h3 id="compagnons">Mes compagnons </h3>
@@ -38,10 +29,19 @@
 
     <div *ngFor="let user of listUser; let i = index">
   <div class="containerUser">
-     <img src="assets/chat/available2.png" *ngIf="user.is_connected == true" class="pastille-verte" >
-     <img src="assets/chat/not-available2.png" *ngIf="user.is_connected == false" class="pastille-rouge">
-    <p *ngIf="user.is_available == false" class="nonDispo">{{ user.username }}</p>
-    <p *ngIf="user.is_available == true" class="dispo">{{ user.username }}</p>
+    <div  (click)="selectUser(i)" *ngIf="user.is_connected == true">
+      <img *ngIf="user.is_available == true" src="assets/chat/available2.png"  class="pastille-verte " >
+      <img *ngIf="user.is_available == false" src="assets/chat/not-available2.png"  class="pastille-rouge " >
+      <p class="dispo">{{ user.username }}</p>
+      
+    </div>
+    <div (click)="selectUserFalse()" *ngIf="user.is_connected == false" >
+
+      <img  src="assets/chat/not-available2.png" class="pastille-rouge">
+      <p  class="nonDispo">{{ user.username }}</p>
+
+    </div>
+     
 
   </div>
 </div>

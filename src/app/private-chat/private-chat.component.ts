@@ -13,8 +13,8 @@ export class PrivateChatComponent implements OnInit {
   message: string = '';
 
   messages: any[] = [];
-  userReveicer: Number = 7;
-  userReveicerName: string = 'Omar';
+  // userReveicer: Number = 7;
+  // userReveicerName: string = 'Omar';
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
   privateConv : any = {};
