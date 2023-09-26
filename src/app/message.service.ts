@@ -36,11 +36,16 @@ export class MessageService {
        });
 
    return this.messagesMain;
+
  }
 
 
-  refreshMessagesMpByUser(userReceiver : number, userSender : number, info : any) {
+
+
+  refreshMessagesMpByUser(userReceiver : number, userSender : any, info : any) {
+    this.refreshMessagesMp();
     this.privateConv = info;
+    
     
     this.messagesMpByUser = [];
     for (let i = 0 ; i < this.messagesMp.length ; i++) {
@@ -48,10 +53,11 @@ export class MessageService {
 
       if (this.messagesMp[i].userReceiver == userReceiver && this.messagesMp[i].user.id == userSender || this.messagesMp[i].userReceiver == userSender && this.messagesMp[i].user.id == userReceiver) {
         this.messagesMpByUser.push(this.messagesMp[i]);
+        
       }
 
     }
-    
+  
     
    return this.messagesMpByUser , this.privateConv;
   }
