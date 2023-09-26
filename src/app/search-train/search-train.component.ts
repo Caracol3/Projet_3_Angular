@@ -6,6 +6,7 @@ import { Fields } from '../models/region-model';
 import { normalizeText } from 'normalize-text';
 import { AuthService } from '../service/AuthService';
 import { AccountServiceService } from '../account-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class SearchTrainComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
     private accountService: AccountServiceService,
     private dataService: DataService,
   ) { }
@@ -83,7 +85,6 @@ export class SearchTrainComponent implements OnInit {
 
    this.dateHeureFormat = dateFormatee + "T" + this.search.heureDepart.replace(":", "") + "00";
    this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
-   this.listeOfTrain = this.dataService.apiResponse.journeys;
    this.infoRetard = this.dataService.retard;
 
 
@@ -91,8 +92,6 @@ export class SearchTrainComponent implements OnInit {
   setTimeout(() => {
       this.listeOfTrain = this.dataService.apiResponse.journeys;
       this.infoRetard = this.dataService.retard;
-      console.log(this.dataService.urlApi);
-      console.log(this.listeOfTrain);
       this.searchPage = false;
       this.showTextDesktop = false;
       this.listeTrain = true;
@@ -212,7 +211,8 @@ export class SearchTrainComponent implements OnInit {
   }
 
   getInfoTrain(index: number) {
-    this.dataService.getUrl(this.listeOfTrain[index].sections[1].links[0].id)
+    this.dataService.getUrl(this.listeOfTrain[index].sections[1].links[0].id);
+    this.router.navigate(['/chat']);
 
   }
 
