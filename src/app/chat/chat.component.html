@@ -1,19 +1,29 @@
 <a class="container">
+  <div class="containersidebar" *ngIf="sidebarOpen">
+    <app-side-bar
+      [sidebarOpen]="sidebarOpen"
+      (closeSidebarEvent)="closeSidebar()"
+    ></app-side-bar>
+  </div>
 
-          <div class="containersidebar" *ngIf="sidebarOpen">
-              <app-side-bar [sidebarOpen]="sidebarOpen" (closeSidebarEvent)="closeSidebar()"></app-side-bar>
-            </div>
-              <!-- <img src="assets/plus.png" class="plus-img" alt="Ouvrir la Sidebar" (click)="openSidebar()"/> -->
-              <a src="assets/plus.png" class="plus-link" alt="Ouvrir la Sidebar" (click)="openSidebar()">Plus de salon</a>
+  <div class="containersidebar-desktop">
+    <app-side-bar></app-side-bar>
+  </div>
+
+  <!-- <img src="assets/plus.png" class="plus-img" alt="Ouvrir la Sidebar" (click)="openSidebar()"/> -->
+  <a
+    src="assets/plus.png"
+    class="plus-link"
+    alt="Ouvrir la Sidebar"
+    (click)="openSidebar()"
+    >Plus de salon</a
+  >
 
 
 
-<div class="containerchat">
-
-<app-chat-global *ngIf="globalChat"></app-chat-global>
-<app-main-chat *ngIf="mainChat"></app-main-chat>
-<app-private-chat *ngIf="privateChat"></app-private-chat>
-
-</div>
-
-
+  <div class="containerchat">
+    <app-chat-global *ngIf="globalChat"></app-chat-global>
+    <app-main-chat *ngIf="mainChat"></app-main-chat>
+    <app-private-chat *ngIf="privateChat"></app-private-chat>
+  </div>
+</a>

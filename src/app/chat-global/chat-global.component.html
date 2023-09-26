@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="containerchat">
+  <div class="containerchat" style="overflow-y: auto; " #chatContainer>
     <div class="chat">
       <div *ngFor="let msg of messages; let i = index" class="contenairchat">
         <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
@@ -8,14 +8,17 @@
           </p>
 
           <div class="sender" *ngIf="msg.user_id.username === user.username">
-            <p>
+            <p class="avatar-and-time">
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
+
               <b>Moi à {{ msg.heure }}</b>
+
             </p>
+
             <p>{{ msg.message }}</p>
           </div>
           <div class="receiver" *ngIf="msg.user_id.username !== user.username">
-            <p>
+            <p class="avatar-and-time">
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
               <b>{{ msg.user_id.username }} à {{ msg.heure }}</b>
             </p>
@@ -31,7 +34,7 @@
         (keyup.enter)="sendMessage()"
         placeholder="Saisissez votre message..."
         rows="1"
-        (input)="autoExpand($event)"
+        class="chat-textearea"
       ></textarea>
       <img src="assets/send.png" (click)="sendMessage()"/>
     </div>
