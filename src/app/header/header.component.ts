@@ -1,4 +1,4 @@
-import { Component,ViewChild, ElementRef } from '@angular/core';
+import { Component,ViewChild, ElementRef,Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ isMenuOpen: boolean = false;
 
 @ViewChild('menu') menu: ElementRef | undefined;
 
-  constructor(private router: Router) {
+  constructor(private router: Router , private renderer: Renderer2) { }
     // Vérifie la route active pour cacher le menu sur les pages "login" ou "sign-in"
     // this.router.events.subscribe(() => {
     //   if (this.router.url === '/login' || this.router.url === '/sign-in') {
@@ -20,17 +20,16 @@ isMenuOpen: boolean = false;
     //     this.showMenu = true;
     //   }
     // });
-  }
+
 
 
   toggleMenu() {
-    // this.isMenuOpen = !this.isMenuOpen;
-    this.isMenuOpen = true;
-    console.log("toggleMenu :" + this.isMenuOpen);
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
-  closeMenu() {
-    this.isMenuOpen = false;
-    console.log( "closeMenu " + this.isMenuOpen);
-  }
+  // closeMenu() {
+  //   this.isMenuOpen = false;
+  //   console.log( "closeMenu " + this.isMenuOpen);
+  // }
 }
+
