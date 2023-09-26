@@ -2,11 +2,14 @@
   <div class="backMobile">
     <img src="/assets/Header/fleche.png" (click)="returnSalon()" alt="retour" />
   </div>
-  <div class="form-title"><h3>Votre train : <b *ngIf="retard.vehicle_journeys[0].stop_times[0].headsign !== null || undefined">{{retard.vehicle_journeys[0].stop_times[0].headsign}}</b> </h3>
+  <div class="form-title"><h3>Votre train : <b *ngIf="retard && retard.vehicle_journeys && retard.vehicle_journeys[0]?.stop_times[0]?.headsign !== null">{{retard.vehicle_journeys[0]?.stop_times[0]?.headsign}}</b> </h3>
+
+
       
   </div>
-  <p *ngIf="retard.disruptions.length == 0 "> Cause du retard : {{retard.disruptions[0].messages[0].text}}</p>
-
+  <span *ngIf="retard ">
+  <p >Cause du retard : {{ retard.disruptions[0]?.messages[0]?.text }}</p>
+</span>
   <div class="back"><p (click)="returnSalon()">Retour au salon</p></div>
       
       <div class="formTrain">
@@ -20,17 +23,20 @@
                 
               <p> Heure d'arrivée théorique :
                 <b>{{ retardStopTrain.arrival_time }}</b>
-                <span *ngIf="retard.disruptions.length == 0">
-                heure d'arrivée réel :
-                <b>{{retard.disruptions[0].impacted_objects[0].impacted_stops[i].amended_arrival_time
-                }}</b></span>
+                <span *ngIf="retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]?.amended_arrival_time">
+                  <p > heure d'arrivée réel :</p>
+                  <b >
+                    {{ retard.disruptions[0].impacted_objects[0].impacted_stops[i].amended_arrival_time }}
+                  </b>
+                </span>
               </p>
-                <p> Heure de départ théorique :
-                  <b>{{ retardStopTrain.departure_time }}</b>
-                  <span *ngIf="retard.disruptions.length == 0">
-                  heure de départ réel : 
-                  <b>{{retard.disruptions[0].impacted_objects[0].impacted_stops[i].amended_departure_time}}</b>
-                </span >
+              <p>
+                Heure de départ théorique : <b>{{ retardStopTrain.departure_time }}</b>
+                
+                <span *ngIf="retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]?.amended_departure_time">
+                 <p> heure de départ réel : </p>
+                  <b>{{ retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]?.amended_departure_time }}</b>
+                </span>
               </p>
                
 
