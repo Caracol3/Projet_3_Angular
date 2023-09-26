@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -26,7 +26,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
   }
 
 
-getMessages(){
+  getMessages(){
   this.http
       .get<any>(`http://localhost:8080/all-messages-global`)
       .subscribe((data) => {
@@ -35,16 +35,19 @@ getMessages(){
   }
 
   ngOnInit(): void {
+
+
     this.refreshMessages();
     this.http
-      .get<any>(`http://localhost:8080/user/${this.user_id}`)
-      .subscribe((data) => {
-        this.user = data;
-      });
+    .get<any>(`http://localhost:8080/user/${this.user_id}`)
+    .subscribe((data) => {
+      this.user = data;
+    });
 
-      setInterval(() => {
-        this.refreshMessages();
-      }, 500);
+    setInterval(() => {
+      this.scrollToBottom();
+      this.refreshMessages();
+    }, 500);
 
 
 
@@ -89,6 +92,10 @@ getMessages(){
 
 
   scrollToBottom(): void {
+    //si on scroll, on ne fait rien
+
+
+
     try {
       // Ppour obtenir la hauteur totale de l'élément déroulant
       const scrollHeight = this.chatContainer.nativeElement.scrollHeight;
@@ -98,6 +105,9 @@ getMessages(){
     } catch (err) {
       console.error(err);
     }
+    // if (this.chatContainer.nativeElement.scrollTop + this.chatContainer.nativeElement.offsetHeight !== this.chatContainer.nativeElement.scrollHeight) {
+    //   return;
+    // }
   }
 
   formatTime(timeString: string): string {
