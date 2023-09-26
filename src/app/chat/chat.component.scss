@@ -23,19 +23,35 @@
   background-color: white;
 }
 
+.plus-img{
+  content: de salon;
+  width: 30px;
+  height: 30px;
+  align-self: flex-start;
+  margin-left:10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+img{
+  width:25px;
+  height:25px;
+}
+}
+
 .plus-link {
   width: 100px;
   height: auto;
   font-weight: 500;
   color: #365b6d;
   margin-bottom: 5px;
+  margin-left: 10px;
+  align-self: flex-start;
   cursor: pointer;
+
 }
 
 @media screen and (min-width: 748px) {
-
-  .containersidebar{
-    display:none;
+  .containersidebar {
+    display: none;
   }
   .containersidebar-desktop {
     display: flex;
@@ -57,6 +73,10 @@
   }
 
   .plus-link {
+    display: none;
+  }
+
+  .plus-img {
     display: none;
   }
 }
