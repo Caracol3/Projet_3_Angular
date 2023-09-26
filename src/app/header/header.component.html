@@ -50,6 +50,15 @@
           >
         </li>
         <li class="nav-item-desktop">
+          <a
+            class="nav-link-desktop"
+            id="nav-chat-desktop"
+            routerLink="/chat"
+            (click)="closeMenu(); $event.stopPropagation()"
+            >Chat</a
+          >
+        </li>
+        <li class="nav-item-desktop">
           <a class="nav-link-desktop" id="nav-account" routerLink="/account" (click)="closeMenu(); $event.stopPropagation()"
             >Mon compte</a
           >
