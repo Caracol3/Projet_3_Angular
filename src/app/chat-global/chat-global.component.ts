@@ -40,7 +40,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
       });
 
     setInterval(() => {
-      this.scrollToBottom();
+      // this.scrollToBottom();
       this.refreshMessages();
     }, 500);
   }
