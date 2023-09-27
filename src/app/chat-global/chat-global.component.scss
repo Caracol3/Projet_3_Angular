@@ -10,8 +10,9 @@
   width: 100%;
 }
 
+// Pour mettre un espacement entre la dernière bulle de chat et le bas de la page
 .last-chat-item {
-  margin-bottom: 55px; /* Ajustez la marge supérieure selon vos besoins */
+  margin-bottom: 55px;
 }
 .chat {
   background-color: transparent;
@@ -69,7 +70,7 @@
   margin-bottom: 10px;
 }
 
-.avatar-and-time {
+.avatar-and-username {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -229,7 +230,7 @@ textarea {
     margin-right: 10px;
   }
 
-  .avatar-and-time {
+  .avatar-and-username {
     b {
       padding-top: 10px;
       padding-right: 20px;
