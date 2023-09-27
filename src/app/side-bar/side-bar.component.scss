@@ -1,9 +1,9 @@
 .sidebar {
   width: 300px;
-  height: 100vh;
+  height: 700px;
   background-color: white;
-  position: fixed;
-  top: 20;
+  position: absolute;
+  // top: 120;
   left: -300px;
   transition: left 0.5s ease-in-out;
   border-radius: 10px;
@@ -145,10 +145,10 @@
 @media screen and (min-width: 748px) {
   .sidebar {
     position: relative;
-    height: 100vh;
+    height: 91.5vh;
     background-color: #f5f5f5;
     left: 0px;
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 0px 5px 0px;
     box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
     overflow-y: auto;
     width: 100%;

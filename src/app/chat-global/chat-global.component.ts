@@ -16,7 +16,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
   user: any = {};
 
   // Liste de 100 mots vulgaires à filtrer
-  vulgarWords: string[] = ['merde', 'connard', 'connasse', 'salope', 'pute', 'enculé', 'pédé', 'pd', 'trou du cul', 'fdp', 'bitch'];
+  vulgarWords: string[] = ['merde', 'connard', 'connasse', 'salope', 'pute', 'enculé', 'pd', 'trou du cul', 'fdp', 'bitch'];
 
   constructor(
     private accountService: AccountServiceService,

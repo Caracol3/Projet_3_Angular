@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="containerchat"  #chatContainer>
-    <div class="chat">
-      <div *ngFor="let msg of messages; let i = index" class="contenairchat">
+  <div class="chat">
+    <ng-container *ngFor="let msg of messages; let i = index">
+      <div [ngClass]="{'containerchat': true, 'last-chat-item': i === messages.length - 1}">
         <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
           <p *ngIf="i === 0 || msg.date !== messages[i - 1].date" id="date">
             {{ msg.date }}
@@ -10,11 +10,8 @@
           <div class="sender" *ngIf="msg.user_id.username === user.username">
             <p class="avatar-and-time">
               <img src="assets/Avatar/{{ msg.user_id.avatar }}" alt="avatar" class="avatar" />
-
               <b>Moi</b>
-
             </p>
-
             <p>{{ msg.message }}</p>
             <span class="time">{{ formatTime(msg.heure) }}</span>
           </div>
@@ -28,17 +25,17 @@
           </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+  </div>
 
-    <div class="sendmessage">
-      <textarea
-        [(ngModel)]="message"
-        (keyup.enter)="sendMessage()"
-        placeholder="Saisissez votre message..."
-        rows="1"
-        class="chat-textarea"
-      ></textarea>
-      <img src="assets/send2.png" (click)="sendMessage()"/>
-    </div>
+  <div class="sendmessage">
+    <textarea
+      [(ngModel)]="message"
+      (keyup.enter)="sendMessage()"
+      placeholder="Saisissez votre message..."
+      rows="1"
+      class="chat-textarea"
+    ></textarea>
+    <img src="assets/send2.png" (click)="sendMessage()" />
   </div>
 </div>
