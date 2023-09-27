@@ -9,28 +9,19 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
 isMenuOpen: boolean = false;
 
-@ViewChild('menu') menu: ElementRef | undefined;
 
-  constructor(private router: Router) {
-    // Vérifie la route active pour cacher le menu sur les pages "login" ou "sign-in"
-    // this.router.events.subscribe(() => {
-    //   if (this.router.url === '/login' || this.router.url === '/sign-in') {
-    //     this.showMenu = false;
-    //   } else {
-    //     this.showMenu = true;
-    //   }
-    // });
-  }
+  constructor(private router: Router , ) { }
+  
 
 
   toggleMenu() {
-    // this.isMenuOpen = !this.isMenuOpen;
-    this.isMenuOpen = true;
-    console.log("toggleMenu :" + this.isMenuOpen);
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
-  closeMenu() {
-    this.isMenuOpen = false;
-    console.log( "closeMenu " + this.isMenuOpen);
+  isRouteLoginOpen(): boolean {
+    return this.router.url === '/login' || this.router.url === '/signin';
   }
+
+
 }
+
