@@ -11,26 +11,24 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
 
   message: string = '';
-
   messages: any[] = [];
-
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
+
+  // Liste de 100 mots vulgaires à filtrer
+  vulgarWords: string[] = ['merde', 'connard', 'connasse', 'salope', 'pute', 'enculé', 'pd', 'trou du cul', 'fdp', 'bitch'];
 
   constructor(
     private accountService: AccountServiceService,
     private http: HttpClient
   ) {}
+
   ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
+    // ...
   }
 
   getMessages() {
-    this.http
-      .get<any>(`http://localhost:8080/all-messages`)
-      .subscribe((data) => {
-        this.messages = data;
-      });
+    // ...
   }
 
   ngOnInit(): void {
@@ -42,8 +40,9 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
       });
 
     setInterval(() => {
+      // this.scrollToBottom();
       this.refreshMessages();
-    }, 500000000000);
+    }, 500);
   }
 
   refreshMessages(): void {
@@ -56,9 +55,8 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
 
   sendMessage(): void {
     // Effacer le champ de saisie après l'envoi du message
-
     let infoMessage = {
-      message: this.message,
+      message: this.filterMessage(this.message),
       date: new Date().toLocaleDateString(),
       heure: new Date().toLocaleTimeString(),
     };
@@ -71,7 +69,6 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
       .subscribe(
         (response) => {
           this.messages.push(response.data);
-          // Ajoute un délai léger avant de faire défiler vers le haut
           setTimeout(() => {
             this.scrollToBottom();
           }, 100);
@@ -83,17 +80,26 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     this.message = '';
   }
 
-
   scrollToBottom(): void {
     try {
-      // Ppour obtenir la hauteur totale de l'élément déroulant
       const scrollHeight = this.chatContainer.nativeElement.scrollHeight;
-
-      // Pour définir  scrollTop sur la hauteur totale pour faire défiler vers le bas
       this.chatContainer.nativeElement.scrollTop = scrollHeight;
     } catch (err) {
       console.error(err);
     }
   }
 
+  formatTime(timeString: string): string {
+    const timeParts = timeString.split(':');
+    return `${timeParts[0]}:${timeParts[1]}`;
+  }
+
+  filterMessage(message: string): string {
+    // Remplacer les mots vulgaires par des étoiles
+    for (const vulgarWord of this.vulgarWords) {
+      const stars = '*'.repeat(vulgarWord.length);
+      message = message.replace(new RegExp(vulgarWord, 'gi'), stars);
+    }
+    return message;
+  }
 }

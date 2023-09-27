@@ -1,4 +1,52 @@
-<div class="container">
+<div class="container-mobile">
+  <div class="logo-mobile">
+    <img
+      src="/assets/logo.png"
+      alt="logo train companion"
+          />
+  </div>
+      <div id="menu" *ngIf="!isRouteLoginOpen()">
+      <div id="menu-bar" [ngClass]="{'change-menu': isMenuOpen}"(click)="toggleMenu()">
+        <div id="bar1" [ngClass]="{'bar': true, 'change-bar1': isMenuOpen}"></div>
+        <div id="bar2" [ngClass]="{'bar': true, 'change-bar2': isMenuOpen}"></div>
+        <div id="bar3" [ngClass]="{'bar': true, 'change-bar3': isMenuOpen}"></div>
+      </div>
+      <nav class="nav" id="nav" [ngClass]="{'change': isMenuOpen}" >
+        <ul class="nav-mobile menu" >
+          <li class="nav-item-mobile">
+            <a
+              class="nav-link-mobile"
+              id="nav-home-mobile"
+              routerLink="/search-train" (click)="toggleMenu()"
+             >Accueil</a>
+          </li>
+          <li class="nav-item-mobile">
+            <a
+              class="nav-link-mobile"
+              id="nav-chat-mobile"
+              routerLink="/chat" (click)="toggleMenu()"
+              >Chat</a>
+          </li>
+          <li class="nav-item-mobile">
+            <a class="nav-link-mobile" id="nav-account" routerLink="/account"(click)="toggleMenu()"
+              >Mon compte</a
+            >
+          </li>
+          <li class="nav-item-mobile">
+            <a class="nav-link-mobile" id="nav-contact" routerLink="/contact" (click)="toggleMenu()"
+              >Nous contacter</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="menu-bg" id="menu-bg" [ngClass]="{'change-bg': isMenuOpen}" (click)="toggleMenu()"></div>
+
+  </div>
+
+
+  <div class="container">
   <div class="logo">
     <img src="/assets/logo.png" alt="logo train companion" />
   </div>
@@ -24,50 +72,5 @@
   </div>
 </div>
 
-<div class="container-desktop">
-  <div class="logo-desktop">
-    <img
-      src="/assets/logo.png"
-      alt="logo train companion"
-      (click)="closeMenu()"
-    />
-  </div>
-  <div  class="burger-icon" (click)="toggleMenu()">
-    <input type="checkbox" id="burger-toggle" />
-    <label for="burger-toggle" >
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </label>
-      <ul class="nav-desktop menu" *ngIf="isMenuOpen">
-        <li class="nav-item-desktop">
-          <a
-            class="nav-link-desktop"
-            id="nav-home-desktop"
-            routerLink="/search-train"
-            (click)="closeMenu(); $event.stopPropagation()"
-            >Accueil</a
-          >
-        </li>
-        <li class="nav-item-desktop">
-          <a
-            class="nav-link-desktop"
-            id="nav-chat-desktop"
-            routerLink="/chat"
-            (click)="closeMenu(); $event.stopPropagation()"
-            >Chat</a
-          >
-        </li>
-        <li class="nav-item-desktop">
-          <a class="nav-link-desktop" id="nav-account" routerLink="/account" (click)="closeMenu(); $event.stopPropagation()"
-            >Mon compte</a
-          >
-        </li>
-        <li class="nav-item-desktop">
-          <a class="nav-link-desktop" id="nav-contact" routerLink="/contact" (click)="closeMenu(); $event.stopPropagation()"
-            >Nous contacter</a
-          >
-        </li>
-      </ul>
-  </div>
-</div>
+
+
