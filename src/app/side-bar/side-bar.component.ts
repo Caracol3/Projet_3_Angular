@@ -33,6 +33,10 @@ export class SideBarComponent implements OnInit {
   }
 
 
+  changeChat(chat : string){
+    this.messageService.changeChat(chat);
+  }
+
 
 // Émet l'événement pour demander la fermeture de la sidebar
 requestCloseSidebar() {
@@ -65,12 +69,14 @@ isDuplicateMp(chatMp: any, currentIndex: number): boolean {
 
 
   selectUser(index : number){
+  
     let userMp = {
       user : this.listUser[index].username,
       id : this.listUser[index].id
     }
 
       this.messageService.refreshMessagesMpByUser(userMp.id, this.userId, userMp);
+     
     
     
   }

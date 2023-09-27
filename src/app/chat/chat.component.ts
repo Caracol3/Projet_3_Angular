@@ -12,16 +12,24 @@ export class ChatComponent implements OnInit {
 
   constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService) { }
 
-  globalChat : boolean = true;
-  mainChat : boolean = false;
-  privateChat : boolean = false;
+  globalChat = this.messageService.globalChat;
+  mainChat = this.messageService.mainChat;
+  privateChat = this.messageService.privateChat;
   infoMpChat : any = [];
   sidebarOpen: boolean = false;
 
 
+  changeChat(){
+    this.globalChat = this.messageService.globalChat;
+    this.mainChat = this.messageService.mainChat;
+    this.privateChat = this.messageService.privateChat;
+  }
+
+
   ngOnInit(): void {
-    // this.messageService.refreshMessages();
-    // this.infoMpChat = this.messageService.messages;
+    setInterval(() => {
+      this.changeChat();
+    }, 100);
   }
 
   openSidebar() {
@@ -31,6 +39,9 @@ export class ChatComponent implements OnInit {
   closeSidebar() {
     this.sidebarOpen = false;
   }
+
+
+
 
 
  }

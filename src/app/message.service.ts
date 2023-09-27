@@ -14,6 +14,28 @@ export class MessageService {
   messagesMain: any[] = [];
   allUsers: any[] = [];
   privateConv : any = {};
+  globalChat : boolean = true;
+  mainChat : boolean = false;
+  privateChat : boolean = false;
+
+
+
+  changeChat(chat : string){
+    if (chat == "global") {
+      this.globalChat = true;
+      this.mainChat = false;
+      this.privateChat = false;
+    }
+    if (chat == "main") {
+      this.mainChat = true;
+      this.globalChat = false;
+      this.privateChat = false;}
+    if (chat == "private") {
+      this.privateChat = true;
+      this.globalChat = false;
+      this.mainChat = false;}
+    }
+
 
 
   refreshMessagesMp() {
@@ -67,7 +89,15 @@ export class MessageService {
     this.http
    .get<any>(`http://localhost:8080/all-messages-global`)
    .subscribe((data) => {
-     this.messagesGlobal = data;
+    for (let i = 0 ; i < data.length ; i++) {
+      if(data[i].message.includes("enculer")){
+        data[i].message = data[i].message.replace("enculer", "******");
+       console.log(data[i].message);
+        
+      }
+      
+    }
+    this.messagesGlobal = data;
        });
 
    return this.messagesGlobal;
