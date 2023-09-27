@@ -1,39 +1,38 @@
 <div class="container">
-
-    <div class="containerchat">
+  <div class="containerchat">
     
     <div class="chat">
-    <div *ngFor="let msg of messages" class="contenairchat">
-    <div *ngIf="msg.message !== '' ">
-     <div class="sender" *ngIf="msg.user.username === user.username">
-       <p>{{ msg.message }}</p>
-       <p>
-         <img src="assets/Avatar/{{msg.user.avatar}}" alt="">
-         msg envoyé par : <b>{{msg.user.username}} à {{msg.heure}}</b>
-       </p>
-     </div>
-     <div class="receiver" *ngIf="msg.user.username !== user.username">
-       <p>{{ msg.message }}</p>
-       <p>
-         <img src="assets/Avatar/{{msg.user.avatar}}" alt="">
-         msg envoyé par : <b>{{msg.user.username}}  à {{msg.heure}}</b>
-       </p>
-     </div>
+      <div *ngFor="let msg of messages" class="contenairchat">
+        <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
+          <div class="sender" *ngIf="msg.user.username === user.username">
+            <p class="avatar-and-username">
+              <img src="assets/Avatar/{{ msg.user.avatar }}" alt="avatar" />
+              <b>Moi</b>
+            </p>
+            <p>{{ msg.message }}</p>
+            <span class="time">{{ formatTime(msg.heure) }}</span>
+          </div>
+          <div class="receiver" *ngIf="msg.user.username !== user.username">
+            <p class="avatar-and-username">
+              <img src="assets/Avatar/{{ msg.user.avatar }}" alt="avatar" />
+              <b>{{ msg.user.username }}</b>
+            </p>
+            <p>{{ msg.message }}</p>
+            <span class="time">{{ formatTime(msg.heure) }}</span>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-    
-    </div>
-    
+
     <div class="sendmessage">
-    
-    
-    <input [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Saisissez votre message...">
-    <button (click)="sendMessage()">Envoyer</button> 
-    
+      <textarea
+        [(ngModel)]="message"
+        (keyup.enter)="sendMessage()"
+        placeholder="Saisissez votre message..."
+        rows="1"
+        class="chat-textarea"
+      ></textarea>
+      <img src="assets/send2.png" (click)="sendMessage()" />
     </div>
-    
-    </div>
-    
-    
-    
-    </div>
+  </div>
+</div>
