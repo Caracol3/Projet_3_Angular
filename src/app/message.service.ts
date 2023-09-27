@@ -14,6 +14,28 @@ export class MessageService {
   messagesMain: any[] = [];
   allUsers: any[] = [];
   privateConv : any = {};
+  globalChat : boolean = true;
+  mainChat : boolean = false;
+  privateChat : boolean = false;
+
+
+
+  changeChat(chat : string){
+    if (chat == "global") {
+      this.globalChat = true;
+      this.mainChat = false;
+      this.privateChat = false;
+    }
+    if (chat == "main") {
+      this.mainChat = true;
+      this.globalChat = false;
+      this.privateChat = false;}
+    if (chat == "private") {
+      this.privateChat = true;
+      this.globalChat = false;
+      this.mainChat = false;}
+    }
+
 
 
   refreshMessagesMp() {
