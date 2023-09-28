@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
+import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 @Component({
   selector: 'app-chat-global',
@@ -42,6 +43,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       // this.scrollToBottom();
       this.refreshMessages();
+      console.log(this.messages);
     }, 500);
   }
 
@@ -102,4 +104,5 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     }
     return message;
   }
+
 }
