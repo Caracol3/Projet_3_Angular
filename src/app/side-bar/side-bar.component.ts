@@ -19,6 +19,8 @@ export class SideBarComponent implements OnInit {
   listUser : any = [];
   userId : any = localStorage.getItem('userId');
   myUser : any ;
+  isSidebarOpen : boolean = false;
+
 
 
   ngOnInit(): void {
@@ -76,18 +78,19 @@ isDuplicateMp(chatMp: any, currentIndex: number): boolean {
 
 
   selectUser(index : number){
-  
+
     let userMp = {
       user : this.listUser[index].username,
       id : this.listUser[index].id
     }
 
       this.messageService.refreshMessagesMpByUser(userMp.id, this.userId, userMp);
-     
-    
-    
   }
 
+  closeSidebar(){
+    this.isSidebarOpen = !this.isSidebarOpen;
+    console.log(this.isSidebarOpen)
+  }
 
 }
 

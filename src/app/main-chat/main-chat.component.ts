@@ -6,10 +6,9 @@ import { MessageService } from '../message.service';
 @Component({
   selector: 'app-main-chat',
   templateUrl: './main-chat.component.html',
-  styleUrls: ['./main-chat.component.scss']
+  styleUrls: ['./main-chat.component.scss'],
 })
 export class MainChatComponent implements OnInit {
-
   message: string = '';
 
   messages: any[] = [];
@@ -21,14 +20,7 @@ export class MainChatComponent implements OnInit {
 
 
   constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService) { }
-
-
-
-
-
   
-
-
 
   ngOnInit(): void {
     this.refreshMessages();
@@ -36,9 +28,6 @@ export class MainChatComponent implements OnInit {
       .get<any>(`http://localhost:8080/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
-
-        
-       
       });
 
       setInterval(() => {
@@ -56,26 +45,15 @@ export class MainChatComponent implements OnInit {
       this.roomname = this.messageService.mainConv;
       this.messageService.refreshMessagesMainByRoom(this.roomname);
 
-    }
-
-
-     
-
-
-
-
- sendMessage(): void {
-
-   
-     // Effacer le champ de saisie après l'envoi du message
+  sendMessage(): void {
+    // Effacer le champ de saisie après l'envoi du message
 
     let infoMessage = {
       message: this.message,
       user_id: this.user_id,
-      heure : new Date().toLocaleTimeString(),
-      roomName : this.roomname,
-    }
-
+      heure: new Date().toLocaleTimeString(),
+      roomName: this.roomname,
+    };
 
     this.http
     .post<any>(
@@ -93,16 +71,11 @@ export class MainChatComponent implements OnInit {
       }
     );
 
-
     this.message = '';
-    
-
-
-
-
   }
 
+  formatTime(timeString: string): string {
+    const timeParts = timeString.split(':');
+    return `${timeParts[0]}:${timeParts[1]}`;
+  }
 }
-
-
-
