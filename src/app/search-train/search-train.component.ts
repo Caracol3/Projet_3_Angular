@@ -230,5 +230,7 @@ export class SearchTrainComponent implements OnInit {
 
     return `${day}/${month}/${year} ${hour}:${minute}`;
   }
+
+  
 }
 

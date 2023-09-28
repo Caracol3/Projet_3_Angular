@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Location} from '@angular/common';
 import { DataService } from '../data.service';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
@@ -33,14 +33,18 @@ export class TrainInfoComponent implements OnInit {
         this.retard = response;
         console.log(url);
         console.log(response);
-
-        
-
-
     });
   return this.retard
   }
 
+  formatTime(inputTime: string): string {
+    if (inputTime.length === 6) {
+      const hours = inputTime.slice(0, 2);
+      const minutes = inputTime.slice(2, 4);
+      return `${hours}h${minutes}`;
+    }
+    return inputTime;
+  }
 
 
   returnSalon() {
