@@ -7,6 +7,7 @@ import { normalizeText } from 'normalize-text';
 import { AuthService } from '../service/AuthService';
 import { AccountServiceService } from '../account-service.service';
 import { Router } from '@angular/router';
+import { MessageService } from '../message.service';
 
 
 @Component({
@@ -20,29 +21,28 @@ export class SearchTrainComponent implements OnInit {
   userName: string = '';
   isMobile: boolean = false;
   isDesktop: boolean = false;
+  user_id: string | null = localStorage.getItem('userId');
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private accountService: AccountServiceService,
     private dataService: DataService,
+    private http: HttpClient,
+    private messageService : MessageService
   ) { }
 
 
 
   ngOnInit(): void {
     this.getRegions();
-    this.user = this.accountService.getUserData(1);
-
-  }
-  syncUser(): Promise<any> {
-    return new Promise((resolve, reject) => {
+    this.accountService.getUserData(this.user_id);
+    
       setTimeout(() => {
-        this.user = this.accountService.getUserData(1);
-        resolve("opération réussie");
-      }
-        , 1000);
-    });
+        this.user = this.accountService.userInfos;
+       
+      } , 500);
+
   }
 
   GareDepartSelect: boolean = false;
@@ -69,6 +69,8 @@ export class SearchTrainComponent implements OnInit {
 
   // recuperation des données de l'api
 
+  
+
 
 
   onSubmit() {
@@ -85,6 +87,7 @@ export class SearchTrainComponent implements OnInit {
 
    this.dateHeureFormat = dateFormatee + "T" + this.search.heureDepart.replace(":", "") + "00";
    this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
+
 
 
 
@@ -211,9 +214,44 @@ export class SearchTrainComponent implements OnInit {
 
   getInfoTrain(index: number) {
     this.dataService.getUrl(this.listeOfTrain[index].sections[1].links[0].id);
+    this.sendMessage(this.listeOfTrain[index].sections[1].display_informations.trip_short_name,this.listeOfTrain[index].sections[1].links[0].id );
+    this.messageService.changeChat("main");
     this.router.navigate(['/chat']);
 
   }
+
+
+
+  sendMessage(numeroTrain : any, urlRetard : string): void {
+
+    let userId : string | null = localStorage.getItem('userId');
+
+   let infoMessage = {
+     message: `Bonjour je suis ${this.user.username} passagé du train ${numeroTrain} `,
+     user_id: userId,
+     heure : new Date().toLocaleTimeString(),
+     roomName : urlRetard,
+   }
+
+
+   this.http
+   .post<any>(
+     `http://localhost:8080/send-message-main/${userId}`,
+     infoMessage,
+   )
+   .subscribe(
+     (response) => {
+             },
+     (error) => {
+       console.error("Erreur lors de la mise à jour de l'avatar :", error);
+     }
+   );
+
+ }
+
+
+
+
 
 
   logout() {
