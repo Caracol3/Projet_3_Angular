@@ -1,7 +1,8 @@
+<button (click)="infoTrain()">info train numéro {{roomname.slice(32,36)}}</button>
 <div class="container">
   <div class="containerchat">
-    
     <div class="chat">
+      
       <div *ngFor="let msg of messages" class="contenairchat">
         <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
           <div class="sender" *ngIf="msg.user.username === user.username">

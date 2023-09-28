@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from '../message.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-chat',
@@ -19,7 +20,7 @@ export class MainChatComponent implements OnInit {
 
 
 
-  constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService) { }
+  constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
   
 
   ngOnInit(): void {
@@ -35,6 +36,12 @@ export class MainChatComponent implements OnInit {
       }, 500);  
 
 
+
+  }
+
+  infoTrain(){
+    localStorage.setItem("urlRetard", this.messageService.mainConv);
+    this.router.navigate(['/train-info']);
 
   }
 

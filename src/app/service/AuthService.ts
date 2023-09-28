@@ -19,9 +19,10 @@ getToken():string | null{
 }
 
 logout(){
+  this.disconnectUser();
   localStorage.removeItem('userId');//suppression de l'id dans le local storage lors de la déconnexion
   localStorage.removeItem(this.tokenKey); //suppression du token dans le local storage lors de la déconnexion
-  this.disconnectUser();
+  
 }
 
 disconnectUser() {
@@ -32,6 +33,7 @@ disconnectUser() {
   ).subscribe(
     (response) => {
       // Mettez à jour l'avatar dans votre composant Angular si nécessaire
+      console.log("Déconnexion de l'user : "+ this.userId, response);
     
       
     },

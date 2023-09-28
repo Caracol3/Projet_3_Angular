@@ -9,8 +9,7 @@
   </div>
 
   <div class="train-room">
-
-   <h3 id="salons">Mes salons</h3>
+    <h3>Liste des salons du train</h3>
 <div>
   <ng-container *ngFor="let chatMain of infoMainChat; let i = index">
     <ng-container
@@ -18,8 +17,7 @@
         chatMain.user.id == userId && !isDuplicateMain(chatMain.roomName, i)
       "
     >
-      <p class="train-salon" (click)="changeChat('main'); selectMain(i)">{{ chatMain.roomName.slice(21, 36) }} </p>
-
+      <p (click)="changeChat('main'); selectMain(i)">{{ chatMain.roomName.slice(21, 36) }} </p>
     </ng-container>
   </ng-container>
 </div>
@@ -31,13 +29,12 @@
   </div>
 
     <div *ngFor="let user of listUser; let i = index">
-
-  <div class="containerUser" *ngIf="user.username !== myUser.username">
+      <div *ngIf="user.username !== myUser.username">
+  <div class="containerUser" >
     <div  (click)="selectUser(i)"  *ngIf="user.is_connected == true " (click)="changeChat('private')">
       <img *ngIf="user.is_available == true" src="assets/chat/available2.png"  class="pastille-verte " >
       <img *ngIf="user.is_available == false" src="assets/chat/not-available2.png"  class="pastille-rouge " >
       <p class="dispo">{{ user.username }}</p>
-
     </div>
     <div (click)="selectUserFalse()" *ngIf="user.is_connected == false" >
 
@@ -45,7 +42,7 @@
       <p  class="nonDispo">{{ user.username }}</p>
 
     </div>
-
+  </div>
 
   </div>
 </div>

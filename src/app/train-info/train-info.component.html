@@ -2,7 +2,9 @@
   <div class="backMobile">
     <img src="/assets/Header/fleche.png" (click)="returnSalon()" alt="retour" />
   </div>
-  <div class="form-title"><h3>Votre train : <b>{{retard.vehicle_journeys[0].stop_times[0].headsign}}</b> </h3></div>
+  <div class="form-title"><h3 *ngIf="retard && retard.vehicle_journeys && retard.vehicle_journeys[0]">
+    Votre train : <b>{{retard.vehicle_journeys[0].stop_times[0].headsign}}</b>
+ </h3></div>
 
   <div class="back"><p (click)="returnSalon()">Retour au salon</p></div>
       
