@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-main-chat',
@@ -12,13 +13,14 @@ export class MainChatComponent implements OnInit {
   message: string = '';
 
   messages: any[] = [];
-  roomname: string = 'room de test';
+  roomname: string = this.messageService.mainConv;
 
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
 
 
-  constructor(private accountService : AccountServiceService, private http : HttpClient) { }
+
+  constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService) { }
 
 
 
@@ -41,7 +43,7 @@ export class MainChatComponent implements OnInit {
 
       setInterval(() => {
         this.refreshMessages();
-      }, 500000000000);  
+      }, 500);  
 
 
 
@@ -50,12 +52,9 @@ export class MainChatComponent implements OnInit {
 
     refreshMessages(): void {
 
-      this.http
-      .get<any>(`http://localhost:8080/all-messages-main`)
-      .subscribe((data) => {
-        this.messages = data;
-       
-      });
+      this.messages = this.messageService.messagesMainByRoom;
+      this.roomname = this.messageService.mainConv;
+      this.messageService.refreshMessagesMainByRoom(this.roomname);
 
     }
 
@@ -85,7 +84,7 @@ export class MainChatComponent implements OnInit {
     )
     .subscribe(
       (response) => {
-        this.messages.push(response.data);     
+        // this.messages.push(response.data);     
         
      
       },
