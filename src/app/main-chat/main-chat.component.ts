@@ -44,6 +44,7 @@ export class MainChatComponent implements OnInit {
       this.messages = this.messageService.messagesMainByRoom;
       this.roomname = this.messageService.mainConv;
       this.messageService.refreshMessagesMainByRoom(this.roomname);
+    }
 
   sendMessage(): void {
     // Effacer le champ de saisie après l'envoi du message
@@ -79,3 +80,4 @@ export class MainChatComponent implements OnInit {
     return `${timeParts[0]}:${timeParts[1]}`;
   }
 }
+
