@@ -43,6 +43,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
       // this.scrollToBottom();
       this.refreshMessages();
     }, 500);
+    
   }
 
   refreshMessages(): void {
