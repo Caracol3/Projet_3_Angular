@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from '../message.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -10,7 +11,7 @@ import { MessageService } from '../message.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService) { }
+  constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
 
   globalChat = this.messageService.globalChat;
   mainChat = this.messageService.mainChat;
@@ -38,9 +39,12 @@ export class ChatComponent implements OnInit {
 
   closeSidebar() {
     this.sidebarOpen = false;
+
   }
 
-
+  navigateToTrainInfo() {
+    this.router.navigate(['/train-info']);
+  }
 
 
 

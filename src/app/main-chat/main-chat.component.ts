@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-main-chat',
@@ -18,10 +20,13 @@ export class MainChatComponent implements OnInit {
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
 
+ 
+
 
 
   constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
   
+
 
   ngOnInit(): void {
     this.refreshMessages();
@@ -85,6 +90,10 @@ export class MainChatComponent implements OnInit {
   formatTime(timeString: string): string {
     const timeParts = timeString.split(':');
     return `${timeParts[0]}:${timeParts[1]}`;
+  }
+
+  navigateToTrainInfo() {
+    this.router.navigate(['/train-info']);
   }
 }
 
