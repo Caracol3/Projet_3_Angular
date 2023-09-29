@@ -30,7 +30,7 @@
 
   <div class="sendmessage">
     <textarea
-      [(ngModel)]="message"
+      [(ngModel)]="message" ngx-emoji
       (keyup.enter)="sendMessage()"
       placeholder="Saisissez votre message..."
       rows="1"

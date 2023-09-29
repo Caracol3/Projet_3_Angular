@@ -20,10 +20,11 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
 
   constructor(
     private accountService: AccountServiceService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
 
   ngAfterViewInit(): void {
+    this.scrollToBottom();
     // ...
   }
 
@@ -40,10 +41,10 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
       });
 
     setInterval(() => {
-      // this.scrollToBottom();
       this.refreshMessages();
+
     }, 500);
-    
+
   }
 
   refreshMessages(): void {
@@ -70,6 +71,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
       .subscribe(
         (response) => {
           this.messages.push(response.data);
+          console.log('this.messages:', this.messages);
           setTimeout(() => {
             this.scrollToBottom();
           }, 100);
@@ -84,11 +86,15 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
   scrollToBottom(): void {
     try {
       const scrollHeight = this.chatContainer.nativeElement.scrollHeight;
+      const scrollTop = this.chatContainer.nativeElement.scrollTop;
+      console.log('scrollHeight:', scrollHeight);
+      console.log('scrollTop:', scrollTop);
       this.chatContainer.nativeElement.scrollTop = scrollHeight;
     } catch (err) {
       console.error(err);
     }
   }
+
 
   formatTime(timeString: string): string {
     const timeParts = timeString.split(':');
@@ -103,4 +109,6 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     }
     return message;
   }
+
+
 }
