@@ -21,7 +21,6 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { MainChatComponent } from './main-chat/main-chat.component';
 import { PrivateChatComponent } from './private-chat/private-chat.component';
 import { ChatGlobalComponent } from './chat-global/chat-global.component';
-import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 FormsModule
 
@@ -49,7 +48,6 @@ FormsModule
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    EmojiModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS,
