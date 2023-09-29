@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit{
 
   onSubmit() {
 
-    fetch ('http://localhost:8080/login', {
+    fetch ('http://193.203.169.227:8080/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit{
   connectUser(id : any) {
     this.http
     .put<any>(
-      `http://localhost:8080/users/${id}/account/online/true`,
+      `http://193.203.169.227:8080/users/${id}/account/online/true`,
       null
     ).subscribe(
       (response) => {

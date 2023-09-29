@@ -74,7 +74,7 @@ export class AccountComponent implements OnInit {
   putAvatar(avatar: string) {
     this.httpClient
       .put<any>(
-        `http://localhost:8080/users/${this.user_id}/account/avatar/${avatar}`,
+        `http://193.203.169.227:8080/users/${this.user_id}/account/avatar/${avatar}`,
         null
       )
       .subscribe(
@@ -112,7 +112,7 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient
-      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .get<any>(`http://193.203.169.227:8080/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
         this.avatar = this.user.avatar;
@@ -128,7 +128,7 @@ export class AccountComponent implements OnInit {
 
     this.httpClient
       .put<any>(
-        `http://localhost:8080/users/${this.user_id}/account/color/${color}`,
+        `http://193.203.169.227:8080/users/${this.user_id}/account/color/${color}`,
         null
       )
       .subscribe(
@@ -148,7 +148,7 @@ export class AccountComponent implements OnInit {
     console.log("this.newUsername: " + this.newUsername);
     this.httpClient
       .put<any>(
-        `http://localhost:8080/users/${this.user_id}/account/username/${this.newUsername}`,
+        `http://193.203.169.227:8080/users/${this.user_id}/account/username/${this.newUsername}`,
         null
       )
       .subscribe(
@@ -170,7 +170,7 @@ export class AccountComponent implements OnInit {
   dispoMP() {
     this.httpClient
       .put<any>(
-        `http://localhost:8080/users/${this.user_id}/account/dispo/${!this.user
+        `http://193.203.169.227:8080/users/${this.user_id}/account/dispo/${!this.user
           .is_available}`,
         null
       )
