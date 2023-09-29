@@ -25,7 +25,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.scrollToBottom();
-    // ...
+    // ... 
   }
 
   getMessages() {

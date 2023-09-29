@@ -3,7 +3,6 @@ import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,12 +19,12 @@ export class MainChatComponent implements OnInit {
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
 
- 
+
 
 
 
   constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
-  
+
 
 
   ngOnInit(): void {
@@ -38,7 +37,7 @@ export class MainChatComponent implements OnInit {
 
       setInterval(() => {
         this.refreshMessages();
-      }, 500);  
+      }, 500);
 
 
 
@@ -75,9 +74,9 @@ export class MainChatComponent implements OnInit {
     )
     .subscribe(
       (response) => {
-        // this.messages.push(response.data);     
-        
-     
+        // this.messages.push(response.data);
+
+
       },
       (error) => {
         console.error("Erreur lors de la mise à jour de l'avatar :", error);
