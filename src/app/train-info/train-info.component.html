@@ -24,15 +24,12 @@
     </div>
   </div>
   <div class="retard" ><p>Pas de retard pour une fois vive la sncf</p></div>
-
   <p *ngIf="retard.disruptions.length > 0">
     Cause du retard : {{ retard.disruptions[0].messages[0].text }}
   </p>
-
   <div class="desktop-content">
 <div class="formTrain">
   <div>
-
     <div *ngFor="let retardTrain of retard.vehicle_journeys">
       <div
         class="infoGare"
@@ -40,16 +37,17 @@
       >
         <div class="infoContainer">
           <div class="heureDep">
-          <p>
+          <p class="heureTheo">
             {{ formatTime(retardStopTrain.departure_time) }}
-            <span *ngIf="retard.disruptions.length > 0">
-              heure de départ réel :
-              {{
+            <!-- *ngIf="retard.disruptions.length > 0" -->
+            <span class="heureReel" >
+              15h12
+              <!-- {{
                 formatTime(
                   retard.disruptions[0].impacted_objects[0].impacted_stops[i]
                   .amended_departure_time
                   )
-              }}
+              }} -->
             </span>
           </p>
           </div>
@@ -66,6 +64,5 @@
   <div class="info-train-img">
     <img src="assets/info-train/train-info.png" alt="" />
   </div>
-               
 </div>
 </div>

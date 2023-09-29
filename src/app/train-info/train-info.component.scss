@@ -10,7 +10,6 @@
 .entete{
   display: flex;
   flex-direction: row;
-
 }
 .form-title {
   text-align: center;
@@ -18,29 +17,23 @@
   color: #365B6D;
 }
 
-
 .info-train-img {
   display: none;
-
 }
-
 .back {
   display: none;
 }
-
 .backMobile {
   display: block;
   position: absolute;
   left: 20px;
   top: 2px;
-
   img {
     width: 20px;
     margin: auto;
     cursor: pointer;
   }
 }
-
 .conso {
   display: flex;
   justify-content: flex-end;
@@ -52,7 +45,6 @@
   height: 40px;
   width: 100%;
 }
-
 .quantity {
   display: flex;
   align-items: center;
@@ -61,17 +53,14 @@
 }
 
 
-
 .icon img {
   width: 30px;
   height: 30px;
 }
 
-
 .retard{
   margin-bottom: 20px;
 }
-
 // div du ngFor
 .formTrain {
   overflow: scroll;
@@ -81,7 +70,6 @@
   background: linear-gradient(to bottom, #95b5d0, #556f85);
 }
 
-
 .infoContainer {
   display: flex;
   flex-direction: row;
@@ -90,14 +78,11 @@
   max-height: 100px;
   align-items: center;
   // background-color: rgba(186, 219, 241, 0.858);
-
   margin: auto;
   width: 300px;
 
 
-
 }
-
 .heureDep {
   display: flex;
   align-items: center;
@@ -109,18 +94,14 @@
   position: relative;
   width: 99px;
   height: 100px;
-
   p {
     border: none;
     border-radius: 15px 15px 15px 15px;
     padding: 5px;
     background-color: whitesmoke;
     font-weight: 400;
-
   }
-
 }
-
 .heureDep::before {
   content: '';
   position: absolute;
@@ -131,9 +112,7 @@
   left: 92px;
   transform: translateX(-50%);
 
-
 }
-
 .gareName {
   width: 60%;
   text-align: center;
@@ -145,7 +124,6 @@
 
 
 
-
 //  .gare {
 //   /* Styles pour vos éléments de gare */
 //   background-color: #ccc;
@@ -153,12 +131,10 @@
 //   margin: 5px;
 //   display: inline-block;
 //   position: relative; /* Pour positionner le pseudo-élément par rapport à cet élément */
-
 //   /* Largeur et hauteur de la ligne verticale */
 //   width: 0;
 //   height: 100px;
 // }
-
 // .gare::before {
 //   /* Pseudo-élément pour créer la ligne verticale */
 //   content: '';
@@ -169,9 +145,7 @@
 //   left: 50%; /* Positionne la ligne au centre de l'élément parent */
 //   transform: translateX(-50%); /* Pour la centrer correctement */
 // }
-
 @media all and (min-width: 748px) {
-
 
 
   .form-title {
@@ -187,10 +161,8 @@
       color: whitesmoke;
       font-weight: 800;
       font-size: 30px;
-
     }
   }
-
   .back {
     display: block;
     text-align: start;
@@ -204,11 +176,9 @@
       width: 50px;
     }
   }
-
   .backMobile {
     display: none;
   }
-
   .desktop-content{
     display: flex;
     flex-direction: row;
@@ -217,30 +187,24 @@
     height: 100%;
     margin: auto;
 
-
   }
-
   .info-train-img {
     display: flex;
     justify-content: center;
     width: 50%;
-
     img {
-      width: 55%;
+      width: 50%;
       border-radius: 15%;
-
     }
   }
-
   .infoContainer {
-width: 500px;
+width: 400px;
   }
   .formTrain{
     width:30%;
    margin: auto;
-   max-height: 450px;
+   max-height: 380px;
   }
-
   .gareName {
     width: 90%;
     text-align: center;
@@ -248,9 +212,7 @@ width: 500px;
     font-size: 1.2em;
     font-weight: 500;
     color: white;
-
   }
-
 
 
   .heureDep::before {
@@ -260,12 +222,10 @@ width: 500px;
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    left: 107px;
+    left: 99px;
     transform: translateX(-50%);
 
-
   }
-
   .heureDep {
     display: flex;
     align-items: center;
@@ -277,18 +237,17 @@ width: 500px;
     position: relative;
     width: 150px;
     height: 100px;
-
     p {
       border: none;
       border-radius: 15px 15px 15px 15px;
       padding: 5px;
       background-color: whitesmoke;
       font-weight: 400;
-
+        text-decoration: line-through;
     }
+  }
+  .heureTheo{
 
   }
-
-
 
 }
