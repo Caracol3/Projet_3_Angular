@@ -2,62 +2,79 @@
   <div class="backMobile">
     <img src="/assets/Header/fleche.png" (click)="returnSalon()" alt="retour" />
   </div>
-  <div class="form-title"><h3>Votre train : <b *ngIf="retard && retard.vehicle_journeys && retard.vehicle_journeys[0]?.stop_times[0]?.headsign !== null">{{retard.vehicle_journeys[0]?.stop_times[0]?.headsign}}</b> </h3>
-
-
-
+  <div class="form-title">
+    <h3>
+      Votre train :
+      <b
+        *ngIf="
+          retard &&
+          retard.vehicle_journeys &&
+          retard.vehicle_journeys[0]?.stop_times[0]?.headsign !== null
+        "
+        >{{ retard.vehicle_journeys[0]?.stop_times[0]?.headsign }}</b
+      >
+    </h3>
   </div>
-  <span *ngIf="retard ">
-  <p >Cause du retard : {{ retard.disruptions[0]?.messages[0]?.text }}</p>
-</span>
+  <span *ngIf="retard">
+    <p>Cause du retard : {{ retard.disruptions[0]?.messages[0]?.text }}</p>
+  </span>
   <div class="back"><p (click)="returnSalon()">Retour au salon</p></div>
 
-      <div class="formTrain">
+  <div class="formTrain">
+    <div *ngFor="let retardTrain of retard.vehicle_journeys">
+      <div
+        class="infoGare"
+        *ngFor="let retardStopTrain of retardTrain.stop_times; let i = index"
+      >
+        <div class="red">
+          <p>
+            <b>{{ retardStopTrain.stop_point.name }}</b>
+          </p>
 
-        <div *ngFor="let retardTrain of retard.vehicle_journeys">
-          <div class="infoGare" *ngFor="let retardStopTrain of retardTrain.stop_times; let i = index">
+          <p>
+            Heure d'arrivée théorique :
+            <b>{{ retardStopTrain.arrival_time }}</b>
+            <span
+              *ngIf="
+                retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]
+                  ?.amended_arrival_time
+              "
+            >
+              <p>heure d'arrivée réel :</p>
+              <b>
+                {{
+                  retard.disruptions[0].impacted_objects[0].impacted_stops[i]
+                    .amended_arrival_time
+                }}
+              </b>
+            </span>
+          </p>
+          <p>
+            Heure de départ théorique :
+            <b>{{ retardStopTrain.departure_time }}</b>
 
-                <div class="red">
-
-              <p><b>{{ retardStopTrain.stop_point.name }}</b> </p>
-
-              <p> Heure d'arrivée théorique :
-                <b>{{ retardStopTrain.arrival_time }}</b>
-                <span *ngIf="retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]?.amended_arrival_time">
-                  <p > heure d'arrivée réel :</p>
-                  <b >
-                    {{ retard.disruptions[0].impacted_objects[0].impacted_stops[i].amended_arrival_time }}
-                  </b>
-                </span>
-              </p>
-              <p>
-                Heure de départ théorique : <b>{{ retardStopTrain.departure_time }}</b>
-
-                <span *ngIf="retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]?.amended_departure_time">
-                 <p> heure de départ réel : </p>
-                  <b>{{ retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]?.amended_departure_time }}</b>
-                </span>
-              </p>
-
-
-
-
-              </div>
-
-
-
-              </div>
-         </div>
-
-
-
-
+            <span
+              *ngIf="
+                retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]
+                  ?.amended_departure_time
+              "
+            >
+              <p>heure de départ réel :</p>
+              <b>{{
+                retard.disruptions[0]?.impacted_objects[0]?.impacted_stops[i]
+                  ?.amended_departure_time
+              }}</b>
+            </span>
+          </p>
+        </div>
       </div>
+    </div>
+  </div>
 
   <div class="info-train-img">
     <img src="assets/info-train/train-info.png" alt="" />
   </div>
-                  <!-- <p class="heureArrTheorique">
+  <!-- <p class="heureArrTheorique">
                              Heure d'arrivée théorique :
                              <b>{{ formatTime(retardStopTrain.arrival_time) }}</b>
 
