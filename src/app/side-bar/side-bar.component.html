@@ -5,11 +5,11 @@
       class="return-img"
       (click)="requestCloseSidebar()"
     />
-    <h2 (click)="changeChat('global')">Salon global</h2>
+    <h2 (click)="changeChat('global'); requestCloseSidebar()">Salon global</h2>
   </div>
 
   <div class="train-room">
-
+<div class="my-rooms">
    <h3 id="salons">Mes salons</h3>
 <div>
   <ng-container *ngFor="let chatMain of infoMainChat; let i = index">
@@ -18,22 +18,22 @@
         chatMain.user.id == userId && !isDuplicateMain(chatMain.roomName, i)
       "
     >
-      <p class="train-salon" (click)="changeChat('main'); selectMain(i)">{{ chatMain.roomName.slice(21, 36) }} </p>
+      <p class="train-salon" (click)="changeChat('main'); selectMain(i); requestCloseSidebar()">{{ chatMain.roomName.slice(21, 36) }} </p>
 
     </ng-container>
   </ng-container>
 </div>
-
+</div>
   <div class="user-list">
     <div class="title">
     <h3 id="compagnons">Mes compagnons </h3>
     <h3 id="mp">MP </h3>
   </div>
 
-    <div *ngFor="let user of listUser; let i = index">
+    <div  *ngFor="let user of listUser; let i = index">
 
   <div class="containerUser" *ngIf="user.username !== myUser.username">
-    <div  (click)="selectUser(i)"  *ngIf="user.is_connected == true " (click)="changeChat('private')">
+    <div  (click)="selectUser(i)"  *ngIf="user.is_connected == true " (click)="changeChat('private'); requestCloseSidebar()">
       <img *ngIf="user.is_available == true" src="assets/chat/available2.png"  class="pastille-verte " >
       <img *ngIf="user.is_available == false" src="assets/chat/not-available2.png"  class="pastille-rouge " >
       <p class="dispo">{{ user.username }}</p>
