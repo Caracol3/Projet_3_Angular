@@ -80,3 +80,4 @@ export class MainChatComponent implements OnInit {
     return `${timeParts[0]}:${timeParts[1]}`;
   }
 }
+
