@@ -10,16 +10,20 @@
     <app-side-bar></app-side-bar>
   </div>
 
-  <img src="assets/plus.png" class="plus-img" alt="Ouvrir la Sidebar" (click)="openSidebar()" />
-  <!-- <a
-    src="assets/plus.png"
-    class="plus-link"
-    alt="Ouvrir la Sidebar"
-    (click)="openSidebar()"
-    >Plus de salon</a
-  > -->
-
-
+  <div class="plus-and-info">
+    <img
+      src="assets/plus.png"
+      class="plus-img"
+      alt="Ouvrir la Sidebar"
+      (click)="openSidebar()"
+    />
+    <img
+      src="assets/info3.png"
+      alt="info train"
+      class="info-train"
+      (click)="navigateToTrainInfo()"
+    />
+  </div>
 
   <div class="containerchat">
     <app-chat-global *ngIf="globalChat"></app-chat-global>
@@ -27,4 +31,3 @@
     <app-private-chat *ngIf="privateChat"></app-private-chat>
   </div>
 </a>
-
