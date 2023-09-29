@@ -7,82 +7,168 @@
   justify-content: flex-start;
   color: rgb(85, 85, 85);
 }
-.form-title{
-  text-align: center;
+.entete{
+  display: flex;
+  flex-direction: row;
 
-  margin-bottom: 50px;
+}
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
   color: #365B6D;
 }
 
-.infoGare{
-  border: solid 1px black;
-}
 
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.logo img {
-  width: 150px;
-  height: 110px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.info-container {
-  border-radius: 15px;
-  background-color: white;
-  max-width: 70%;
-  margin: auto;
-
-}
-
-.info-content {
-  display: flex;
-  flex-direction: column;
-
-}
-
-.info-train
- {
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 10px;
-
-}
-
-.info-trainD {
-  text-align: center;
-  height: 250px;
-  max-width: 100%;
-  margin : 10px;
-}
-
-.info-train-img{
+.info-train-img {
   display: none;
 
 }
-.back{
+
+.back {
   display: none;
 }
-.backMobile{
+
+.backMobile {
   display: block;
- position: absolute;
- left:50px;
- top: 2px;
-   img{
+  position: absolute;
+  left: 20px;
+  top: 2px;
+
+  img {
     width: 20px;
     margin: auto;
     cursor: pointer;
   }
+}
+
+.conso {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-size: 40px 40px;
+  color: #365b6d;
+  font-weight: 600;
+  margin-bottom: 5px;
+  height: 40px;
+  width: 100%;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+
+
+.icon img {
+  width: 30px;
+  height: 30px;
+}
+
+
+.retard{
+  margin-bottom: 20px;
+}
+
+// div du ngFor
+.formTrain {
+  overflow: scroll;
+  max-height: 420px;
+  border-radius: 5%;
+  box-shadow: #365B6D 0px 0px 5px 0px;
+  background: linear-gradient(to bottom, #95b5d0, #556f85);
+}
+
+
+.infoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1em;
+  max-height: 100px;
+  align-items: center;
+  // background-color: rgba(186, 219, 241, 0.858);
+
+  margin: auto;
+  width: 300px;
+
 
 
 }
 
+.heureDep {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  padding-left: 10px;
+  border-right: 4mm ridge #365B6D;
+  padding: 1px;
+  margin: auto;
+  position: relative;
+  width: 99px;
+  height: 100px;
+
+  p {
+    border: none;
+    border-radius: 15px 15px 15px 15px;
+    padding: 5px;
+    background-color: whitesmoke;
+    font-weight: 400;
+
+  }
+
+}
+
+.heureDep::before {
+  content: '';
+  position: absolute;
+  background: linear-gradient(to bottom, #f7f7eb, #94b0b7);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  left: 92px;
+  transform: translateX(-50%);
+
+
+}
+
+.gareName {
+  width: 60%;
+  text-align: center;
+  margin: auto  ;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: white;
+}
+
+
+
+
+//  .gare {
+//   /* Styles pour vos éléments de gare */
+//   background-color: #ccc;
+//   padding: 1px;
+//   margin: 5px;
+//   display: inline-block;
+//   position: relative; /* Pour positionner le pseudo-élément par rapport à cet élément */
+
+//   /* Largeur et hauteur de la ligne verticale */
+//   width: 0;
+//   height: 100px;
+// }
+
+// .gare::before {
+//   /* Pseudo-élément pour créer la ligne verticale */
+//   content: '';
+//   position: absolute;
+//   background-color: #000; /* Couleur de la ligne verticale */
+//   width: 100%; /* La ligne occupe toute la largeur de l'élément parent */
+//   height: 100%;
+//   left: 50%; /* Positionne la ligne au centre de l'élément parent */
+//   transform: translateX(-50%); /* Pour la centrer correctement */
+// }
 
 @media all and (min-width: 748px) {
 
@@ -94,101 +180,115 @@
     height: 80px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding-left: 20px;
     margin-bottom: 20px;
+    h3 {
+      color: whitesmoke;
+      font-weight: 800;
+      font-size: 30px;
 
-    h3{
-    color: whitesmoke;
-    font-weight: 800;
-    font-size: 30px;
     }
-    }
+  }
 
-
-
-.info-train-img{
-  display: flex;
-  width: 50%;
-  img{
-    width: 55%;
-    border-radius: 15%;
+  .back {
+    display: block;
+    text-align: start;
     margin: auto;
-     }
-}
-.info-container{
-  background-color: whitesmoke;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 300;
+    .p {
+      width: 50px;
+    }
+  }
+
+  .backMobile {
+    display: none;
+  }
+
+  .desktop-content{
     display: flex;
-    max-width: 100%;
+    flex-direction: row;
     justify-content: space-between;
-}
+    width: 100%;
+    height: 100%;
+    margin: auto;
 
-.red{
-  background-color: red;
-  width: 50%;
-}
-.blue{
-  background-color: blue;
-  width: 50%;
-}
-.info-content{
-  display: flex;
-   width:50%;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-.formTrain{
-  width: 80%;
-  background-color: whitesmoke;
-  overflow: auto;
-  height: 300px;
-}
 
-.info-train{
-  display: flex;
-  border: none;
-  width: 100%;
-  text-align: start;
-  padding-bottom: 15px;
-  border-bottom: #ccc 1px solid;
-  color: #365B6D;
-}
-.info-trainD{
-  display: flex;
-  border: none;
-  width: 100%;
-  text-align: start;
-  padding-bottom: 15px;
-  color: #365B6D;
-}
-.info-train-titre{
-  width: 30%;
-  font-size: 1.3em;
-  font-weight: 400;
-}
-.info-reel{
-  width: 70%;
- font-size: 1.2em;
-}
-.back{
-  display: block;
-  text-align: start;
-  margin: auto;
-  margin-left: 2%;
-  margin-bottom: 2%;
-  text-decoration: underline;
-  cursor: pointer;
-.p{
-  width: 50px;
-}
-}
+  }
 
-.backMobile{
-  display: none;
-}
+  .info-train-img {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+
+    img {
+      width: 55%;
+      border-radius: 15%;
+
+    }
+  }
+
+  .infoContainer {
+width: 500px;
+  }
+  .formTrain{
+    width:30%;
+   margin: auto;
+   max-height: 450px;
+  }
+
+  .gareName {
+    width: 90%;
+    text-align: center;
+    margin-left: 50px ;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: white;
+
+  }
 
 
 
-}
+  .heureDep::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to bottom, #f7f7eb, #94b0b7);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    left: 107px;
+    transform: translateX(-50%);
 
+
+  }
+
+  .heureDep {
+    display: flex;
+    align-items: center;
+    text-align: start;
+    padding-left: 10px;
+    border-right: 4mm ridge #365B6D;
+    padding: 1px;
+    margin: auto;
+    position: relative;
+    width: 150px;
+    height: 100px;
+
+    p {
+      border: none;
+      border-radius: 15px 15px 15px 15px;
+      padding: 5px;
+      background-color: whitesmoke;
+      font-weight: 400;
+
+    }
+
+  }
+
+
+
+}

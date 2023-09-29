@@ -43,8 +43,9 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
 
     setInterval(() => {
       this.refreshMessages();
-      console.log(this.messages);
-    }, 5000);
+
+    }, 500);
+
   }
 
   refreshMessages(): void {

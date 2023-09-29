@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import{ MessageService } from '../message.service';
+import { AccountServiceService } from '../account-service.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -11,13 +12,15 @@ export class SideBarComponent implements OnInit {
 @Input() sidebarOpen: boolean = false;
 @Output() closeSidebarEvent = new EventEmitter<void>();
 
-  constructor( private messageService : MessageService) { }
+  constructor( private messageService : MessageService, private account : AccountServiceService) { }
 
   infoMpChat : any = [];
   infoMainChat : any = [];
   listUser : any = [];
   userId : any = localStorage.getItem('userId');
+  myUser : any ;
   isSidebarOpen : boolean = false;
+
 
 
   ngOnInit(): void {
@@ -25,10 +28,14 @@ export class SideBarComponent implements OnInit {
     this.messageService.refreshMessagesMain();
     this.messageService.refreshMessagesGlobal();
     this.messageService.findUser();
+    this.account.getUserData(this.userId);
+    
     setTimeout(() => {
       this.infoMpChat = this.messageService.messagesMp;
       this.infoMainChat = this.messageService.messagesMain;
-      this.listUser = this.messageService.allUsers
+      this.listUser = this.messageService.allUsers;
+      this.myUser = this.account.userInfos;
+
 
     }, 500);
   }
@@ -54,13 +61,14 @@ isDuplicateMp(chatMp: any, currentIndex: number): boolean {
   }
 
   isDuplicateMain(roomName: string, currentIndex: number): boolean {
-    for (let j = 0; j < currentIndex; j++) {
-      const previousItem = this.infoMainChat[j];
-      if (roomName === previousItem.roomName) {
-        return true;
-      }
-    }
-    return false;
+    const previousRooms = this.infoMainChat.slice(0, currentIndex);
+    return previousRooms.some((room: { roomName: string; }) => room.roomName === roomName);
+  }
+
+
+  selectMain(index : number){
+    let room = this.infoMainChat[index].roomName;
+    this.messageService.refreshMessagesMainByRoom(room);
   }
 
 

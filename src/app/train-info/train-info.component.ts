@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import { Location} from '@angular/common';
 import { DataService } from '../data.service';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +13,7 @@ export class TrainInfoComponent implements OnInit {
 
 
   constructor(private location: Location, private  dataService :DataService, private http : HttpClient ) { }
-  retard : any ;
+  retard : any = {};
   journey: any = localStorage.getItem("urlRetard");
 
 
@@ -32,13 +32,21 @@ export class TrainInfoComponent implements OnInit {
       this.http.get(url, {headers}).subscribe((response : any) => {
         this.retard = response;
         console.log(url)
-        console.log(this.journey)
+        console.log(this.retard)
 
 
     });
   return this.retard
   }
 
+  formatTime(inputTime: string): string {
+    if (inputTime.length === 6) {
+      const hours = inputTime.slice(0, 2);
+      const minutes = inputTime.slice(2, 4);
+      return `${hours}h${minutes}`;
+    }
+    return inputTime;
+  }
 
 
   returnSalon() {

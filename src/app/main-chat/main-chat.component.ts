@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MessageService } from '../message.service';
+
 
 @Component({
   selector: 'app-main-chat',
@@ -12,7 +14,7 @@ export class MainChatComponent implements OnInit {
   message: string = '';
 
   messages: any[] = [];
-  roomname: string = 'room de test';
+  roomname: string = this.messageService.mainConv;
 
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
@@ -20,8 +22,10 @@ export class MainChatComponent implements OnInit {
   constructor(
     private accountService: AccountServiceService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private messageService : MessageService
   ) {}
+
 
   ngOnInit(): void {
     this.refreshMessages();
@@ -31,18 +35,21 @@ export class MainChatComponent implements OnInit {
         this.user = data;
       });
 
-    setInterval(() => {
-      this.refreshMessages();
-    }, 500000000000);
+      setInterval(() => {
+        this.refreshMessages();
+      }, 500);  
+
+
+
   }
 
-  refreshMessages(): void {
-    this.http
-      .get<any>(`http://localhost:8080/all-messages-main`)
-      .subscribe((data) => {
-        this.messages = data;
-      });
-  }
+
+    refreshMessages(): void {
+
+      this.messages = this.messageService.messagesMainByRoom;
+      this.roomname = this.messageService.mainConv;
+      this.messageService.refreshMessagesMainByRoom(this.roomname);
+    }
 
   sendMessage(): void {
     // Effacer le champ de saisie après l'envoi du message
@@ -55,18 +62,20 @@ export class MainChatComponent implements OnInit {
     };
 
     this.http
-      .post<any>(
-        `http://localhost:8080/send-message-main/${this.user_id}`,
-        infoMessage
-      )
-      .subscribe(
-        (response) => {
-          this.messages.push(response.data);
-        },
-        (error) => {
-          console.error("Erreur lors de la mise à jour de l'avatar :", error);
-        }
-      );
+    .post<any>(
+      `http://localhost:8080/send-message-main/${this.user_id}`,
+      infoMessage,
+    )
+    .subscribe(
+      (response) => {
+        // this.messages.push(response.data);     
+        
+     
+      },
+      (error) => {
+        console.error("Erreur lors de la mise à jour de l'avatar :", error);
+      }
+    );
 
     this.message = '';
   }
@@ -80,3 +89,4 @@ export class MainChatComponent implements OnInit {
     this.router.navigate(['/train-info']);
   }
 }
+

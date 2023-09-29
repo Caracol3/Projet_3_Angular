@@ -50,7 +50,7 @@
   <div class="logo">
     <img src="/assets/logo.png" alt="logo train companion" />
   </div>
-  <div class="nav-container">
+  <div class="nav-container"*ngIf="!isRouteLoginOpen()">
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link" id="nav-home" routerLink="/search-train">Accueil</a>
