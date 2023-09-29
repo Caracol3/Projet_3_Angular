@@ -3,6 +3,7 @@ import { Signin } from '../models/signin';
 import { tap } from 'rxjs';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +17,7 @@ export class SigninComponent {
 
 
 
-  constructor(private http: HttpClient , private location: Location) { 
+  constructor(private http: HttpClient , private location: Location, private router : Router) { 
     this.isLoginFormVisible = false;
   }
 
@@ -48,12 +49,13 @@ export class SigninComponent {
 
     if (user && user.data.token){
             localStorage.setItem('token', user.data.token);
+            this.router.navigate(['']);
     }
 
 
   });
 
-  // alert('Utilisateur crée');
+  
 
   }
 

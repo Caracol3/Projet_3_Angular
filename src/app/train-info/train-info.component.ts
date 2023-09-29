@@ -31,8 +31,7 @@ export class TrainInfoComponent implements OnInit {
     });
       this.http.get(url, {headers}).subscribe((response : any) => {
         this.retard = response;
-        console.log(url)
-        console.log(this.retard)
+
 
 
     });
@@ -51,5 +50,6 @@ export class TrainInfoComponent implements OnInit {
 
   returnSalon() {
     this.location.back();
+    localStorage.removeItem("urlRetard");
   }
 }
