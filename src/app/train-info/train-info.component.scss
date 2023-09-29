@@ -60,6 +60,15 @@
 
 .retard{
   margin-bottom: 20px;
+  text-align: center;
+  color: #e40d0d;
+  overflow-y: auto;
+  span{
+    color: #365B6D;
+    font-weight: 450;
+    text-decoration: underline;
+    margin-bottom: 10px;
+  }
 }
 // div du ngFor
 .formTrain {
@@ -102,6 +111,10 @@
     font-weight: 400;
   }
 }
+.heureBarre{
+  text-decoration: line-through;
+}
+
 .heureDep::before {
   content: '';
   position: absolute;
@@ -124,27 +137,6 @@
 
 
 
-//  .gare {
-//   /* Styles pour vos éléments de gare */
-//   background-color: #ccc;
-//   padding: 1px;
-//   margin: 5px;
-//   display: inline-block;
-//   position: relative; /* Pour positionner le pseudo-élément par rapport à cet élément */
-//   /* Largeur et hauteur de la ligne verticale */
-//   width: 0;
-//   height: 100px;
-// }
-// .gare::before {
-//   /* Pseudo-élément pour créer la ligne verticale */
-//   content: '';
-//   position: absolute;
-//   background-color: #000; /* Couleur de la ligne verticale */
-//   width: 100%; /* La ligne occupe toute la largeur de l'élément parent */
-//   height: 100%;
-//   left: 50%; /* Positionne la ligne au centre de l'élément parent */
-//   transform: translateX(-50%); /* Pour la centrer correctement */
-// }
 @media all and (min-width: 748px) {
 
 
@@ -203,7 +195,7 @@ width: 400px;
   .formTrain{
     width:30%;
    margin: auto;
-   max-height: 380px;
+   max-height: 370px;
   }
   .gareName {
     width: 90%;
@@ -237,17 +229,33 @@ width: 400px;
     position: relative;
     width: 150px;
     height: 100px;
+
     p {
       border: none;
       border-radius: 15px 15px 15px 15px;
       padding: 5px;
       background-color: whitesmoke;
       font-weight: 400;
-        text-decoration: line-through;
+
     }
   }
-  .heureTheo{
-
+  .heure{
+width: 60px;
+  }
+  .heureBarre{
+    text-decoration: line-through;
   }
 
+  .retard{
+    margin-bottom: 2px;
+    text-align: center;
+    color: #e40d0d;
+    overflow-y: auto;
+    span{
+      color: #365B6D;
+      font-weight: 450;
+      text-decoration: underline;
+
+    }
+  }
 }

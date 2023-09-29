@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
 
 
+
 @Component({
   selector: 'app-main-chat',
   templateUrl: './main-chat.component.html',
