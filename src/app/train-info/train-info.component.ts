@@ -13,7 +13,7 @@ export class TrainInfoComponent implements OnInit {
 
 
   constructor(private location: Location, private  dataService :DataService, private http : HttpClient ) { }
-  retard : any ;
+  retard : any = {};
   journey: any = localStorage.getItem("urlRetard");
 
 
@@ -31,8 +31,10 @@ export class TrainInfoComponent implements OnInit {
     });
       this.http.get(url, {headers}).subscribe((response : any) => {
         this.retard = response;
-        console.log(url);
-        console.log(response);
+        console.log(url)
+        console.log(this.retard)
+
+
     });
   return this.retard
   }
