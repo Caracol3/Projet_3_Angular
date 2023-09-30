@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
-import { MessageService } from '../message.service';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { MessageService } from '../message.service';
+
+
+
 
 @Component({
   selector: 'app-main-chat',
@@ -21,8 +24,10 @@ export class MainChatComponent implements OnInit {
 
 
 
+
   constructor(private accountService : AccountServiceService,private dataService : DataService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
   
+
 
   ngOnInit(): void {
     this.refreshMessages();
@@ -34,7 +39,7 @@ export class MainChatComponent implements OnInit {
 
       setInterval(() => {
         this.refreshMessages();
-      }, 500);  
+      }, 500);
 
 
 
@@ -71,9 +76,9 @@ export class MainChatComponent implements OnInit {
     )
     .subscribe(
       (response) => {
-        // this.messages.push(response.data);     
-        
-     
+        // this.messages.push(response.data);
+
+
       },
       (error) => {
         console.error("Erreur lors de la mise à jour de l'avatar :", error);
@@ -86,6 +91,10 @@ export class MainChatComponent implements OnInit {
   formatTime(timeString: string): string {
     const timeParts = timeString.split(':');
     return `${timeParts[0]}:${timeParts[1]}`;
+  }
+
+  navigateToTrainInfo() {
+    this.router.navigate(['/train-info']);
   }
 }
 
