@@ -2,6 +2,7 @@
   <div class="backMobile">
     <img src="/assets/Header/fleche.png" (click)="returnSalon()" alt="retour" />
   </div>
+
   <div class="form-title">
     <h3>
       Votre train :
@@ -23,27 +24,26 @@
       <p>: 450</p>
     </div>
   </div>
-  <div class="retard" ><p>Pas de retard pour une fois vive la sncf</p></div>
-
-  <p *ngIf="retard.disruptions.length > 0">
-    Cause du retard : {{ retard.disruptions[0].messages[0].text }}
+  <div class="retard" *ngIf="retard.disruptions.length < 0" ><p>Pas de retard pour une fois vive la sncf</p></div>
+  <p class="retard" *ngIf="retard.disruptions.length > 0">
+    <span> Cause du retard :</span><br> {{ retard.disruptions[0].messages[0].text }}
   </p>
-
   <div class="desktop-content">
 <div class="formTrain">
   <div>
-
     <div *ngFor="let retardTrain of retard.vehicle_journeys">
       <div
         class="infoGare"
         *ngFor="let retardStopTrain of retardTrain.stop_times; let i = index"
       >
         <div class="infoContainer">
-          <div class="heureDep">
-          <p>
-            {{ formatTime(retardStopTrain.departure_time) }}
-            <span *ngIf="retard.disruptions.length > 0">
-              heure de départ réel :
+          <div class="heureDep" >
+          <p class="heure">
+            <span class="heureTheo"[ngClass]="{'heureBarre': retard.disruptions.length > 0}">
+            {{ formatTime(retardStopTrain.departure_time) }}</span>
+
+            <span class="heureReel" *ngIf="retard.disruptions.length > 0">
+
               {{
                 formatTime(
                   retard.disruptions[0].impacted_objects[0].impacted_stops[i]
@@ -66,6 +66,5 @@
   <div class="info-train-img">
     <img src="assets/info-train/train-info.png" alt="" />
   </div>
-               
 </div>
 </div>

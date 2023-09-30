@@ -1,8 +1,12 @@
+
 <div class="container">
   <div class="containerchat">
-    <img src="assets/info2.png" alt="info train" class="info-train" (click)= "navigateToTrainInfo()">
+
+    <img src="assets/info2.png" alt="info train" class="info-train" (click)= "infoTrain()">
+
 
     <div class="chat">
+      
       <div *ngFor="let msg of messages" class="contenairchat">
         <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
           <div class="sender" *ngIf="msg.user.username === user.username">

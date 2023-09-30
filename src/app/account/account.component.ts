@@ -3,6 +3,7 @@ import { User_info } from '../models/user_info';
 import { HttpClient } from '@angular/common/http';
 import { AccountServiceService } from '../account-service.service';
 import { AuthService } from '../service/AuthService';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-account',
@@ -63,6 +64,7 @@ export class AccountComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
+    private dataService: DataService,
     private accountService: AccountServiceService,
     private authService: AuthService
   ) {}
@@ -74,7 +76,7 @@ export class AccountComponent implements OnInit {
   putAvatar(avatar: string) {
     this.httpClient
       .put<any>(
-        `http://193.203.169.227:8080/users/${this.user_id}/account/avatar/${avatar}`,
+        `${this.dataService.serveUrl}/users/${this.user_id}/account/avatar/${avatar}`,
         null
       )
       .subscribe(
@@ -112,7 +114,7 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient
-      .get<any>(`http://193.203.169.227:8080/user/${this.user_id}`)
+      .get<any>(`${this.dataService.serveUrl}/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
         this.avatar = this.user.avatar;
@@ -128,7 +130,7 @@ export class AccountComponent implements OnInit {
 
     this.httpClient
       .put<any>(
-        `http://193.203.169.227:8080/users/${this.user_id}/account/color/${color}`,
+        `${this.dataService.serveUrl}/users/${this.user_id}/account/color/${color}`,
         null
       )
       .subscribe(
@@ -148,7 +150,7 @@ export class AccountComponent implements OnInit {
     console.log("this.newUsername: " + this.newUsername);
     this.httpClient
       .put<any>(
-        `http://193.203.169.227:8080/users/${this.user_id}/account/username/${this.newUsername}`,
+        `${this.dataService.serveUrl}/users/${this.user_id}/account/username/${this.newUsername}`,
         null
       )
       .subscribe(
@@ -170,7 +172,7 @@ export class AccountComponent implements OnInit {
   dispoMP() {
     this.httpClient
       .put<any>(
-        `http://193.203.169.227:8080/users/${this.user_id}/account/dispo/${!this.user
+        `${this.dataService.serveUrl}/users/${this.user_id}/account/dispo/${!this.user
           .is_available}`,
         null
       )

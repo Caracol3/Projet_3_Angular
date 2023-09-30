@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 import { MessageService } from '../message.service';
+
+
 
 
 @Component({
@@ -19,27 +22,32 @@ export class MainChatComponent implements OnInit {
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
 
-  constructor(
-    private accountService: AccountServiceService,
-    private http: HttpClient,
-    private router: Router,
-    private messageService : MessageService
-  ) {}
+
+
+
+  constructor(private accountService : AccountServiceService,private dataService : DataService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
+  
 
 
   ngOnInit(): void {
     this.refreshMessages();
     this.http
-      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .get<any>(`${this.dataService.serveUrl}/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
       });
 
       setInterval(() => {
         this.refreshMessages();
-      }, 500);  
+      }, 500);
 
 
+
+  }
+
+  infoTrain(){
+    localStorage.setItem("urlRetard", this.messageService.mainConv);
+    this.router.navigate(['/train-info']);
 
   }
 
@@ -63,14 +71,14 @@ export class MainChatComponent implements OnInit {
 
     this.http
     .post<any>(
-      `http://localhost:8080/send-message-main/${this.user_id}`,
+      `${this.dataService.serveUrl}/send-message-main/${this.user_id}`,
       infoMessage,
     )
     .subscribe(
       (response) => {
-        // this.messages.push(response.data);     
-        
-     
+        // this.messages.push(response.data);
+
+
       },
       (error) => {
         console.error("Erreur lors de la mise à jour de l'avatar :", error);
