@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private dataService : DataService) { }
 
   messagesGlobal: any[] = [];
   messagesMp: any[] = [];
@@ -43,7 +44,7 @@ export class MessageService {
   refreshMessagesMp() {
 
      this.http
-    .get<any>(`http://localhost:8080/all-messages-mp`)
+    .get<any>(`${this.dataService.serveUrl}/all-messages-mp`)
     .subscribe((data) => {
       this.messagesMp = data;
         });
@@ -54,7 +55,7 @@ export class MessageService {
   refreshMessagesMain() {
 
     this.http
-   .get<any>(`http://localhost:8080/all-messages-main`)
+   .get<any>(`${this.dataService.serveUrl}/all-messages-main`)
    .subscribe((data) => {
      this.messagesMain = data;
        });
@@ -101,7 +102,7 @@ export class MessageService {
   refreshMessagesGlobal() {
 
     this.http
-   .get<any>(`http://localhost:8080/all-messages-global`)
+   .get<any>(`${this.dataService.serveUrl}/all-messages-global`)
    .subscribe((data) => {
     
     this.messagesGlobal = data;
@@ -111,7 +112,7 @@ export class MessageService {
  }
 
   findUser() {
-    this.http.get<any>(`http://localhost:8080/admin/users`)
+    this.http.get<any>(`${this.dataService.serveUrl}/admin/users`)
     .subscribe((data) => {
       this.allUsers = data;
         });

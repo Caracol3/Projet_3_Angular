@@ -13,17 +13,13 @@
 <div class="my-rooms">
    <h3 id="salons">Mes salons</h3>
 <div>
-  <ng-container *ngFor="let chatMain of infoMainChat; let i = index">
-    <ng-container
-      *ngIf="
-        chatMain.user.id == userId && !isDuplicateMain(chatMain.roomName, i)
-      "
-    >
 
-      <p class="train-salon" (click)="changeChat('main'); selectMain(i); requestCloseSidebar()">{{ chatMain.roomName.slice(21, 36) }} </p>
+  <ng-container *ngFor="let chatMain of userRoom; let i = index">
+    
+    <p (click)="changeChat('main'); selectMain(i)">
+      {{ chatMain ? chatMain.slice(21, 36).replace(":"," ") : ' ' }}
+    </p>
 
-
-    </ng-container>
   </ng-container>
 </div>
 </div>

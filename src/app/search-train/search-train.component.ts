@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
 
 
+
 @Component({
   selector: 'app-search-train',
   templateUrl: './search-train.component.html',
@@ -236,7 +237,7 @@ export class SearchTrainComponent implements OnInit {
 
    this.http
    .post<any>(
-     `http://localhost:8080/send-message-main/${userId}`,
+     `${this.dataService.serveUrl}/send-message-main/${userId}`,
      infoMessage,
    )
    .subscribe(

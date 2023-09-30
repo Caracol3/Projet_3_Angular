@@ -4,6 +4,7 @@ import { Profil } from '../models/login';
 import { tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AccountServiceService } from '../account-service.service';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit{
   isLoginFormVisible: boolean;
  
 
-  constructor(private router: Router,private http : HttpClient, private accountService: AccountServiceService) {
+  constructor(private router: Router,private http : HttpClient, private accountService: AccountServiceService, private dataService: DataService) {
     this.isLoginFormVisible = false;
   }
 
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit{
 
   onSubmit() {
 
-    fetch ('http://localhost:8080/login', {
+    fetch (`${this.dataService.serveUrl}/login`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit{
             this.router.navigate(['/search-train']);
             this.accountService.getUserData(user.data.user.id);
             this.connectUser(user.data.user.id);
+            console.log(user.data.token);
     }
 
 
@@ -69,7 +71,7 @@ export class LoginComponent implements OnInit{
   connectUser(id : any) {
     this.http
     .put<any>(
-      `http://localhost:8080/users/${id}/account/online/true`,
+      `${this.dataService.serveUrl}/users/${id}/account/online/true`,
       null
     ).subscribe(
       (response) => {

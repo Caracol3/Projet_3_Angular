@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class AdminComponent implements OnInit {
   selectedUser: any;
 
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private dataService : DataService) {}
 
   // Au chargement du composant, on récupère la liste des utilisateurs
 
@@ -28,7 +29,7 @@ export class AdminComponent implements OnInit {
 
 
   refreshUsersList() {
-    this.httpClient.get<User[]>('http://localhost:8080/admin/users').subscribe((users) => {
+    this.httpClient.get<User[]>(`${this.dataService.serveUrl}/admin/users`).subscribe((users) => {
       this.users = users;
       console.log(this.users);
      
@@ -70,7 +71,7 @@ export class AdminComponent implements OnInit {
 
     // Ici on effectue la requête HTTP PUT
     this.httpClient
-    .put(`http://localhost:8080/admin/users/${user.id}/role`, requestBody)
+    .put(`${this.dataService.serveUrl}/admin/users/${user.id}/role`, requestBody)
     .pipe(take(1))
     .subscribe(
       () => {
@@ -88,7 +89,7 @@ deleteUser(userId: number) {
   if (confirmDelete) {
     // L'utilisateur a confirmé la suppression, envoyez la requête DELETE
     this.httpClient
-      .delete(`http://localhost:8080/admin/users/${userId}`)
+      .delete(`${this.dataService.serveUrl}/admin/users/${userId}`)
       .pipe(take(1))
       .subscribe(
         () => {
