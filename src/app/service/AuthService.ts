@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
+
 @Injectable({
   providedIn: "root"
 })
@@ -22,13 +23,15 @@ logout(){
   this.disconnectUser();
   localStorage.removeItem('userId');//suppression de l'id dans le local storage lors de la déconnexion
   localStorage.removeItem(this.tokenKey); //suppression du token dans le local storage lors de la déconnexion
+  localStorage.removeItem('urlRetard');
+  localStorage.removeItem('urlTrain');
   
 }
 
 disconnectUser() {
   this.http
   .put<any>(
-    `http://localhost:8080/users/${this.userId}/account/online/false`,
+    `https://193.203.169.227:8080/users/${this.userId}/account/online/false`,
     null
   ).subscribe(
     (response) => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from '../message.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-private-chat',
@@ -20,13 +21,14 @@ export class PrivateChatComponent implements OnInit {
   constructor(
     private accountService: AccountServiceService,
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private dataService: DataService
   ) {}
 
   ngOnInit(): void {
     this.refreshMessages();
     this.http
-      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .get<any>(`${this.dataService.serveUrl}/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
       });
@@ -55,7 +57,7 @@ export class PrivateChatComponent implements OnInit {
     };
     this.http
       .post<any>(
-        `http://localhost:8080/send-message-mp/${this.user_id}`,
+        `http://193.203.169.227:8080/send-message-mp/${this.user_id}`,
         infoMessage
       )
       .subscribe(

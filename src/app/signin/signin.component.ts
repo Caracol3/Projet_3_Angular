@@ -4,6 +4,7 @@ import { tap } from 'rxjs';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-signin',
@@ -17,7 +18,7 @@ export class SigninComponent {
 
 
 
-  constructor(private http: HttpClient , private location: Location, private router : Router) { 
+  constructor(private dataService : DataService,private http: HttpClient , private location: Location, private router : Router) { 
     this.isLoginFormVisible = false;
   }
 
@@ -27,7 +28,7 @@ export class SigninComponent {
       return alert('Les mots de passe ne correspondent pas');
     }
 
-    fetch('http://localhost:8080/register', {
+    fetch(`${this.dataService.serveUrl}/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
