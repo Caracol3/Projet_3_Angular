@@ -9,8 +9,12 @@
   margin: auto;
   margin-top: 10px;
   background-color: white;
-}
 
+}
+.list-users{
+ overflow-y: auto;
+  max-height: 400px;
+}
 ul {
   background-color: whitesmoke;
   padding: 0;
