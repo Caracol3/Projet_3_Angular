@@ -5,7 +5,7 @@
       class="return-img"
       (click)="requestCloseSidebar()"
     />
-    <h2 (click)="changeChat('global'); requestCloseSidebar()">Salon global </h2>
+    <button class="global" (click)="changeChat('global'); requestCloseSidebar()"><span> Salon global</span> </button>
 
   </div>
 
@@ -17,7 +17,7 @@
 
   <ng-container *ngFor="let chatMain of userRoom; let i = index">
 
-    <p (click)="changeChat('main'); selectMain(i);  requestCloseSidebar()">
+    <p  class="rooms"(click)="changeChat('main'); selectMain(i);  requestCloseSidebar()">
       {{ chatMain ? chatMain.slice(21, 36).replace(":"," ") : ' ' }}
     </p>
 
