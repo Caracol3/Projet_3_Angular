@@ -17,7 +17,7 @@ export class AccountComponent implements OnInit {
     'FF5733',
     '9B59B6',
     '3498DB',
-    '2ECC71',
+    '2ECC75',
     '6D6D6D',
   ];
   selectedColor: string = 'red';
