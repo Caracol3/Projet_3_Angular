@@ -88,7 +88,7 @@ isDuplicateMp(chatMp: any, currentIndex: number): boolean {
 
 
   selectMain(index : number){
-    let room = this.infoMainChat[index].roomName;
+    let room = this.userRoom[index];
     this.messageService.refreshMessagesMainByRoom(room);
   }
 
