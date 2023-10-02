@@ -7,12 +7,19 @@
     <h3>
       Votre train :
       <b
-        *ngIf="
-          retard.vehicle_journeys[0].stop_times[0].headsign !== null ||
-          undefined
-        "
-        >{{ retard.vehicle_journeys[0].stop_times[0].headsign }}</b
-      >
+      *ngIf="
+
+      retard &&
+
+      retard.vehicle_journeys &&
+
+      retard.vehicle_journeys[0]?.stop_times[0]?.headsign !== null
+
+    "
+
+    >{{ retard.vehicle_journeys[0]?.stop_times[0]?.headsign }}</b
+
+  >
     </h3>
   </div>
   <div class="conso">
@@ -24,8 +31,8 @@
       <p>: 450</p>
     </div>
   </div>
-  <div class="retard" *ngIf="retard.disruptions.length < 0" ><p>Pas de retard pour une fois vive la sncf</p></div>
-  <p class="retard" *ngIf="retard.disruptions.length > 0">
+  <div class="retard" *ngIf="retard?.disruptions?.length < 0" ><p>Pas de retard pour une fois vive la sncf</p></div>
+  <p class="retard" *ngIf="retard?.disruptions?.length > 0">
     <span> Cause du retard :</span><br> {{ retard.disruptions[0].messages[0].text }}
   </p>
   <div class="desktop-content">

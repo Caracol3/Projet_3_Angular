@@ -12,8 +12,8 @@ export class DataService {
   urlApi : string = "";
   infoTrain : any;
   journey : any = "";
-  // serveUrl : string = "http://193.203.169.227:8080";
-  serveUrl : string = "http://localhost:8080";
+  serveUrl : string = "http://193.203.169.227:8080";
+  // serveUrl : string = "http://localhost:8080";
 
   constructor( private http : HttpClient) { }
 
