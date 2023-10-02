@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 import { MessageService } from '../message.service';
+
+
 
 
 @Component({
@@ -22,15 +25,14 @@ export class MainChatComponent implements OnInit {
 
 
 
-
-  constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
-
+  constructor(private accountService : AccountServiceService,private dataService : DataService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
+  
 
 
   ngOnInit(): void {
     this.refreshMessages();
     this.http
-      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .get<any>(`${this.dataService.serveUrl}/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
       });
@@ -69,7 +71,7 @@ export class MainChatComponent implements OnInit {
 
     this.http
     .post<any>(
-      `http://localhost:8080/send-message-main/${this.user_id}`,
+      `${this.dataService.serveUrl}/send-message-main/${this.user_id}`,
       infoMessage,
     )
     .subscribe(

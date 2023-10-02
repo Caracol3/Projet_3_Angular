@@ -12,6 +12,8 @@ export class DataService {
   urlApi : string = "";
   infoTrain : any;
   journey : any = "";
+  serveUrl : string = "http://193.203.169.227:8080";
+  // serveUrl : string = "http://localhost:8080";
 
   constructor( private http : HttpClient) { }
 
@@ -55,45 +57,13 @@ export class DataService {
     });
     return this.apiResponse;
   }
-  // getDataFromDelay() {
-
-  //   const url  = `https://api.sncf.com/v1/coverage/sncf/vehicle_journeys/${this.journey}`;
-
-  //   const headers = new HttpHeaders({
-  //     'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
-  //   });
-  //     this.http.get(url, {headers}).subscribe((response : any) => {
-  //       this.retard = response;
-  //       console.log(url)
-  //       console.log(this.journey)
-
-
-  //   });
-  // return this.retard
-  // }
-
-
+ 
   getUrl(urlRetard : any){
 
     localStorage.removeItem('urlRetard')
     localStorage.setItem("urlRetard", urlRetard)
     this.journey = localStorage.getItem("urlRetard");
   }
-
-  // getDataFromTrain(urlTrain : string) {
-
-  //   const url  = urlTrain;
-
-  //   const headers = new HttpHeaders({
-  //     'Authorization': 'Basic ' + btoa('c286f422-1bc0-4034-a50e-6a6da457215a' + ':' + "")
-  //   });
-  //     this.http.get(url, {headers}).subscribe((response : any) => {
-  //       this.infoTrain = response;
-
-
-  //   });
-  // return this.infoTrain
-  // }
 
 
 

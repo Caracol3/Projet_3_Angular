@@ -20,6 +20,9 @@ export class SideBarComponent implements OnInit {
   userId : any = localStorage.getItem('userId');
   myUser : any ;
   isSidebarOpen : boolean = false;
+  userRoom : any = [];
+  
+
 
 
 
@@ -35,9 +38,27 @@ export class SideBarComponent implements OnInit {
       this.infoMainChat = this.messageService.messagesMain;
       this.listUser = this.messageService.allUsers;
       this.myUser = this.account.userInfos;
+      this.myRoom();
 
 
     }, 500);
+  }
+
+
+  myRoom() {
+    this.userRoom = [];
+    const nomsDeSalleUniques = new Set<string>();
+  
+    for (let i = 0; i < this.infoMainChat.length; i++) {
+      const chatMain = this.infoMainChat[i];
+  
+      // Vérifie si l'ID de l'utilisateur correspond à userId et si le roomName n'a pas déjà été ajouté
+      if (chatMain.user.id == this.userId && !nomsDeSalleUniques.has(chatMain.roomName)) {
+        this.userRoom.push(chatMain.roomName);
+        nomsDeSalleUniques.add(chatMain.roomName);
+      }
+    }
+    return this.userRoom;
   }
 
 
@@ -67,7 +88,7 @@ isDuplicateMp(chatMp: any, currentIndex: number): boolean {
 
 
   selectMain(index : number){
-    let room = this.infoMainChat[index].roomName;
+    let room = this.userRoom[index];
     this.messageService.refreshMessagesMainByRoom(room);
   }
 

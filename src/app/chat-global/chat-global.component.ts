@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-chat-global',
@@ -21,6 +22,8 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
   constructor(
     private accountService: AccountServiceService,
     private http: HttpClient,
+    private dataService : DataService
+
   ) {}
 
   ngAfterViewInit(): void {
@@ -35,7 +38,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.refreshMessages();
     this.http
-      .get<any>(`http://localhost:8080/user/${this.user_id}`)
+      .get<any>(`${this.dataService.serveUrl}/user/${this.user_id}`)
       .subscribe((data) => {
         this.user = data;
       });
@@ -43,13 +46,13 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this.refreshMessages();
 
-    }, 500);
+    }, 250);
 
   }
 
   refreshMessages(): void {
     this.http
-      .get<any>(`http://localhost:8080/all-messages-global`)
+      .get<any>(`${this.dataService.serveUrl}/all-messages-global`)
       .subscribe((data) => {
         this.messages = data;
       });
@@ -65,7 +68,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
 
     this.http
       .post<any>(
-        `http://localhost:8080/send-message-global/${this.user_id}`,
+        `${this.dataService.serveUrl}/send-message-global/${this.user_id}`,
         infoMessage
       )
       .subscribe(
