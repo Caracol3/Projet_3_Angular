@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, } from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from '../message.service';
@@ -10,13 +10,15 @@ import { DataService } from '../data.service';
   styleUrls: ['./private-chat.component.scss'],
 })
 export class PrivateChatComponent implements OnInit {
+
+  @ViewChild('maDiv') maDiv?: ElementRef;
+
   message: string = '';
   messages: any[] = [];
-  // userReveicer: Number = 7;
-  // userReveicerName: string = 'Omar';
   user_id: string | null = localStorage.getItem('userId');
   user: any = {};
   privateConv: any = {};
+
 
   constructor(
     private accountService: AccountServiceService,
@@ -57,7 +59,7 @@ export class PrivateChatComponent implements OnInit {
     };
     this.http
       .post<any>(
-        `http://193.203.169.227:8080/send-message-mp/${this.user_id}`,
+        `${this.dataService.serveUrl}/send-message-mp/${this.user_id}`,
         infoMessage
       )
       .subscribe(

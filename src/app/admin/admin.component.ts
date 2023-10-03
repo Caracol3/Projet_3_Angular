@@ -31,7 +31,6 @@ export class AdminComponent implements OnInit {
   refreshUsersList() {
     this.httpClient.get<User[]>(`${this.dataService.serveUrl}/admin/users`).subscribe((users) => {
       this.users = users;
-      console.log(this.users);
      
     });
   }
@@ -49,7 +48,6 @@ export class AdminComponent implements OnInit {
     this.isMoreInfo = true;
     user.birthday = this.formatDate(user.birthday);
     this.selectedUser = user;
-    console.log("Plus d'info sur " + this.selectedUser.avatar);
   }
   closeInfo(){
     this.isMoreInfo = false;
