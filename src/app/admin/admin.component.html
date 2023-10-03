@@ -1,11 +1,46 @@
 <div class="container">
   <div class="form-title">
-    <h1 class="title">Liste des Utilisateurs</h1>
+    <h1  *ngIf="usersAdmin" class="title">Liste des Utilisateurs</h1>
+    <h1  *ngIf="roomName" class="title">Liste des Room Actives</h1>
     <div class="inscrits">
-      <p>Nombre d'inscrits : {{ users.length }}</p>
+      <p *ngIf="usersAdmin">Nombre d'inscrits : {{ users.length }}</p>
+      <p *ngIf="roomName">Nombre de room : {{ rooms.length }}</p>
     </div>
   </div>
-  <div class="list">
+
+<div *ngIf="select">
+
+<button (click)="selectUserPage()">Liste des users</button>
+<button (click)="selectRoom()">Liste des Rooms</button>
+
+</div>
+
+</div>
+
+  <div *ngIf="roomName">
+
+
+
+  
+    <ul class="list-users">
+      <li *ngFor="let room of rooms, let i = index">
+          <div class="roomName">{{ room ? room.roomName.slice(21, 36).replace(":"," n° ")  : ' '  }} 
+          <button (click)="deleteRoom(i)">Supprimer la room</button>
+          </div>
+
+
+        </li>
+    </ul>
+  </div>
+          
+
+
+
+
+
+
+
+  <div class="list" *ngIf="usersAdmin">
     <ul class="list-users">
       <li *ngFor="let user of users">
         <div class="user">
@@ -52,4 +87,4 @@
       <img src="/assets/Admin/adminimage.jpg" alt="">
     </div>
   </div>
-</div>
+
