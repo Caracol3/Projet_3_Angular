@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AccountServiceService } from '../account-service.service';
 import { AuthService } from '../service/AuthService';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -66,6 +67,7 @@ export class AccountComponent implements OnInit {
     private httpClient: HttpClient,
     private dataService: DataService,
     private accountService: AccountServiceService,
+    private router: Router,
     private authService: AuthService
   ) {}
 
@@ -112,7 +114,15 @@ export class AccountComponent implements OnInit {
     return jour + '/' + mois + '/' + annee;
   }
 
+  admin(){
+    this.router.navigate(['/admin/users']);
+    
+  }
+
   ngOnInit(): void {
+    if(this.user_id == null){
+      this.router.navigate(['/login']);
+    }
     this.httpClient
       .get<any>(`${this.dataService.serveUrl}/user/${this.user_id}`)
       .subscribe((data) => {
@@ -120,7 +130,6 @@ export class AccountComponent implements OnInit {
         this.avatar = this.user.avatar;
         this.user.birthday = this.formatDate(this.user.birthday);
         this.selectedColor = this.user.color ;
-        console.log(this.user);
       });
   }
 
@@ -146,28 +155,8 @@ export class AccountComponent implements OnInit {
       );
   }
 
-  updateUsername(username: string) {
-    console.log("this.newUsername: " + this.newUsername);
-    this.httpClient
-      .put<any>(
-        `${this.dataService.serveUrl}/users/${this.user_id}/account/username/${this.newUsername}`,
-        null
-      )
-      .subscribe(
-        (response) => {
-          this.user.username = this.newUsername;
-          this.accountService.getUserData(this.user_id);
 
-        },
-        (error) => {
-          console.error("Erreur lors de la mise à jour du pseudo :", error);
-          console.log("username" + this.user.username),
-          console.log("id : " + this.user_id)
-        }
-
-      );
-
-  }
+  
 
   dispoMP() {
     this.httpClient
