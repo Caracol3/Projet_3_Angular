@@ -225,6 +225,8 @@ export class SearchTrainComponent implements OnInit {
 
   sendMessage(numeroTrain : any, urlRetard : string): void {
 
+    this.messageService.deleteRoom(urlRetard, numeroTrain);
+
     let userId : string | null = localStorage.getItem('userId');
 
    let infoMessage = {

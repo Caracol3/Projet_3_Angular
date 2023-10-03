@@ -28,6 +28,9 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(localStorage.getItem('userId') == null){
+      this.router.navigate(['/login']);
+    }
     setInterval(() => {
       this.changeChat();
     }, 100);

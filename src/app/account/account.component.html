@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <h2>À propos de moi</h2>
+    <h2>À propos de moi <span *ngIf="user?.role?.type == 'ADMIN'"><button (click)="admin()">Admin</button></span></h2>
   </div>
   <div class="user-infos">
     <div class="avatar-and-identity">
