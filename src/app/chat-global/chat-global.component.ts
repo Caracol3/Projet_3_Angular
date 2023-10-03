@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit} from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../data.service';
@@ -9,7 +9,6 @@ import { DataService } from '../data.service';
   styleUrls: ['./chat-global.component.scss'],
 })
 export class ChatGlobalComponent implements OnInit, AfterViewInit {
-  @ViewChild('chatContainer') chatContainer!: ElementRef;
 
   message: string = '';
   messages: any[] = [];
@@ -22,13 +21,11 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
   constructor(
     private accountService: AccountServiceService,
     private http: HttpClient,
-    private dataService : DataService
-
+    private dataService : DataService,
   ) {}
 
   ngAfterViewInit(): void {
-    this.scrollToBottom();
-    // ... 
+    // ...
   }
 
   getMessages() {
@@ -76,7 +73,6 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
           this.messages.push(response.data);
           console.log('this.messages:', this.messages);
           setTimeout(() => {
-            this.scrollToBottom();
           }, 100);
         },
         (error) => {
@@ -84,18 +80,6 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
         }
       );
     this.message = '';
-  }
-
-  scrollToBottom(): void {
-    try {
-      const scrollHeight = this.chatContainer.nativeElement.scrollHeight;
-      const scrollTop = this.chatContainer.nativeElement.scrollTop;
-      console.log('scrollHeight:', scrollHeight);
-      console.log('scrollTop:', scrollTop);
-      this.chatContainer.nativeElement.scrollTop = scrollHeight;
-    } catch (err) {
-      console.error(err);
-    }
   }
 
 

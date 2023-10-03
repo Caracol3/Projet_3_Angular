@@ -5,7 +5,8 @@
       class="return-img"
       (click)="requestCloseSidebar()"
     />
-    <h2 (click)="changeChat('global'); requestCloseSidebar()">Salon global </h2>
+    <button class="global" (click)="changeChat('global'); requestCloseSidebar()"><span> Salon global</span> </button>
+
   </div>
 
   <div class="train-room">
@@ -15,11 +16,9 @@
 <div>
 
   <ng-container *ngFor="let chatMain of userRoom; let i = index">
-    
-    <p (click)="changeChat('main'); selectMain(i)">
-      {{ chatMain ? chatMain.slice(21, 36).replace(":"," ") : ' ' }} 
-    </p> 
-
+    <p  class="rooms"(click)="changeChat('main'); selectMain(i);  requestCloseSidebar()">
+       Le {{ chatMain ? chatMain.slice(21, 36).replace(":"," n° ") : ' ' }}
+    </p>
   </ng-container>
 </div>
 </div>
@@ -32,7 +31,7 @@
 
     <div  *ngFor="let user of listUser; let i = index">
 
-  <div class="containerUser" *ngIf="user.username !== myUser.username">
+  <div class="containerUser" (click)="changeChat('private')" *ngIf="user.username !== myUser.username">
     <div  (click)="selectUser(i)"  *ngIf="user.is_connected == true " (click)="changeChat('private'); requestCloseSidebar()">
 
       <img *ngIf="user.is_available == true" src="assets/chat/available2.png"  class="pastille-verte " >
