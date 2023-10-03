@@ -114,7 +114,7 @@ h3 {
   content: "Date de naissance";
 }
 
-button {
+.avatar-button {
   width: 100%;
   height: 25px;
   border-radius: 15px;
@@ -232,7 +232,13 @@ img {
 .max-container-desktop {
   display: none;
 }
+.admin{
+  position: absolute;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
 
+}
 @media screen and (min-width: 748px) {
   .container {
     display: none;
@@ -452,7 +458,7 @@ img {
     border: 3px solid rgb(55, 90, 107);
     transform: scale(1.2);
   }
-  
+
   //Interrupteur "dispo MP"//
 
   .toggle-switch-desktop {
