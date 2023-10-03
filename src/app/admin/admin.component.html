@@ -8,31 +8,35 @@
     </div>
   </div>
 
-<div *ngIf="select">
+<div class="select" *ngIf="select">
 
-<button (click)="selectUserPage()">Liste des users</button>
-<button (click)="selectRoom()">Liste des Rooms</button>
+  <p (click)="selectUserPage()">Liste des users</p>
+  <p (click)="selectRoom()">Liste des Rooms </p>
+
 
 </div>
 
 </div>
 
-  <div *ngIf="roomName">
+  <div class="list" *ngIf="roomName">
 
 
 
-  
+
     <ul class="list-users">
       <li *ngFor="let room of rooms, let i = index">
-          <div class="roomName">{{ room ? room.roomName.slice(21, 36).replace(":"," n° ")  : ' '  }} 
-          <button (click)="deleteRoom(i)">Supprimer la room</button>
+          <div class="roomName"><p>  {{ room ? room.roomName.slice(21, 36).replace(":"," n° ")  : ' '  }}</p>
+          <img src="/assets/Admin/moins.png" alt="moins" (click)="deleteRoom(i)">
           </div>
 
 
         </li>
     </ul>
+    <div class="contact-img">
+      <img src="/assets/Admin/adminimage.jpg" alt="">
+    </div>
   </div>
-          
+
 
 
 
@@ -44,7 +48,7 @@
     <ul class="list-users">
       <li *ngFor="let user of users">
         <div class="user">
-          <div class="name">{{ user.name }} {{ user.firstname }}</div>
+          <div class="name"><p>{{ user.name }} {{ user.firstname }}</p></div>
 
           <div>
             <select
@@ -83,7 +87,7 @@
      <button (click)="deleteUser(selectedUser.id)">Supprimer l'utilisateur</button>
 
   </div>
-  <div class="contact-img">
+ <div class="contact-img">
       <img src="/assets/Admin/adminimage.jpg" alt="">
     </div>
   </div>
