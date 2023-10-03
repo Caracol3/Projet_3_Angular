@@ -363,6 +363,8 @@ text-align: center;
   .text-desktop {
     margin-top: 2%;
     width: 53%;
+    overflow-y: auto;
+    max-height: 315px;
   }
 
   .containerTrainInfo {
