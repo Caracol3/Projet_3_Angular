@@ -3,8 +3,9 @@
     <div class="pseudo">
       <h3 class="pseudo">{{ privateConv.user }}</h3>
     </div>
-    <div class="chat">
-      <div *ngFor="let msg of messages" class="contenairchat">
+    <div class="chat" style="overflow: scroll; height: 75vh;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <div *ngFor="let msg of messages  let i = index" class="contenairchat">
+        <div [ngClass]="{'containerchat': true, 'last-chat-item': i === messages.length - 1}" id="container-message">
         <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
           <div class="sender" *ngIf="msg.user.username === user.username">
             <p class="avatar-and-username">
