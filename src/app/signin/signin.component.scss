@@ -65,6 +65,15 @@ input {
   box-shadow: 0 0 2px #5b93ad;
 }
 
+.error-message{
+  color: rgba(255, 0, 0, 0.679);
+  font-size: 0.8em;
+}
+
+.invalid-email{
+  border: 2px solid rgba(255, 0, 0, 0.679);
+  background-color: #fb99991a ;
+}
 
 .input-top {
   background-image: url(/assets/profil.png);
@@ -72,7 +81,6 @@ input {
   background-repeat: no-repeat;
   background-size: 15px 15px;
   padding-left: 40px;
-
 }
 
 #firstname,
@@ -134,6 +142,8 @@ input {
     flex-direction: row;
     justify-content: space-around;
     height: 80%;
+    max-height: 81vh;
+    overflow-y: auto;
   }
 
   .form-title {
@@ -185,6 +195,14 @@ input {
     }
   }
 
+  .error-message{
+    color: rgba(255, 0, 0, 0.679);
+    font-size: 0.8em;
+  }
+
+  .invalid-email{
+    border: 2px solid rgba(255, 0, 0, 0.679) !important;
+  }
 
   .input-no-border {
     border: 1px solid #ccc;
@@ -227,13 +245,14 @@ input {
 
  }
  .signup button {
-  width: 50%;
+  width: 60%;
   height: 40px;
   border-radius: 15px;
   border: none;
   background-color: rgb(55, 90, 107);
   color: white;
   font-size: 1.2em;
+  font-weight: 400;
   margin: auto;
 
 }
