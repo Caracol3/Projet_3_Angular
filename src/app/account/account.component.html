@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <h2>À propos de moi</h2>
+    <h2>À propos de moi <span *ngIf="user?.role?.type == 'ADMIN'"><button (click)="admin()">Admin</button></span></h2>
   </div>
   <div class="user-infos">
     <div class="avatar-and-identity">
@@ -31,13 +31,6 @@
       <div class="identity">
         <span class="text" id="firstname">{{ user.firstname }}</span>
         <div>
-          <label for="newUsername">Nouveau nom d'utilisateur :</label>
-          <input type="text" id="newUsername" [(ngModel)]="newUsername" />
-        </div>
-
-        <!-- Ajoutez le bouton de confirmation pour la mise à jour -->
-        <div>
-          <button (click)="updateUsername(user.username)">Mettre à jour le nom d'utilisateur</button>
         </div>
         <span class="text" id="username">{{ user.username }}</span>
       </div>

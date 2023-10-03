@@ -4,7 +4,7 @@
       <h3 class="pseudo">{{ privateConv.user }}</h3>
     </div>
     <div class="chat">
-      <div *ngFor="let msg of messages" class="contenairchat">
+      <div  *ngFor="let msg of messages" class="contenairchat">
         <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
           <div class="sender" *ngIf="msg.user.username === user.username">
             <p class="avatar-and-username">

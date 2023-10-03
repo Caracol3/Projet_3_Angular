@@ -65,6 +65,11 @@ export class MessageService {
  }
 
 
+ deleteRoom(url : string, numeroTrain : any){
+
+ }
+
+
 
  refreshMessagesMainByRoom(roomName : string) {
   this.refreshMessagesMain();
@@ -75,6 +80,7 @@ export class MessageService {
       this.messagesMainByRoom.push(this.messagesMain[i]);
     }
   }
+  console.log(this.messagesMainByRoom);
   return this.messagesMainByRoom , this.mainConv;
 }
 

@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit{
             this.router.navigate(['/search-train']);
             this.accountService.getUserData(user.data.user.id);
             this.connectUser(user.data.user.id);
-            console.log(user.data.token);
     }
 
 
