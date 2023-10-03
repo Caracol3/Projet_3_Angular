@@ -1,15 +1,54 @@
 <div class="container">
   <div class="form-title">
-    <h1 class="title">Liste des Utilisateurs</h1>
+    <h1  *ngIf="usersAdmin" class="title">Liste des Utilisateurs</h1>
+    <h1  *ngIf="roomName" class="title">Liste des Room Actives</h1>
     <div class="inscrits">
-      <p>Nombre d'inscrits : {{ users.length }}</p>
+      <p *ngIf="usersAdmin">Nombre d'inscrits : {{ users.length }}</p>
+      <p *ngIf="roomName">Nombre de room : {{ rooms.length }}</p>
     </div>
   </div>
-  <div class="list">
+
+<div class="select" *ngIf="select">
+
+  <p (click)="selectUserPage()">Liste des users</p>
+  <p (click)="selectRoom()">Liste des Rooms </p>
+
+
+</div>
+
+</div>
+
+  <div class="list" *ngIf="roomName">
+
+
+
+
+    <ul class="list-users">
+      <li *ngFor="let room of rooms, let i = index">
+          <div class="roomName"><p>  {{ room ? room.roomName.slice(21, 36).replace(":"," n° ")  : ' '  }}</p>
+          <img src="/assets/Admin/moins.png" alt="moins" (click)="deleteRoom(i)">
+          </div>
+
+
+        </li>
+    </ul>
+    <div class="contact-img">
+      <img src="/assets/Admin/adminimage.jpg" alt="">
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="list" *ngIf="usersAdmin">
     <ul class="list-users">
       <li *ngFor="let user of users">
         <div class="user">
-          <div class="name">{{ user.name }} {{ user.firstname }}</div>
+          <div class="name"><p>{{ user.name }} {{ user.firstname }}</p></div>
 
           <div>
             <select
@@ -48,8 +87,8 @@
      <button (click)="deleteUser(selectedUser.id)">Supprimer l'utilisateur</button>
 
   </div>
-  <div class="contact-img">
+ <div class="contact-img">
       <img src="/assets/Admin/adminimage.jpg" alt="">
     </div>
   </div>
-</div>
+

@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { DataService } from '../data.service';
+import { MessageService } from '../message.service';
 
 
 @Component({
@@ -16,15 +17,67 @@ export class AdminComponent implements OnInit {
   users: User[] = [];
   isMoreInfo :boolean = false;
   selectedUser: any;
+  usersAdmin : boolean = false;
+  roomName : boolean = false;
+  select : boolean = true;
+  listOfRooms : any[] = [];
+  rooms : any[] = [];
 
 
-  constructor(private httpClient: HttpClient, private dataService : DataService) {}
+  constructor(private httpClient: HttpClient, private dataService : DataService, private messageService : MessageService) {}
 
   // Au chargement du composant, on récupère la liste des utilisateurs
 
   ngOnInit(): void {
     this.refreshUsersList();
+    this.messageService.refreshMessagesMain();
+    setTimeout(() => {
+      this.listOfRooms = this.messageService.messagesMain;
+      this.rooms = this.listOfRooms.filter(
+        (obj, index, self) =>
+          index === self.findIndex((t) => t.roomName === obj.roomName ))
+      ;
+    }
+    , 500);
 
+  }
+
+
+
+
+  deleteRoom(index : number){
+    const confirmDelete = window.confirm("Êtes-vous sûr de vouloir supprimer cette room ?");
+    if (confirmDelete) {for (let i = 0; i < this.listOfRooms.length; i++) {
+      if (this.rooms[index].roomName === this.listOfRooms[i].roomName) {
+        this.delete(this.listOfRooms[i].id);
+      }
+
+
+    }
+    window.location.reload();
+  }
+  else {
+    console.log('Suppression annulée.');
+  }
+    
+  }
+
+
+  delete(id : Number){
+    this.httpClient.delete(`${this.dataService.serveUrl}/message/main/${id}`).subscribe((res) => {});
+  }
+
+
+
+
+  selectUserPage(){
+    this.usersAdmin = true;
+    this.roomName = false;
+  }
+
+  selectRoom(){
+    this.usersAdmin = false;
+    this.roomName = true;
   }
 
 

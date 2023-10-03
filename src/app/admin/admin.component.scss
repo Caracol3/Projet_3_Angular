@@ -14,6 +14,7 @@
 .list-users{
  overflow-y: auto;
   max-height: 400px;
+
 }
 ul {
   background-color: whitesmoke;
@@ -40,6 +41,36 @@ li {
   margin-bottom: 5px;
   background-color: white;
   width: 90%;
+}
+.roomName{
+  border: 1px solid #808080;
+  border-radius: 10px;
+  font-size: 1.2em;
+  color: #808080;
+  text-align: center;
+  border-bottom: 1px solid #808080;
+  padding: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 5px;
+  background-color: white;
+  width: 80%;
+  align-items: center;
+  P{
+    margin-left: 10px;
+  }
+}
+.select{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px ;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 5px;
+font-size: 1.2em;
 }
 
 .name {

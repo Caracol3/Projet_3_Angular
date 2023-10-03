@@ -16,9 +16,11 @@
 <div>
 
   <ng-container *ngFor="let chatMain of userRoom; let i = index">
+
     <p  class="rooms"(click)="changeChat('main'); selectMain(i);  requestCloseSidebar()">
-       Le {{ chatMain ? chatMain.slice(21, 36).replace(":"," n° ") : ' ' }}
+      {{ chatMain ? chatMain.slice(21, 36).replace(":"," ") : ' ' }}
     </p>
+
   </ng-container>
 </div>
 </div>
