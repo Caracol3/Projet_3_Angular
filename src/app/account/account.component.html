@@ -1,6 +1,6 @@
 <div class="container">
-  <div>
-    <h2>À propos de moi <span *ngIf="user?.role?.type == 'ADMIN'"><button (click)="admin()">Admin</button></span></h2>
+  <div class="titre">
+    <h2>À propos de moi <span *ngIf="user?.role?.type == 'ADMIN'"><img class="admin" (click)="admin()" src="/assets/Admin/admin.png" alt=""></span></h2>
   </div>
   <div class="user-infos">
     <div class="avatar-and-identity">
@@ -95,7 +95,7 @@
   <div class="account-and-img-desktop">
     <div class="h2andaccount">
       <div>
-        <h2>À propos de moi</h2>
+        <h2>À propos de moi <span *ngIf="user?.role?.type == 'ADMIN'"><img class="admin" (click)="admin()" src="/assets/Admin/admin.png" alt=""></span></h2>
       </div>
       <div class="container-desktop">
         <div class="all-infos-desktop">
