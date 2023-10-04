@@ -3,6 +3,8 @@ import { Location} from '@angular/common';
 import { DataService } from '../data.service';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { TokenValidationService } from '../token-validation.service';
 
 @Component({
   selector: 'app-train-info',
@@ -12,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class TrainInfoComponent implements OnInit {
 
 
-  constructor(private location: Location, private  dataService :DataService, private http : HttpClient ) { }
+  constructor(private location: Location, private  dataService :DataService, private http : HttpClient, private router : Router, private tokenValidationService : TokenValidationService ) { }
   retard : any = {};
   journey: any = localStorage.getItem("urlRetard");
 
@@ -20,6 +22,9 @@ export class TrainInfoComponent implements OnInit {
 
 
   ngOnInit() {
+    if(!this.tokenValidationService.isTokenValid()){
+      this.router.navigate(['/login']);
+    }
    this.getDataFromDelay()
   }
 

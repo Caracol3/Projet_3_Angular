@@ -5,6 +5,7 @@ import { AccountServiceService } from '../account-service.service';
 import { AuthService } from '../service/AuthService';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { TokenValidationService } from '../token-validation.service';
 
 @Component({
   selector: 'app-account',
@@ -68,7 +69,8 @@ export class AccountComponent implements OnInit {
     private dataService: DataService,
     private accountService: AccountServiceService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private tokenValidationService: TokenValidationService
   ) {}
 
   openAvatarModal() {
@@ -120,7 +122,7 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.user_id == null){
+    if(!this.tokenValidationService.isTokenValid()){
       this.router.navigate(['/login']);
     }
     this.httpClient
