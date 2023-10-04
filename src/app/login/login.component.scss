@@ -29,7 +29,7 @@
   height: 35px;
   border-radius: 15px;
   border: none;
-  background-color: rgb(55, 90, 107);
+  background-color:  var(--background-color-blue);
   color: #ffffff;
   font-size: 1.1em;
   margin: 15px;
@@ -69,7 +69,7 @@ input {
   background-repeat: no-repeat;
   background-size: 15px 15px;
   padding-left: 40px;
-  background-color: white;
+   background-color: var(--background-color-white);
   border-bottom: 1px solid #ccc;
 }
 
@@ -79,7 +79,7 @@ input {
   background-repeat: no-repeat;
   background-size: 15px 15px;
   padding-left: 40px;
-  background-color: white;
+   background-color: var(--background-color-white);
   margin-bottom: 15px;
 }
 
@@ -93,7 +93,7 @@ input {
 .inscription {
   width: 70%;
   height: 100%;
-  background-color: #365b6d;
+   background-color: var(--background-color-blue);
   color: #fff;
   border-radius: 10px 10px 5px;
   text-align: center;
@@ -213,7 +213,7 @@ a {
     height: 40px;
     border-radius: 15px;
     border: none;
-    background-color: rgb(55, 90, 107);
+    background-color:  var(--background-color-blue);
     color: white;
     font-size: 1.2em;
     margin: auto;

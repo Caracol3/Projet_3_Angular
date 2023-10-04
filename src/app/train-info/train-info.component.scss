@@ -107,7 +107,7 @@
     border: none;
     border-radius: 15px 15px 15px 15px;
     padding: 5px;
-    background-color: whitesmoke;
+    background-color: var(--background-color-grey);;
     font-weight: 400;
   }
 }
@@ -141,7 +141,7 @@
 
 
   .form-title {
-    background-color: rgb(55, 90, 107);
+    background-color:  var(--background-color-blue);
     width: 100%;
     height: 80px;
     display: flex;
@@ -150,7 +150,7 @@
     padding-left: 20px;
     margin-bottom: 20px;
     h3 {
-      color: whitesmoke;
+      color: var(--background-color-grey);;
       font-weight: 800;
       font-size: 30px;
     }
@@ -234,7 +234,7 @@ width: 400px;
       border: none;
       border-radius: 15px 15px 15px 15px;
       padding: 5px;
-      background-color: whitesmoke;
+      background-color: var(--background-color-grey);;
       font-weight: 400;
 
     }

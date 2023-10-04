@@ -32,7 +32,7 @@ h3 {
   height: 35px;
   border-radius: 15px;
   border: none;
-  background-color: rgb(55, 90, 107);
+  background-color:  var(--background-color-blue);
   color: white;
   font-size: 1.1em;
   margin: 15px;
@@ -250,7 +250,7 @@ input {
   height: 40px;
   border-radius: 15px;
   border: none;
-  background-color: rgb(55, 90, 107);
+  background-color:  var(--background-color-blue);
   color: white;
   font-size: 1.2em;
   font-weight: 400;
