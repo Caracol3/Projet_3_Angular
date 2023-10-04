@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { DataService } from '../data.service';
 import { MessageService } from '../message.service';
+import { Router } from '@angular/router';
+import { TokenValidationService } from '../token-validation.service';
 
 
 @Component({
@@ -24,11 +26,14 @@ export class AdminComponent implements OnInit {
   rooms : any[] = [];
 
 
-  constructor(private httpClient: HttpClient, private dataService : DataService, private messageService : MessageService) {}
+  constructor(private httpClient: HttpClient, private dataService : DataService, private messageService : MessageService, private router : Router, private tokenValidationService : TokenValidationService) {}
 
   // Au chargement du composant, on récupère la liste des utilisateurs
 
   ngOnInit(): void {
+    if(!this.tokenValidationService.isTokenValid()){
+      this.router.navigate(['/login']);
+    }
     this.refreshUsersList();
     this.messageService.refreshMessagesMain();
     setTimeout(() => {

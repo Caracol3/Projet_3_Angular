@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { TokenValidationService } from '../token-validation.service';
 
 @Component({
   selector: 'app-signin',
@@ -18,7 +19,7 @@ export class SigninComponent {
 
 
 
-  constructor(private dataService : DataService,private http: HttpClient , private location: Location, private router : Router) { 
+  constructor(private dataService : DataService,private http: HttpClient , private location: Location, private router : Router, private tokenValidationService : TokenValidationService) { 
     this.isLoginFormVisible = false;
   }
 
@@ -49,8 +50,9 @@ export class SigninComponent {
 
 
     if (user && user.data.token){
-            localStorage.setItem('token', user.data.token);
-            this.router.navigate(['']);
+      if(this.tokenValidationService.isTokenValid()){
+        this.router.navigate(['/search-train']);
+      }
     }
 
 

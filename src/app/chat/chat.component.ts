@@ -3,6 +3,7 @@ import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from '../message.service';
 import { Router } from '@angular/router';
+import { TokenValidationService } from '../token-validation.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService, private router : Router) { }
+  constructor(private accountService : AccountServiceService, private http : HttpClient, private messageService : MessageService, private router : Router, private tokenValidationService : TokenValidationService) { }
 
   globalChat = this.messageService.globalChat;
   mainChat = this.messageService.mainChat;
@@ -28,7 +29,7 @@ export class ChatComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if(localStorage.getItem('userId') == null){
+    if(!this.tokenValidationService.isTokenValid()){
       this.router.navigate(['/login']);
     }
     setInterval(() => {

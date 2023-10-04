@@ -8,6 +8,7 @@ import { AuthService } from '../service/AuthService';
 import { AccountServiceService } from '../account-service.service';
 import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
+import { TokenValidationService } from '../token-validation.service';
 
 
 
@@ -30,12 +31,16 @@ export class SearchTrainComponent implements OnInit {
     private accountService: AccountServiceService,
     private dataService: DataService,
     private http: HttpClient,
-    private messageService : MessageService
+    private messageService : MessageService,
+    private tokenValidationService : TokenValidationService
   ) { }
 
 
 
   ngOnInit(): void {
+    if(!this.tokenValidationService.isTokenValid()){
+      this.router.navigate(['/login']);
+    }
     this.getRegions();
     this.accountService.getUserData(this.user_id);
     

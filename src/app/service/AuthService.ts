@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { DataService } from "../data.service";
 
 
 @Injectable({
@@ -9,7 +10,7 @@ export class AuthService {
   private tokenKey: string = 'token';
   userId: string | null = localStorage.getItem('userId');
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private dataService : DataService) {}
 
 login(token:string){
   localStorage.setItem(this.tokenKey,token);  //stockage du token dans le local storage
@@ -31,7 +32,7 @@ logout(){
 disconnectUser() {
   this.http
   .put<any>(
-    `https://193.203.169.227:8080/users/${this.userId}/account/online/false`,
+    `${this.dataService.serveUrl}/users/${this.userId}/account/online/false`,
     null
   ).subscribe(
     (response) => {

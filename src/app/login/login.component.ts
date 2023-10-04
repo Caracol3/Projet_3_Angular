@@ -5,6 +5,7 @@ import { tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AccountServiceService } from '../account-service.service';
 import { DataService } from '../data.service';
+import { TokenValidationService } from '../token-validation.service';
 
 
 @Component({
@@ -17,12 +18,12 @@ export class LoginComponent implements OnInit{
   isLoginFormVisible: boolean;
  
 
-  constructor(private router: Router,private http : HttpClient, private accountService: AccountServiceService, private dataService: DataService) {
+  constructor(private router: Router,private http : HttpClient, private accountService: AccountServiceService, private dataService: DataService, private tokenValidationService : TokenValidationService) {
     this.isLoginFormVisible = false;
   }
 
   ngOnInit() {
-    if (localStorage.getItem('token')) {
+    if(this.tokenValidationService.isTokenValid()){
       this.router.navigate(['/search-train']);
     }
   }
