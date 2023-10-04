@@ -72,7 +72,8 @@ input {
 
 .invalid-email{
   border: 2px solid rgba(255, 0, 0, 0.679);
-  background-color: #fb99991a ;
+  background-color: rgba(242, 137, 137, 0.679) ;
+  border-radius: 10px;
 }
 
 .input-top {
