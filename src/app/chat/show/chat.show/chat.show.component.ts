@@ -64,6 +64,7 @@ this.chatId=conversation.id
 }
   newChat(recever:number){
     this.accountService.getUser(recever).subscribe((reponse)=>{
+      console.log(reponse)
       localStorage.setItem("receverPseudo",reponse.username)
     })
     if (this.validateChat(recever)) {
