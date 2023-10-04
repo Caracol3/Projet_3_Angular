@@ -24,12 +24,7 @@
   </div>
   <div class="conso">
     <div class="back"><p (click)="returnSalon()">Retour au salon</p></div>
-    <div class="icon">
-        <img src="/assets/info-train/co2.1.png" alt="CO2 Icon" />
-      </div>
-    <div class="quantity">
-      <p>: 450</p>
-    </div>
+    
   </div>
   <div class="retard" *ngIf="retard?.disruptions?.length < 0" ><p>Pas de retard pour une fois vive la sncf</p></div>
   <p class="retard" *ngIf="retard?.disruptions?.length > 0">
