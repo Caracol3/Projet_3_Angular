@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -18,14 +19,21 @@ export class SigninComponent {
 
 
 
-  constructor(private dataService : DataService,private http: HttpClient , private location: Location, private router : Router) { 
+  constructor(private dataService : DataService,private http: HttpClient , private location: Location, private router : Router) {
     this.isLoginFormVisible = false;
   }
 
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      window.alert("Tous les champs ne sont pas remplis correctement.");
+      console.log(form.value)
+      return;
+    }
+
     if (this.signin.password !== this.confirmPassword) {
-      return alert('Les mots de passe ne correspondent pas');
+      alert('Les mots de passe ne correspondent pas');
+      return;
     }
 
     fetch(`${this.dataService.serveUrl}/register`, {
@@ -56,7 +64,7 @@ export class SigninComponent {
 
   });
 
-  
+
 
   }
 
