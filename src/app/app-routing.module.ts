@@ -16,9 +16,9 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   { path: 'signin', component: SigninComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'chat', component: ChatComponent},
-  { path: 'account', component: AccountComponent},
-  { path: 'train-info', component: TrainInfoComponent},
+  { path: 'chat', component: ChatComponent, canActivate: [IsUserGuard]},
+  { path: 'account', component: AccountComponent, canActivate: [IsUserGuard]},
+  { path: 'train-info', component: TrainInfoComponent, canActivate: [IsUserGuard]},
   { path: 'search-train', component: SearchTrainComponent, canActivate: [IsUserGuard]},
   { path: 'admin/users', component: AdminComponent,canActivate: [IsUserGuard]}
 

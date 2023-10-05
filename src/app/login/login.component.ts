@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profil } from '../models/login';
 import { tap } from 'rxjs';
@@ -14,9 +14,11 @@ import { TokenValidationService } from '../token-validation.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit{
+
+
   profil: Profil = new Profil('', '', '');
   isLoginFormVisible: boolean;
- 
+
 
   constructor(private router: Router,private http : HttpClient, private accountService: AccountServiceService, private dataService: DataService, private tokenValidationService : TokenValidationService) {
     this.isLoginFormVisible = false;
@@ -43,9 +45,9 @@ export class LoginComponent implements OnInit{
   .then(response => response.json())
   .then(user => {
 
-    
+
     if (user && user.data.token){
-          
+
             localStorage.setItem('token', user.data.token);
             localStorage.setItem('userId', user.data.id);
             this.router.navigate(['/search-train']);
@@ -76,7 +78,7 @@ export class LoginComponent implements OnInit{
     ).subscribe(
       (response) => {
         // Mettez à jour l'avatar dans votre composant Angular si nécessaire
-        
+
       },
       (error) => {
         console.error("Erreur lors de la mise à jour de l'user:", error);
