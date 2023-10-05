@@ -1,5 +1,9 @@
-<div class="container">
-  <h3 class="form-title">Votre trajet</h3>
+<div class="mobilecontainer">
+
+<div class="container" *ngIf="searchPage">
+
+    <h3 class="form-title">Votre trajet</h3>
+
   <div class="message">
     <p>
       Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin
@@ -21,7 +25,7 @@
         />
 
         <div class="gareResult" *ngIf="GareDepartSelect">
-          <p
+          <p class="gareResult-selection"
             *ngFor="
               let gareOfDeparture of resultOfTrainSearchDepart;
               let i = index
@@ -82,27 +86,132 @@
     <div *ngIf="AllInfo">
       <button class="button-text" type="submit">Rechercher</button>
     </div>
-    <div>
-      <button
-        class="button-text"
-        id="logout"
-        type="submit"
-        (click)="logout()"
-        routerLink="/login"
-      >
-        Logout
-      </button>
-    </div>
-  </form>
+
+    </form>
+
+
+
 </div>
+
+
+
+<div class="containerTrainInfo" *ngIf="listeTrain">
+
+  <h1>Choississez votre trajet</h1>
+  <div class="listeDesTrains-desktop">
+    <div *ngFor="let train of listeOfTrain; let i = index">
+        <div class="trainCard"(click)="getInfoTrain(i)" *ngIf="train.sections[1].display_informations.trip_short_name && ['0', '1', '2', '3','4','5','6','7','8','9'].includes(train.sections[1].display_informations.trip_short_name.charAt(0))">
+        <div class="trainInfo">
+          <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
+          <p> A :<b> {{formatDateAndTime(train.sections[0].departure_date_time)}}</b> </p>
+          <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
+          <p *ngIf="train.sections[1].display_informations.direction !== undefined">Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
+          <p> Numéro de train : <b class="numeroTrain">{{train.sections[1].display_informations.trip_short_name}}</b> </p>
+
+        </div>
+
+    </div>
+    </div>
+ </div>
+
+ </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container-desktop">
   <div class="form-title-desktop">
     <h1 class="title">Recherchez votre voyage. Trouvez des compagnons.</h1>
     <form class="form-desktop" #myForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="search-barre">
-        <div class="gare-top-desktop">
+
           <div class="input-container">
-            <input
+            <input class="gare-desktop"
               type="text"
               id="depart"
               name="depart"
@@ -111,11 +220,11 @@
               required
               (keyup)="searchGareDepart()"
             />
-            <label for="depart" class="input-label-dep">Départ :</label>
-          </div>
+            <label for="depart" class="input-label">Départ :</label>
 
-          <div class="gareResult-desktop">
-            <p
+
+          <div class="gareResult-desktop" *ngIf="GareDepartSelect">
+            <p class="gareResult-selection-desktop"
               *ngFor="
                 let gareOfDeparture of resultOfTrainSearchDepart;
                 let i = index
@@ -127,74 +236,105 @@
           </div>
         </div>
         <div class="input-container">
-          <input
-            class="gare-bottom-desktop"
+          <input class="gare-desktop"
             type="text"
             id="arrivee"
-            name="arrivée"
+            name="arrivee"
             placeholder="Gare d'arrivée"
             [(ngModel)]="search.arrivee"
             required
             (keyup)="searchGareArriver()"
           />
-          <label for="arrivee" class="input-label-arr">Arrivée :</label>
-        </div>
-        <div class="gareResult-desktop">
-          <p
-            *ngFor="
-              let gareOfArriver of resultOfTrainSearchArriver;
-              let i = index
-            "
+          <label for="depart" class="input-label">Arrivée :</label>
+
+
+        <div class="gareResult-desktop" *ngIf="GareArriverSelectInfo">
+          <p class="gareResult-selection-desktop"
+          *ngFor="
+          let gareOfArriver of resultOfTrainSearchArriver;
+          let i = index
+        "
             (click)="selectGareArriver(i)"
           >
             {{ gareOfArriver.gare_alias_libelle_noncontraint }}
           </p>
         </div>
+      </div>
+            <div class="input-container">
         <input
           class="date-desktop"
           type="date"
           id="date"
           name="date"
-          placeholder="date"
           [(ngModel)]="search.date"
           required
         />
+        <label for="arrivee" class="input-label">Date :</label>
+        </div>
+        <div class="input-container">
         <input
           class="heure-desktop"
           type="time"
-          id="title"
+          id="time"
           name="heure"
-          placeholder="Heure"
+
           [(ngModel)]="search.heureDepart"
           required
           (keypress)="sectectHeure()"
           (click)="sectectHeure()"
         />
-      </div>
-      <div>
+        <label for="arrivee" class="input-label">Heure :</label>
+        </div>
+        <div>
         <button class="button-text-desktop" type="submit">Rechercher</button>
       </div>
+      </div>
+
     </form>
   </div>
-</div>
 
-<div>
-  <!--
-    <div class="message-desktop">
+
+
+
+    <div class="message-desktop" *ngIf="showTextDesktop">
     <p>
       Vous recherchez un compagnon pour discuter, un covoiturage ou juste besoin
       de passer le temps ?
     </p>
   </div>
 
-      <button
-        class="button-text-desktop"
-        id="logout"
-        type="submit"
-        (click)="logout()"
-        routerLink="/login"
-      >
-        Logout
-      </button>
-    </div> -->
+  <div class="bottom-desktop">
+ <div class="imgDesktop"><img class="image-search" src="/assets/searchTrain/searchTrainImage.jpg" alt="train" /></div>
+  <div class="text-desktop" *ngIf="showTextDesktop">
+  <p class="text-search-desktop">Voyageurs d’un même train ?</p>
+  <p class="text-search-desktop"> Connectez-vous avec les autres passagers grâce à nos salons de discussion ou discutez directement en privé.</p>
+    <p class="text-search-desktop"> Échangez conseils, expériences & bons plans en temps réel. Tous les voyages grandes lignes sont référencés.</p>
+    <p class="text-search-desktop"> Profitez pleinement de chaque trajet en compagnie de voyageurs passionnants.</p>
+    <p class="text-search-desktop">Rejoignez-nous pour une expérience de voyage unique et connectée !</p>
 </div>
+<div class="containerTrainInfo" *ngIf="listeTrain">
+
+  <h1>Choississez votre trajet</h1>
+  <div class="listeDesTrains-desktop">
+    <div *ngFor="let train of listeOfTrain; let i = index">
+      <div class="trainCard" (click)="getInfoTrain(i)" *ngIf="train.sections[1].display_informations.trip_short_name && ['0', '1', '2', '3','4','5','6','7','8','9'].includes(train.sections[1].display_informations.trip_short_name.charAt(0))">
+        <div class="trainInfo">
+          <p> Au départ de : <b> {{train.sections[0].to.name}} </b> </p>
+          <p> A :<b> {{formatDateAndTime(train.sections[0].departure_date_time)}}</b> </p>
+          <p>A destination de : <b> {{train.sections[1].to.name}} </b></p>
+          <p *ngIf="train.sections[1].display_informations !== undefined">Direction de : <b>{{train.sections[1].display_informations.direction}}</b></p>
+      </div>
+      <div class="train">
+        <p> Numéro de train :<br> <b class="numeroTrain">{{train.sections[1].display_informations.trip_short_name}}</b> </p>
+       </div>
+
+    </div>
+    </div>
+ </div>
+
+ </div>
+</div>
+
+
+
+

@@ -1,0 +1,277 @@
+.sidebar {
+  width: 300px;
+  height: 600px;
+   background-color: var(--background-color-white);
+  position: absolute;
+  // top: 120;
+  left: -300px;
+  transition: left 0.5s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
+  overflow-y: auto;
+  z-index: 3;
+}
+
+.train-room p {
+  font-size: medium;
+
+}
+
+.dispo{
+    color : green;
+    position: absolute;
+    left: 10px;
+}
+
+.nonDispo{
+    color : red;
+    position: absolute;
+    left: 10px;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#salons{
+  text-align: start;
+}
+
+.train-salon{
+  text-align: start;
+  font-weight: 400;
+  color: #365b6d;
+  margin-left: 20px;
+}
+
+#compagnons{
+  margin-left: 10px ;
+}
+
+#mp{
+  margin-right: 18px ;
+}
+
+.pastille-verte, .pastille-rouge {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+.open {
+  left: 0; /*Ouvre la sidebar en la déplaçant à gauche */
+}
+
+.header {
+   background-color: var(--background-color-blue);
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+}
+
+
+.header p {
+  color: white;
+  margin: 0;
+}
+
+//Style du bouton Salon global
+
+.global {
+  display: inline-block;
+  background-color:#365b6d;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 20px;
+  width: 85%;
+  color: white;
+  font-weight: 700;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.global span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.global span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.global:hover {
+  background-color: #6e90ad;
+}
+.global:hover span {
+  padding-right: 25px;
+}
+.global:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.my-rooms  h3{
+
+  margin-left: 10px;
+  padding: 0;
+
+}
+.my-rooms{
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.rooms{
+   background-color: var(--background-color-blue);
+  border: black solid 1px;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: white;
+  border-radius: 20px 50px 20px 20px;
+  font-weight: 500;
+  padding: 5px;
+}
+
+.rooms:hover{
+  background-color:#6e90ad;
+  color: white;
+  transform: scale(1.2);
+}
+
+.train-room h3, .user-list h3 {
+  font-weight: 500;
+  color: #365b6d;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.user-list{
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.containerUser{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 45px;
+  padding-top: 15px;
+  width: 100%;
+  height: 50px;
+  background-color: var(--background-color-white);;
+  box-shadow: 0px 0px 10px rgba(211, 210, 210, 0.5);
+  transition: transform 0.6s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.containerUser:hover, .containerUser:active {
+  background-color: var(--background-color-grey);;
+  cursor: pointer;
+}
+
+.dispo{
+  margin-left: 2%;
+}
+
+.nonDispo{
+  margin-left: 2%;
+}
+
+
+.private-chats h3, .user-list h3 {
+  font-weight: 500;
+  color: #365b6d;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.private-chats p, .user-list p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.return-img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 44px;
+  left: 3px;
+  cursor: pointer;
+  z-index: 1; /* Place l'icône de retour au-dessus du contenu de la sidebar */
+}
+
+@media screen and (min-width: 748px) {
+  .sidebar {
+    position: relative;
+    height: 88.6vh;
+    background-color: var(--background-color-grey);;
+    left: 0px;
+    border-radius: 0px 0px 5px 0px;
+    box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
+    overflow-y: auto;
+    width: 100%;
+  }
+
+  .return-img {
+    display: none;
+  }
+
+  .train-room h3, .user-list h3 {
+    font-weight: 500;
+    font-size: large;
+}
+
+.dispo, .nonDispo{
+  font-size: x-medium;
+  font-weight: 400;
+  left: 20px;
+}
+
+.pastille-verte, .pastille-rouge {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.containerUser:hover, .containerUser:active {
+  background-color: var(--background-color-grey);;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+}
+
+

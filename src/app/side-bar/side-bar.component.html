@@ -1,0 +1,56 @@
+<div class="sidebar" [ngClass]="{ open: sidebarOpen }">
+  <div class="header">
+    <img
+      src="assets/retour1.png"
+      class="return-img"
+      (click)="requestCloseSidebar()"
+    />
+    <button class="global" (click)="changeChat('global'); requestCloseSidebar()"><span> Salon global</span> </button>
+
+  </div>
+
+  <div class="train-room">
+
+<div class="my-rooms">
+   <h3 id="salons">Mes salons</h3>
+<div>
+
+  <ng-container *ngFor="let chatMain of userRoom; let i = index">
+
+    <p  class="rooms"(click)="changeChat('main'); selectMain(i);  requestCloseSidebar()">
+      {{ chatMain ? chatMain.slice(21, 36).replace(":"," ") : ' ' }}
+    </p>
+
+  </ng-container>
+</div>
+</div>
+  <div class="user-list">
+    <div class="title">
+    <h3 id="compagnons">Mes compagnons </h3>
+    <h3 id="mp">MP </h3>
+  </div>
+
+
+    <div  *ngFor="let user of listUser; let i = index">
+
+  <div class="containerUser" *ngIf="user.username !== myUser.username">
+    <div  *ngIf="user.is_connected == true "  (click)="requestCloseSidebar()">
+
+      <img (click)="selectUser(i)" *ngIf="user.is_available == true" src="assets/chat/available2.png"  class="pastille-verte " >
+      <img *ngIf="user.is_available == false" src="assets/chat/not-available2.png"  class="pastille-rouge " >
+      <p *ngIf="user.is_available == true" (click)="selectUser(i)" (click)="changeChat('private')" class="dispo">{{ user.username }}</p>
+      <p *ngIf="user.is_available == false" (click)="selectUserFalse()" class="dispo">{{ user.username }}</p>
+    </div>
+    <div (click)="selectUserFalse()"  *ngIf="user.is_connected == false" >
+
+      <img  src="assets/chat/not-available2.png" class="pastille-rouge">
+      <p  class="nonDispo">{{ user.username }}</p>
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+  </div>
+</div>

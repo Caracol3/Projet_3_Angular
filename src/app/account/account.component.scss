@@ -49,7 +49,7 @@ h3 {
 }
 
 .avatar-options img {
-  width: 100%;
+  width: 70%;
   height: auto;
 }
 
@@ -64,8 +64,9 @@ h3 {
   transform: translate(-50%, -50%);
   padding: 20px;
   z-index: 2;
-  background-color: #f5f5f5;
-  box-shadow: 0px 0px 2px rgba(173, 172, 172, 0.5);
+  background-color: var(--background-color-grey);;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
 }
 
 .identity {
@@ -75,6 +76,7 @@ h3 {
 }
 
 .text {
+  background-color: var(--background-color-white);;
   position: relative;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -89,7 +91,7 @@ h3 {
   position: absolute;
   top: -10px;
   left: 10px;
-  background-color: #f5f5f5;
+  background-color: var(--background-color-grey);;
   padding: 5px;
   border-radius: 5px;
   font-size: xx-small;
@@ -112,12 +114,12 @@ h3 {
   content: "Date de naissance";
 }
 
-button {
+.avatar-button {
   width: 100%;
   height: 25px;
   border-radius: 15px;
   border: none;
-  background-color: rgb(55, 90, 107);
+  background-color: var(--background-color-blue);;
   color: #ffffff;
   font-size: 0.9em;
 }
@@ -126,11 +128,11 @@ button {
   margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 10px;
   padding: 10px;
   font-weight: 400;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   text-align: center;
+  background-color: var(--background-color-white);;
 }
 
 .color-options {
@@ -142,7 +144,7 @@ button {
   display: flex;
   gap: 10px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .color-buttons button {
@@ -152,12 +154,16 @@ button {
   cursor: pointer;
   border-radius: 50%;
 }
+.color-buttons button.selected {
+  border: 3px solid var(--background-color-blue);;
+}
 
 //Interrupteur "dispo MP"//
 
 .toggle-switch {
   display: inline-flex;
   align-items: center; /* Pour aligner le texte et le toggle sur la même ligne */
+  margin-bottom: 20px;
 }
 
 .toggle-switch label {
@@ -203,4 +209,342 @@ button {
   transform: translateX(26px);
 }
 
+img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.button-text {
+  width: 150%;
+  height: 35px;
+  border-radius: 15px;
+  border: none;
+  background-color: var(--background-color-blue);;
+  color: white;
+  font-size: 1.1em;
+  margin-top: 25%;
+  font-weight: 300;
+}
+
 //Interrupteur "dispo MP"//
+
+.max-container-desktop {
+  display: none;
+}
+.admin{
+  position: absolute;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+
+}
+@media screen and (min-width: 748px) {
+  .container {
+    display: none;
+  }
+
+  .max-container-desktop {
+    // border: 2px solid #e93232;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title-desktop {
+    background-color: var(--background-color-blue);;
+    color: #ffffff;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin-bottom: 30px;
+  }
+
+  .account-and-img-desktop {
+    // border: 2px solid #e99d32;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 450px;
+
+  }
+
+  .h2andaccount {
+    width: 72%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    font-weight: 300;
+    top: 0;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    font-weight: 800;
+  }
+
+  .all-infos-desktop {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: 70%;
+  }
+
+  .avatar-color-mp {
+    width: 36%;
+  }
+
+  .avatar-desktop-container {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 105px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    padding: 20px;
+    background-color: #f5f2f2;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+  }
+
+  .avatar-desktop-container:hover{
+    transform: scale(1.1);
+
+  }
+
+  .avatar-desktop-img{
+    padding-bottom: 15px;
+
+  }
+
+  .avatar-desktop {
+    // border: 2px solid #c4e932;
+    // background-color: #ed0f0f;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 50%;
+    img {
+      margin-right: 5px;
+      margin-bottom: 5px;
+      width: 28px;
+      height: 28px;
+
+    }
+  }
+.avatar-desktop:hover{
+  transform: scale(1.1);
+}
+  .avatar-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 150px;
+    overflow: auto;
+    margin-left: 25px;
+  }
+
+  .identity-desktop {
+    // border: 2px solid #32e938;
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin-right: 10%;
+    margin-left: 5%;
+    margin-top: 20px;
+  }
+
+  .text-desktop {
+    position: relative;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-left: 0;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 300;
+    border-bottom: 1px solid steelblue;
+    width: auto;
+    background-color: var(--background-color-white);;
+    box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
+  }
+
+  .text-desktop::before {
+    content: "text";
+    position: absolute;
+    top: -30px;
+    left: 0px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: small;
+    font-weight: 500;
+  }
+
+  .separator {
+    border: 0.5px solid #ccc;
+    width: 100%;
+  }
+
+  #firstname-desktop::before {
+    content: "Prénom";
+  }
+  #name-desktop::before {
+    content: "Nom";
+  }
+  #username-desktop::before {
+    content: "Pseudo";
+  }
+  #email-desktop::before {
+    content: "Email";
+  }
+  #birthday-desktop::before {
+    content: "Date de naissance";
+  }
+
+  .color-desktop {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 280px;
+    height: 70px;
+    box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
+
+    label {
+      font-size: small;
+      font-weight: 500;
+    }
+  }
+
+  .color-options-desktop {
+    display: flex;
+    align-items: center;
+  }
+
+  .color-buttons-desktop {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .color-buttons-desktop button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-left: 7px;
+  }
+  .color-buttons-desktop button:hover{
+    transform: scale(1.2);
+
+  }
+  .color-buttons-desktop button.selected {
+    border: 3px solid var(--background-color-blue);;
+    transform: scale(1.2);
+  }
+
+  //Interrupteur "dispo MP"//
+
+  .toggle-switch-desktop {
+    display: inline-flex;
+    align-items: center; /* Pour aligner le texte et le toggle sur la même ligne */
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(173, 172, 172, 0.5);
+    height: 8%;
+    span {
+      font-size: small;
+      font-weight: 500;
+    }
+  }
+
+  .toggle-switch-desktop label {
+    display: inline-block;
+    cursor: pointer;
+    // margin-bottom: 15px;
+  }
+
+  .toggle-switch-desktop span {
+    margin-right: 20px;
+  }
+
+  .toggle-switch-desktop input {
+    display: none; /* Pour cacher la checkbox */
+  }
+
+  .toggle-switch-desktop .toggle-label-desktop {
+    position: relative;
+    width: 40px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .toggle-switch-desktop input:checked + .toggle-label-desktop {
+    background-color: #66bb6a;
+  }
+
+  .toggle-switch-desktop .toggle-label-desktop::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+
+  .toggle-switch-desktop input:checked + .toggle-label-desktop::before {
+    transform: translateX(16px);
+    margin-bottom: 30px;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .button-text-desktop {
+    height: 30px;
+    width: 30%;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--background-color-blue);;
+    color: white;
+    font-size: 1em;
+    margin-top: 20px;
+    font-weight: 400;
+  }
+
+  .img-desktop {
+    width: 28%;
+    display: block;
+    margin-right: 3%;
+    img {
+      width: auto;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+}

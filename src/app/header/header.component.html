@@ -1,21 +1,76 @@
-<div class="container">
+<div class="container-mobile">
+  <div class="logo-mobile">
+    <img
+      src="/assets/logo.png"
+      alt="logo train companion"
+          />
+  </div>
+      <div id="menu" *ngIf="!isRouteLoginOpen()">
+      <div id="menu-bar" [ngClass]="{'change-menu': isMenuOpen}"(click)="toggleMenu()">
+        <div id="bar1" [ngClass]="{'bar': true, 'change-bar1': isMenuOpen}"></div>
+        <div id="bar2" [ngClass]="{'bar': true, 'change-bar2': isMenuOpen}"></div>
+        <div id="bar3" [ngClass]="{'bar': true, 'change-bar3': isMenuOpen}"></div>
+      </div>
+      <nav class="nav" id="nav" [ngClass]="{'change': isMenuOpen}" >
+        <ul class="nav-mobile menu" >
+          <li class="nav-item-mobile">
+            <a
+              class="nav-link-mobile"
+              id="nav-home-mobile"
+              routerLink="/search-train" (click)="toggleMenu()"
+             >Accueil</a>
+          </li>
+          <li class="nav-item-mobile">
+            <a
+              class="nav-link-mobile"
+              id="nav-chat-mobile"
+              routerLink="/chat" (click)="toggleMenu()"
+              >Chat</a>
+          </li>
+          <li class="nav-item-mobile">
+            <a class="nav-link-mobile" id="nav-account" routerLink="/account"(click)="toggleMenu()"
+              >Mon compte</a
+            >
+          </li>
+          <li class="nav-item-mobile">
+            <a class="nav-link-mobile" id="nav-contact" routerLink="/contact" (click)="toggleMenu()"
+              >Nous contacter</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="menu-bg" id="menu-bg" [ngClass]="{'change-bg': isMenuOpen}" (click)="toggleMenu()"></div>
+
+  </div>
+
+
+  <div class="container">
   <div class="logo">
     <img src="/assets/logo.png" alt="logo train companion" />
   </div>
-  <div class="nav-container">
+  <div class="nav-container"*ngIf="!isRouteLoginOpen()">
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link" id="nav-home" routerLink="/search-train">Accueil</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" id="nav-account" routerLink="/account">Mon compte</a>
+      <li>
+        <a class="nav-link" id="nav-chat" routerLink="/chat">Chat</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="nav-contact" routerLink="/contact">Nous contacter</a>
+        <a class="nav-link" id="nav-account" routerLink="/account"
+          >Mon compte</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="nav-contact" routerLink="/contact"
+          >Nous contacter</a
+        >
       </li>
     </ul>
   </div>
 </div>
 
 
-<!-- <img src="/assets/Header/home.png" alt="accueil"> -->
+

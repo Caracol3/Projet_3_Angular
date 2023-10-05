@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ContactEmailService,  } from '../contactEmailService';
+import { AccountServiceService } from '../account-service.service';
 
 @Component({
   selector: 'app-contact',
@@ -9,11 +10,13 @@ import { ContactEmailService,  } from '../contactEmailService';
 export class ContactComponent {
   form: any = {};
 
-  constructor(private contactEmailService: ContactEmailService) { }
+  constructor(private contactEmailService: ContactEmailService, private accountService: AccountServiceService, ) {
+    this.form.email = this.accountService.userInfos.email;
+  }
 
   onSubmit(form:any) {
     if (this.form.title && this.form.email && this.form.message) {
-      const emailData = {
+        const emailData = {
         subject: this.form.title,
         body: this.form.message,
         email: this.form.email

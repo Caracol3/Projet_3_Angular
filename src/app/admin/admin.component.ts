@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
+import { DataService } from '../data.service';
+import { MessageService } from '../message.service';
+import { Router } from '@angular/router';
+import { TokenValidationService } from '../token-validation.service';
 
 
 @Component({
@@ -13,24 +17,81 @@ import { take } from 'rxjs/operators';
 })
 export class AdminComponent implements OnInit {
   users: User[] = [];
-  isMoreInfo = false;
+  isMoreInfo :boolean = false;
   selectedUser: any;
+  usersAdmin : boolean = false;
+  roomName : boolean = false;
+  select : boolean = true;
+  listOfRooms : any[] = [];
+  rooms : any[] = [];
 
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private dataService : DataService, private messageService : MessageService, private router : Router, private tokenValidationService : TokenValidationService) {}
 
   // Au chargement du composant, on récupère la liste des utilisateurs
 
   ngOnInit(): void {
-    this.httpClient.get<User[]>('http://localhost:8080/admin/users').subscribe((users) => {
-      this.users = users;
-      for (let i = 0; i < this.users.length; i++) {
-        console.log(this.users[i].role.type + " " + this.users[i].name);
-      }
-    });
+    if(!this.tokenValidationService.isTokenValid()){
+      this.router.navigate(['/login']);
+    }
+    this.refreshUsersList();
+    this.messageService.refreshMessagesMain();
+    setTimeout(() => {
+      this.listOfRooms = this.messageService.messagesMain;
+      this.rooms = this.listOfRooms.filter(
+        (obj, index, self) =>
+          index === self.findIndex((t) => t.roomName === obj.roomName ))
+      ;
+    }
+    , 500);
 
   }
 
+
+
+
+  deleteRoom(index : number){
+    const confirmDelete = window.confirm("Êtes-vous sûr de vouloir supprimer cette room ?");
+    if (confirmDelete) {for (let i = 0; i < this.listOfRooms.length; i++) {
+      if (this.rooms[index].roomName === this.listOfRooms[i].roomName) {
+        this.delete(this.listOfRooms[i].id);
+      }
+
+
+    }
+    window.location.reload();
+  }
+  else {
+    console.log('Suppression annulée.');
+  }
+    
+  }
+
+
+  delete(id : Number){
+    this.httpClient.delete(`${this.dataService.serveUrl}/message/main/${id}`).subscribe((res) => {});
+  }
+
+
+
+
+  selectUserPage(){
+    this.usersAdmin = true;
+    this.roomName = false;
+  }
+
+  selectRoom(){
+    this.usersAdmin = false;
+    this.roomName = true;
+  }
+
+
+  refreshUsersList() {
+    this.httpClient.get<User[]>(`${this.dataService.serveUrl}/admin/users`).subscribe((users) => {
+      this.users = users;
+     
+    });
+  }
   //pour formater la date
 
    formatDate(dateISO: string): string {
@@ -45,7 +106,6 @@ export class AdminComponent implements OnInit {
     this.isMoreInfo = true;
     user.birthday = this.formatDate(user.birthday);
     this.selectedUser = user;
-    console.log("Plus d'info sur " + this.selectedUser.avatar);
   }
   closeInfo(){
     this.isMoreInfo = false;
@@ -67,7 +127,7 @@ export class AdminComponent implements OnInit {
 
     // Ici on effectue la requête HTTP PUT
     this.httpClient
-    .put(`http://localhost:8080/admin/users/${user.id}/role`, requestBody)
+    .put(`${this.dataService.serveUrl}/admin/users/${user.id}/role`, requestBody)
     .pipe(take(1))
     .subscribe(
       () => {
@@ -80,6 +140,28 @@ export class AdminComponent implements OnInit {
       }
     );
 }
+deleteUser(userId: number) {
+  const confirmDelete = window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+  if (confirmDelete) {
+    // L'utilisateur a confirmé la suppression, envoyez la requête DELETE
+    this.httpClient
+      .delete(`${this.dataService.serveUrl}/admin/users/${userId}`)
+      .pipe(take(1))
+      .subscribe(
+        () => {
+          console.log('Utilisateur supprimé avec succès !');
+
+          // Rafraîchissez la liste des utilisateurs après la suppression.
+          this.refreshUsersList();
+        },
+        (error) => {
+          console.error('Erreur lors de la suppression de l\'utilisateur :', error);
+        }
+      );
+  } else {
+    // L'utilisateur a annulé la suppression
+    console.log('Suppression annulée.');
+  }
 }
 
-
+}

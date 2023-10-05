@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="containerchat">
+
+    <img src="assets/info2.png" alt="info train" class="info-train" (click)= "infoTrain()">
+
+
+    <div class="chat" style="overflow: scroll; height: 85vh;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+
+      <div *ngFor="let msg of messages" class="contenairchat">
+        <div *ngIf="msg.message !== ''" class="sender-and-receiver-parent">
+          <div class="sender" *ngIf="msg.user.username === user.username">
+            <p class="avatar-and-username">
+              <img src="assets/Avatar/{{ msg.user.avatar }}" alt="avatar" />
+              <b>Moi</b>
+            </p>
+            <p>{{ msg.message }}</p>
+            <span class="time">{{ formatTime(msg.heure) }}</span>
+          </div>
+          <div class="receiver" *ngIf="msg.user.username !== user.username">
+            <p class="avatar-and-username">
+              <img src="assets/Avatar/{{ msg.user.avatar }}" alt="avatar" />
+              <b>{{ msg.user.username }}</b>
+            </p>
+            <p>{{ msg.message }}</p>
+            <span class="time">{{ formatTime(msg.heure) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sendmessage">
+      <textarea
+        [(ngModel)]="message"
+        (keyup.enter)="sendMessage()"
+        placeholder="Saisissez votre message..."
+        rows="1"
+        class="chat-textarea"
+      ></textarea>
+      <img src="assets/send2.png" (click)="sendMessage()" />
+    </div>
+  </div>
+</div>

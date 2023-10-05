@@ -1,30 +1,75 @@
 <div class="container">
- <div class="form-title">
-  <h1 class="title">Liste des Utilisateurs</h1>
-  <div class="inscrits">
-    <p>Nombre d'inscrits : {{ users.length }}</p>
-  </div></div>
-  <div class="list">
-    <ul>
+  <div class="form-title">
+    <h1  *ngIf="usersAdmin" class="title">Liste des Utilisateurs</h1>
+    <h1  *ngIf="roomName" class="title">Liste des Room Actives</h1>
+    <div class="inscrits">
+      <p *ngIf="usersAdmin">Nombre d'inscrits : {{ users.length }}</p>
+      <p *ngIf="roomName">Nombre de room : {{ rooms.length }}</p>
+    </div>
+  </div>
+
+<div class="select" *ngIf="select">
+
+  <p (click)="selectUserPage()">Liste des users</p>
+  <p (click)="selectRoom()">Liste des Rooms </p>
+
+
+</div>
+
+</div>
+
+  <div class="list" *ngIf="roomName">
+
+
+
+
+    <ul class="list-users">
+      <li *ngFor="let room of rooms, let i = index">
+          <div class="roomName"><p>  {{ room ? room.roomName.slice(21, 36).replace(":"," n° ")  : ' '  }}</p>
+          <img src="/assets/Admin/moins.png" alt="moins" (click)="deleteRoom(i)">
+          </div>
+
+
+        </li>
+    </ul>
+    <div class="contact-img">
+      <img src="/assets/Admin/adminimage.jpg" alt="">
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="list" *ngIf="usersAdmin">
+    <ul class="list-users">
       <li *ngFor="let user of users">
         <div class="user">
-        <div class="name">{{ user.name }} {{ user.firstname }} </div>
+          <div class="name"><p>{{ user.name }} {{ user.firstname }}</p></div>
 
-        <div>
-          <select class="select-style"
-            [(ngModel)]="user.role.type"
-            (change)="onRoleChange(user, user.role.type)"
-          >
-            <option [ngValue]="user.role.type">{{ user.role.type }}</option>
-            <option *ngIf="user.role.type === 'ADMIN'" value="USER" id="user">
-              USER
-            </option>
-            <option *ngIf="user.role.type === 'USER'" value="ADMIN" id="admin">
-              ADMIN
-            </option>
-          </select>
+          <div>
+            <select
+              class="select-style"
+              [(ngModel)]="user.role.type"
+              (change)="onRoleChange(user, user.role.type)"
+            >
+              <option [ngValue]="user.role.type">{{ user.role.type }}</option>
+              <option *ngIf="user.role.type === 'ADMIN'" value="USER" id="user">
+                USER
+              </option>
+              <option
+                *ngIf="user.role.type === 'USER'"
+                value="ADMIN"
+                id="admin"
+              >
+                ADMIN
+              </option>
+            </select>
+          </div>
         </div>
-      </div>
         <div>
           <button class="button-plus" (click)="moreInfo(user)">+</button>
         </div>
@@ -32,18 +77,18 @@
     </ul>
     <div *ngIf="isMoreInfo" class="moreInfo" (click)="closeInfo()">
 
-      <img [src]="selectedUser.avatar" alt="avatar" />
+      <img [src]="'assets/Avatar/'+selectedUser.avatar" alt="avatar" />
       <div class="text"><span class="text-name" id="username">{{selectedUser.username}}</span>
       <span class="text-name" id="name">{{selectedUser.name}}</span>
       <span class="text-name" id="firstname">{{selectedUser.firstname}}</span>
       <span class="text-name" id="email">{{selectedUser.email}}</span>
       <span class="text-name" id="birthday">{{selectedUser.birthday}}</span>
      </div>
+     <button (click)="deleteUser(selectedUser.id)">Supprimer l'utilisateur</button>
 
   </div>
-  <div class="contact-img">
+ <div class="contact-img">
       <img src="/assets/Admin/adminimage.jpg" alt="">
     </div>
-</div>
+  </div>
 
-</div>

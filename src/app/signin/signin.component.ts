@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { Signin } from '../models/signin';
 import { tap } from 'rxjs';
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { DataService } from '../data.service';
+import { TokenValidationService } from '../token-validation.service';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-signin',
@@ -14,18 +20,25 @@ export class SigninComponent {
   isLoginFormVisible: boolean;
 
 
+  constructor(private dataService : DataService,private http: HttpClient , private location: Location, private router : Router, private tokenValidationService : TokenValidationService) { 
 
-  constructor(private http: HttpClient) {
     this.isLoginFormVisible = false;
   }
 
 
-  onSubmit() {
-    if (this.signin.password !== this.confirmPassword) {
-      return alert('Les mots de passe ne correspondent pas');
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      window.alert("Tous les champs ne sont pas remplis correctement.");
+      console.log(form.value)
+      return;
     }
 
-    fetch('http://localhost:8080/register', {
+    if (this.signin.password !== this.confirmPassword) {
+      alert('Les mots de passe ne correspondent pas');
+      return;
+    }
+
+    fetch(`${this.dataService.serveUrl}/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -38,22 +51,28 @@ export class SigninComponent {
 
       })
     })
-  
-  .then(response => response.json())
-  
-  .then(user => {
-  
 
-    
+  .then(response => response.json())
+
+  .then(user => {
+
+
+
     if (user && user.data.token){
-            localStorage.setItem('token', user.data.token);
+      if(this.tokenValidationService.isTokenValid()){
+        this.router.navigate(['/search-train']);
+      }
     }
-    
-  
+
+
   });
-  
-  // alert('Utilisateur crée');
-  
+
+
+
+  }
+
+  returnSalon() {
+    this.location.back();
   }
   logIn() {
 

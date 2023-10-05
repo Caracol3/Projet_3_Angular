@@ -1,3 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  height: 100%;
+}
+
 .container-desktop {
   display: none;
 }
@@ -34,7 +43,7 @@ h3 {
   height: 35px;
   border-radius: 15px;
   border: none;
-  background-color: rgb(55, 90, 107);
+  background-color:  var(--background-color-blue);
   color: white;
   font-size: 1.1em;
   margin-top: 25%;
@@ -84,16 +93,90 @@ h3 {
   height: 100px;
   overflow: auto;
   margin: auto;
-  background-color: white;
+   background-color: var(--background-color-white);
   border-radius: 10px;
   box-shadow: 0 2px 0 1px #a2a2a2;
   border: none;
 
 }
 
+.gareResult-selection:active {
+  background-color: #8699DA;
+}
+
+.affichagedestrain {
+  background-color: rgb(235, 22, 22);
+}
+
+.container-train-info {
+  display: block;
+}
+.containerTrainInfo {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-height: 600px;
+  overflow: auto;
+    h1{
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #365B6D;
+     text-align: center;
+
+  }
+
+}
+
+
+
+.listeDesTrains-desktop {
+  margin-top: 2%;
+  width: 100%;
+}
+.numeroTrain{
+font-size: 1.5em;
+text-align: center;
+
+}
+.trainCard{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 180px;
+  border-bottom: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease;
+  background-color: rgb(252, 252, 252);
+  width:80%;
+  margin: auto;
+  margin-top: 10px;
+  padding:15px;
+  b{
+    color: #365B6D;
+    font-weight: 400;
+    }
+}
+.trainCard:active{
+  border: 1px solid #5e81f3;
+  transform: perspective(1000px) rotateY(10deg);
+  overflow: hidden;
+}
+
+.trainInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  font-size: 1em;
+}
+
+
+
 @media all and (min-width: 748px) {
 
-  .container {
+  .mobilecontainer {
     display: none;
   }
 
@@ -109,17 +192,17 @@ h3 {
 
 
   .form-title-desktop {
-    background-color: rgb(55, 90, 107);
+    background-color:  var(--background-color-blue);
     width: 100%;
-    height: 150px;
+    height: 130px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     padding-left: 10%;
 
     h1 {
-      margin-top: 50px;
-      color: whitesmoke;
+      margin-top: 30px;
+      color: var(--background-color-grey);;
       font-weight: 800;
       font-size: 1.5em;
     }
@@ -129,60 +212,220 @@ h3 {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 60%;
+    height: 45px;
     margin-top: 0;
-    background-color: royalblue;
   }
 
   .form-desktop {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
     width: 100%;
-    height: 100%;
+    height: 50%;
     margin-top: 0;
   }
 
-  .gare {
+
+  .gare-desktop {
+    overflow: auto;
+    height: 100%;
     border: none;
-    height: 50px;
-    line-height: 30px;
-    padding: 8px 15px;
-    width: 90%;
-    color: rgb(131, 130, 130);
-    border-radius: 15px;
-    margin: 10px;
-    box-shadow: 0 2px 0 1px #a2a2a2;
+    border-right: 0.2px solid #b4afaf;
+
   }
 
-  .gare-top-desktop {
-    height: 30px;
-    border: none;
-  }
 
   .input-container {
     position: relative;
+
+
+    #depart {
+      padding-left: 65px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    #arrivee {
+      padding-left: 68px;
+    }
+
+    #date {
+      padding-left: 50px;
+    }
+
+    #time {
+      padding-left: 55px;
+    }
+
   }
 
-  .input-label-dep {
+
+  .input-label {
     position: absolute;
     left: 5px; // Ajustez la position en fonction de votre mise en page
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-55%);
     pointer-events: none; // Pour que l'étiquette ne soit pas cliquable
     color: #333; // Couleur du texte "Départ"
+
   }
 
-  .input-label-arr {
+  .gareResult-desktop {
     position: absolute;
-    left: 5px; // Ajustez la position en fonction de votre mise en page
-    transform: translateY(10%);
-    pointer-events: none; // Pour que l'étiquette ne soit pas cliquable
-    color: #333; // Couleur du texte "Départ"
+    left: 5px;
+    top: 50px;
+    height: 100px;
+    width: 220px;
+    overflow: auto;
+     background-color: var(--background-color-white);
+    border-radius: 5px;
+    box-shadow: 0 2px 0 1px #a2a2a2;
+    border: none;
+    font-size: 1.1em;
+
   }
 
-  input {
-    padding-left: 65px; // Espace pour afficher le texte "Départ"
+  .gareResult-selection-desktop:hover {
+    background-color: #8699DA;
+    color: white;
+  }
+
+
+
+  .button-text-desktop {
+    border-radius: 0px 15px 15px 0px;
+    background: var(--Contraste, #8699DA);
+    height: 100%;
+    color: white;
+    width: 180px;
+    border: none;
+  }
+
+  .date-desktop {
+    border: none;
+    border-right: 0.2px solid #b4afaf;
+    width: 160px;
+    height: 100%;
+    text-align: center;
+  }
+
+  .heure-desktop {
+    border: none;
+    width: 124px;
+    height: 100%;
+    text-align: center;
+
+  }
+
+
+
+  .bottom-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+      .message-desktop {
+    width: 100%;
+    font-size: 28px;
+    font-weight: 700;
+    color: #365B6D;
+    margin-top: 15px;
+    text-align: center;
+  }
+.imgDesktop{
+  display: flex;
+  width:50%;
+}
+  .image-search {
+    width:70%;
+    margin: auto;
+    margin-top: 15px;
+    justify-content: center;
+    border-radius: 10px;
+
+
+  }
+
+
+  .text-search-desktop {
+    display: flex;
+    width: 70%;
+    margin: auto;
+    text-align: flex-start;
+    font-size: 1.4em;
+    font-weight: 400;
+    color: #808080;
+    margin-top: 15px;
+
+  }
+
+  .text-desktop {
+    margin-top: 2%;
+    width: 53%;
+    overflow-y: auto;
+    max-height: 315px;
+  }
+
+  .containerTrainInfo {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+      h1{
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #365B6D;
+      text-align: center;
+    }
+
+  }
+
+
+
+  .listeDesTrains-desktop {
+    width: 100%;
+  }
+.numeroTrain{
+  font-size: 2em;
+  text-align: center;
+
+}
+  .trainCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    background-color: rgb(252, 252, 252);
+    width:76%;
+    margin-top: 5px;
+    margin-left: 15%;
+    padding:5px;
+    overflow: auto;
+    b{
+      color: #365B6D;
+      font-weight: 400;
+    }
+  }
+  .trainCard:hover{
+    border: 1px solid #5e81f3;
+    transform: perspective(1000px) rotateY(10deg);
+  }
+  .train{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+  }
+  .trainInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
   }
 }

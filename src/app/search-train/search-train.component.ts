@@ -6,6 +6,10 @@ import { Fields } from '../models/region-model';
 import { normalizeText } from 'normalize-text';
 import { AuthService } from '../service/AuthService';
 import { AccountServiceService } from '../account-service.service';
+import { Router } from '@angular/router';
+import { MessageService } from '../message.service';
+import { TokenValidationService } from '../token-validation.service';
+
 
 
 @Component({
@@ -19,68 +23,98 @@ export class SearchTrainComponent implements OnInit {
   userName: string = '';
   isMobile: boolean = false;
   isDesktop: boolean = false;
+  user_id: string | null = localStorage.getItem('userId');
 
   constructor(
     private authService: AuthService,
+    private router: Router,
     private accountService: AccountServiceService,
     private dataService: DataService,
-  ) {}
+    private http: HttpClient,
+    private messageService : MessageService,
+    private tokenValidationService : TokenValidationService
+  ) { }
 
 
- 
+
   ngOnInit(): void {
+    if(!this.tokenValidationService.isTokenValid()){
+      this.router.navigate(['/login']);
+    }
     this.getRegions();
-    this.user = this.accountService.getUserData(1);
-    console.log(
-      'console du OnInit de search-train.ts : ' +
-        this.accountService.getUserData(1)
-    );
-  }
- syncUser(): Promise<any> {
-return new Promise((resolve, reject) => {
-  setTimeout(() => {
-    this.user = this.accountService.getUserData(1);
-    resolve("opération réussie");
-  }
-  , 1000);
- });
-}
+    this.accountService.getUserData(this.user_id);
+    
+      setTimeout(() => {
+        this.user = this.accountService.userInfos;
+       
+      } , 500);
 
-  // async syncUser() {
-  //   try {
-  //     const result = await this.accountService.getUserData(1);
-  //     console.log(result);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+  }
 
-  GareDepartSelect : boolean = false;
-  GareArriverSelect : boolean = false;
-  DateSelect : boolean = false;
-  AllInfo : boolean = false;
-  resultOfTrainSearchDepart : any = [];
-  departureStation : any[] = [];
-  listOfDepartureStation : string[] = [];
-  arrivalStation : any[] = [];
-  resultOfTrainSearchArriver : any = [];
-  GareArriverSelectInfo : boolean = false;
-  uicCodeDepart : string = '';
-  uicCodeArriver : string = '';
+  GareDepartSelect: boolean = false;
+  GareArriverSelect: boolean = false;
+  DateSelect: boolean = false;
+  AllInfo: boolean = false;
+  resultOfTrainSearchDepart: any = [];
+  departureStation: any[] = [];
+  listOfDepartureStation: string[] = [];
+  arrivalStation: any[] = [];
+  resultOfTrainSearchArriver: any = [];
+  GareArriverSelectInfo: boolean = false;
+  uicCodeDepart: string = '';
+  uicCodeArriver: string = '';
+  searchPage: boolean = true;
+  listeTrain: boolean = false;
+  listeOfTrain: any;
+  showTextDesktop: boolean = true;
+  dateHeureFormat: string = '';
+  infoRetard: any;
+
+
+
+
+  // recuperation des données de l'api
+
+  
+
 
 
   onSubmit() {
-  this.search.depart = this.search.depart;
 
-  console.log(this.search.depart +' '+ this.search.arrivee +' '+ this.search.date +' '+ this.search.heureDepart);
-  console.log(this.uicCodeDepart +' '+ this.uicCodeArriver);
+    this.search.depart = this.search.depart;
+    this.search.date = this.search.date;
+
+    const dateOriginal = this.search.date.toString();
+    const dateObj = new Date(dateOriginal);
+    const annee = dateObj.getFullYear();
+    const mois = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+    const jour = dateObj.getDate().toString().padStart(2, '0');
+    const dateFormatee = `${annee}${mois}${jour}`;
+
+   this.dateHeureFormat = dateFormatee + "T" + this.search.heureDepart.replace(":", "") + "00";
+   this.dataService.getDataFromApi(this.uicCodeDepart, this.uicCodeArriver, this.dateHeureFormat);
 
 
-}
 
-  regions :{
+
+  setTimeout(() => {
+      this.listeOfTrain = this.dataService.apiResponse.journeys;
+      this.infoRetard = this.dataService.retard;
+      this.searchPage = false;
+      this.showTextDesktop = false;
+      this.listeTrain = true;
+
+
+    }, 300);
+
+
+
+  }
+
+  regions: {
+    [x: string]: any;
     gare_alias_libelle_noncontraint: string;
-    fields : Fields
+    fields: Fields
   }[] = [];
 
   // appel de la fonction getRegions() au chargement de la page
@@ -98,21 +132,23 @@ return new Promise((resolve, reject) => {
 
   searchGareDepart() {
 
-   this.resultOfTrainSearchDepart = [];
+    this.resultOfTrainSearchDepart = [];
 
-    if(this.search.depart !== '') {
-     this.GareDepartSelect = true;
-    this.search.depart = this.search.depart.toLowerCase();
-    for (let i = 0; i < this.regions.length-1; i++) {
-      if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart)) {
-        this.resultOfTrainSearchDepart.push(this.regions[i]);
+    if (this.search.depart !== '') {
+      this.GareDepartSelect = true;
+      this.search.depart = this.search.depart.toLowerCase();
+      for (let i = 0; i < this.regions.length - 1; i++) {
+        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.depart) && this.regions[i]['segmentdrg_libelle'] === "a") {
+          this.resultOfTrainSearchDepart.push(this.regions[i]);
+
+
 
 
 
         }
 
-    }
-    }   else {
+      }
+    } else {
       this.GareDepartSelect = false;
       this.GareArriverSelect = false;
       this.departureStation = [];
@@ -124,65 +160,122 @@ return new Promise((resolve, reject) => {
   searchGareArriver() {
 
 
-     if(this.search.arrivee !== '') {
+    this.resultOfTrainSearchArriver = [];
+    if (this.search.arrivee !== '') {
       this.GareArriverSelectInfo = true;
 
       this.search.arrivee = this.search.arrivee.toLowerCase();
-     for (let i = 0; i < this.regions.length-1; i++) {
-       if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee)) {
-         this.resultOfTrainSearchArriver.push(this.regions[i]);
+      for (let i = 0; i < this.regions.length - 1; i++) {
+        if (normalizeText(this.regions[i].gare_alias_libelle_noncontraint).toLowerCase().startsWith(this.search.arrivee) && this.regions[i]['segmentdrg_libelle'] === "a") {
+          this.resultOfTrainSearchArriver.push(this.regions[i]);
 
 
 
-         }
+        }
 
-     }
-     }   else {
+      }
+    } else {
 
-       this.arrivalStation = [];
-       this.GareArriverSelectInfo = false;
-     }
+      this.arrivalStation = [];
+      this.GareArriverSelectInfo = false;
+    }
 
-   }
+  }
 
 
 
-   // selection de la gare au click
+  // selection de la gare au click
 
-   selectGareDepart(index : number){
+  selectGareDepart(index: number) {
     this.uicCodeDepart = this.resultOfTrainSearchDepart[index].uic_code.slice(2);
     this.search.depart = this.resultOfTrainSearchDepart[index].gare_alias_libelle_noncontraint;
     this.GareDepartSelect = false;
     this.GareArriverSelect = true;
     this.resultOfTrainSearchDepart = [];
 
-   }
+  }
 
 
-   selectGareArriver(index : number){
+  selectGareArriver(index: number) {
     this.uicCodeArriver = this.resultOfTrainSearchArriver[index].uic_code.slice(2);
     this.search.arrivee = this.resultOfTrainSearchArriver[index].gare_alias_libelle_noncontraint;
     this.resultOfTrainSearchArriver = [];
     this.GareArriverSelectInfo = false;
     this.DateSelect = true;
 
+  }
+
+
+  // affichage du bouton de recherche
+
+
+  sectectHeure() {
+
+    if (this.search.date) {
+      this.AllInfo = true;
+    }
+
+
+  }
+
+  getInfoTrain(index: number) {
+    this.dataService.getUrl(this.listeOfTrain[index].sections[1].links[0].id);
+    this.sendMessage(this.listeOfTrain[index].sections[1].display_informations.trip_short_name,this.listeOfTrain[index].sections[1].links[0].id );
+    this.messageService.changeChat("main");
+    this.router.navigate(['/chat']);
+
+  }
+
+
+
+  sendMessage(numeroTrain : any, urlRetard : string): void {
+
+    this.messageService.deleteRoom(urlRetard, numeroTrain);
+
+    let userId : string | null = localStorage.getItem('userId');
+
+   let infoMessage = {
+     message: `Bonjour je suis ${this.user.username} passagé du train ${numeroTrain} `,
+     user_id: userId,
+     heure : new Date().toLocaleTimeString(),
+     roomName : urlRetard,
    }
 
 
- // affichage du bouton de recherche
+   this.http
+   .post<any>(
+     `${this.dataService.serveUrl}/send-message-main/${userId}`,
+     infoMessage,
+   )
+   .subscribe(
+     (response) => {
+             },
+     (error) => {
+       console.error("Erreur lors de la mise à jour de l'avatar :", error);
+     }
+   );
 
-
- sectectHeure(){
-
-  if(this.search.date) {
-  this.AllInfo = true;
  }
 
 
-}
+
+
+
 
   logout() {
     this.authService.logout();
   }
+
+  formatDateAndTime(dateTimeStr: string): string {
+    const year = dateTimeStr.slice(0, 4);
+    const month = dateTimeStr.slice(4, 6);
+    const day = dateTimeStr.slice(6, 8);
+    const hour = dateTimeStr.slice(9, 11);
+    const minute = dateTimeStr.slice(11, 13);
+
+    return `${day}/${month}/${year} ${hour}:${minute}`;
+  }
+
+  
 }
 

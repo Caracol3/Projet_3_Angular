@@ -3,7 +3,7 @@
   position: absolute;
   bottom: 0;
   height: 10%;
-  background-color: #365B6D;
+   background-color: var(--background-color-blue);
   color: #fff;
   border-top-left-radius: 50% 30px;
   border-top-right-radius: 50% 30px;
@@ -55,7 +55,7 @@
   display: flex;
   justify-content: space-between;
   list-style-type: none;
-  background-color: #365B6D;
+   background-color: var(--background-color-blue);
   font-size: 0.6em;
   padding: 10px;
   padding-right: 10px;

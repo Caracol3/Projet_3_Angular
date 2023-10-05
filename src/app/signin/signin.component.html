@@ -7,15 +7,16 @@
   <div class="signup">
     <h3 class="form-title">Création du compte</h3>
 
-    <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="form-champs">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="form-champs">
       <div>
         <input
           class="input-top"
           type="text"
           id="username"
-          name="username"
+
           placeholder="Pseudo"
           [(ngModel)]="signin.pseudo"
+          name="username"
           #pseudo="ngModel"
           required
         />
@@ -70,11 +71,12 @@
           [(ngModel)]="signin.email"
           #email="ngModel"
           required
-          email
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+          [ngClass]="{ 'invalid-email': email.invalid && email.touched }"
         />
-      </div>
-      <div *ngIf="email.invalid && email.touched" class="error-message">
-        Le champ est invalide.
+        <div *ngIf="email.invalid && email.touched" class="error-message">
+          Le champ e-mail est invalide.
+        </div>
       </div>
       <div>
         <input
@@ -86,8 +88,15 @@
           [(ngModel)]="signin.password"
           #password="ngModel"
           required
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!])[A-Za-z\d@$!]{7,}$"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{4,}$"
         />
+        <div *ngIf="password.invalid && password.touched" class="error-message">
+          Le mot de passe doit contenir au moins 7 caractères, une majuscule,
+          une minuscule et un chiffre.
+        </div>
+        <span *ngIf="password.errors?.['minlength']"
+          >Le mot de passe doit contenir au moins 5 caractères</span
+        >
       </div>
 
       <div>
@@ -99,27 +108,14 @@
           placeholder="Confirmer Mdp"
           [(ngModel)]="confirmPassword"
           required
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!])[A-Za-z\d@$!]{7,}$"
         />
-      </div>
-      <!-- ci-dessous création de la div qui va gérer les erreurs de validation
-  affichage d'un message si le mot de passe à moins de 5 caractères et pas de caractères speciaux -->
-      <div *ngIf="password.errors">
-        <!-- <span *ngIf="password.errors?.['required']"
-          >Le mot de passe est requis</span -->
-
-        <span *ngIf="password.errors?.['minlength']"
-          >Le mot de passe doit contenir au moins 5 caractères</span
-        >
-
-        <span *ngIf="password.errors?.['required pattern']"
-          >This is not a valid password</span
-        >
       </div>
 
       <div>
-        <button class="button-text" type="submit">Créer un compte</button>
+        <button class="button-text" type="submit" >S'inscrire</button>
       </div>
     </form>
+
+    <div class="back"><p (click)="returnSalon()">Retour au login</p></div>
   </div>
 </div>

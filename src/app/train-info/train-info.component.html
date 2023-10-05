@@ -1,17 +1,72 @@
 <div class="container">
-  <div class="signup">
-    
-    <h3 class="info-title">Informations Train</h3>
+  <div class="backMobile">
+    <img src="/assets/Header/fleche.png" (click)="returnSalon()" alt="retour" />
+  </div>
 
-    <div class="info-container">
-      <div class="info-content">
-        <div class="info-train">Numéro de train</div>
-        <div class="info-train">Heure de départ</div>
-        <div class="info-train">Heure d'arrivée</div>
-        <div class="info-trainD">Cause du retard Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis officia aspernatur rerum, voluptate voluptates doloremque pariatur ex neque, praesentium voluptatum quaerat autem, sequi natus molestias tempora labore? Maiores, quaerat porro.</div>
+  <div class="form-title">
+    <h3>
+      Votre train :
+      <b
+      *ngIf="
+
+      retard &&
+
+      retard.vehicle_journeys &&
+
+      retard.vehicle_journeys[0]?.stop_times[0]?.headsign !== null
+
+    "
+
+    >{{ retard.vehicle_journeys[0]?.stop_times[0]?.headsign }}</b
+
+  >
+    </h3>
+  </div>
+  <div class="conso">
+    <div class="back"><p (click)="returnSalon()">Retour au salon</p></div>
+    
+  </div>
+  <div class="retard" *ngIf="retard?.disruptions?.length < 0" ><p>Pas de retard pour une fois vive la sncf</p></div>
+  <p class="retard" *ngIf="retard?.disruptions?.length > 0">
+    <span> Cause du retard :</span><br> {{ retard.disruptions[0].messages[0].text }}
+  </p>
+  <div class="desktop-content">
+<div class="formTrain">
+  <div>
+    <div *ngFor="let retardTrain of retard.vehicle_journeys">
+      <div
+        class="infoGare"
+        *ngFor="let retardStopTrain of retardTrain.stop_times; let i = index"
+      >
+        <div class="infoContainer">
+          <div class="heureDep" >
+          <p class="heure">
+            <span class="heureTheo"[ngClass]="{'heureBarre': retard.disruptions.length > 0}">
+            {{ formatTime(retardStopTrain.departure_time) }}</span>
+
+            <span class="heureReel" *ngIf="retard.disruptions.length > 0">
+
+              {{
+                formatTime(
+                  retard.disruptions[0].impacted_objects[0].impacted_stops[i]
+                  .amended_departure_time
+                  )
+              }}
+            </span>
+          </p>
+          </div>
+          <div class="gareName">
+          <p>
+            {{ retardStopTrain.stop_point.name }}
+          </p>
+        </div>
+        </div>
       </div>
     </div>
-
-      </div>
-
-
+  </div>
+</div>
+  <div class="info-train-img">
+    <img src="assets/info-train/train-info.png" alt="" />
+  </div>
+</div>
+</div>
