@@ -58,6 +58,7 @@ export class SigninComponent {
 
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    window.alert('Votre compte a bien été créé !');
     this.router.navigate(['/search-train']);
 
     console.log(this.signin.password);
