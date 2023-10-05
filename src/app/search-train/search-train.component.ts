@@ -43,10 +43,10 @@ export class SearchTrainComponent implements OnInit {
     }
     this.getRegions();
     this.accountService.getUserData(this.user_id);
-    
+
       setTimeout(() => {
         this.user = this.accountService.userInfos;
-       
+
       } , 500);
 
   }
@@ -75,7 +75,7 @@ export class SearchTrainComponent implements OnInit {
 
   // recuperation des données de l'api
 
-  
+
 
 
 
@@ -235,7 +235,7 @@ export class SearchTrainComponent implements OnInit {
     let userId : string | null = localStorage.getItem('userId');
 
    let infoMessage = {
-     message: `Bonjour je suis ${this.user.username} passagé du train ${numeroTrain} `,
+     message: `Bonjour je suis ${this.user.username} passager du train ${numeroTrain} `,
      user_id: userId,
      heure : new Date().toLocaleTimeString(),
      roomName : urlRetard,
@@ -276,6 +276,6 @@ export class SearchTrainComponent implements OnInit {
     return `${day}/${month}/${year} ${hour}:${minute}`;
   }
 
-  
+
 }
 
