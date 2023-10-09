@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AccountServiceService } from '../account-service.service';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../data.service';
@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
   templateUrl: './chat-global.component.html',
   styleUrls: ['./chat-global.component.scss'],
 })
-export class ChatGlobalComponent implements OnInit, AfterViewInit {
+export class ChatGlobalComponent implements OnInit {
 
   message: string = '';
   messages: any[] = [];
@@ -24,13 +24,7 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     private dataService : DataService,
   ) {}
 
-  ngAfterViewInit(): void {
-    // ...
-  }
 
-  getMessages() {
-    // ...
-  }
 
   ngOnInit(): void {
     this.refreshMessages();
@@ -43,15 +37,19 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this.refreshMessages();
 
-    }, 250);
+    }, 1000);
 
   }
 
   refreshMessages(): void {
     this.http
-      .get<any>(`${this.dataService.serveUrl}/all-messages-global`)
+      .get<any>(`${this.dataService.serveUrl}/all-messages-global/${this.messages.length}`)
       .subscribe((data) => {
-        this.messages = data;
+        if (data != null){
+        if (data.length > this.messages.length){
+          this.messages = data;
+        }}
+        
       });
   }
 
@@ -71,7 +69,6 @@ export class ChatGlobalComponent implements OnInit, AfterViewInit {
       .subscribe(
         (response) => {
           this.messages.push(response.data);
-          console.log('this.messages:', this.messages);
           setTimeout(() => {
           }, 100);
         },
