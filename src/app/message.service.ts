@@ -108,7 +108,7 @@ export class MessageService {
   refreshMessagesGlobal() {
 
     this.http
-   .get<any>(`${this.dataService.serveUrl}/all-messages-global/${this.messagesGlobal.length}`)
+   .get<any>(`${this.dataService.serveUrl}/all-messages-global/0`)
    .subscribe((data) => {
     
     this.messagesGlobal = data;

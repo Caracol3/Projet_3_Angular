@@ -45,9 +45,10 @@ export class ChatGlobalComponent implements OnInit {
     this.http
       .get<any>(`${this.dataService.serveUrl}/all-messages-global/0`)
       .subscribe((data) => {
-        
+        if (data != null){
+        if (data.length > this.messages.length){
           this.messages = data;
-        
+        }}
         
       });
   }
