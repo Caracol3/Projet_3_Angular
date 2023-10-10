@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
 
 
     }
-    window.location.reload();
+    
   }
   else {
     console.log('Suppression annulée.');
@@ -141,6 +141,7 @@ export class AdminComponent implements OnInit {
     );
 }
 deleteUser(userId: number) {
+  console.log('Suppression de l\'utilisateur avec l\'ID :', userId);
   const confirmDelete = window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
   if (confirmDelete) {
     // L'utilisateur a confirmé la suppression, envoyez la requête DELETE

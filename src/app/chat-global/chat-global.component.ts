@@ -43,12 +43,11 @@ export class ChatGlobalComponent implements OnInit {
 
   refreshMessages(): void {
     this.http
-      .get<any>(`${this.dataService.serveUrl}/all-messages-global/${this.messages.length}`)
+      .get<any>(`${this.dataService.serveUrl}/all-messages-global/0`)
       .subscribe((data) => {
-        if (data != null){
-        if (data.length > this.messages.length){
+        
           this.messages = data;
-        }}
+        
         
       });
   }
