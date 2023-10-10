@@ -4,6 +4,9 @@
   -moz-box-sizing: border-box; box-sizing: border-box;
 
 }
+*::-webkit-scrollbar {
+  display: none;
+}
 
 // Déclaration des variables couleurs
 :root{
